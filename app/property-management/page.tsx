@@ -5,6 +5,7 @@ import { HowWeWork } from '@/components/property-management/HowWeWork'
 import { QualificationForm } from '@/components/property-management/QualificationForm'
 import { EarlyPartnerProgram } from '@/components/property-management/EarlyPartnerProgram'
 import { TechnologySection } from '@/components/property-management/TechnologySection'
+import { EarningsCalculator } from '@/components/property-management/EarningsCalculator'
 import { WhatsAppButton } from '@/components/homepage/WhatsAppButton'
 
 export const metadata: Metadata = {
@@ -21,6 +22,9 @@ export default function PropertyManagement() {
 
       {/* Three Service Tiers */}
       <ServiceTiers />
+
+      {/* Earnings Calculator */}
+      <EarningsCalculator />
 
       {/* How We Work Process */}
       <HowWeWork />
