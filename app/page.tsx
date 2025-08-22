@@ -8,8 +8,8 @@ import { TrustSignals } from '@/components/homepage/TrustSignals'
 import { WhatsAppButton } from '@/components/homepage/WhatsAppButton'
 
 export const metadata: Metadata = {
-  title: 'AURA Villas Bali - Where Memories Are Made',
-  description: 'Life is all about memories and Bali writes the most beautiful chapters. Discover our exclusive collection of luxury villas where your story begins. Book your perfect Bali escape today.',
+  title: 'AURA Villas Bali - Creating Good Memories',
+  description: 'Life is all about creating good memories. Discover our exclusive collection of luxury villas where your story begins. Book your perfect Bali escape today.',
   keywords: 'luxury villas Bali, exclusive Bali villas, Uluwatu villas, Canggu villas, Seminyak villas, beachfront villas Bali, clifftop villas Bali, villa rental Bali, Bali memories, luxury accommodation Bali',
 }
 

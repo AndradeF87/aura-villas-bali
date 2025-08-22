@@ -43,8 +43,8 @@ export function Hero() {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center text-white">
         {/* Main Headline */}
-        <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl mb-6 animate-fade-in-up opacity-0 leading-tight">
-          Life is all about memories and Bali writes the most beautiful chapters
+        <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl mb-6 animate-fade-in-up opacity-0">
+          Life is all about creating good memories
         </h1>
 
         {/* Subheadline */}
