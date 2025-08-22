@@ -104,12 +104,27 @@ export function FeaturedVillas() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Simulate API call - will be replaced with Supabase query
-    setTimeout(() => {
-      setVillas(mockVillas)
-      setLoading(false)
-    }, 1000)
+    loadFeaturedVillas()
   }, [])
+
+  const loadFeaturedVillas = async () => {
+    try {
+      // Try to load from Supabase (will fail gracefully if not configured)
+      const { villaService } = await import('@/lib/villaService')
+      const featuredVillas = await villaService.getFeaturedVillas(3)
+      if (featuredVillas.length > 0) {
+        setVillas(featuredVillas)
+      } else {
+        setVillas(mockVillas)
+      }
+    } catch (error) {
+      console.error('Error loading featured villas:', error)
+      // Fallback to mock data
+      setVillas(mockVillas)
+    } finally {
+      setLoading(false)
+    }
+  }
 
   if (loading) {
     return (

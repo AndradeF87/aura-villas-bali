@@ -13,6 +13,10 @@ export const Navigation = () => {
   
   // Check if we're on the property management page
   const isPropertyManagement = pathname === '/property-management'
+  
+  // Pages that should have a solid navigation bar (no hero image)
+  const solidNavPages = ['/contact', '/experiences', '/destinations']
+  const needsSolidNav = solidNavPages.some(page => pathname?.startsWith(page))
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,37 +27,47 @@ export const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Guest-focused navigation
   const navLinks = [
     { href: '/', label: 'Home' },
     { 
       href: '/villas', 
-      label: 'Villas',
+      label: 'Our Villas',
       dropdown: [
-        { href: '/villas/seminyak', label: 'Seminyak' },
-        { href: '/villas/ubud', label: 'Ubud' },
-        { href: '/villas/canggu', label: 'Canggu' },
-        { href: '/villas/uluwatu', label: 'Uluwatu' },
+        { href: '/villas', label: 'All Villas' },
+        { href: '/villas/uluwatu', label: 'Uluwatu (2 properties)' },
+        { href: '/villas/canggu', label: 'Canggu (Coming Soon)' },
+        { href: '/villas/seminyak', label: 'Seminyak (Coming Soon)' },
       ]
     },
-    { href: '/property-management', label: 'Property Management' },
-    { href: '/about', label: 'About' },
+    { 
+      href: '/destinations', 
+      label: 'Destinations',
+      dropdown: [
+        { href: '/destinations/uluwatu', label: 'Uluwatu' },
+        { href: '/destinations/canggu', label: 'Canggu' },
+        { href: '/destinations/seminyak', label: 'Seminyak' },
+      ]
+    },
+    { href: '/experiences', label: 'Experiences' },
     { href: '/contact', label: 'Contact' },
   ]
 
+  // Secondary link for property owners
+  const ownerLink = { href: '/property-management', label: 'List Your Property' }
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled 
+      isScrolled || needsSolidNav
         ? 'bg-white shadow-lg' 
-        : isPropertyManagement
-          ? 'bg-gradient-to-b from-deep-green/95 to-deep-green/80 backdrop-blur-sm'
-          : 'bg-gradient-to-b from-black/50 to-transparent'
+        : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 group">
             <div className={`transition-all duration-300 ${
-              isScrolled ? 'text-terracotta' : 'text-white'
+              isScrolled || needsSolidNav ? 'text-terracotta' : 'text-white drop-shadow-lg'
             }`}>
               <span className="font-serif text-3xl font-bold tracking-wider group-hover:text-terracotta-light transition-colors">
                 AURA
@@ -72,7 +86,7 @@ export const Navigation = () => {
                   <>
                     <button
                       className={`flex items-center space-x-1 transition-all duration-300 font-medium hover:text-terracotta ${
-                        isScrolled ? 'text-deep-green' : 'text-white'
+                        isScrolled || needsSolidNav ? 'text-deep-green' : 'text-white drop-shadow-lg'
                       }`}
                       onMouseEnter={() => setActiveDropdown(link.label)}
                       onMouseLeave={() => setActiveDropdown(null)}
@@ -82,7 +96,7 @@ export const Navigation = () => {
                     </button>
                     
                     {/* Dropdown Menu */}
-                    <div className={`absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl overflow-hidden transition-all duration-300 ${
+                    <div className={`absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-xl overflow-hidden transition-all duration-300 ${
                       activeDropdown === link.label 
                         ? 'opacity-100 translate-y-0 visible' 
                         : 'opacity-0 -translate-y-2 invisible'
@@ -105,7 +119,7 @@ export const Navigation = () => {
                   <Link
                     href={link.href}
                     className={`transition-all duration-300 font-medium hover:text-terracotta ${
-                      isScrolled ? 'text-deep-green' : 'text-white'
+                      isScrolled || needsSolidNav ? 'text-deep-green' : 'text-white drop-shadow-lg'
                     }`}
                   >
                     {link.label}
@@ -114,13 +128,28 @@ export const Navigation = () => {
               </div>
             ))}
             
+            {/* Divider */}
+            <div className={`h-6 w-px ${
+              isScrolled || needsSolidNav ? 'bg-gray-300' : 'bg-white/30'
+            }`} />
+            
+            {/* Owner Link */}
+            <Link
+              href={ownerLink.href}
+              className={`transition-all duration-300 font-medium hover:text-terracotta text-sm ${
+                isScrolled || needsSolidNav ? 'text-gray-600' : 'text-white/80 drop-shadow-lg'
+              }`}
+            >
+              {ownerLink.label}
+            </Link>
+            
             {/* CTA Button */}
             <Link
-              href="/booking"
+              href="/villas"
               className={`px-6 py-2.5 rounded-full font-medium transition-all duration-300 ${
-                isScrolled
+                isScrolled || needsSolidNav
                   ? 'bg-terracotta text-white hover:bg-terracotta-dark'
-                  : 'bg-white text-terracotta hover:bg-sand-light'
+                  : 'bg-white/90 backdrop-blur-sm text-terracotta hover:bg-white drop-shadow-lg'
               }`}
             >
               Book Now
@@ -131,7 +160,7 @@ export const Navigation = () => {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`lg:hidden p-2 transition-colors ${
-              isScrolled ? 'text-deep-green' : 'text-white'
+              isScrolled || needsSolidNav ? 'text-deep-green' : 'text-white drop-shadow-lg'
             }`}
           >
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -184,13 +213,20 @@ export const Navigation = () => {
             </div>
           ))}
           
-          <div className="pt-4 px-4">
+          <div className="pt-4 px-4 space-y-3">
             <Link
-              href="/booking"
+              href="/villas"
               className="block w-full text-center px-6 py-3 bg-terracotta text-white rounded-full font-medium hover:bg-terracotta-dark transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Book Now
+            </Link>
+            <Link
+              href={ownerLink.href}
+              className="block w-full text-center px-6 py-3 bg-gray-100 text-gray-700 rounded-full font-medium hover:bg-gray-200 transition-colors text-sm"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {ownerLink.label}
             </Link>
           </div>
         </div>

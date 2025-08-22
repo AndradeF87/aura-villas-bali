@@ -44,15 +44,15 @@ export function Hero() {
       <div className="relative z-10 container mx-auto px-4 text-center text-white">
         {/* Main Headline */}
         <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl mb-6 animate-fade-in-up">
-          Every Villa Has a Story.
+          Handpicked Bali Villas Where
           <span className="block mt-2 text-4xl md:text-6xl lg:text-7xl">
-            Discover Yours in Bali.
+            Every Stay Tells a Story
           </span>
         </h1>
 
         {/* Subheadline */}
         <p className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto animate-fade-in-up animation-delay-200">
-          Curated luxury villas where memories are made, not just stays booked.
+          From clifftop sanctuaries to beachfront retreats, discover our exclusive collection of personally-vetted luxury villas
         </p>
 
         {/* Search Bar */}
@@ -60,15 +60,15 @@ export function Hero() {
           <SearchBar />
         </div>
 
-        {/* Quick Stats */}
+        {/* Trust Indicators for Guests */}
         <div className="flex justify-center gap-8 md:gap-16 mt-16 animate-fade-in-up animation-delay-600">
           <div>
-            <div className="text-3xl md:text-4xl font-bold">50+</div>
+            <div className="text-3xl md:text-4xl font-bold">2</div>
             <div className="text-sm md:text-base opacity-90">Luxury Villas</div>
           </div>
           <div>
-            <div className="text-3xl md:text-4xl font-bold">5★</div>
-            <div className="text-sm md:text-base opacity-90">Curated Experiences</div>
+            <div className="text-3xl md:text-4xl font-bold">9.5+</div>
+            <div className="text-sm md:text-base opacity-90">Guest Rating</div>
           </div>
           <div>
             <div className="text-3xl md:text-4xl font-bold">24/7</div>

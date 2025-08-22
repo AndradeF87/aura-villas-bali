@@ -16,11 +16,13 @@ const config: Config = {
           dark: '#B05A38',
           light: '#DD8B68',
         },
+        'terracotta-dark': '#B05A38',
         'deep-green': {
           DEFAULT: '#2F4A3C',
           dark: '#243829',
           light: '#3A5C4A',
         },
+        'deep-green-dark': '#243829',
         sand: {
           DEFAULT: '#E8DCC8',
           dark: '#D4C4A8',
@@ -31,6 +33,7 @@ const config: Config = {
           dark: '#EDE6DD',
           light: '#FDFBF9',
         },
+        cream: '#F8F4F0', // Alias for ivory
         'antique-gold': {
           DEFAULT: '#C1A265',
           dark: '#A88A50',

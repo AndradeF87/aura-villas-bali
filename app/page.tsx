@@ -1,27 +1,31 @@
 import { Hero } from '@/components/homepage/Hero'
-import { FeaturedVillas } from '@/components/homepage/FeaturedVillas'
-import { AuraExperience } from '@/components/homepage/AuraExperience'
+import { FeaturedVillasBooking } from '@/components/homepage/FeaturedVillasBooking'
+import { WhyBookWithAura } from '@/components/homepage/WhyBookWithAura'
+import { ExploreByArea } from '@/components/homepage/ExploreByArea'
+import { BaliExperiences } from '@/components/homepage/BaliExperiences'
 import { TrustSignals } from '@/components/homepage/TrustSignals'
-import { OwnerCalculator } from '@/components/homepage/OwnerCalculator'
 import { WhatsAppButton } from '@/components/homepage/WhatsAppButton'
 
 export default function Home() {
   return (
     <>
-      {/* Hero Section with Search */}
+      {/* Hero Section with Villa Search */}
       <Hero />
 
-      {/* Featured Villa Stories */}
-      <FeaturedVillas />
+      {/* Featured Villas for Booking */}
+      <FeaturedVillasBooking />
 
-      {/* The AURA Experience */}
-      <AuraExperience />
+      {/* Why Book with AURA - Guest Benefits */}
+      <WhyBookWithAura />
 
-      {/* Trust Signals & Social Proof */}
+      {/* Explore by Area */}
+      <ExploreByArea />
+
+      {/* Bali Experiences */}
+      <BaliExperiences />
+
+      {/* Trust Signals & Guest Reviews */}
       <TrustSignals />
-
-      {/* Owner Benefits Calculator */}
-      <OwnerCalculator />
 
       {/* WhatsApp Floating Button */}
       <WhatsAppButton />

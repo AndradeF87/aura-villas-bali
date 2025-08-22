@@ -4,11 +4,11 @@ import { useState, useEffect } from 'react'
 import { Calendar, MapPin, Users, Search } from 'lucide-react'
 import { format } from 'date-fns'
 
-const locations = ['All Locations', 'Seminyak', 'Ubud', 'Canggu', 'Uluwatu', 'Sanur']
-const experienceTypes = ['All Experiences', 'Family', 'Romance', 'Wellness', 'Adventure']
+const locations = ['All Areas', 'Uluwatu', 'Canggu (Coming Soon)', 'Seminyak (Coming Soon)']
+const experienceTypes = ['All Experiences', 'Romantic Escape', 'Family Retreat', 'Surf & Beach', 'Wellness Journey']
 
 export function SearchBar() {
-  const [location, setLocation] = useState('All Locations')
+  const [location, setLocation] = useState('All Areas')
   const [checkIn, setCheckIn] = useState<Date | null>(null)
   const [checkOut, setCheckOut] = useState<Date | null>(null)
   const [guests, setGuests] = useState(2)
@@ -23,18 +23,28 @@ export function SearchBar() {
 
   const handleSearch = () => {
     const searchParams = {
-      location: location !== 'All Locations' ? location : undefined,
+      location: location !== 'All Areas' ? location : undefined,
       checkIn,
       checkOut,
       guests,
       experience: experience !== 'All Experiences' ? experience : undefined,
     }
-    console.log('Searching with params:', searchParams)
-    // TODO: Implement search functionality
+    
+    // Create URL search params
+    const urlParams = new URLSearchParams()
+    if (searchParams.location) urlParams.set('location', searchParams.location)
+    if (searchParams.checkIn) urlParams.set('checkin', searchParams.checkIn.toISOString().split('T')[0])
+    if (searchParams.checkOut) urlParams.set('checkout', searchParams.checkOut.toISOString().split('T')[0])
+    if (searchParams.guests) urlParams.set('guests', searchParams.guests.toString())
+    if (searchParams.experience) urlParams.set('experience', searchParams.experience.toLowerCase())
+    
+    // Navigate to villa search page
+    window.location.href = `/villas?${urlParams.toString()}`
   }
 
   return (
-    <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl p-6 md:p-8 border border-white/20">
+    <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-6 md:p-8 border border-white/20">
+      <p className="text-center text-gray-600 mb-4 text-lg">Where will your Bali story begin?</p>
       {/* Main Search Fields */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
         {/* Location */}
@@ -47,7 +57,7 @@ export function SearchBar() {
             <select
               value={location}
               onChange={(e) => setLocation(e.target.value)}
-              className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-terracotta focus:border-transparent appearance-none"
+              className="w-full pl-10 pr-3 py-3 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-terracotta focus:border-transparent appearance-none"
             >
               {locations.map((loc) => (
                 <option key={loc} value={loc}>
@@ -68,8 +78,9 @@ export function SearchBar() {
             <input
               type="date"
               onChange={(e) => setCheckIn(e.target.value ? new Date(e.target.value) : null)}
-              className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-terracotta focus:border-transparent"
+              className="w-full pl-10 pr-3 py-3 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-terracotta focus:border-transparent"
               min={minDate}
+              style={{ colorScheme: 'light' }}
             />
           </div>
         </div>
@@ -84,8 +95,9 @@ export function SearchBar() {
             <input
               type="date"
               onChange={(e) => setCheckOut(e.target.value ? new Date(e.target.value) : null)}
-              className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-terracotta focus:border-transparent"
+              className="w-full pl-10 pr-3 py-3 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-terracotta focus:border-transparent"
               min={checkIn ? format(checkIn, 'yyyy-MM-dd') : minDate}
+              style={{ colorScheme: 'light' }}
             />
           </div>
         </div>
@@ -103,7 +115,7 @@ export function SearchBar() {
               max="20"
               value={guests}
               onChange={(e) => setGuests(parseInt(e.target.value) || 1)}
-              className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-terracotta focus:border-transparent"
+              className="w-full pl-10 pr-3 py-3 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-terracotta focus:border-transparent"
             />
           </div>
         </div>
@@ -148,7 +160,7 @@ export function SearchBar() {
           className="flex-1 bg-terracotta hover:bg-terracotta-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
         >
           <Search className="w-5 h-5" />
-          Explore Villa Stories
+          Find Your Villa
         </button>
         <button
           onClick={handleSearch}
@@ -159,25 +171,25 @@ export function SearchBar() {
       </div>
 
       {/* Quick Filters */}
-      <div className="mt-4 flex flex-wrap gap-2 text-sm">
+      <div className="mt-4 flex flex-wrap gap-2 text-sm justify-center">
         <button className="text-gray-600 hover:text-terracotta transition-colors">
-          Pool Villa
+          Clifftop Views
         </button>
         <span className="text-gray-400">•</span>
         <button className="text-gray-600 hover:text-terracotta transition-colors">
-          Beachfront
+          Private Pool
         </button>
         <span className="text-gray-400">•</span>
         <button className="text-gray-600 hover:text-terracotta transition-colors">
-          Family Friendly
+          Chef Service
         </button>
         <span className="text-gray-400">•</span>
         <button className="text-gray-600 hover:text-terracotta transition-colors">
-          Wellness Retreat
+          Spa & Wellness
         </button>
         <span className="text-gray-400">•</span>
         <button className="text-gray-600 hover:text-terracotta transition-colors">
-          Romantic Escape
+          Beach Access
         </button>
       </div>
     </div>
