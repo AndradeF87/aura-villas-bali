@@ -63,12 +63,12 @@ export function Hero() {
         {/* Quick Stats */}
         <div className="flex justify-center gap-8 md:gap-16 mt-16 animate-fade-in-up animation-delay-600">
           <div>
-            <div className="text-3xl md:text-4xl font-bold">95%</div>
-            <div className="text-sm md:text-base opacity-90">Occupancy Rate</div>
+            <div className="text-3xl md:text-4xl font-bold">50+</div>
+            <div className="text-sm md:text-base opacity-90">Luxury Villas</div>
           </div>
           <div>
-            <div className="text-3xl md:text-4xl font-bold">9.3</div>
-            <div className="text-sm md:text-base opacity-90">Guest Rating</div>
+            <div className="text-3xl md:text-4xl font-bold">5★</div>
+            <div className="text-sm md:text-base opacity-90">Curated Experiences</div>
           </div>
           <div>
             <div className="text-3xl md:text-4xl font-bold">24/7</div>
