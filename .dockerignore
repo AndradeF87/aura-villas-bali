@@ -1,0 +1,64 @@
+# Dependencies
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Next.js
+.next
+out
+dist
+
+# Testing
+coverage
+.nyc_output
+
+# Docker
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# Git
+.git
+.gitignore
+README.md
+
+# CI
+.github
+.gitlab-ci.yml
+.travis.yml
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env files
+.env*.local
+
+# Misc
+.eslintcache
+*.log
+logs
+*.pid
+*.seed
+*.pid.lock
+
+# Claude and other development tools
+.claude
+.claude-flow
+.roo
+.roomodes
+CLAUDE.md
+artifacts
+memory
+
+# Documentation
+docs
+*.md

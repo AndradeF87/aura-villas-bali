@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AURA Villas Bali
 
-## Getting Started
+Luxury villa rental platform with intelligent property management - "Every Villa Has a Story"
 
-First, run the development server:
+## 🚀 Quick Start
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Open browser
+http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🏗️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: Next.js 15.5 with TypeScript
+- **Styling**: Tailwind CSS v4
+- **Database**: Supabase
+- **Icons**: Lucide React
+- **Fonts**: Playfair Display + Inter
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📁 Project Structure
 
-## Learn More
+```
+aura-villas-bali/
+├── app/                    # Next.js app directory
+│   ├── page.tsx           # Homepage
+│   ├── layout.tsx         # Root layout
+│   └── globals.css        # Global styles
+├── src/
+│   ├── components/        # React components
+│   │   └── homepage/      # Homepage components
+│   ├── lib/              # Libraries & utilities
+│   │   └── supabase/     # Supabase client
+│   └── types/            # TypeScript types
+├── public/               # Static assets
+│   └── images/          # Images
+└── docs/                # Documentation
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🎨 Brand Colors
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Terracotta**: `#C96F4A` - Primary CTAs
+- **Deep Green**: `#2F4A3C` - Headers
+- **Sand**: `#E8DCC8` - Backgrounds
+- **Ivory**: `#F8F4F0` - Light backgrounds
+- **Antique Gold**: `#C1A265` - Accents
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔧 Environment Setup
 
-## Deploy on Vercel
+Create a `.env.local` file:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```env
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# WhatsApp
+NEXT_PUBLIC_WHATSAPP_NUMBER=+628123456789
+
+# Analytics
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+```
+
+## 📦 Key Components
+
+### Homepage Components
+- **Hero** - Full-screen hero with search
+- **SearchBar** - Smart property search
+- **FeaturedVillas** - Villa story cards
+- **AuraExperience** - Brand values
+- **TrustSignals** - Reviews & social proof
+- **OwnerCalculator** - Earnings calculator
+- **WhatsAppButton** - Floating chat button
+
+## 🛠️ Development
+
+```bash
+# Development
+npm run dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
+
+# Lint code
+npm run lint
+```
+
+## 📝 Documentation
+
+- [Homepage Implementation](/docs/homepage-implementation-summary.md)
+- [SEO Strategy](/docs/seo-research/)
+- [Architecture Design](/docs/architecture/)
+- [Owner Research](/docs/owner-research/)
+
+## 🚀 Deployment
+
+The application is configured for deployment on Vercel:
+
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel
+```
+
+## 📄 License
+
+© 2024 AURA Villas Bali. All rights reserved.

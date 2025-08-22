@@ -1,0 +1,31 @@
+# Extended docker-compose for integration with other services
+# Use this file to add the AURA website to your existing docker-compose setup
+# 
+# Usage: docker-compose -f your-existing-compose.yml -f docker-compose.extend.yml up
+
+version: '3.8'
+
+services:
+  aura-villas:
+    build:
+      context: ./path-to-aura-villas-bali  # Update this path
+      dockerfile: Dockerfile
+    container_name: aura-villas-website
+    ports:
+      - "3002:3000"  # Change port if needed
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
+      - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
+    networks:
+      - default  # Will use the default network from your main compose file
+      - aura-network
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"  # If using Traefik
+      - "traefik.http.routers.aura.rule=Host(`aura.local`)"  # Update domain
+      - "traefik.http.services.aura.loadbalancer.server.port=3000"
+
+networks:
+  aura-network:
+    external: false
