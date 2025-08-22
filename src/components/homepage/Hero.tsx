@@ -11,10 +11,10 @@ export function Hero() {
     <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
       {/* Background Image/Video */}
       <div className="absolute inset-0 z-0">
-        {/* Fallback Image */}
+        {/* Background Image */}
         <Image
-          src="/images/placeholder.svg"
-          alt="Luxury villa in Bali at sunset"
+          src="/images/Homepage-SUYAI-villa.webp"
+          alt="SUYAI Luxury Villa in Bali"
           fill
           className={`object-cover transition-opacity duration-1000 ${
             isVideoLoaded ? 'opacity-0' : 'opacity-100'
