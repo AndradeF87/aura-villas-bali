@@ -1,0 +1,24 @@
+{
+  "name": "aura-villas-bali",
+  "description": "AURA Villas Bali - Luxury Villa Rentals and Property Management",
+  "repository": "https://github.com/yourusername/aura-villas-bali",
+  "keywords": ["nextjs", "react", "typescript", "villa", "bali"],
+  "env": {
+    "NODE_ENV": {
+      "description": "Node environment",
+      "value": "production"
+    },
+    "NEXT_PUBLIC_SITE_URL": {
+      "description": "Site URL",
+      "value": "https://auravillasbali.com"
+    }
+  },
+  "scripts": {
+    "postdeploy": "npm run build"
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
