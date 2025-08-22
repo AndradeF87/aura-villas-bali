@@ -325,13 +325,13 @@ interface VillaEnhancedSEOProps {
 }
 
 export const VillaEnhancedSEO: React.FC<VillaEnhancedSEOProps> = ({ villa, schemas }) => {
-  const title = `${villa.name} - Luxury ${villa.location} Villa Rental | Aura Villas Bali`;
+  const title = `${villa.name} - Boutique ${villa.location} Villa Rental | Aura Villas Bali`;
   const description = `${villa.description.slice(0, 120)}... Book this stunning ${villa.location} villa from $${villa.pricing.min}/${villa.pricing.currency} per night. ${villa.rating.count} reviews, ${villa.rating.average}⭐ rating.`;
   const canonical = `https://auravillasbali.com/villas/${villa.location.toLowerCase().replace(/\s+/g, '-')}/${villa.slug}`;
   
   const keywords = [
     `${villa.location} villa rental`,
-    `luxury villa ${villa.location}`,
+    `boutique villa ${villa.location}`,
     villa.name,
     'Bali accommodation',
     'private villa Bali',
@@ -349,12 +349,12 @@ export const VillaEnhancedSEO: React.FC<VillaEnhancedSEOProps> = ({ villa, schem
       keywords={keywords}
       modifiedTime={villa.updatedAt}
       section="Villa Rentals"
-      tags={[villa.location, villa.category, 'Luxury Villa']}
+      tags={[villa.location, villa.category, 'Boutique Villa']}
       openGraph={{
         title: villa.name,
         description,
         image: ogImage,
-        imageAlt: `${villa.name} - Luxury villa in ${villa.location}, Bali`,
+        imageAlt: `${villa.name} - Boutique villa in ${villa.location}, Bali`,
         type: 'product',
         siteName: 'Aura Villas Bali',
         locale: 'en_AU',

@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-This blueprint combines luxury villa rental best practices, competitor analysis, and AURA's unique "Every Villa Has a Story" positioning to create a homepage that converts while maintaining boutique warmth.
+This blueprint combines boutique villa rental best practices, competitor analysis, and AURA's unique "Every Villa Has a Story" positioning to create a homepage that converts while maintaining boutique warmth.
 
 ---
 
@@ -14,12 +14,12 @@ This blueprint combines luxury villa rental best practices, competitor analysis,
 
 ### Target Audiences
 1. **Primary**: Australian families (23% of Bali visitors)
-2. **Secondary**: Chinese luxury travelers (8% with 16% growth)
+2. **Secondary**: Chinese boutique travelers (8% with 16% growth)
 3. **Tertiary**: Digital nomads seeking monthly rentals
 
 ### Competitive Differentiation
 - **vs Airbnb Luxe**: More personal, culturally rooted
-- **vs Elite Havens**: Storytelling over luxury features
+- **vs Elite Havens**: Storytelling over boutique features
 - **vs Local Competitors**: Technology + human touch balance
 
 ---
@@ -37,7 +37,7 @@ This blueprint combines luxury villa rental best practices, competitor analysis,
 **Layout**: Full-width immersive image/video
 **Content**:
 - Headline: "Every Villa Has a Story. Discover Yours in Bali."
-- Subheadline: "Curated luxury villas where memories are made, not just stays booked."
+- Subheadline: "Curated boutique villas where memories are made, not just stays booked."
 - CTA Primary: "Explore Villa Stories"
 - CTA Secondary: "Check Availability"
 

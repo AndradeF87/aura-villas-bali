@@ -82,13 +82,13 @@ export const metadata: Metadata = {
 ```typescript
 export const metadata: Metadata = {
   title: {
-    template: '%s | Aura Villas Bali - Luxury Villa Rentals',
-    default: 'Aura Villas Bali - Premium Luxury Villa Rentals in Bali, Indonesia'
+    template: '%s | Aura Villas Bali - Boutique Villa Rentals',
+    default: 'Aura Villas Bali - Premium Boutique Villa Rentals in Bali, Indonesia'
   },
-  description: 'Discover exclusive luxury villa rentals in Bali\'s most prestigious locations. From Seminyak to Ubud, find your perfect tropical paradise with Aura Villas Bali.',
+  description: 'Discover exclusive boutique villa rentals in Bali\'s most prestigious locations. From Seminyak to Ubud, find your perfect tropical paradise with Aura Villas Bali.',
   keywords: [
     'Bali villa rental',
-    'luxury villas Bali',
+    'boutique villas Bali',
     'Seminyak villas',
     'Ubud accommodation',
     'private pool villas Bali',
@@ -117,14 +117,14 @@ export const metadata: Metadata = {
     locale: 'en_AU',
     url: 'https://auravillasbali.com',
     siteName: 'Aura Villas Bali',
-    title: 'Aura Villas Bali - Premium Luxury Villa Rentals',
-    description: 'Discover exclusive luxury villa rentals in Bali\'s most prestigious locations.',
+    title: 'Aura Villas Bali - Premium Boutique Villa Rentals',
+    description: 'Discover exclusive boutique villa rentals in Bali\'s most prestigious locations.',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Luxury villa with infinity pool in Bali',
+        alt: 'Boutique villa with infinity pool in Bali',
       },
     ],
   },
@@ -192,7 +192,7 @@ export const generateLocalBusinessSchema = (location: string) => ({
   '@type': 'LocalBusiness',
   '@id': `https://auravillasbali.com/villas/${location}#business`,
   name: `Aura Villas ${location}`,
-  description: `Luxury villa rentals in ${location}, Bali`,
+  description: `Boutique villa rentals in ${location}, Bali`,
   url: `https://auravillasbali.com/villas/${location}`,
   telephone: '+62-361-123456',
   address: {
@@ -389,7 +389,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
   const villa = await getVilla(params.location, params.slug);
   
   return {
-    title: `${villa.name} - Luxury Villa in ${villa.location}, Bali`,
+    title: `${villa.name} - Boutique Villa in ${villa.location}, Bali`,
     description: villa.metaDescription,
     openGraph: {
       title: villa.name,
@@ -548,7 +548,7 @@ export async function generateStaticParams() {
 const urlStructure = {
   // Villa listings by location
   '/villas/seminyak': 'Location landing page',
-  '/villas/seminyak/luxury-beachfront-villa': 'Specific villa',
+  '/villas/seminyak/boutique-beachfront-villa': 'Specific villa',
   
   // Villa listings by features
   '/villas/private-pool': 'Feature-based listings',

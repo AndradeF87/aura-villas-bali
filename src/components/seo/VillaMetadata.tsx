@@ -2,8 +2,8 @@ import { Metadata } from 'next'
 import type { Villa } from '@/types/villa'
 
 export function generateVillaMetadata(villa: Villa): Metadata {
-  const title = `${villa.name} - Luxury Villa in ${villa.location?.area}, Bali | AURA Villas`
-  const description = villa.storyTeaser || `Experience ${villa.name}, a luxury ${villa.bedrooms}-bedroom villa in ${villa.location?.area}. Perfect for ${villa.maxGuests} guests with premium amenities and authentic Balinese hospitality.`
+  const title = `${villa.name} - Boutique Villa in ${villa.location?.area}, Bali | AURA Villas`
+  const description = villa.storyTeaser || `Experience ${villa.name}, a boutique ${villa.bedrooms}-bedroom villa in ${villa.location?.area}. Perfect for ${villa.maxGuests} guests with premium amenities and authentic Balinese hospitality.`
   const images = villa.images?.map(img => ({
     url: img.url,
     width: 1200,
@@ -17,11 +17,11 @@ export function generateVillaMetadata(villa: Villa): Metadata {
     keywords: [
       villa.name,
       `${villa.location?.area} villa`,
-      'Bali luxury villa',
+      'Bali boutique villa',
       'villa rental Bali',
       `${villa.bedrooms} bedroom villa`,
       'Bali accommodation',
-      'luxury travel',
+      'boutique travel',
       'villa holiday'
     ].join(', '),
     openGraph: {

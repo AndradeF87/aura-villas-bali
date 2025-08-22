@@ -131,4 +131,4 @@
 
 ---
 
-*All research and strategic planning for AURA's luxury villa rental homepage is complete. The blueprint provides a clear path to implementation with story-driven differentiation and conversion optimization.*
+*All research and strategic planning for AURA's boutique villa rental homepage is complete. The blueprint provides a clear path to implementation with story-driven differentiation and conversion optimization.*

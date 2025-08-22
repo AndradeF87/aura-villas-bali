@@ -41,11 +41,11 @@ This document provides a comprehensive summary of the property management servic
 - **Value Proposition**: Comprehensive service with personal attention
 
 #### Boutique Full Service (20-22% Commission)
-**Target Market**: Luxury properties, hands-off owners
+**Target Market**: Boutique properties, hands-off owners
 - Complete staff management under AURA payroll
 - Full financial management and tax reporting
 - Strategic planning and CAPEX assistance
-- **Value Proposition**: Complete ownership delegation with luxury standards
+- **Value Proposition**: Complete ownership delegation with boutique standards
 
 ### Service Delivery Excellence
 

@@ -1,5 +1,5 @@
 # AURA Villas Bali - Security Architecture Design
-## Comprehensive Security Framework for Luxury Villa Platform
+## Comprehensive Security Framework for Boutique Villa Platform
 
 ### Executive Summary
 

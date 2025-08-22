@@ -9,10 +9,10 @@ const properties = [
   {
     id: 'suyai-villa',
     name: 'SUYAI Villa Bali',
-    type: 'Luxury Villa',
+    type: 'Boutique Villa',
     location: 'Uluwatu, Pecatu',
     description: 'An architectural masterpiece perched on Uluwatu\'s dramatic cliffs, where contemporary design meets the raw beauty of Bali\'s southern coast.',
-    story: 'Named after the Mapuche word for "hope", SUYAI represents a new vision of luxury—one that honors both the land and the guest experience.',
+    story: 'Named after the Mapuche word for "hope", SUYAI represents a new vision of boutique—one that honors both the land and the guest experience.',
     image: '/images/Homepage-SUYAI-villa.webp',
     bedrooms: 4,
     maxGuests: 8,

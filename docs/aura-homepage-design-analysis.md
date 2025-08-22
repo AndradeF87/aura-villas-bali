@@ -47,7 +47,7 @@ Based on AURA branding guidelines:
 - **Deep Green**: #2F4A3C (headings, premium sections)
 - **Sand Beige**: #E8DCC8 (backgrounds, dividers)
 - **Warm Ivory**: #F8F4F0 (content backgrounds)
-- **Antique Gold**: #C1A265 (luxury touches)
+- **Antique Gold**: #C1A265 (boutique touches)
 
 #### Typography Strategy
 - **Headlines**: Elegant serif (Playfair Display/Canela)

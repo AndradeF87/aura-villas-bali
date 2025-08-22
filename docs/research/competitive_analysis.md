@@ -1,4 +1,4 @@
-# Competitive Analysis - Bali Luxury Villa Management Market
+# Competitive Analysis - Bali Boutique Villa Management Market
 
 ## Market Overview
 
@@ -6,7 +6,7 @@
 - Total addressable market: $150M annual rental revenue
 - Serviceable market: $45M (premium segment)
 - Annual growth rate: 18-22%
-- Number of luxury villas: 800-1,000 properties
+- Number of boutique villas: 800-1,000 properties
 - Professional management penetration: 35%
 
 ## Competitor Deep Dive
@@ -58,7 +58,7 @@
 
 **Weaknesses:**
 - Limited premium service offerings
-- Lacks luxury market understanding
+- Lacks boutique market understanding
 - Basic guest services
 - No concierge capabilities
 
@@ -144,7 +144,7 @@
 - Develop cultural authenticity programs
 
 **3. Market Positioning**
-- Position as "Intelligent Luxury Management"
+- Position as "Intelligent Boutique Management"
 - Emphasize transparency and technology
 - Highlight local expertise with international standards
 - Build thought leadership through content marketing
@@ -289,4 +289,4 @@
 
 ---
 
-This competitive analysis provides the foundation for AURA's market entry and growth strategy, identifying clear opportunities for differentiation and sustainable competitive advantage in Bali's luxury villa management market.
+This competitive analysis provides the foundation for AURA's market entry and growth strategy, identifying clear opportunities for differentiation and sustainable competitive advantage in Bali's boutique villa management market.

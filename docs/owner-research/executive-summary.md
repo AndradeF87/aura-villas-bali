@@ -31,7 +31,7 @@ Comprehensive analysis of what villa owners in Bali prioritize when selecting pr
 
 **Commission Preference**: 15-20% standard, with performance-based models preferred
 **Technology Expectations**: Real-time dashboards, mobile apps, API integrations
-**Service Standards**: Luxury hotel-level housekeeping, 24/7 guest support
+**Service Standards**: Boutique hotel-level housekeeping, 24/7 guest support
 **Trust Factors**: Local expertise, proven track record, transparent reporting
 
 ### Owner Demographics
@@ -82,7 +82,7 @@ Comprehensive analysis of what villa owners in Bali prioritize when selecting pr
 
 ### Unique Value Proposition
 
-> "Intelligent Luxury Management - Where AI-Powered Technology Meets Authentic Balinese Hospitality"
+> "Intelligent Boutique Management - Where AI-Powered Technology Meets Authentic Balinese Hospitality"
 
 ### Service Architecture (3-Tier)
 
@@ -97,7 +97,7 @@ Comprehensive analysis of what villa owners in Bali prioritize when selecting pr
    - Predictive maintenance
    - 24/7 concierge
 
-3. **Luxury (25-30% commission)**
+3. **Boutique (25-30% commission)**
    - Full financial management
    - IoT property monitoring
    - Personalized guest experiences
@@ -210,7 +210,7 @@ Comprehensive analysis of what villa owners in Bali prioritize when selecting pr
 2. **Owner Priorities**: Trust, technology, and financial performance drive decisions
 3. **Competitive Edge**: AI optimization and mobile-first approach create 2-5 year advantage
 4. **Investment Return**: $1M+ net profit achievable by Year 3 with 36% margins
-5. **Differentiation**: "Intelligent luxury" positioning combines best of technology and hospitality
+5. **Differentiation**: "Intelligent boutique" positioning combines best of technology and hospitality
 
 ---
 

@@ -47,7 +47,7 @@ const mockVillas: Partial<Villa>[] = [
       coordinates: { lat: -8.6650, lng: 115.1480 },
       nearbyAttractions: ['Petitenget Beach', 'Potato Head Beach Club'],
     },
-    storyTeaser: 'Where modern luxury meets the Indian Ocean, this beachfront sanctuary was designed by an award-winning architect who fell in love with Bali...',
+    storyTeaser: 'Where modern boutique meets the Indian Ocean, this beachfront sanctuary was designed by an award-winning architect who fell in love with Bali...',
     images: [
       {
         id: '2',

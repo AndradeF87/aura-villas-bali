@@ -283,7 +283,7 @@ export const generateProductSchema = (villa: Villa): ProductSchema => {
     '@type': 'Product',
     '@id': `${villaUrl}#product`,
     name: villa.name,
-    description: `Luxury ${villa.bedrooms}-bedroom villa rental in ${villa.location}, Bali`,
+    description: `Boutique ${villa.bedrooms}-bedroom villa rental in ${villa.location}, Bali`,
     image: villa.images.map(img => img.url),
     brand: {
       '@type': 'Brand',
@@ -340,7 +340,7 @@ export const generateLocalBusinessSchema = (location: Location): LocalBusinessSc
     '@type': 'LodgingBusiness',
     '@id': `${locationUrl}#business`,
     name: `Aura Villas ${location.name}`,
-    description: `Premium villa rentals and luxury accommodation in ${location.name}, Bali`,
+    description: `Premium villa rentals and boutique accommodation in ${location.name}, Bali`,
     url: locationUrl,
     telephone: '+62-361-123456',
     email: 'info@auravillasbali.com',
@@ -441,7 +441,7 @@ const generateOfferSchemas = (villa: Villa): OfferSchema[] => {
       itemOffered: {
         '@type': 'Service',
         name: 'Villa Rental Service',
-        description: `Luxury villa accommodation in ${villa.location}, Bali`
+        description: `Boutique villa accommodation in ${villa.location}, Bali`
       },
       seller: {
         '@type': 'Organization',
@@ -513,7 +513,7 @@ const generateMainOfferSchema = (villa: Villa): OfferSchema => {
     '@type': 'Offer',
     '@id': `${villaUrl}#main-offer`,
     name: `Book ${villa.name}`,
-    description: `Luxury villa rental in ${villa.location}, Bali`,
+    description: `Boutique villa rental in ${villa.location}, Bali`,
     price: villa.pricing.min.toString(),
     priceCurrency: villa.pricing.currency || 'USD',
     availability: 'https://schema.org/InStock',
@@ -522,7 +522,7 @@ const generateMainOfferSchema = (villa: Villa): OfferSchema => {
     itemOffered: {
       '@type': 'Service',
       name: 'Villa Rental',
-      description: `${villa.bedrooms}-bedroom luxury villa in ${villa.location}`
+      description: `${villa.bedrooms}-bedroom boutique villa in ${villa.location}`
     },
     seller: {
       '@type': 'Organization',
@@ -554,7 +554,7 @@ const generateLocationOffers = (location: Location): OfferSchema[] => {
       '@type': 'Offer',
       '@id': `${locationUrl}#villa-rentals`,
       name: `${location.name} Villa Rentals`,
-      description: `Luxury villa accommodations in ${location.name}, Bali`,
+      description: `Boutique villa accommodations in ${location.name}, Bali`,
       price: '200',
       priceCurrency: 'USD',
       availability: 'https://schema.org/InStock',

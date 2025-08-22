@@ -372,7 +372,7 @@ Based on a thorough analysis of the current codebase, market positioning, and co
 - $150,000+ monthly recurring revenue
 - 200+ villa listings with international expansion
 - 75+ properties under management
-- Market leadership position in Bali luxury villa segment
+- Market leadership position in Bali boutique villa segment
 
 ---
 
@@ -394,7 +394,7 @@ AURA Villas Bali has established a strong foundation with excellent branding, so
 4. Begin investor conversations for scaling capital
 5. Develop international expansion strategy for Q3-Q4
 
-With proper execution of these recommendations, AURA Villas Bali is positioned to capture a significant share of the luxury villa market while establishing itself as the technology leader in property management services.
+With proper execution of these recommendations, AURA Villas Bali is positioned to capture a significant share of the boutique villa market while establishing itself as the technology leader in property management services.
 
 ---
 

@@ -14,8 +14,8 @@ const locations = [
 const propertyTypes = [
   { name: 'Budget Villa', multiplier: 0.7 },
   { name: 'Mid-Range Villa', multiplier: 1.0 },
-  { name: 'Luxury Villa', multiplier: 1.5 },
-  { name: 'Ultra-Luxury Villa', multiplier: 2.0 },
+  { name: 'Boutique Villa', multiplier: 1.5 },
+  { name: 'Ultra-Boutique Villa', multiplier: 2.0 },
 ]
 
 export function OwnerCalculator() {

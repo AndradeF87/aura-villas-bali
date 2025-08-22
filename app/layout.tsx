@@ -17,12 +17,12 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://aura-villas-bali.com'),
-  title: "AURA Villas Bali - Every Villa Has a Story",
-  description: "Curated luxury villas in Bali where memories are made. Experience authentic Balinese hospitality combined with modern comfort and AI-powered property management.",
-  keywords: "Bali villas, luxury villas Bali, villa rental Bali, Seminyak villas, Ubud villas, Canggu villas, property management Bali",
+  title: "AURA Villas Bali - Exclusive Boutique Villa Escapes",
+  description: "Discover Bali's most exclusive boutique villas. Handpicked clifftop sanctuaries and beachfront retreats with seamless booking and 24/7 concierge service.",
+  keywords: "boutique villas Bali, exclusive Bali villas, Uluwatu villas, Canggu villas, Seminyak villas, beachfront villas Bali, clifftop villas Bali, villa rental Bali",
   openGraph: {
-    title: "AURA Villas Bali - Every Villa Has a Story",
-    description: "Curated luxury villas in Bali where memories are made",
+    title: "AURA Villas Bali - Exclusive Boutique Villa Escapes",
+    description: "Discover Bali's most exclusive boutique villas. Book your perfect sanctuary.",
     url: "https://aura-villas-bali.com",
     siteName: "AURA Villas Bali",
     images: [
@@ -38,8 +38,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AURA Villas Bali - Every Villa Has a Story",
-    description: "Curated luxury villas in Bali where memories are made",
+    title: "AURA Villas Bali - Exclusive Boutique Villa Escapes",
+    description: "Discover Bali's most exclusive boutique villas. Book your perfect sanctuary.",
     images: ["/images/og-image.jpg"],
   },
   robots: {

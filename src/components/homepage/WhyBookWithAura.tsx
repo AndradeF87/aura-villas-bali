@@ -6,7 +6,7 @@ const benefits = [
   {
     icon: Award,
     title: 'Handpicked Properties',
-    description: 'Every villa is personally vetted by our team. We only work with properties that meet our strict standards for luxury, comfort, and authentic Balinese hospitality.'
+    description: 'Every villa is personally vetted by our team. We only work with properties that meet our strict standards for boutique, comfort, and authentic Balinese hospitality.'
   },
   {
     icon: Phone,
@@ -89,7 +89,7 @@ export function WhyBookWithAura() {
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-terracotta">2</div>
-              <div className="text-sm text-gray-600">Luxury Properties</div>
+              <div className="text-sm text-gray-600">Boutique Properties</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-terracotta">50+</div>

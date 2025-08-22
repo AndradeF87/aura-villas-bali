@@ -95,7 +95,7 @@ No two villas are the same. Each has its own identity, ideal guest profile, and 
 
 **3. Memories Over Walls**
 
-Luxury is not just a beautiful villa — it’s the memories guests take home.
+Boutique is not just a beautiful villa — it’s the memories guests take home.
 
 *Example angle:* “We create moments guests will remember long after they check out.”
 
@@ -228,7 +228,7 @@ Caption: *Hotel‑grade cleanliness, maintenance, and hospitality—delivered wi
 
 - Area (dropdown)
 - Property type (villa/apartment)
-- Category (budget/midscale/upscale/luxury)
+- Category (budget/midscale/upscale/boutique)
 - Bedrooms (stepper)
 - Avg nightly rate (optional)
 - Current occupancy (optional)
@@ -418,7 +418,7 @@ HEX: #3A3A3A
 
 Use for: Body text, icons, subtle lines
 
-Accent Color (Optional for Luxury Touch)
+Accent Color (Optional for Boutique Touch)
 Antique Gold – Elegant and upscale without being flashy
 
 HEX: #C1A265

@@ -1,6 +1,6 @@
 # AURA Villas Bali
 
-Luxury villa rental platform with intelligent property management - "Every Villa Has a Story"
+Boutique villa rental platform with intelligent property management - "Every Villa Has a Story"
 
 ## 🚀 Quick Start
 

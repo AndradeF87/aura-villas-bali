@@ -150,7 +150,7 @@ interface VillaSEOProps {
 }
 
 export const VillaSEO: React.FC<VillaSEOProps> = ({ villa, schema }) => {
-  const title = `${villa.name} - Luxury Villa Rental in ${villa.location}, Bali`;
+  const title = `${villa.name} - Boutique Villa Rental in ${villa.location}, Bali`;
   const description = `${villa.description.slice(0, 150)}... Book your dream villa in ${villa.location} from $${villa.pricing.min}/night. ${villa.rating.count} reviews, ${villa.rating.average}/5 stars.`;
   const canonical = `https://auravillasbali.com/villas/${villa.location.toLowerCase()}/${villa.slug}`;
   
@@ -242,8 +242,8 @@ interface LocationSEOProps {
 }
 
 export const LocationSEO: React.FC<LocationSEOProps> = ({ location, schema }) => {
-  const title = `${location.name} Villa Rentals - ${location.villaCount} Luxury Villas | Aura Villas Bali`;
-  const description = `Discover ${location.villaCount} luxury villas in ${location.name}, Bali. ${location.description.slice(0, 120)}... Book direct for best rates.`;
+  const title = `${location.name} Villa Rentals - ${location.villaCount} Boutique Villas | Aura Villas Bali`;
+  const description = `Discover ${location.villaCount} boutique villas in ${location.name}, Bali. ${location.description.slice(0, 120)}... Book direct for best rates.`;
   const canonical = `https://auravillasbali.com/villas/${location.slug}`;
   
   return (
@@ -255,7 +255,7 @@ export const LocationSEO: React.FC<LocationSEOProps> = ({ location, schema }) =>
         title,
         description,
         image: location.featuredImage?.url,
-        imageAlt: `Luxury villas in ${location.name}, Bali`,
+        imageAlt: `Boutique villas in ${location.name}, Bali`,
         type: 'website'
       }}
       jsonLd={schema}

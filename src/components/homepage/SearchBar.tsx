@@ -44,7 +44,7 @@ export function SearchBar() {
 
   return (
     <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-6 md:p-8 border border-white/20">
-      <p className="text-center text-gray-600 mb-4 text-lg">Where will your Bali story begin?</p>
+      <p className="text-center text-gray-600 mb-4 text-lg">Search villas in Uluwatu, Canggu, Seminyak...</p>
       {/* Main Search Fields */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
         {/* Location */}

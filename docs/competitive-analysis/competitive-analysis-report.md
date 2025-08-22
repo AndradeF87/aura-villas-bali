@@ -17,8 +17,8 @@ Comprehensive analysis of 4 major Bali property management competitors reveals s
 
 ### 1. Elite Havens - Market Leader Analysis
 
-**Market Position**: Premium luxury segment leader
-- **Properties**: 300+ luxury villas across Asia
+**Market Position**: Premium boutique segment leader
+- **Properties**: 300+ boutique villas across Asia
 - **Annual Guests**: 80,000+
 - **Founding**: 1998 (26 years experience)
 - **Parent**: Dusit Thani Public Company Limited
@@ -38,7 +38,7 @@ Service Model:
 #### Commission Structure Analysis
 - **Estimated Rate**: 20-25% (industry standard)
 - **Model**: Proprietary exclusive system
-- **Value Proposition**: Luxury positioning with proven scale
+- **Value Proposition**: Boutique positioning with proven scale
 
 #### Technology Platform Architecture
 ```javascript
@@ -157,7 +157,7 @@ class RevenueOptimization:
 **Technology Score**: 6.5/10 (estimated)
 **API Integration Level**: ⭐⭐⭐ (3/5)
 
-### 4. Nagisa Bali - Traditional Luxury Analysis
+### 4. Nagisa Bali - Traditional Boutique Analysis
 
 **Market Position**: Japanese-standard personal service
 
@@ -198,7 +198,7 @@ Technology Assessment:
 ### Commission Rate Comparison
 | Competitor | Rate | Model | Value Proposition |
 |------------|------|--------|-------------------|
-| **Elite Havens** | 20-25% (est.) | Exclusive | Luxury positioning |
+| **Elite Havens** | 20-25% (est.) | Exclusive | Boutique positioning |
 | **Bali Management** | 18% / 9% | Commission-only | Cost competitive |
 | **BaliSuperHost** | Unknown | Platform-dependent | Airbnb optimization |
 | **Nagisa Bali** | Unknown | Traditional | Japanese standards |

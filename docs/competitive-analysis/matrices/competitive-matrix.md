@@ -7,7 +7,7 @@
 | **Elite Havens** | ~20-25% (est.) | 7.5/10 | ⭐⭐⭐ | Basic | Premium Leader | Open API, Mobile App |
 | **Bali Management** | 18% / 9% | 8.2/10 | ⭐⭐⭐⭐ | Good | Cost Leader | AI Optimization, Analytics |
 | **BaliSuperHost** | Unknown | 6.5/10 (est.) | ⭐⭐⭐ | Platform-dependent | Airbnb Specialist | Multi-platform, Full Service |
-| **Nagisa Bali** | Unknown | 4.0/10 | ⭐ | None | Traditional Luxury | Full Technology Stack |
+| **Nagisa Bali** | Unknown | 4.0/10 | ⭐ | None | Traditional Boutique | Full Technology Stack |
 
 ## Detailed Competitive Analysis Matrix
 
@@ -18,7 +18,7 @@
 | **Commission Rate** | 20-25% (est.) | 18% Full / 9% Digital | Unknown | Unknown | 15-25% | **15-20% with premium tech** |
 | **Fee Structure** | Exclusive model | Commission only | Unknown | Reasonable fees | Mixed | **Transparent, competitive** |
 | **Monthly Fees** | Unknown | None | Unknown | Unknown | Varies | **No monthly fees** |
-| **Value Proposition** | Luxury exclusive | Cost competitive | Airbnb focused | Japanese standard | Mixed | **Tech-premium at competitive rates** |
+| **Value Proposition** | Boutique exclusive | Cost competitive | Airbnb focused | Japanese standard | Mixed | **Tech-premium at competitive rates** |
 
 ### 2. Technology Architecture Comparison
 
@@ -103,7 +103,7 @@
 | **Price Point** | Premium | Value | Specialized | Premium | **Premium-Value (tech-justified)** |
 | **Service Level** | Exclusive | Comprehensive | Focused | Personal | **Tech-Enhanced Comprehensive** |
 | **Technology** | Proprietary | Standard | Platform | Basic | **Next-Generation AI-Powered** |
-| **Target Market** | Ultra-luxury | Cost-conscious | Airbnb hosts | Japanese clients | **Tech-savvy premium owners** |
+| **Target Market** | Ultra-boutique | Cost-conscious | Airbnb hosts | Japanese clients | **Tech-savvy premium owners** |
 | **Differentiation** | Exclusivity | Price | Specialization | Service quality | **Technology + Transparency** |
 
 ### Competitive Advantages Framework

@@ -280,7 +280,7 @@ export const generateOrganizationSchema = () => {
     '@context': 'https://schema.org',
     '@type': 'TravelAgency',
     name: 'Aura Villas Bali',
-    description: 'Premium villa rentals and luxury accommodation in Bali, Indonesia',
+    description: 'Premium villa rentals and boutique accommodation in Bali, Indonesia',
     url: 'https://auravillasbali.com',
     logo: 'https://auravillasbali.com/logo.png',
     image: 'https://auravillasbali.com/hero-image.jpg',

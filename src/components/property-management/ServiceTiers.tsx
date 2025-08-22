@@ -57,7 +57,7 @@ const tiers = [
     features: [
       'Everything in Premium, plus:',
       'Dedicated villa manager',
-      'Luxury amenity partnerships',
+      'Boutique amenity partnerships',
       'Influencer marketing program',
       'Custom guest experiences',
       'Priority booking management',
@@ -66,7 +66,7 @@ const tiers = [
       'Exclusive AURA Collection benefits',
       '24/7 owner support line'
     ],
-    bestFor: 'Luxury villas seeking the highest level of service and revenue',
+    bestFor: 'Boutique villas seeking the highest level of service and revenue',
     color: 'from-deep-green to-deep-green/90'
   }
 ]

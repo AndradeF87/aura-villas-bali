@@ -2,8 +2,8 @@ import type { Villa } from '@/types/villa'
 
 export class SEOService {
   static generateVillaMetadata(villa: Villa) {
-    const title = `${villa.name} - Luxury Villa in ${villa.location?.area}, Bali | AURA Villas`
-    const description = villa.storyTeaser || `Experience ${villa.name}, a luxury ${villa.bedrooms}-bedroom villa in ${villa.location?.area}. Perfect for ${villa.maxGuests} guests with premium amenities and authentic Balinese hospitality.`
+    const title = `${villa.name} - Boutique Villa in ${villa.location?.area}, Bali | AURA Villas`
+    const description = villa.storyTeaser || `Experience ${villa.name}, a boutique ${villa.bedrooms}-bedroom villa in ${villa.location?.area}. Perfect for ${villa.maxGuests} guests with premium amenities and authentic Balinese hospitality.`
     
     return {
       title,
@@ -33,8 +33,8 @@ export class SEOService {
 
   static generateSearchMetadata(filters: any) {
     const location = filters.location || 'Bali'
-    const title = `Luxury Villas in ${location} | AURA Villas Bali`
-    const description = `Discover handpicked luxury villas in ${location}. Each villa tells a unique story. Book authentic Balinese experiences with 24/7 concierge service.`
+    const title = `Boutique Villas in ${location} | AURA Villas Bali`
+    const description = `Discover handpicked boutique villas in ${location}. Each villa tells a unique story. Book authentic Balinese experiences with 24/7 concierge service.`
     
     return {
       title,

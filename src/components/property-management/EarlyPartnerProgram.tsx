@@ -126,7 +126,7 @@ export function EarlyPartnerProgram() {
               <ul className="space-y-2">
                 <li className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-terracotta rounded-full"></div>
-                  <span className="text-gray-700">4+ bedrooms or unique luxury features</span>
+                  <span className="text-gray-700">4+ bedrooms or unique boutique features</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-terracotta rounded-full"></div>

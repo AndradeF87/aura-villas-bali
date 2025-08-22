@@ -16,13 +16,13 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Aura Villas Bali - Luxury Villa Rentals',
-    default: 'Aura Villas Bali - Premium Luxury Villa Rentals in Bali, Indonesia'
+    template: '%s | Aura Villas Bali - Boutique Villa Rentals',
+    default: 'Aura Villas Bali - Premium Boutique Villa Rentals in Bali, Indonesia'
   },
-  description: 'Discover exclusive luxury villa rentals in Bali\'s most prestigious locations. From Seminyak to Ubud, find your perfect tropical paradise with Aura Villas Bali.',
+  description: 'Discover exclusive boutique villa rentals in Bali\'s most prestigious locations. From Seminyak to Ubud, find your perfect tropical paradise with Aura Villas Bali.',
   keywords: [
     'Bali villa rental',
-    'luxury villas Bali',
+    'boutique villas Bali',
     'Seminyak villas',
     'Ubud accommodation',
     'private pool villas Bali'
@@ -33,13 +33,13 @@ export const metadata: Metadata = {
     locale: 'en_AU',
     url: 'https://auravillasbali.com',
     siteName: 'Aura Villas Bali',
-    title: 'Aura Villas Bali - Premium Luxury Villa Rentals',
-    description: 'Discover exclusive luxury villa rentals in Bali\'s most prestigious locations.',
+    title: 'Aura Villas Bali - Premium Boutique Villa Rentals',
+    description: 'Discover exclusive boutique villa rentals in Bali\'s most prestigious locations.',
     images: [{
       url: '/og-image.jpg',
       width: 1200,
       height: 630,
-      alt: 'Luxury villa with infinity pool in Bali',
+      alt: 'Boutique villa with infinity pool in Bali',
     }],
   },
   robots: {
@@ -97,7 +97,7 @@ export async function generateMetadata({ params }: VillaPageProps): Promise<Meta
   const villa = await getVilla(params.location, params.slug);
   
   return {
-    title: `${villa.name} - Luxury Villa in ${villa.location}, Bali`,
+    title: `${villa.name} - Boutique Villa in ${villa.location}, Bali`,
     description: `${villa.description.slice(0, 150)}... Book this ${villa.bedrooms}-bedroom villa from $${villa.pricing.min}/night.`,
     openGraph: {
       title: villa.name,
@@ -200,7 +200,7 @@ export default async function LocationPage({ params }: { params: { location: str
       <main>
         <div className="location-hero">
           <h1>{location.name} Villa Rentals</h1>
-          <p>Discover {villas.length} luxury villas in {location.name}, Bali</p>
+          <p>Discover {villas.length} boutique villas in {location.name}, Bali</p>
         </div>
         
         <div className="villa-grid">
@@ -391,9 +391,9 @@ export default function RootLayout({
 const villaSchema = {
   "@context": "https://schema.org",
   "@type": "VacationRental",
-  "name": "Luxury Beachfront Villa Seminyak",
+  "name": "Boutique Beachfront Villa Seminyak",
   "description": "Stunning 4-bedroom villa with private pool",
-  "url": "https://auravillasbali.com/villas/seminyak/luxury-beachfront-villa",
+  "url": "https://auravillasbali.com/villas/seminyak/boutique-beachfront-villa",
   "image": [
     "https://res.cloudinary.com/aura-villas/villa-1-main.jpg",
     "https://res.cloudinary.com/aura-villas/villa-1-pool.jpg"

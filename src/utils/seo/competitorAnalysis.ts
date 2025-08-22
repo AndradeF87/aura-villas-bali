@@ -94,7 +94,7 @@ export const BALI_VILLA_COMPETITORS: CompetitorMetrics[] = [
       }
     },
     keywordStrategy: {
-      primaryKeywords: ['bali villa rental', 'luxury villa bali', 'seminyak villas'],
+      primaryKeywords: ['bali villa rental', 'boutique villa bali', 'seminyak villas'],
       longTailKeywords: ['best family villas bali', 'beachfront villa seminyak', 'private pool villa ubud'],
       brandedKeywords: ['bali bible villas', 'bali bible rental'],
       localKeywords: ['seminyak villa rental', 'ubud accommodation', 'canggu villas'],
@@ -255,7 +255,7 @@ export class CompetitorAnalyzer {
       .map(([keyword]) => keyword);
 
     const highOpportunity = [
-      'luxury beachfront villa bali',
+      'boutique beachfront villa bali',
       'private chef villa bali',
       'wedding venue villa seminyak',
       'family villa with pool ubud',
@@ -266,21 +266,21 @@ export class CompetitorAnalyzer {
     ];
 
     const longTail = [
-      'best luxury villa for couples bali',
+      'best boutique villa for couples bali',
       'villa with infinity pool seminyak',
       'traditional balinese villa ubud',
       'modern minimalist villa canggu',
       'villa with private beach access',
       'pet friendly villa rental bali',
       'villa with home theater bali',
-      'eco luxury villa bali'
+      'eco boutique villa bali'
     ];
 
     const local = [
       'uluwatu cliff villa rental',
       'jimbaran bay villa',
       'sanur beachfront villa',
-      'nusa dua luxury villa',
+      'nusa dua boutique villa',
       'candidasa villa rental',
       'amed villa with view',
       'munduk mountain villa',
@@ -302,7 +302,7 @@ export class CompetitorAnalyzer {
         'Ultimate Guide to Bali Villa Wedding Planning',
         'Best Bali Villas for Digital Nomads',
         'Family-Friendly Villa Activities in Bali',
-        'Luxury Villa Amenities Guide',
+        'Boutique Villa Amenities Guide',
         'Sustainable Tourism: Eco Villas in Bali',
         'Balinese Culture: What to Expect During Your Villa Stay',
         'Villa Safety Tips for Solo Travelers',
@@ -311,7 +311,7 @@ export class CompetitorAnalyzer {
         'Comparing Villa Locations: Seminyak vs Ubud vs Canggu'
       ],
       locationPages: [
-        'Luxury Villas in Uluwatu',
+        'Boutique Villas in Uluwatu',
         'Beachfront Villas in Jimbaran',
         'Cultural Villas in Mas Village',
         'Jungle Villas in Munduk',
@@ -538,7 +538,7 @@ export const trackCompetitorChanges = async (
       {
         domain: 'thebalibibble.com',
         keywords: [
-          { keyword: 'luxury villa bali', change: +2 },
+          { keyword: 'boutique villa bali', change: +2 },
           { keyword: 'seminyak villa rental', change: -1 }
         ]
       }

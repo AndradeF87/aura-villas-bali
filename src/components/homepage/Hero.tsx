@@ -14,7 +14,7 @@ export function Hero() {
         {/* Background Image */}
         <Image
           src="/images/Homepage-SUYAI-villa.webp"
-          alt="SUYAI Luxury Villa in Bali"
+          alt="SUYAI Boutique Villa in Bali"
           fill
           className={`object-cover transition-opacity duration-1000 ${
             isVideoLoaded ? 'opacity-0' : 'opacity-100'
@@ -43,28 +43,25 @@ export function Hero() {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center text-white">
         {/* Main Headline */}
-        <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl mb-6 animate-fade-in-up">
-          Handpicked Bali Villas Where
-          <span className="block mt-2 text-4xl md:text-6xl lg:text-7xl">
-            Every Stay Tells a Story
-          </span>
+        <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl mb-6 animate-fade-in-up opacity-0">
+          Bali's Most Exclusive Villa Escapes
         </h1>
 
         {/* Subheadline */}
-        <p className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto animate-fade-in-up animation-delay-200">
-          From clifftop sanctuaries to beachfront retreats, discover our exclusive collection of personally-vetted luxury villas
+        <p className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto animate-fade-in-up animation-delay-200 opacity-0">
+          Handpicked clifftop sanctuaries. Beachfront retreats. Your Bali story starts here.
         </p>
 
         {/* Search Bar */}
-        <div className="max-w-5xl mx-auto animate-fade-in-up animation-delay-400">
+        <div className="max-w-5xl mx-auto animate-fade-in-up animation-delay-400 opacity-0">
           <SearchBar />
         </div>
 
         {/* Trust Indicators for Guests */}
-        <div className="flex justify-center gap-8 md:gap-16 mt-16 animate-fade-in-up animation-delay-600">
+        <div className="flex justify-center gap-8 md:gap-16 mt-16 animate-fade-in-up animation-delay-600 opacity-0">
           <div>
             <div className="text-3xl md:text-4xl font-bold">2</div>
-            <div className="text-sm md:text-base opacity-90">Luxury Villas</div>
+            <div className="text-sm md:text-base opacity-90">Boutique Villas</div>
           </div>
           <div>
             <div className="text-3xl md:text-4xl font-bold">9.5+</div>

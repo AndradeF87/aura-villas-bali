@@ -35,12 +35,12 @@ export default function About() {
   ]
 
   const milestones = [
-    { year: '2018', event: 'AURA founded with 5 luxury villas in Seminyak' },
+    { year: '2018', event: 'AURA founded with 5 boutique villas in Seminyak' },
     { year: '2019', event: 'Expanded to Ubud and Canggu, 25 villas under management' },
     { year: '2020', event: 'Launched AI-powered pricing and guest service platform' },
     { year: '2021', event: 'Achieved 95% average occupancy rate across portfolio' },
     { year: '2022', event: 'Introduced sustainability program and local community partnerships' },
-    { year: '2023', event: 'Reached 100+ villas, became Bali\'s premier luxury villa management company' },
+    { year: '2023', event: 'Reached 100+ villas, became Bali\'s premier boutique villa management company' },
     { year: '2024', event: 'Launched AURA Experiences and personalized concierge AI assistant' }
   ]
 
@@ -54,7 +54,7 @@ export default function About() {
     {
       name: 'Sarah Chen',
       role: 'Co-Founder & CTO',
-      bio: 'Tech innovator from Singapore, pioneering AI applications in luxury hospitality.',
+      bio: 'Tech innovator from Singapore, pioneering AI applications in boutique hospitality.',
       image: '/images/placeholder.svg'
     },
     {
@@ -72,7 +72,7 @@ export default function About() {
   ]
 
   const stats = [
-    { number: '100+', label: 'Luxury Villas' },
+    { number: '100+', label: 'Boutique Villas' },
     { number: '95%', label: 'Occupancy Rate' },
     { number: '50K+', label: 'Happy Guests' },
     { number: '4.9★', label: 'Average Rating' }
@@ -120,7 +120,7 @@ export default function About() {
               </h2>
               <div className="space-y-4 text-deep-green/80">
                 <p>
-                  AURA was born from a simple observation: Bali&apos;s luxury villa market was missing 
+                  AURA was born from a simple observation: Bali&apos;s boutique villa market was missing 
                   something essential – the perfect balance between authentic local hospitality and 
                   modern technological efficiency.
                 </p>
@@ -131,7 +131,7 @@ export default function About() {
                   cutting-edge AI technology.
                 </p>
                 <p>
-                  Today, AURA manages over 100 luxury villas across Bali&apos;s most sought-after locations. 
+                  Today, AURA manages over 100 boutique villas across Bali&apos;s most sought-after locations. 
                   Our proprietary AI platform handles everything from dynamic pricing to predictive 
                   maintenance, while our local team ensures every guest experiences genuine Balinese 
                   warmth and every owner enjoys peace of mind.
@@ -173,7 +173,7 @@ export default function About() {
               </div>
               <h3 className="font-serif text-3xl text-deep-green mb-4">Our Mission</h3>
               <p className="text-deep-green/80 leading-relaxed">
-                To revolutionize luxury villa management in Bali by seamlessly blending 
+                To revolutionize boutique villa management in Bali by seamlessly blending 
                 authentic Balinese hospitality with innovative AI technology, creating 
                 exceptional experiences for guests and maximizing returns for property owners 
                 while respecting and preserving local culture and environment.
@@ -185,7 +185,7 @@ export default function About() {
               </div>
               <h3 className="font-serif text-3xl text-deep-green mb-4">Our Vision</h3>
               <p className="text-deep-green/80 leading-relaxed">
-                To become the gold standard for luxury property management across Southeast Asia, 
+                To become the gold standard for boutique property management across Southeast Asia, 
                 known for our perfect harmony of technology and tradition, setting new benchmarks 
                 for guest satisfaction, owner returns, and sustainable tourism that benefits 
                 local communities.

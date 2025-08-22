@@ -78,7 +78,7 @@ export function AuraNumbers() {
             <div className="flex items-center justify-center gap-8">
               <div>
                 <p className="text-2xl font-bold text-terracotta">SUYAI Villa</p>
-                <p className="text-sm text-gray-600">Luxury Villa in Uluwatu</p>
+                <p className="text-sm text-gray-600">Boutique Villa in Uluwatu</p>
               </div>
               <div className="w-px h-12 bg-gray-300"></div>
               <div>

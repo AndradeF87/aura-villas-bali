@@ -1,6 +1,6 @@
 {
   "name": "aura-villas-bali",
-  "description": "AURA Villas Bali - Luxury Villa Rentals and Property Management",
+  "description": "AURA Villas Bali - Boutique Villa Rentals and Property Management",
   "repository": "https://github.com/yourusername/aura-villas-bali",
   "keywords": ["nextjs", "react", "typescript", "villa", "bali"],
   "env": {

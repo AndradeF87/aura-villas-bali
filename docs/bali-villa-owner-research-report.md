@@ -65,7 +65,7 @@ Based on comprehensive market research, villa owners in Bali prioritize property
 - **Experience Customization**: Tailored services to exceed guest expectations
 
 ### 3.2 Professional Standards
-- **Housekeeping Excellence**: Luxury hotel-standard cleaning and property presentation
+- **Housekeeping Excellence**: Boutique hotel-standard cleaning and property presentation
 - **Staff Training**: Ongoing hospitality training with Standard Operating Procedures (SOPs)
 - **Property Inventory**: Regular inspections and detailed property condition reporting
 - **Brand Development**: Professional property branding, photography, and marketing materials
@@ -98,7 +98,7 @@ Based on comprehensive market research, villa owners in Bali prioritize property
 
 ### 4.2 Lifestyle Buyers
 - **Digital Nomads**: Remote workers attracted by co-working spaces and expat community
-- **Semi-Retirees**: Seeking affordable luxury lifestyle upgrade
+- **Semi-Retirees**: Seeking affordable boutique lifestyle upgrade
 - **Repeat Travelers**: Long-time Bali visitors purchasing second homes
 - **Jakarta Expats**: Indonesian professionals seeking weekend/vacation properties
 
@@ -138,7 +138,7 @@ Based on comprehensive market research, villa owners in Bali prioritize property
 - **Canggu**: 40% of villa purchases due to vibrant lifestyle and high rental demand
 - **Uluwatu**: Premium market for surf culture and oceanfront properties
 - **Ubud**: Wellness and cultural retreat market
-- **Seminyak**: Luxury market with established tourism infrastructure
+- **Seminyak**: Boutique market with established tourism infrastructure
 - **North Bali**: Emerging market with lower entry costs and growth potential
 
 ### 6.2 Market Dynamics

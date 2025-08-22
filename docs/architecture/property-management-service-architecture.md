@@ -37,7 +37,7 @@ This document outlines the comprehensive property management service architectur
 - **Maintenance**: Repairs buffer fund, preventive maintenance planning
 
 #### Boutique Full Service (20-22% Commission)
-**Target**: Luxury properties, hands-off owners
+**Target**: Boutique properties, hands-off owners
 - **All Premium Services**, plus:
 - **Staff Management**: Full payroll, hiring/training, performance management
 - **Financial Management**: Complete P&L preparation, tax reporting assistance

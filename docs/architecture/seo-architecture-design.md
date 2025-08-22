@@ -3,7 +3,7 @@
 
 ## Executive Summary
 
-This document outlines a comprehensive, SEO-optimized architecture for Aura Villas Bali - a luxury villa rental platform targeting the competitive Bali vacation rental market. The architecture is designed to handle 100+ villa listings while achieving maximum search engine visibility, fast performance, and exceptional user experience.
+This document outlines a comprehensive, SEO-optimized architecture for Aura Villas Bali - a boutique villa rental platform targeting the competitive Bali vacation rental market. The architecture is designed to handle 100+ villa listings while achieving maximum search engine visibility, fast performance, and exceptional user experience.
 
 ## 1. Information Architecture
 
@@ -27,7 +27,7 @@ Aura Villas Bali
 │   │   ├── Private Pool Villas
 │   │   ├── Family Villas
 │   │   ├── Romantic Villas
-│   │   ├── Luxury Villas
+│   │   ├── Boutique Villas
 │   │   └── Budget Villas
 │   └── By Features
 │       ├── Ocean View
@@ -68,10 +68,10 @@ Aura Villas Bali
 
 **Primary Locations (High Search Volume)**
 - Ubud: Cultural heart, rice terraces, wellness
-- Seminyak: Beach clubs, nightlife, luxury
+- Seminyak: Beach clubs, nightlife, boutique
 - Canggu: Surfing, cafes, young travelers
 - Sanur: Family-friendly, calm beaches
-- Uluwatu: Clifftop views, surfing, luxury
+- Uluwatu: Clifftop views, surfing, boutique
 
 **Secondary Locations**
 - Jimbaran: Seafood, romantic dinners
@@ -141,14 +141,14 @@ Bali
 **Location-Based URLs**
 ```
 /villas/ubud/
-/villas/ubud/luxury/
+/villas/ubud/boutique/
 /villas/ubud/beachfront/
 /villas/ubud/villa-serenity-escape/
 ```
 
 **Category-Based URLs**
 ```
-/villas/luxury/
+/villas/boutique/
 /villas/beachfront/
 /villas/family-friendly/
 /villas/romantic/
@@ -156,7 +156,7 @@ Bali
 
 **Combined Filters**
 ```
-/villas/seminyak/luxury/?bedrooms=4&guests=8
+/villas/seminyak/boutique/?bedrooms=4&guests=8
 /villas/canggu/beachfront/?price=500-1000
 ```
 
@@ -164,7 +164,7 @@ Bali
 
 **Villa Pages**
 ```
-Home > Villas > Ubud > Luxury Villas > Villa Serenity Escape
+Home > Villas > Ubud > Boutique Villas > Villa Serenity Escape
 ```
 
 **Location Pages**
@@ -222,12 +222,12 @@ Home > Blog > Travel Guides > Ultimate Ubud Travel Guide
 
 **Featured Sections**
 - Top Destinations (Ubud, Seminyak, Canggu)
-- Villa Categories (Luxury, Beachfront, Family)
+- Villa Categories (Boutique, Beachfront, Family)
 - Recent Reviews & Testimonials
 - Special Offers & Packages
 
 **SEO Elements**
-- H1: "Luxury Villa Rentals in Bali - Aura Villas"
+- H1: "Boutique Villa Rentals in Bali - Aura Villas"
 - Internal linking to key category pages
 - Location-specific content blocks
 - Schema markup for Organization and LocalBusiness
@@ -259,11 +259,11 @@ Home > Blog > Travel Guides > Ultimate Ubud Travel Guide
 
 **Template Structure: `/villas/[type]/`**
 ```tsx
-<TypeHero type="luxury" />
-<TypeDescription benefits={luxuryBenefits} />
-<FeaturedVillas villas={topLuxuryVillas} />
-<TypeComparison types={["luxury", "mid-range", "budget"]} />
-<TypeGuide tips={luxuryTravelTips} />
+<TypeHero type="boutique" />
+<TypeDescription benefits={boutiqueBenefits} />
+<FeaturedVillas villas={topBoutiqueVillas} />
+<TypeComparison types={["boutique", "mid-range", "budget"]} />
+<TypeGuide tips={boutiqueTravelTips} />
 ```
 
 ### 2.3 Individual Villa Page Structure

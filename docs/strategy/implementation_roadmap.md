@@ -2,7 +2,7 @@
 
 ## Executive Overview
 
-This roadmap outlines the strategic implementation of AURA's adaptive property management platform, positioning the company as the intelligent choice for luxury villa owners in Bali.
+This roadmap outlines the strategic implementation of AURA's adaptive property management platform, positioning the company as the intelligent choice for boutique villa owners in Bali.
 
 ## Phase 1: Foundation & Market Entry (Months 1-3)
 
@@ -106,7 +106,7 @@ This roadmap outlines the strategic implementation of AURA's adaptive property m
 
 **Month 13-15: Market Dominance**
 - [ ] 100+ property milestone achievement
-- [ ] Luxury service tier introduction
+- [ ] Boutique service tier introduction
 - [ ] Strategic acquisitions evaluation
 - [ ] International expansion planning
 - [ ] Industry thought leadership establishment
@@ -234,7 +234,7 @@ This roadmap outlines the strategic implementation of AURA's adaptive property m
 **Commission Structure:**
 - Essential Tier: 15-20% of gross rental revenue
 - Premium Tier: 20-25% of gross rental revenue
-- Luxury Tier: 25-30% of gross rental revenue
+- Boutique Tier: 25-30% of gross rental revenue
 
 **Revenue Projections:**
 

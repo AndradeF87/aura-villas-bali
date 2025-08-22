@@ -10,7 +10,7 @@
 
 ### Company Overview
 - **Founded**: 1998
-- **Properties**: 300+ luxury villas across Asia
+- **Properties**: 300+ boutique villas across Asia
 - **Guests per year**: 80,000+
 - **Markets**: Bali, Lombok, Nusa Lembongan, Phuket, Koh Samui, Sri Lanka, Japan, India, Maldives
 - **Parent Company**: Dusit Thani Public Company Limited (DTC)
@@ -77,7 +77,7 @@
 - **Contact**: +62 361 490 165
 
 ### Service Portfolio
-- **Core**: Luxury villa management and marketing
+- **Core**: Boutique villa management and marketing
 - **Subsidiaries**: 
   - Nagisa Bali Wedding
   - Nagisa Bali Maintenance
@@ -91,7 +91,7 @@
 - **Integration Level**: Unknown - requires direct inquiry
 
 ### Service Positioning
-- **Target**: Luxury market segment
+- **Target**: Boutique market segment
 - **Approach**: "One Stop Services"
 - **Fees**: Described as "Reasonable fees" (not specified)
 
@@ -117,7 +117,7 @@
 - **Industry Average**: 20-30% of booking revenue
 - **Competitive Rates**: 15-25% range
 - **Low-end**: 9-18% (digital marketing only to full service)
-- **Premium Services**: 25-35% (full luxury service)
+- **Premium Services**: 25-35% (full boutique service)
 
 ### Fee Structure Variations
 1. **Gross vs Net**: Some charge on published rate, others on net after OTA commissions

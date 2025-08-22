@@ -9,7 +9,7 @@ AURA's adaptive strategy positions the company as the premium choice for discern
 ### Competitive Landscape Analysis
 
 **Current Market Dynamics:**
-- Bali luxury villa market experiencing 15-20% annual growth
+- Bali boutique villa market experiencing 15-20% annual growth
 - Fragmented market with 200+ small operators
 - Increasing owner demand for professional management
 - Rising guest expectations for premium experiences
@@ -26,11 +26,11 @@ AURA's adaptive strategy positions the company as the premium choice for discern
 - **Service Quality Inconsistency**: Variable service standards across providers
 - **Owner Communication Deficit**: Poor transparency and reporting
 - **Seasonal Optimization**: Limited dynamic pricing and capacity management
-- **Premium Service Shortage**: Few providers offer true luxury-tier services
+- **Premium Service Shortage**: Few providers offer true boutique-tier services
 
 ### AURA's Unique Value Proposition
 
-**"Intelligent Luxury Management - Where Technology Meets Balinese Hospitality"**
+**"Intelligent Boutique Management - Where Technology Meets Balinese Hospitality"**
 
 **Core Differentiators:**
 1. **Adaptive Intelligence**: AI-driven pricing, demand forecasting, and operational optimization
@@ -105,7 +105,7 @@ AURA's adaptive strategy positions the company as the premium choice for discern
 - Bi-weekly performance reporting
 - **Price Point**: 20-25% of gross rental income
 
-**AURA Luxury (Premium)**
+**AURA Boutique (Premium)**
 - Everything in Premium plus:
 - Dedicated property manager
 - Personal shopper and experience curation
@@ -283,4 +283,4 @@ AURA's adaptive strategy positions the company as the premium choice for discern
 
 ---
 
-This adaptive strategy positions AURA as the intelligent choice for villa owners who demand excellence, transparency, and results in Bali's competitive luxury market.
+This adaptive strategy positions AURA as the intelligent choice for villa owners who demand excellence, transparency, and results in Bali's competitive boutique market.

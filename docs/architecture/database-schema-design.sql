@@ -158,7 +158,7 @@ CREATE TABLE villa_core.amenities (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     name VARCHAR(100) NOT NULL,
     slug VARCHAR(100) UNIQUE NOT NULL,
-    category VARCHAR(50) NOT NULL, -- essential, luxury, experience, safety
+    category VARCHAR(50) NOT NULL, -- essential, boutique, experience, safety
     icon VARCHAR(100),
     description TEXT,
     is_highlighted BOOLEAN DEFAULT false,
@@ -817,12 +817,12 @@ INSERT INTO villa_core.amenities (name, slug, category, icon, description, is_hi
 ('WiFi', 'wifi', 'essential', 'wifi', 'High-speed wireless internet access', true, 2),
 ('Air Conditioning', 'air-conditioning', 'essential', 'snowflake', 'Climate control throughout the villa', true, 3),
 ('Kitchen', 'kitchen', 'essential', 'chef-hat', 'Fully equipped modern kitchen', true, 4),
-('Private Chef', 'private-chef', 'luxury', 'utensils', 'Personal chef service available on request', true, 5),
-('Spa Services', 'spa-services', 'luxury', 'spa', 'In-villa massage and spa treatments', true, 6),
-('Butler Service', 'butler-service', 'luxury', 'concierge-bell', 'Dedicated butler for personalized service', true, 7),
-('Infinity Pool', 'infinity-pool', 'luxury', 'water', 'Infinity edge swimming pool with stunning views', true, 8),
+('Private Chef', 'private-chef', 'boutique', 'utensils', 'Personal chef service available on request', true, 5),
+('Spa Services', 'spa-services', 'boutique', 'spa', 'In-villa massage and spa treatments', true, 6),
+('Butler Service', 'butler-service', 'boutique', 'concierge-bell', 'Dedicated butler for personalized service', true, 7),
+('Infinity Pool', 'infinity-pool', 'boutique', 'water', 'Infinity edge swimming pool with stunning views', true, 8),
 ('Home Theater', 'home-theater', 'experience', 'tv', 'Private cinema with surround sound', false, 9),
-('Wine Cellar', 'wine-cellar', 'luxury', 'wine-bottle', 'Temperature-controlled wine storage', false, 10);
+('Wine Cellar', 'wine-cellar', 'boutique', 'wine-bottle', 'Temperature-controlled wine storage', false, 10);
 
 -- Insert locations
 INSERT INTO villa_core.locations (area, address, coordinates, neighborhood, nearby_attractions, distance_to_beach_meters, distance_to_airport_km, distance_to_shopping_km) VALUES

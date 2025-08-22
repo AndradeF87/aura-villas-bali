@@ -58,7 +58,7 @@ export interface SeasonalRate {
 export interface Amenity {
   id: string;
   name: string;
-  category: 'essential' | 'luxury' | 'experience';
+  category: 'essential' | 'boutique' | 'experience';
   icon: string;
 }
 

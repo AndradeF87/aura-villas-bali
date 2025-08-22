@@ -13,7 +13,7 @@ The Hive Mind collective intelligence system has successfully completed comprehe
 
 ### Top Competitors
 1. **Bali Villa Finder** - 900+ villas, strong local SEO
-2. **Elite Havens** - Luxury focus, premium positioning
+2. **Elite Havens** - Boutique focus, premium positioning
 3. **The Luxe Nomad** - Curated experiences approach
 4. **Bali Villa Escapes** - Australian market specialist
 5. **Airbnb/Booking.com** - Platform giants with massive reach

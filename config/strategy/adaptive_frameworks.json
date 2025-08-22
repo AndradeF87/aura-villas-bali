@@ -103,7 +103,7 @@
           "response_time": "2_hours",
           "reporting_frequency": "bi_weekly"
         },
-        "luxury": {
+        "boutique": {
           "price_point": "25_30_percent",
           "service_level": "white_glove",
           "response_time": "30_minutes",

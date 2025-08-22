@@ -750,7 +750,7 @@ interface E2ETestingFramework {
     
     test('should complete booking flow from search to confirmation', async () => {
       // Search for villas
-      await villaSearchPage.searchVillas('luxury villa');
+      await villaSearchPage.searchVillas('boutique villa');
       await villaSearchPage.filterByLocation('Seminyak');
       await villaSearchPage.filterByGuests(4);
       await villaSearchPage.expectSearchResults();
@@ -1675,9 +1675,9 @@ interface TestDataManagement {
       examples: `
       // Villa test fixtures
       export const testVillas = {
-        luxury: {
-          id: 'villa-luxury-001',
-          name: 'Luxury Villa Seminyak',
+        boutique: {
+          id: 'villa-boutique-001',
+          name: 'Boutique Villa Seminyak',
           area: 'Seminyak',
           bedrooms: 5,
           bathrooms: 6,
@@ -1719,7 +1719,7 @@ interface TestDataManagement {
           lastName: 'Smith',
           role: 'owner',
           verified: true,
-          villas: ['villa-luxury-001']
+          villas: ['villa-boutique-001']
         }
       };
       `;

@@ -34,9 +34,9 @@ export default function UluwatuVillas() {
     {
       id: 'onaya',
       name: 'ONAYA Bali Resort',
-      tagline: 'Clifftop Luxury with Infinite Ocean Views',
-      description: 'Perched dramatically on the cliffs of Uluwatu, ONAYA Bali Resort offers an unparalleled luxury experience where modern design meets traditional Balinese hospitality. This exclusive clifftop sanctuary features breathtaking panoramic ocean views, world-class amenities, and direct access to a pristine private beach.',
-      longDescription: `ONAYA Bali Resort represents the pinnacle of luxury accommodation in Uluwatu. This architectural masterpiece seamlessly blends into the natural cliff landscape while offering spectacular 180-degree views of the Indian Ocean. 
+      tagline: 'Clifftop Boutique with Infinite Ocean Views',
+      description: 'Perched dramatically on the cliffs of Uluwatu, ONAYA Bali Resort offers an unparalleled boutique experience where modern design meets traditional Balinese hospitality. This exclusive clifftop sanctuary features breathtaking panoramic ocean views, world-class amenities, and direct access to a pristine private beach.',
+      longDescription: `ONAYA Bali Resort represents the pinnacle of boutique accommodation in Uluwatu. This architectural masterpiece seamlessly blends into the natural cliff landscape while offering spectacular 180-degree views of the Indian Ocean. 
 
 The resort features multiple pavilions connected by scenic walkways, each designed to maximize privacy while celebrating the stunning natural surroundings. The infinity pool appears to merge with the ocean horizon, creating an unforgettable visual experience.
 
@@ -86,20 +86,20 @@ Guests enjoy exclusive access to a private beach club via a dramatic cliff-side 
           author: 'Emma Thompson',
           date: 'October 2024',
           rating: 5,
-          text: 'ONAYA exceeded every expectation. The clifftop setting is breathtaking, the service impeccable, and the private beach is paradise. This is how luxury should be done in Bali.'
+          text: 'ONAYA exceeded every expectation. The clifftop setting is breathtaking, the service impeccable, and the private beach is paradise. This is how boutique should be done in Bali.'
         }
       }
     },
     {
       id: 'suyai',
       name: 'SUYAI Villa Bali',
-      tagline: 'Intimate Luxury Haven Above the Waves',
-      description: 'SUYAI Villa offers an intimate luxury experience with sweeping ocean views and contemporary Balinese design. This private villa combines modern comfort with traditional craftsmanship, creating a serene sanctuary perfect for romantic getaways or small family retreats.',
-      longDescription: `SUYAI Villa Bali is a hidden gem nestled on the dramatic cliffs of Uluwatu, offering an exclusive retreat for discerning travelers. This boutique villa showcases contemporary tropical architecture with traditional Balinese accents, creating a harmonious blend of luxury and authenticity.
+      tagline: 'Intimate Boutique Haven Above the Waves',
+      description: 'SUYAI Villa offers an intimate boutique experience with sweeping ocean views and contemporary Balinese design. This private villa combines modern comfort with traditional craftsmanship, creating a serene sanctuary perfect for romantic getaways or small family retreats.',
+      longDescription: `SUYAI Villa Bali is a hidden gem nestled on the dramatic cliffs of Uluwatu, offering an exclusive retreat for discerning travelers. This boutique villa showcases contemporary tropical architecture with traditional Balinese accents, creating a harmonious blend of boutique and authenticity.
 
 The villa features open-plan living spaces that flow seamlessly onto expansive terraces, where the boundary between indoor and outdoor living dissolves. The stunning 15-meter infinity pool overlooks the ocean, providing the perfect vantage point for Bali\'s legendary sunsets.
 
-Each bedroom is a private sanctuary with ocean views, luxury linens, and spa-inspired bathrooms. The villa\'s dedicated team, including a private chef and villa manager, ensures every detail of your stay is perfect.`,
+Each bedroom is a private sanctuary with ocean views, boutique linens, and spa-inspired bathrooms. The villa\'s dedicated team, including a private chef and villa manager, ensures every detail of your stay is perfect.`,
       location: 'Jl. Goa Lempeh, Pecatu, Uluwatu',
       coordinates: { lat: -8.8412, lng: 115.0867 },
       pricePerNight: {
@@ -181,7 +181,7 @@ Each bedroom is a private sanctuary with ocean views, luxury linens, and spa-ins
             Uluwatu
           </h1>
           <p className="text-xl sm:text-2xl text-sand-light">
-            Where Dramatic Cliffs Meet Luxury Living
+            Where Dramatic Cliffs Meet Boutique Living
           </p>
           <div className="mt-8 flex items-center justify-center gap-2 text-sand-light">
             <MapPin className="w-5 h-5" />
@@ -200,8 +200,8 @@ Each bedroom is a private sanctuary with ocean views, luxury linens, and spa-ins
             <p className="text-lg text-deep-green/80 leading-relaxed">
               Perched on limestone cliffs overlooking the Indian Ocean, Uluwatu offers 
               some of Bali&apos;s most spectacular villa experiences. From world-class surf 
-              breaks to ancient temples, luxury beach clubs to dramatic sunsets, this is 
-              where adventure meets absolute luxury.
+              breaks to ancient temples, boutique beach clubs to dramatic sunsets, this is 
+              where adventure meets absolute boutique.
             </p>
           </div>
         </div>
@@ -434,7 +434,7 @@ Each bedroom is a private sanctuary with ocean views, luxury linens, and spa-ins
               Experience Uluwatu
             </h2>
             <p className="text-lg text-deep-green/80 max-w-3xl mx-auto">
-              Beyond our luxury villas, Uluwatu offers endless adventures and cultural experiences
+              Beyond our boutique villas, Uluwatu offers endless adventures and cultural experiences
             </p>
           </div>
 
@@ -455,7 +455,7 @@ Each bedroom is a private sanctuary with ocean views, luxury linens, and spa-ins
               </div>
               <h3 className="font-serif text-xl text-deep-green mb-2">Beach Clubs</h3>
               <p className="text-deep-green/70">
-                Experience luxury beach clubs like Sundays, Single Fin, and Ulu Cliffhouse, 
+                Experience boutique beach clubs like Sundays, Single Fin, and Ulu Cliffhouse, 
                 each offering stunning views and world-class dining.
               </p>
             </div>

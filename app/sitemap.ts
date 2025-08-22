@@ -31,7 +31,7 @@ async function getAllVillas(): Promise<Villa[]> {
   // This would typically fetch from your database/CMS
   return [
     {
-      slug: 'luxury-beachfront-villa',
+      slug: 'boutique-beachfront-villa',
       location: 'seminyak',
       updatedAt: '2024-01-15T10:00:00.000Z',
       priority: 0.9
@@ -219,7 +219,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/villas/luxury`,
+      url: `${baseUrl}/villas/boutique`,
       lastModified: currentDate,
       changeFrequency: 'weekly' as const,
       priority: 0.8,

@@ -11,7 +11,7 @@ import { WhatsAppButton } from '@/components/homepage/WhatsAppButton'
 export const metadata: Metadata = {
   title: 'Selective Property Management - AURA Villas Bali',
   description: 'We partner with select Bali villa owners to tell each villa\'s unique story. Boutique management with genuine hospitality and AI-powered marketing.',
-  keywords: 'boutique villa management Uluwatu, selective property management Bali, Pecatu villa management, luxury property management Bali',
+  keywords: 'boutique villa management Uluwatu, selective property management Bali, Pecatu villa management, boutique property management Bali',
 }
 
 export default function PropertyManagement() {

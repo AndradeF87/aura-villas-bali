@@ -136,10 +136,10 @@ Performance Optimization Stack:
 ```
 Regional Content Clusters:
 ├── Ubud (Wellness, Culture, Nature)
-├── Seminyak (Luxury, Beach, Nightlife)
+├── Seminyak (Boutique, Beach, Nightlife)
 ├── Canggu (Surf, Digital Nomads, Cafes)
 ├── Sanur (Family, Traditional, Peaceful)
-└── Nusa Dua (Luxury, Golf, Convention)
+└── Nusa Dua (Boutique, Golf, Convention)
 ```
 
 ### 5. Conversion Optimization Framework
