@@ -17,12 +17,12 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://aura-villas-bali.com'),
-  title: "AURA Villas Bali - Exclusive Boutique Villa Escapes",
-  description: "Discover Bali's most exclusive boutique villas. Handpicked clifftop sanctuaries and beachfront retreats with seamless booking and 24/7 concierge service.",
-  keywords: "boutique villas Bali, exclusive Bali villas, Uluwatu villas, Canggu villas, Seminyak villas, beachfront villas Bali, clifftop villas Bali, villa rental Bali",
+  title: "AURA Villas Bali - Where Memories Are Made",
+  description: "Life is all about memories and Bali writes the most beautiful chapters. Discover our exclusive collection of luxury villas where your story begins.",
+  keywords: "luxury villas Bali, exclusive Bali villas, Uluwatu villas, Canggu villas, Seminyak villas, beachfront villas Bali, clifftop villas Bali, villa rental Bali, Bali memories",
   openGraph: {
-    title: "AURA Villas Bali - Exclusive Boutique Villa Escapes",
-    description: "Discover Bali's most exclusive boutique villas. Book your perfect sanctuary.",
+    title: "AURA Villas Bali - Where Memories Are Made",
+    description: "Life is all about memories and Bali writes the most beautiful chapters. Book your perfect villa today.",
     url: "https://aura-villas-bali.com",
     siteName: "AURA Villas Bali",
     images: [
@@ -38,8 +38,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AURA Villas Bali - Exclusive Boutique Villa Escapes",
-    description: "Discover Bali's most exclusive boutique villas. Book your perfect sanctuary.",
+    title: "AURA Villas Bali - Where Memories Are Made",
+    description: "Life is all about memories and Bali writes the most beautiful chapters.",
     images: ["/images/og-image.jpg"],
   },
   robots: {
