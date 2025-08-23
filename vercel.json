@@ -1,0 +1,12 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "build": {
+    "env": {
+      "NEXT_PUBLIC_SITE_URL": "https://aura-villas-bali.vercel.app",
+      "NEXT_PUBLIC_SUPABASE_URL": "https://placeholder.supabase.co",
+      "NEXT_PUBLIC_SUPABASE_ANON_KEY": "placeholder-anon-key"
+    }
+  }
+}
