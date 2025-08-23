@@ -48,22 +48,19 @@ export function GlassSearchBar() {
           <div className="flex-[1.5] group">
             <div className="glass-search-field">
               <MapPin className="w-4 h-4 text-white/60" />
-              <div className="flex flex-col flex-1">
-                <span className="text-xs text-white/70 mb-0.5">Location</span>
-                <select
-                  value={location}
-                  onChange={(e) => setLocation(e.target.value)}
-                  className="glass-select"
-                  aria-label="Location"
-                >
-                  <option value="All Locations">Where to?</option>
-                  {locations.slice(1).map((loc) => (
-                    <option key={loc} value={loc}>
-                      {loc}
-                    </option>
-                  ))}
-                </select>
-              </div>
+              <select
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+                className="glass-select"
+                aria-label="Location"
+              >
+                <option value="All Locations">Location</option>
+                {locations.slice(1).map((loc) => (
+                  <option key={loc} value={loc}>
+                    {loc}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
 
@@ -73,17 +70,16 @@ export function GlassSearchBar() {
           <div className="flex-1 group">
             <div className="glass-search-field">
               <Calendar className="w-4 h-4 text-white/60" />
-              <div className="flex flex-col flex-1">
-                <span className="text-xs text-white/70 mb-0.5">Check-in</span>
-                <input
-                  type="date"
-                  onChange={(e) => setCheckIn(e.target.value ? new Date(e.target.value) : null)}
-                  className="glass-input"
-                  placeholder="Check in"
-                  min={minDate}
-                  aria-label="Check in date"
-                />
-              </div>
+              <input
+                type="text"
+                onFocus={(e) => e.target.type = 'date'}
+                onBlur={(e) => !e.target.value && (e.target.type = 'text')}
+                onChange={(e) => setCheckIn(e.target.value ? new Date(e.target.value) : null)}
+                className="glass-input"
+                placeholder="Check-in"
+                min={minDate}
+                aria-label="Check in date"
+              />
             </div>
           </div>
 
@@ -93,17 +89,16 @@ export function GlassSearchBar() {
           <div className="flex-1 group">
             <div className="glass-search-field">
               <Calendar className="w-4 h-4 text-white/60" />
-              <div className="flex flex-col flex-1">
-                <span className="text-xs text-white/70 mb-0.5">Check-out</span>
-                <input
-                  type="date"
-                  onChange={(e) => setCheckOut(e.target.value ? new Date(e.target.value) : null)}
-                  className="glass-input"
-                  placeholder="Check out"
-                  min={checkIn ? format(checkIn, 'yyyy-MM-dd') : minDate}
-                  aria-label="Check out date"
-                />
-              </div>
+              <input
+                type="text"
+                onFocus={(e) => e.target.type = 'date'}
+                onBlur={(e) => !e.target.value && (e.target.type = 'text')}
+                onChange={(e) => setCheckOut(e.target.value ? new Date(e.target.value) : null)}
+                className="glass-input"
+                placeholder="Check-out"
+                min={checkIn ? format(checkIn, 'yyyy-MM-dd') : minDate}
+                aria-label="Check out date"
+              />
             </div>
           </div>
 
@@ -113,19 +108,16 @@ export function GlassSearchBar() {
           <div className="flex-[0.8] group">
             <div className="glass-search-field">
               <Users className="w-4 h-4 text-white/60" />
-              <div className="flex flex-col flex-1">
-                <span className="text-xs text-white/70 mb-0.5">Guests</span>
-                <input
-                  type="number"
-                  min="1"
-                  max="20"
-                  value={guests}
-                  onChange={(e) => setGuests(parseInt(e.target.value) || 1)}
-                  className="glass-input text-center"
-                  placeholder="2"
-                  aria-label="Number of guests"
-                />
-              </div>
+              <input
+                type="number"
+                min="1"
+                max="20"
+                value={guests}
+                onChange={(e) => setGuests(parseInt(e.target.value) || 1)}
+                className="glass-input text-center"
+                placeholder="Guests"
+                aria-label="Number of guests"
+              />
             </div>
           </div>
 
