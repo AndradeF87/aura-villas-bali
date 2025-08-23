@@ -44,8 +44,8 @@ export function GlassSearchBar() {
       <div className="glass-search-bar">
         {/* Desktop Layout - Single Row */}
         <div className="hidden md:flex items-center gap-1 px-2 py-2">
-          {/* Location */}
-          <div className="flex-1 group">
+          {/* Location - Wider */}
+          <div className="flex-[1.5] group">
             <div className="glass-search-field">
               <MapPin className="w-4 h-4 text-white/60" />
               <select
@@ -100,8 +100,8 @@ export function GlassSearchBar() {
 
           <div className="glass-divider" />
 
-          {/* Guests */}
-          <div className="flex-1 group">
+          {/* Guests - Narrower */}
+          <div className="flex-[0.6] group">
             <div className="glass-search-field">
               <Users className="w-4 h-4 text-white/60" />
               <input
@@ -110,8 +110,8 @@ export function GlassSearchBar() {
                 max="20"
                 value={guests}
                 onChange={(e) => setGuests(parseInt(e.target.value) || 1)}
-                className="glass-input"
-                placeholder="Guests"
+                className="glass-input text-center"
+                placeholder="2"
                 aria-label="Number of guests"
               />
             </div>
