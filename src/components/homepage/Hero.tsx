@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import { SearchBar } from './SearchBar'
+import { GlassSearchBar } from './GlassSearchBar'
 
 export function Hero() {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false)
@@ -53,8 +53,8 @@ export function Hero() {
         </p>
 
         {/* Search Bar */}
-        <div className="max-w-5xl mx-auto animate-fade-in-up animation-delay-400 opacity-0">
-          <SearchBar />
+        <div className="w-full animate-fade-in-up animation-delay-400 opacity-0">
+          <GlassSearchBar />
         </div>
 
         {/* Trust Indicators for Guests */}
