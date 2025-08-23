@@ -29,7 +29,6 @@ export const Navigation = () => {
 
   // Guest-focused navigation
   const navLinks = [
-    { href: '/', label: 'Home' },
     { 
       href: '/villas', 
       label: 'Our Villas',
@@ -54,7 +53,7 @@ export const Navigation = () => {
   ]
 
   // Secondary link for property owners
-  const ownerLink = { href: '/property-management', label: 'Manage my Property' }
+  const ownerLink = { href: '/property-management', label: 'Property Management' }
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -62,7 +61,7 @@ export const Navigation = () => {
         ? 'bg-white shadow-lg' 
         : 'bg-transparent'
     }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 group">

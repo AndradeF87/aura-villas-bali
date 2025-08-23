@@ -41,9 +41,9 @@ export function NavigationHeader({ onMenuClick }: NavigationHeaderProps) {
   return (
     <nav 
       ref={navRef}
-      className="fixed top-0 left-0 right-0 z-30 p-8"
+      className="fixed top-0 left-0 right-0 z-30 px-4 sm:px-6 lg:px-8 py-8"
     >
-      <div className="flex items-center justify-between">
+      <div className="w-full flex items-center justify-between">
         {/* Logo - matching main homepage style */}
         <div ref={logoRef} className="opacity-0">
           <a href="/" className="flex items-center space-x-2 group">
@@ -67,7 +67,7 @@ export function NavigationHeader({ onMenuClick }: NavigationHeaderProps) {
                      rounded-full hover:bg-white/10 backdrop-blur-sm
                      transition-all duration-300 hover:scale-105"
           >
-            List Your Property
+            Property Management
           </button>
 
           {/* Hamburger Menu */}

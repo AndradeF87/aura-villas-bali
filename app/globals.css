@@ -139,7 +139,7 @@
   }
 
   .animate-slow-zoom {
-    animation: slow-zoom 8s ease-in-out infinite alternate;
+    animation: slow-zoom 11s ease-in-out forwards;
   }
 
   .line-clamp-3 {
