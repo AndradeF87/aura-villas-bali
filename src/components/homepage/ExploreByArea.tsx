@@ -27,7 +27,7 @@ const areas = [
     status: 'coming-soon',
     launchDate: 'April 2025',
     description: 'Sophisticated beach resort area with high-end dining and shopping',
-    highlights: ['Beach clubs', 'Fine dining', 'Boutique shopping', 'Spa retreats'],
+    highlights: ['Beach clubs', 'Fine dining', 'Luxury shopping', 'Spa retreats'],
     image: '/images/placeholder.svg',
     properties: []
   }

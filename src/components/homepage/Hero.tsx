@@ -11,12 +11,12 @@ export function Hero() {
     <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
       {/* Background Image/Video */}
       <div className="absolute inset-0 z-0">
-        {/* Background Image */}
+        {/* Background Image with zoom animation */}
         <Image
           src="/images/Homepage-SUYAI-villa.webp"
           alt="SUYAI Boutique Villa in Bali"
           fill
-          className={`object-cover transition-opacity duration-1000 ${
+          className={`object-cover transition-opacity duration-1000 animate-slow-zoom ${
             isVideoLoaded ? 'opacity-0' : 'opacity-100'
           }`}
           priority

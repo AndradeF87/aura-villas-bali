@@ -83,8 +83,8 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
 
-  // Output mode - standard for DigitalOcean
-  // output: 'standalone',
+  // Output mode - standalone for Docker
+  output: 'standalone',
 };
 
 module.exports = nextConfig;

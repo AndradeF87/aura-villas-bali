@@ -32,7 +32,7 @@ const mockReviews: Review[] = [
     guestLocation: 'Singapore',
     villaName: 'Ocean Breeze Villa',
     rating: 5,
-    comment: 'AURA truly understands boutique hospitality. From the moment we arrived, every detail was perfect. The villa exceeded our expectations, and the 24/7 concierge service made everything effortless. Will definitely book again!',
+    comment: 'AURA truly understands luxury hospitality. From the moment we arrived, every detail was perfect. The villa exceeded our expectations, and the 24/7 concierge service made everything effortless. Will definitely book again!',
     date: '2024-10-28',
     image: '/images/placeholder.svg',
   },
