@@ -43,7 +43,7 @@ export function GlassSearchBar() {
       {/* Main Search Bar - Glass Morphism Style */}
       <div className="glass-search-bar">
         {/* Desktop Layout - Single Row */}
-        <div className="hidden md:flex items-center gap-1 px-2 py-2">
+        <div className="hidden md:flex items-center gap-1 px-2 py-1.5">
           {/* Location - Wider */}
           <div className="flex-[1.5] group">
             <div className="glass-search-field">
@@ -100,8 +100,8 @@ export function GlassSearchBar() {
 
           <div className="glass-divider" />
 
-          {/* Guests - Narrower */}
-          <div className="flex-[0.6] group">
+          {/* Guests - Narrower but visible */}
+          <div className="flex-[0.8] group">
             <div className="glass-search-field">
               <Users className="w-4 h-4 text-white/60" />
               <input

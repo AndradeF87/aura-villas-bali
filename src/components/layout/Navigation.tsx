@@ -54,7 +54,7 @@ export const Navigation = () => {
   ]
 
   // Secondary link for property owners
-  const ownerLink = { href: '/property-management', label: 'List Your Property' }
+  const ownerLink = { href: '/property-management', label: 'Manage my Property' }
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -133,26 +133,16 @@ export const Navigation = () => {
               isScrolled || needsSolidNav ? 'bg-gray-300' : 'bg-white/30'
             }`} />
             
-            {/* Owner Link */}
+            {/* Owner Link with Glass Effect */}
             <Link
               href={ownerLink.href}
-              className={`transition-all duration-300 font-medium hover:text-terracotta text-sm ${
-                isScrolled || needsSolidNav ? 'text-gray-600' : 'text-white/80 drop-shadow-lg'
+              className={`px-6 py-2.5 rounded-full font-medium transition-all duration-300 ${
+                isScrolled || needsSolidNav
+                  ? 'bg-terracotta/10 text-terracotta border border-terracotta/20 hover:bg-terracotta hover:text-white'
+                  : 'bg-white/10 backdrop-blur-md text-white border border-white/20 hover:bg-white/20 drop-shadow-lg'
               }`}
             >
               {ownerLink.label}
-            </Link>
-            
-            {/* CTA Button */}
-            <Link
-              href="/villas"
-              className={`px-6 py-2.5 rounded-full font-medium transition-all duration-300 ${
-                isScrolled || needsSolidNav
-                  ? 'bg-terracotta text-white hover:bg-terracotta-dark'
-                  : 'bg-white/90 backdrop-blur-sm text-terracotta hover:bg-white drop-shadow-lg'
-              }`}
-            >
-              Book Now
             </Link>
           </div>
 
@@ -215,15 +205,8 @@ export const Navigation = () => {
           
           <div className="pt-4 px-4 space-y-3">
             <Link
-              href="/villas"
-              className="block w-full text-center px-6 py-3 bg-terracotta text-white rounded-full font-medium hover:bg-terracotta-dark transition-colors"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Book Now
-            </Link>
-            <Link
               href={ownerLink.href}
-              className="block w-full text-center px-6 py-3 bg-gray-100 text-gray-700 rounded-full font-medium hover:bg-gray-200 transition-colors text-sm"
+              className="block w-full text-center px-6 py-3 bg-terracotta/10 text-terracotta border border-terracotta/20 rounded-full font-medium hover:bg-terracotta hover:text-white transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {ownerLink.label}
