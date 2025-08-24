@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test UI Color Detection</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: system-ui, -apple-system;
+        }
+        .test-section {
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        .status {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .pass { color: green; }
+        .fail { color: red; }
+        pre {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>TestUI Menu Color Detection Test</h1>
+    
+    <div class="test-section">
+        <h2>Test 1: Check Menu Initial State</h2>
+        <p>The menu should start with dark text color (#2F4A3C) when not over dark background.</p>
+        <button onclick="testInitialState()">Run Test</button>
+        <div id="test1-result" class="status"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 2: Check Color Detection on Scroll</h2>
+        <p>The menu text should change to light color (#F8F4F0) when over the dark green glassmorphism section.</p>
+        <button onclick="testScrollDetection()">Run Test (Auto-scroll)</button>
+        <div id="test2-result" class="status"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 3: Manual Verification</h2>
+        <p>Open the testui page and manually scroll to verify:</p>
+        <ol>
+            <li>Initial state: Menu text is dark (#2F4A3C)</li>
+            <li>When scrolled and menu is over dark green background: Text changes to light (#F8F4F0)</li>
+            <li>When scrolled past dark section: Text returns to dark</li>
+        </ol>
+        <a href="http://localhost:3003/testui" target="_blank">Open TestUI Page →</a>
+    </div>
+
+    <div class="test-section">
+        <h2>Console Output</h2>
+        <pre id="console-output">Waiting for tests...</pre>
+    </div>
+
+    <script>
+        function log(message) {
+            const output = document.getElementById('console-output');
+            output.textContent = output.textContent === 'Waiting for tests...' 
+                ? message 
+                : output.textContent + '\n' + message;
+        }
+
+        async function testInitialState() {
+            const result = document.getElementById('test1-result');
+            
+            try {
+                // Fetch the page HTML
+                const response = await fetch('http://localhost:3003/testui');
+                const html = await response.text();
+                
+                // Check for initial menu text color
+                const hasCorrectInitialColor = html.includes('style="color:#2F4A3C"') || 
+                                              html.includes('color:#2F4A3C');
+                
+                if (hasCorrectInitialColor) {
+                    result.innerHTML = '<span class="pass">✓ PASS: Menu starts with correct dark color</span>';
+                    log('Test 1 PASSED: Initial menu color is #2F4A3C');
+                } else {
+                    result.innerHTML = '<span class="fail">✗ FAIL: Menu does not have correct initial color</span>';
+                    log('Test 1 FAILED: Expected #2F4A3C');
+                }
+            } catch (error) {
+                result.innerHTML = '<span class="fail">✗ ERROR: ' + error.message + '</span>';
+                log('Test 1 ERROR: ' + error.message);
+            }
+        }
+
+        async function testScrollDetection() {
+            const result = document.getElementById('test2-result');
+            
+            result.innerHTML = '<span>Testing... This will open the page in a new window and simulate scrolling.</span>';
+            log('Test 2: Opening testui page to test scroll-based color detection...');
+            
+            // Open the page in a new window
+            const testWindow = window.open('http://localhost:3003/testui', 'test', 'width=1200,height=800');
+            
+            if (testWindow) {
+                setTimeout(() => {
+                    log('Window opened. Please observe the menu color changes as the page scrolls.');
+                    
+                    // Simulate scroll after page loads
+                    setTimeout(() => {
+                        testWindow.scrollTo(0, 0);
+                        log('Scrolled to top - menu should be dark');
+                        
+                        setTimeout(() => {
+                            testWindow.scrollTo(0, 100);
+                            log('Scrolled slightly - checking if menu detects dark background...');
+                            
+                            setTimeout(() => {
+                                testWindow.scrollTo(0, window.innerHeight);
+                                log('Scrolled to second section - menu color should update if over dark background');
+                                
+                                result.innerHTML = '<span class="pass">✓ Test completed - Check the window to verify color changes</span>';
+                            }, 2000);
+                        }, 2000);
+                    }, 2000);
+                }, 1000);
+            } else {
+                result.innerHTML = '<span class="fail">✗ Could not open test window (popup may be blocked)</span>';
+                log('Test 2 FAILED: Popup blocked');
+            }
+        }
+
+        // Log page load
+        log('Test page loaded at ' + new Date().toLocaleTimeString());
+        log('Server: http://localhost:3003');
+        log('Ready to run tests...');
+    </script>
+</body>
+</html>

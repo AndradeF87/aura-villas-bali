@@ -11,9 +11,11 @@ import { EarlyPartnerProgram } from '@/components/property-management/EarlyPartn
 import { TechnologySection } from '@/components/property-management/TechnologySection'
 import { EarningsCalculator } from '@/components/property-management/EarningsCalculator'
 import { WhatsAppButton } from '@/components/homepage/WhatsAppButton'
+import { TimelineNavigation } from '@/components/testui/TimelineNavigation'
 
 export default function TestUI() {
   const [windowHeight, setWindowHeight] = useState(800) // Default height
+  const [isMenuOverDark, setIsMenuOverDark] = useState(false)
   
   useEffect(() => {
     setWindowHeight(window.innerHeight)
@@ -22,12 +24,80 @@ export default function TestUI() {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
   
+  // Check if menu is over dark background
+  useEffect(() => {
+    const checkMenuBackground = () => {
+      // Get the menu position
+      const menuElement = document.querySelector('.fixed.top-8.left-16')
+      if (!menuElement) return
+      
+      const menuRect = menuElement.getBoundingClientRect()
+      const menuCenterX = menuRect.left + menuRect.width / 2
+      const menuCenterY = menuRect.top + menuRect.height / 2
+      
+      // Temporarily hide menu elements to check what's behind
+      const originalPointerEvents = (menuElement as HTMLElement).style.pointerEvents
+      const originalVisibility = (menuElement as HTMLElement).style.visibility;
+      (menuElement as HTMLElement).style.pointerEvents = 'none';
+      (menuElement as HTMLElement).style.visibility = 'hidden'
+      
+      // Get all elements at the menu position
+      const elementsAtPoint = document.elementsFromPoint(menuCenterX, menuCenterY)
+      
+      // Restore menu visibility
+      (menuElement as HTMLElement).style.visibility = originalVisibility;
+      (menuElement as HTMLElement).style.pointerEvents = originalPointerEvents
+      
+      let isDark = false
+      
+      // Check all elements at that point for dark background
+      for (const element of elementsAtPoint) {
+        const styles = window.getComputedStyle(element as HTMLElement)
+        const bgColor = styles.backgroundColor
+        const bgImage = styles.backgroundImage
+        
+        // Check for dark green color (#2F4A3C) or gradient containing it
+        // Also check if it's the glassmorphism section with dark gradient
+        if (bgColor === 'rgb(47, 74, 60)' || // #2F4A3C in RGB
+            bgImage.includes('47, 74, 60') || 
+            bgImage.includes('2f4a3c') ||
+            bgImage.includes('linear-gradient') && element.id === 'original' ||
+            (element.classList && element.classList.toString().includes('glassmorphism'))) {
+          isDark = true
+          break
+        }
+      }
+      
+      setIsMenuOverDark(isDark)
+    }
+    
+    // Check on scroll and animation frame for smooth updates
+    let animationFrame: number
+    const handleScroll = () => {
+      cancelAnimationFrame(animationFrame)
+      animationFrame = requestAnimationFrame(checkMenuBackground)
+    }
+    
+    window.addEventListener('scroll', handleScroll)
+    checkMenuBackground() // Initial check
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      cancelAnimationFrame(animationFrame)
+    }
+  }, [])
+  
   // Scroll-based animation for menu
   const { scrollY } = useScroll()
   // Fade in the nav AURA at the same time as the centered one fades out
   const navOpacity = useTransform(scrollY, [250, 400], [0, 1])
   // Fade in the menu background pill just before section 2 reaches it (around 80% of viewport height)
   const menuBgOpacity = useTransform(scrollY, [windowHeight * 0.8, windowHeight * 0.9], [0, 1])
+  
+  // Use state-based colors instead of scroll-based
+  const menuTextColor = isMenuOverDark ? '#F8F4F0' : '#2F4A3C'
+  const logoTextColor = isMenuOverDark ? '#F8F4F0' : '#C96F4A'
+  const logoSubtitleColor = isMenuOverDark ? '#F8F4F0' : '#2F4A3C'
   
   return (
     <>
@@ -44,6 +114,9 @@ export default function TestUI() {
         }
       `}</style>
       <div className="testui-page relative overflow-x-hidden">
+      {/* Timeline Navigation - Fixed to right side */}
+      <TimelineNavigation />
+      
       {/* Fixed Navigation Menu - At highest level */}
       <div className="fixed top-8 left-16 z-[100]">
         <div className="flex items-center gap-8">
@@ -55,10 +128,16 @@ export default function TestUI() {
             }}
           >
             <div>
-              <span className="font-serif text-3xl font-bold tracking-wider text-[#C96F4A]">
+              <span 
+                className="font-serif text-3xl font-bold tracking-wider transition-colors duration-300"
+                style={{ color: logoTextColor }}
+              >
                 AURA
               </span>
-              <span className="text-xs tracking-[0.3em] uppercase mt-1 block text-[#2F4A3C]">
+              <span 
+                className="text-xs tracking-[0.3em] uppercase mt-1 block transition-colors duration-300"
+                style={{ color: logoSubtitleColor }}
+              >
                 Villas Bali
               </span>
             </div>
@@ -80,13 +159,22 @@ export default function TestUI() {
             />
             {/* Menu Items - always visible */}
             <div className="relative flex items-center px-8 py-3">
-              <button className="text-lg font-bold text-[#2F4A3C] hover:text-[#C96F4A] transition-colors mr-20">
+              <button 
+                className="text-lg font-bold hover:text-[#C96F4A] transition-colors duration-300 mr-20"
+                style={{ color: menuTextColor }}
+              >
                 Villas
               </button>
-              <button className="text-lg font-bold text-[#2F4A3C] hover:text-[#C96F4A] transition-colors mr-20">
+              <button 
+                className="text-lg font-bold hover:text-[#C96F4A] transition-colors duration-300 mr-20"
+                style={{ color: menuTextColor }}
+              >
                 About Us
               </button>
-              <button className="text-lg font-bold text-[#2F4A3C] hover:text-[#C96F4A] transition-colors">
+              <button 
+                className="text-lg font-bold hover:text-[#C96F4A] transition-colors duration-300"
+                style={{ color: menuTextColor }}
+              >
                 Contact
               </button>
             </div>
