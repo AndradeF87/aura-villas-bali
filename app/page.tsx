@@ -1,40 +1,44 @@
 import { Metadata } from 'next'
-import { Hero } from '@/components/homepage/Hero'
-import { FeaturedVillasBooking } from '@/components/homepage/FeaturedVillasBooking'
-import { WhyBookWithAura } from '@/components/homepage/WhyBookWithAura'
-import { ExploreByArea } from '@/components/homepage/ExploreByArea'
-import { BaliExperiences } from '@/components/homepage/BaliExperiences'
-import { TrustSignals } from '@/components/homepage/TrustSignals'
+import { PropertyManagementHero } from '@/components/property-management/PropertyManagementHero'
+import { ServiceTiers } from '@/components/property-management/ServiceTiers'
+import { HowWeWork } from '@/components/property-management/HowWeWork'
+import { QualificationForm } from '@/components/property-management/QualificationForm'
+import { EarlyPartnerProgram } from '@/components/property-management/EarlyPartnerProgram'
+import { TechnologySection } from '@/components/property-management/TechnologySection'
+import { EarningsCalculator } from '@/components/property-management/EarningsCalculator'
 import { WhatsAppButton } from '@/components/homepage/WhatsAppButton'
 
 export const metadata: Metadata = {
-  title: 'AURA Villas Bali - Creating Good Memories',
-  description: 'Life is all about creating good memories. Discover our exclusive collection of luxury villas where your story begins. Book your perfect Bali escape today.',
-  keywords: 'luxury villas Bali, exclusive Bali villas, Uluwatu villas, Canggu villas, Seminyak villas, beachfront villas Bali, clifftop villas Bali, villa rental Bali, Bali memories, luxury accommodation Bali',
+  title: 'Selective Property Management - AURA Villas Bali',
+  description: 'We partner with select Bali villa owners to tell each villa\'s unique story. Boutique management with genuine hospitality and AI-powered marketing.',
+  keywords: 'boutique villa management Uluwatu, selective property management Bali, Pecatu villa management, boutique property management Bali',
 }
 
 export default function Home() {
   return (
     <>
-      {/* Hero Section with Villa Search */}
-      <Hero />
+      {/* Hero Section with UVP */}
+      <PropertyManagementHero />
 
-      {/* Featured Villas for Booking */}
-      <FeaturedVillasBooking />
+      {/* Three Service Tiers */}
+      <ServiceTiers />
 
-      {/* Why Book with AURA - Guest Benefits */}
-      <WhyBookWithAura />
+      {/* Earnings Calculator */}
+      <EarningsCalculator />
 
-      {/* Explore by Area */}
-      <ExploreByArea />
+      {/* How We Work Process */}
+      <HowWeWork />
 
-      {/* Bali Experiences */}
-      <BaliExperiences />
+      {/* Technology Section - Smart Tools, Human Touch */}
+      <TechnologySection />
 
-      {/* Trust Signals & Guest Reviews */}
-      <TrustSignals />
+      {/* Early Partner Program */}
+      <EarlyPartnerProgram />
 
-      {/* WhatsApp Floating Button */}
+      {/* Qualification Form */}
+      <QualificationForm />
+
+      {/* WhatsApp Button */}
       <WhatsAppButton />
     </>
   )

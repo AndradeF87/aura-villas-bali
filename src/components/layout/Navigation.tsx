@@ -15,6 +15,7 @@ export const Navigation = () => {
   const isPropertyManagement = pathname === '/property-management'
   
   // Pages that should have a solid navigation bar (no hero image)
+  // Note: /villas pages have hero images, so they should have transparent nav initially
   const solidNavPages = ['/contact', '/experiences', '/destinations']
   const needsSolidNav = solidNavPages.some(page => pathname?.startsWith(page))
 

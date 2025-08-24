@@ -48,6 +48,11 @@ const config: Config = {
         'fade-in': 'fadeIn 0.5s ease-in',
         'slide-up': 'slideUp 0.5s ease-out',
         'fade-in-up': 'fadeInUp 0.8s ease-out',
+        'slow-zoom': 'slowZoom 20s ease-in-out infinite',
+        'fadeIn': 'fadeIn 0.5s ease-in',
+        'fadeInUp': 'fadeInUp 0.8s ease-out',
+        'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'bounce': 'bounce 1s infinite',
       },
       keyframes: {
         fadeIn: {
@@ -61,6 +66,24 @@ const config: Config = {
         fadeInUp: {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        slowZoom: {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.05)' },
+        },
+        pulse: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '.5' },
+        },
+        bounce: {
+          '0%, 100%': {
+            transform: 'translateY(-25%)',
+            animationTimingFunction: 'cubic-bezier(0.8,0,1,1)',
+          },
+          '50%': {
+            transform: 'none',
+            animationTimingFunction: 'cubic-bezier(0,0,0.2,1)',
+          },
         },
       },
     },

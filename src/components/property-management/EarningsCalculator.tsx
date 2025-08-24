@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Calculator, TrendingUp, DollarSign, Calendar, Info } from 'lucide-react'
 
 export function EarningsCalculator() {
-  const [nightlyRate, setNightlyRate] = useState(500)
+  const [nightlyRate, setNightlyRate] = useState(7900000) // ~$500 USD in IDR
   const [occupancyRate, setOccupancyRate] = useState(75)
   const [managementTier, setManagementTier] = useState('premium')
   const [showDetails, setShowDetails] = useState(false)
@@ -55,9 +55,7 @@ export function EarningsCalculator() {
   const earnings = calculateEarnings()
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
+    return 'Rp ' + new Intl.NumberFormat('id-ID', {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
     }).format(amount)
@@ -91,7 +89,7 @@ export function EarningsCalculator() {
               {/* Nightly Rate */}
               <div className="mb-6">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Nightly Rate (USD)
+                  Nightly Rate (IDR)
                 </label>
                 <div className="relative">
                   <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -100,9 +98,9 @@ export function EarningsCalculator() {
                     value={nightlyRate}
                     onChange={(e) => setNightlyRate(Number(e.target.value))}
                     className="w-full pl-10 pr-3 py-3 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-terracotta focus:border-transparent"
-                    min="100"
-                    max="5000"
-                    step="50"
+                    min="1500000"
+                    max="50000000"
+                    step="500000"
                   />
                 </div>
                 <input
@@ -110,13 +108,13 @@ export function EarningsCalculator() {
                   value={nightlyRate}
                   onChange={(e) => setNightlyRate(Number(e.target.value))}
                   className="w-full mt-2"
-                  min="100"
-                  max="2000"
-                  step="50"
+                  min="1500000"
+                  max="30000000"
+                  step="500000"
                 />
                 <div className="flex justify-between text-xs text-gray-500 mt-1">
-                  <span>$100</span>
-                  <span>$2,000</span>
+                  <span>Rp 1.5M</span>
+                  <span>Rp 30M</span>
                 </div>
               </div>
 
