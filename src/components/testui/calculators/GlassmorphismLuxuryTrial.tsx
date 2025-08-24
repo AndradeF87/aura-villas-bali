@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { locations, amenitiesList, calculateEarnings } from './types'
 
 export function GlassmorphismLuxuryTrial() {
@@ -19,6 +19,22 @@ export function GlassmorphismLuxuryTrial() {
     annual: 0,
     net: 0
   })
+  
+  // Scroll-based animation
+  const { scrollY } = useScroll()
+  
+  // Transform values based on scroll position (0-300px range)
+  // Only scale down and fade out - no movement
+  const scale = useTransform(scrollY, [0, 300], [1, 0.7]) // Just scale down slightly
+  
+  // Fade out the centered AURA
+  const animatedOpacity = useTransform(scrollY, [0, 200, 300], [1, 1, 0])
+  
+  // Fade out the subtitle earlier
+  const subtitleOpacity = useTransform(scrollY, [0, 100], [1, 0])
+  
+  // Fade in the nav AURA at the same time as the centered one fades out
+  const navOpacity = useTransform(scrollY, [200, 300], [0, 1])
 
   const handleLocationSelect = (loc: string) => {
     setLocation(loc)

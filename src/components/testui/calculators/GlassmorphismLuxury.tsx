@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { locations, amenitiesList, calculateEarnings } from './types'
 
 export function GlassmorphismLuxury() {
@@ -19,6 +19,22 @@ export function GlassmorphismLuxury() {
     annual: 0,
     net: 0
   })
+  
+  // Scroll-based animation
+  const { scrollY } = useScroll()
+  
+  // Transform values based on scroll position
+  // Only scale down and fade out - no movement
+  const scale = useTransform(scrollY, [0, 400], [1, 0.7]) // Just scale down slightly
+  
+  // Fade out the centered AURA
+  const animatedOpacity = useTransform(scrollY, [0, 250, 400], [1, 1, 0])
+  
+  // Fade out the subtitle earlier
+  const subtitleOpacity = useTransform(scrollY, [0, 150], [1, 0])
+  
+  // Fade in the nav AURA at the same time as the centered one fades out
+  const navOpacity = useTransform(scrollY, [250, 400], [0, 1])
 
   const handleLocationSelect = (loc: string) => {
     setLocation(loc)
@@ -75,24 +91,20 @@ export function GlassmorphismLuxury() {
 
   return (
     <div className="h-screen w-full relative overflow-hidden flex" style={{ backgroundColor: '#F8F4F0' }}>
-
-      {/* Navigation Menu - Top Left */}
-      <div className="absolute top-8 left-48 flex gap-16 z-30">
-        <button className="text-lg font-bold text-[#2F4A3C] hover:text-[#C96F4A] transition-colors">
-          Villas
-        </button>
-        <button className="text-lg font-bold text-[#2F4A3C] hover:text-[#C96F4A] transition-colors">
-          About Us
-        </button>
-        <button className="text-lg font-bold text-[#2F4A3C] hover:text-[#C96F4A] transition-colors">
-          Contact
-        </button>
-      </div>
-
-      {/* AURA Branding - Fixed on the left side */}
-      <div className="absolute left-0 top-0 h-full w-2/5 flex flex-col items-center justify-center z-10">
-        <h1 className="text-8xl font-serif text-[#C96F4A] mb-3">AURA</h1>
-        <p className="text-2xl text-[#2F4A3C] font-bold">Property Management Bali</p>
+        {/* AURA Branding - Animated */}
+        <div className="absolute left-0 top-0 h-full w-2/5 flex flex-col items-center justify-center z-10">
+        <motion.h1 
+          className="text-8xl font-serif text-[#C96F4A] mb-3"
+          style={{
+            scale,
+            opacity: animatedOpacity
+          }}
+        >
+          AURA
+        </motion.h1>
+        <p className="text-2xl text-[#2F4A3C] font-bold">
+          Property Management Bali
+        </p>
       </div>
 
       {/* Progress Circles - Positioned above calculator */}
