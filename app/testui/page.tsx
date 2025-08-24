@@ -1,9 +1,16 @@
 'use client'
 
 import { GlassmorphismLuxury } from '@/components/testui/calculators/GlassmorphismLuxury'
-import { GlassmorphismLuxuryTrial } from '@/components/testui/calculators/GlassmorphismLuxuryTrial'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import { PropertyManagementHero } from '@/components/property-management/PropertyManagementHero'
+import { ServiceTiers } from '@/components/property-management/ServiceTiers'
+import { HowWeWork } from '@/components/property-management/HowWeWork'
+import { QualificationForm } from '@/components/property-management/QualificationForm'
+import { EarlyPartnerProgram } from '@/components/property-management/EarlyPartnerProgram'
+import { TechnologySection } from '@/components/property-management/TechnologySection'
+import { EarningsCalculator } from '@/components/property-management/EarningsCalculator'
+import { WhatsAppButton } from '@/components/homepage/WhatsAppButton'
 
 export default function TestUI() {
   const [windowHeight, setWindowHeight] = useState(800) // Default height
@@ -39,7 +46,7 @@ export default function TestUI() {
       <div className="testui-page relative overflow-x-hidden">
       {/* Fixed Navigation Menu - At highest level */}
       <div className="fixed top-8 left-16 z-[100]">
-        <div className="flex items-center gap-16">
+        <div className="flex items-center gap-8">
           {/* AURA Logo - appears when animation completes */}
           <motion.div
             className="flex items-center space-x-2"
@@ -72,11 +79,11 @@ export default function TestUI() {
               }}
             />
             {/* Menu Items - always visible */}
-            <div className="relative flex items-center gap-12 px-8 py-3">
-              <button className="text-lg font-bold text-[#2F4A3C] hover:text-[#C96F4A] transition-colors">
+            <div className="relative flex items-center px-8 py-3">
+              <button className="text-lg font-bold text-[#2F4A3C] hover:text-[#C96F4A] transition-colors mr-20">
                 Villas
               </button>
-              <button className="text-lg font-bold text-[#2F4A3C] hover:text-[#C96F4A] transition-colors">
+              <button className="text-lg font-bold text-[#2F4A3C] hover:text-[#C96F4A] transition-colors mr-20">
                 About Us
               </button>
               <button className="text-lg font-bold text-[#2F4A3C] hover:text-[#C96F4A] transition-colors">
@@ -94,13 +101,32 @@ export default function TestUI() {
       {/* Spacer to allow scrolling */}
       <div className="h-screen"></div>
       
-      {/* Trial Design - Slides up on top */}
-      <section id="trial" className="relative min-h-screen w-full z-10 bg-white">
-        <GlassmorphismLuxuryTrial />
-      </section>
-      
-      {/* Extra space to test scrolling */}
-      <div className="h-screen bg-[#F8F4F0]"></div>
+      {/* Main Page Sections - All slide up on scroll */}
+      <div className="relative z-10 bg-white">
+        {/* Hero Section with UVP */}
+        <PropertyManagementHero />
+
+        {/* Three Service Tiers */}
+        <ServiceTiers />
+
+        {/* Earnings Calculator */}
+        <EarningsCalculator />
+
+        {/* How We Work Process */}
+        <HowWeWork />
+
+        {/* Technology Section - Smart Tools, Human Touch */}
+        <TechnologySection />
+
+        {/* Early Partner Program */}
+        <EarlyPartnerProgram />
+
+        {/* Qualification Form */}
+        <QualificationForm />
+
+        {/* WhatsApp Button */}
+        <WhatsAppButton />
+      </div>
       </div>
     </>
   )
