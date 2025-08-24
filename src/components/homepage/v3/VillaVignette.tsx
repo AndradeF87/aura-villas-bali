@@ -8,13 +8,13 @@ const villas = [
   {
     name: 'ONAYA Bali Resort',
     location: 'Uluwatu',
-    amenities: '4 Bedrooms • 4 Bathrooms • Private Pool • Ocean View',
+    amenities: 'Adults-Only • Temple Pool • Free Chauffeur • Jungle Oasis',
     image: '/images/Homepage-SUYAI-villa.webp'
   },
   {
     name: 'SUYAI Villa',
-    location: 'Canggu',
-    amenities: '5 Bedrooms • 5 Bathrooms • Infinity Pool • Beach Access',
+    location: 'Uluwatu',
+    amenities: '4 Bedrooms • 4 Bathrooms • Infinity Pool • Clifftop Views',
     image: '/images/Homepage-SUYAI-villa.webp'
   }
 ]

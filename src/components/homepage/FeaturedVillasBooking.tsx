@@ -37,31 +37,31 @@ const villas = [
   {
     id: 'onaya-resort',
     name: 'ONAYA Bali Resort',
-    tagline: 'Intimate Boutique Resort in the Heart of Uluwatu',
+    tagline: 'Adults-Only Boutique Sanctuary in Untouched Uluwatu',
     location: 'Uluwatu, Pecatu',
-    description: 'Choose from 12 unique villas, each with its own story. Enjoy farm-to-table dining, wellness spa treatments, and cultural experiences—all within a tranquil hillside sanctuary.',
+    description: 'An adults-only oasis surrounded by lush jungle. Experience tranquility in boutique villas designed as retreats from technology, with a stunning black stone pool inspired by Balinese temples and complimentary chauffeur service within 5km.',
     images: ['/images/placeholder.svg'],
-    pricePerNight: 450,
+    pricePerNight: 350,
     originalPrice: 0,
     currency: 'USD',
-    bedrooms: '1-3',
-    bathrooms: '1-3',
-    maxGuests: '2-6',
+    bedrooms: 'Villa options',
+    bathrooms: 'En-suite',
+    maxGuests: 'Adults Only',
     amenities: [
-      { icon: Waves, label: 'Private Pools' },
-      { icon: ChefHat, label: 'Restaurant' },
-      { icon: Wifi, label: 'Spa Center' },
+      { icon: Waves, label: 'Temple-inspired Pool' },
+      { icon: ChefHat, label: 'À la carte Dining' },
+      { icon: Wifi, label: 'Free Chauffeur' },
     ],
     highlights: [
-      'Choose from 12 villas',
-      'Wellness spa on-site',
-      'Cultural experiences',
-      'Farm-to-table dining'
+      'Adults-only tranquility',
+      'Free Uluwatu Temple rides',
+      'Upcoming jungle cinema',
+      '24/7 WhatsApp concierge'
     ],
-    rating: 9.3,
-    reviews: 28,
-    availability: 'Limited',
-    special: 'Spa package included'
+    rating: 9.0,
+    reviews: 45,
+    availability: 'Available',
+    special: 'Free temple transfers'
   }
 ]
 

@@ -28,20 +28,20 @@ const properties = [
   {
     id: 'onaya-resort',
     name: 'ONAYA Bali Resort',
-    type: 'Boutique Resort',
+    type: 'Adults-Only Boutique Resort',
     location: 'Uluwatu, Pecatu',
-    description: 'An intimate resort experience where each villa tells its own story, nestled in the tranquil hills of Uluwatu.',
-    story: 'ONAYA means "unique" in Sanskrit—a promise we keep with personalized experiences that transform stays into memories.',
+    description: 'An adults-only sanctuary nestled in untouched Uluwatu, where tranquility meets luxury. Each villa is designed as a retreat from technology and a step closer to serenity.',
+    story: 'ONAYA\'s ethos "Today is About You" creates a home away from home experience, with free concierge service and complimentary chauffeur rides to nearby beaches and temples.',
     image: '/images/placeholder.svg', // Replace with actual ONAYA image
-    bedrooms: '12 Villas',
-    maxGuests: '24+',
+    bedrooms: 'Boutique Villas',
+    maxGuests: 'Adults Only',
     highlights: [
-      'Private pool villas',
-      'Wellness spa center',
-      'Farm-to-table dining',
-      'Cultural experiences'
+      'Adults-only tranquility',
+      'Black stone pool inspired by Balinese temples',
+      'Free 5km radius chauffeur service',
+      'Upcoming jungle cinema experience'
     ],
-    rating: 9.3,
+    rating: 9.0,
     occupancy: '95%'
   }
 ]

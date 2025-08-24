@@ -11,9 +11,9 @@ const metrics = [
   },
   {
     icon: Star,
-    value: '9.3',
-    label: 'Booking.com Score',
-    subtext: 'Guest satisfaction'
+    value: '9.0',
+    label: 'Guest Rating',
+    subtext: 'Excellent reviews'
   },
   {
     icon: Users,
@@ -83,7 +83,7 @@ export function AuraNumbers() {
               <div className="w-px h-12 bg-gray-300"></div>
               <div>
                 <p className="text-2xl font-bold text-terracotta">ONAYA Resort</p>
-                <p className="text-sm text-gray-600">Boutique Resort in Uluwatu</p>
+                <p className="text-sm text-gray-600">Adults-Only Resort in Uluwatu</p>
               </div>
             </div>
           </div>
