@@ -14,18 +14,14 @@ export function GlassmorphismLuxury() {
   // Scroll-based animation
   const { scrollY } = useScroll()
   
-  // Transform values based on scroll position
-  // Only scale down and fade out - no movement
-  const scale = useTransform(scrollY, [0, 400], [1, 0.7]) // Just scale down slightly
+  // Start fading out immediately on scroll, complete by 400px
+  const animatedOpacity = useTransform(scrollY, [0, 400], [1, 0])
   
-  // Fade out the centered AURA
-  const animatedOpacity = useTransform(scrollY, [0, 250, 400], [1, 1, 0])
+  // Fade out the subtitle at the same rate
+  const subtitleOpacity = useTransform(scrollY, [0, 400], [1, 0])
   
-  // Fade out the subtitle earlier
-  const subtitleOpacity = useTransform(scrollY, [0, 150], [1, 0])
-  
-  // Fade in the nav AURA at the same time as the centered one fades out
-  const navOpacity = useTransform(scrollY, [250, 400], [0, 1])
+  // Fade in the nav AURA inversely - as center fades out, nav fades in
+  const navOpacity = useTransform(scrollY, [0, 400], [0, 1])
 
   const handleLocationSelect = (loc: string) => {
     setLocation(loc)
@@ -108,7 +104,6 @@ export function GlassmorphismLuxury() {
         <motion.h1 
           className="text-8xl font-serif text-[#C96F4A] mb-3"
           style={{
-            scale,
             opacity: animatedOpacity
           }}
         >

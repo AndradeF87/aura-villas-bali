@@ -12,6 +12,8 @@ import { TechnologySection } from '@/components/property-management/TechnologySe
 import { EarningsCalculator } from '@/components/property-management/EarningsCalculator'
 import { WhatsAppButton } from '@/components/homepage/WhatsAppButton'
 import { TimelineNavigation } from '@/components/testui/TimelineNavigation'
+import { SuccessStories } from '@/components/testui/SuccessStories'
+import { ChallengesSection } from '@/components/testui/ChallengesSection'
 
 export default function TestUI() {
   const [windowHeight, setWindowHeight] = useState(800) // Default height
@@ -32,8 +34,8 @@ export default function TestUI() {
         return
       }
       
-      // Get the menu position
-      const menuElement = document.querySelector('.fixed.top-8.left-16')
+      // Get the menu position (updated selector for new layout)
+      const menuElement = document.querySelector('.fixed.top-8')
       if (!menuElement) return
       
       const menuRect = menuElement.getBoundingClientRect()
@@ -105,8 +107,8 @@ export default function TestUI() {
   
   // Scroll-based animation for menu
   const { scrollY } = useScroll()
-  // Fade in the nav AURA at the same time as the centered one fades out
-  const navOpacity = useTransform(scrollY, [250, 400], [0, 1])
+  // Fade in the nav AURA inversely with the centered one - starts immediately
+  const navOpacity = useTransform(scrollY, [0, 400], [0, 1])
   // Fade in the menu background pill just before section 2 reaches it (around 80% of viewport height)
   const menuBgOpacity = useTransform(scrollY, [windowHeight * 0.8, windowHeight * 0.9], [0, 1])
   
@@ -134,8 +136,8 @@ export default function TestUI() {
       <TimelineNavigation />
       
       {/* Fixed Navigation Menu - At highest level */}
-      <div className="fixed top-8 left-16 z-[100]">
-        <div className="flex items-center gap-8">
+      <div className="fixed top-8 left-16 right-16 z-[100] flex justify-between items-center">
+        <div className="flex items-center">
           {/* AURA Logo - appears when animation completes */}
           <motion.div
             className="flex items-center space-x-2"
@@ -158,6 +160,14 @@ export default function TestUI() {
               </span>
             </div>
           </motion.div>
+          
+          {/* Green Circle Indicator - always visible, centered between logo and menu */}
+          <div 
+            className="w-4 h-4 rounded-full mx-8 transition-colors duration-300"
+            style={{ 
+              backgroundColor: menuTextColor // Use same color as menu text
+            }}
+          />
           
           {/* Menu Items Container */}
           <div className="relative">
@@ -196,6 +206,31 @@ export default function TestUI() {
             </div>
           </div>
         </div>
+        
+        {/* Buy & Rent Button - Right side - Always visible */}
+        <div className="relative">
+          {/* Glassmorphic Background - appears on scroll */}
+          <motion.div 
+            className="absolute inset-0 rounded-full"
+            style={{
+              background: `rgba(255, 255, 255, 0.1)`,
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+              opacity: menuBgOpacity
+            }}
+          />
+          {/* Buy & Rent Button - same style as other menu items */}
+          <div className="relative flex items-center px-8 py-3">
+            <button 
+              className="text-lg font-bold hover:text-[#C96F4A] transition-colors duration-300"
+              style={{ color: menuTextColor }}
+            >
+              Buy & Rent
+            </button>
+          </div>
+        </div>
       </div>
       {/* Original Design - Fixed/Static */}
       <section id="original" className="fixed top-0 left-0 right-0 min-h-screen w-full z-0">
@@ -215,6 +250,12 @@ export default function TestUI() {
 
         {/* Earnings Calculator */}
         <EarningsCalculator />
+
+        {/* Success Stories Section */}
+        <SuccessStories />
+
+        {/* Challenges Section */}
+        <ChallengesSection />
 
         {/* How We Work Process */}
         <HowWeWork />

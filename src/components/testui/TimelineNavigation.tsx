@@ -12,8 +12,8 @@ interface NavItem {
 export function TimelineNavigation() {
   const [navItems, setNavItems] = useState<NavItem[]>([])
   const [activeSection, setActiveSection] = useState<string>('')
-  const [scrollProgress, setScrollProgress] = useState(0)
-  const [hoveredItem, setHoveredItem] = useState<string | null>(null)
+  const [isTimelineHovered, setIsTimelineHovered] = useState(false)
+  const [isOverDarkBg, setIsOverDarkBg] = useState(false)
   const { scrollYProgress } = useScroll()
   
   // Transform for the progress line
@@ -122,14 +122,59 @@ export function TimelineNavigation() {
   }, [navItems])
 
   useEffect(() => {
-    // Calculate scroll progress
+    // Check background color
     const handleScroll = () => {
-      const windowHeight = window.innerHeight
-      const documentHeight = document.documentElement.scrollHeight
-      const scrollTop = window.scrollY
-      const scrollableHeight = documentHeight - windowHeight
-      const progress = Math.min((scrollTop / scrollableHeight) * 100, 100)
-      setScrollProgress(Math.round(progress))
+      // Check if timeline is over dark background (green section)
+      const timelineElement = document.querySelector('.fixed.right-12')
+      if (timelineElement) {
+        const rect = timelineElement.getBoundingClientRect()
+        const centerX = rect.left + rect.width / 2
+        const centerY = rect.top + rect.height / 2
+        
+        // Temporarily hide timeline to check what's behind
+        const originalPointerEvents = (timelineElement as HTMLElement).style.pointerEvents
+        const originalVisibility = (timelineElement as HTMLElement).style.visibility;
+        (timelineElement as HTMLElement).style.pointerEvents = 'none';
+        (timelineElement as HTMLElement).style.visibility = 'hidden'
+        
+        let elementsAtPoint: Element[] = []
+        
+        if (typeof window !== 'undefined' && document.elementsFromPoint) {
+          try {
+            elementsAtPoint = document.elementsFromPoint(centerX, centerY)
+          } catch (e) {
+            const element = document.elementFromPoint(centerX, centerY)
+            if (element) {
+              elementsAtPoint = [element]
+            }
+          }
+        }
+        
+        // Restore timeline visibility
+        (timelineElement as HTMLElement).style.visibility = originalVisibility;
+        (timelineElement as HTMLElement).style.pointerEvents = originalPointerEvents
+        
+        let isDark = false
+        
+        // Check for dark green background
+        for (const element of elementsAtPoint) {
+          const styles = window.getComputedStyle(element as HTMLElement)
+          const bgColor = styles.backgroundColor
+          const bgImage = styles.backgroundImage
+          
+          if (bgColor === 'rgb(47, 74, 60)' || // #2F4A3C in RGB
+              bgImage.includes('47, 74, 60') || 
+              bgImage.includes('2f4a3c') ||
+              bgImage.includes('linear-gradient') && element.id === 'original' ||
+              bgImage.includes('1a1a1a') ||
+              (element.classList && element.classList.toString().includes('calculator-card'))) {
+            isDark = true
+            break
+          }
+        }
+        
+        setIsOverDarkBg(isDark)
+      }
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -151,38 +196,66 @@ export function TimelineNavigation() {
 
   if (navItems.length === 0) return null
 
+  // Dynamic colors based on background
+  const lineColor = isOverDarkBg ? 'rgba(255, 255, 255, 0.2)' : '#C96F4A'
+  const progressColor = isOverDarkBg ? '#C96F4A' : '#2F4A3C'
+  const dotBorderColor = isOverDarkBg ? 'rgba(255, 255, 255, 0.3)' : '#e5e7eb'
+  const activeDotColor = isOverDarkBg ? '#C96F4A' : '#C96F4A'
+  const labelBgColor = isOverDarkBg ? 'rgba(0, 0, 0, 0.7)' : 'white'
+  const labelTextColor = isOverDarkBg ? '#F8F4F0' : '#2F4A3C'
+
   return (
-    <div className="fixed right-12 top-1/2 -translate-y-1/2 z-[90] hidden md:block">
-      {/* Timeline container */}
-      <div className="relative">
+    <div 
+      className="fixed right-12 top-1/2 -translate-y-1/2 z-[90] hidden md:block" 
+      style={{ height: '70vh' }}
+      onMouseEnter={() => setIsTimelineHovered(true)}
+      onMouseLeave={() => setIsTimelineHovered(false)}
+    >
+      {/* Timeline container - now with explicit height */}
+      <div className="relative h-full flex items-center">
         {/* Background line */}
-        <div className="absolute left-1/2 top-0 h-full w-[2px] -translate-x-1/2 bg-gray-200" />
+        <div 
+          className="absolute left-1/2 top-0 h-full w-[2px] -translate-x-1/2 transition-colors duration-300"
+          style={{ backgroundColor: lineColor }}
+        />
         
         {/* Progress line */}
         <motion.div 
-          className="absolute left-1/2 top-0 w-[2px] -translate-x-1/2 bg-[#C96F4A]"
-          style={{ height: progressHeight }}
+          className="absolute left-1/2 top-0 w-[2px] -translate-x-1/2 transition-colors duration-300"
+          style={{ 
+            height: progressHeight,
+            backgroundColor: progressColor 
+          }}
         />
         
-        {/* Navigation dots */}
-        <div className="relative flex flex-col gap-8">
+        {/* Navigation dots - spread across the full height */}
+        <div className="relative flex flex-col justify-between h-full py-4">
           {navItems.map((item, index) => (
             <div 
               key={item.id}
               className="relative flex items-center"
             >
-              {/* Label */}
+              {/* Label - shows for all when timeline is hovered */}
               <motion.div
                 className="absolute right-8 whitespace-nowrap"
                 initial={{ opacity: 0, x: 10 }}
                 animate={{ 
-                  opacity: (hoveredItem === item.id || activeSection === item.id) ? 1 : 0,
-                  x: (hoveredItem === item.id || activeSection === item.id) ? 0 : 10
+                  opacity: isTimelineHovered ? 1 : 0,
+                  x: isTimelineHovered ? 0 : 10
                 }}
                 transition={{ duration: 0.2 }}
               >
-                <div className="rounded-lg bg-white px-3 py-1.5 shadow-lg">
-                  <span className="text-sm font-medium text-[#2F4A3C]">
+                <div 
+                  className="rounded-lg px-3 py-1.5 shadow-lg transition-colors duration-300"
+                  style={{ 
+                    backgroundColor: labelBgColor,
+                    backdropFilter: isOverDarkBg ? 'blur(10px)' : 'none'
+                  }}
+                >
+                  <span 
+                    className="text-sm font-medium transition-colors duration-300"
+                    style={{ color: labelTextColor }}
+                  >
                     {item.label}
                   </span>
                 </div>
@@ -192,43 +265,27 @@ export function TimelineNavigation() {
               <button
                 className="relative z-10"
                 onClick={() => scrollToSection(item.element)}
-                onMouseEnter={() => setHoveredItem(item.id)}
-                onMouseLeave={() => setHoveredItem(null)}
                 aria-label={`Navigate to ${item.label}`}
               >
                 <motion.div
                   className="rounded-full border-2 transition-all duration-300"
                   animate={{
-                    width: activeSection === item.id ? 16 : 12,
-                    height: activeSection === item.id ? 16 : 12,
-                    backgroundColor: activeSection === item.id ? '#C96F4A' : '#ffffff',
-                    borderColor: activeSection === item.id ? '#C96F4A' : '#e5e7eb'
+                    width: activeSection === item.id ? 18 : 14,
+                    height: activeSection === item.id ? 18 : 14,
+                    backgroundColor: activeSection === item.id ? activeDotColor : (isOverDarkBg ? 'rgba(0, 0, 0, 0.5)' : '#ffffff'),
+                    borderColor: activeSection === item.id ? activeDotColor : dotBorderColor
                   }}
                   whileHover={{
                     scale: 1.2,
-                    borderColor: '#C96F4A'
+                    borderColor: activeDotColor
                   }}
                   style={{
-                    boxShadow: activeSection === item.id ? '0 4px 12px rgba(201, 111, 74, 0.3)' : 'none'
+                    boxShadow: activeSection === item.id ? `0 4px 12px ${isOverDarkBg ? 'rgba(201, 111, 74, 0.5)' : 'rgba(201, 111, 74, 0.3)'}` : 'none'
                   }}
                 />
               </button>
             </div>
           ))}
-        </div>
-        
-        {/* Progress indicator */}
-        <div className="absolute -bottom-20 left-1/2 -translate-x-1/2">
-          <motion.div 
-            className="rounded-full bg-white px-3 py-1.5 shadow-lg"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-          >
-            <span className="text-xs font-medium text-[#2F4A3C]">
-              {scrollProgress}% explored
-            </span>
-          </motion.div>
         </div>
       </div>
     </div>
