@@ -281,7 +281,7 @@ export const Navigation = () => {
                 AURA
               </span>
               <span 
-                className="text-[10px] tracking-[0.2em] uppercase block text-[#2F4A3C]"
+                className="text-[10px] tracking-[0.2em] uppercase block text-[#C96F4A]"
               >
                 Villas Bali
               </span>

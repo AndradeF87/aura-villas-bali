@@ -2,7 +2,7 @@
 
 import { Home, Camera, Megaphone, TrendingUp } from 'lucide-react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 
 const steps = [
   {
@@ -42,21 +42,36 @@ const steps = [
 // Individual step component with scroll-based zoom
 function WorkStep({ step, index, isLast }: { step: typeof steps[0], index: number, isLast: boolean }) {
   const stepRef = useRef<HTMLDivElement>(null)
+  const [isMobile, setIsMobile] = useState(false)
+  
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+  
   const { scrollYProgress } = useScroll({
     target: stepRef,
     offset: ["start end", "end start"]
   })
 
-  // Calculate scale based on distance from center
+  // Calculate scale based on distance from center - reduced for mobile
   const scale = useTransform(scrollYProgress, 
     [0, 0.3, 0.5, 0.7, 1],
-    [0.85, 0.95, 1.1, 0.95, 0.85]
+    isMobile 
+      ? [0.98, 1, 1.02, 1, 0.98] // Very subtle zoom on mobile
+      : [0.85, 0.95, 1.1, 0.95, 0.85]
   )
 
-  // Also scale the icon separately for more dramatic effect
+  // Also scale the icon separately for more dramatic effect - reduced for mobile
   const iconScale = useTransform(scrollYProgress,
     [0, 0.3, 0.5, 0.7, 1], 
-    [0.8, 0.9, 1.2, 0.9, 0.8]
+    isMobile
+      ? [0.98, 1, 1.03, 1, 0.98] // Very subtle icon zoom on mobile
+      : [0.8, 0.9, 1.2, 0.9, 0.8]
   )
 
   // Opacity animation
