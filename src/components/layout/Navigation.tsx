@@ -269,21 +269,19 @@ export const Navigation = () => {
 
       {/* Mobile Navigation */}
       <div className="navigation-header fixed top-4 left-4 right-4 z-[100] flex md:hidden justify-between items-center">
-        {/* Mobile Logo */}
+        {/* Mobile Logo - Always Orange */}
         <motion.div
           style={{ opacity: isHomePage ? navOpacity : 1 }}
         >
           <Link href="/" className="block">
             <div>
               <span 
-                className="font-serif text-2xl font-bold tracking-wider transition-colors duration-300"
-                style={{ color: logoTextColor }}
+                className="font-serif text-2xl font-bold tracking-wider text-[#C96F4A]"
               >
                 AURA
               </span>
               <span 
-                className="text-[10px] tracking-[0.2em] uppercase block transition-colors duration-300"
-                style={{ color: logoSubtitleColor }}
+                className="text-[10px] tracking-[0.2em] uppercase block text-[#2F4A3C]"
               >
                 Villas Bali
               </span>
@@ -291,7 +289,7 @@ export const Navigation = () => {
           </Link>
         </motion.div>
 
-        {/* Modern Hamburger Menu Button */}
+        {/* Modern Hamburger Menu Button - Always Orange */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="relative p-3 transition-all duration-300"
@@ -303,20 +301,17 @@ export const Navigation = () => {
         >
           <div className="w-6 h-5 relative flex flex-col justify-between">
             {mobileMenuOpen ? (
-              <X size={24} style={{ color: hamburgerColor }} className="absolute top-0 left-0" />
+              <X size={24} className="absolute top-0 left-0 text-[#C96F4A]" />
             ) : (
               <>
                 <span 
-                  className="block h-0.5 w-6 transition-all duration-300"
-                  style={{ backgroundColor: hamburgerColor }}
+                  className="block h-0.5 w-6 bg-[#C96F4A] transition-all duration-300"
                 />
                 <span 
-                  className="block h-0.5 w-4 transition-all duration-300 ml-auto"
-                  style={{ backgroundColor: hamburgerColor }}
+                  className="block h-0.5 w-4 bg-[#C96F4A] transition-all duration-300 ml-auto"
                 />
                 <span 
-                  className="block h-0.5 w-5 transition-all duration-300 ml-auto"
-                  style={{ backgroundColor: hamburgerColor }}
+                  className="block h-0.5 w-5 bg-[#C96F4A] transition-all duration-300 ml-auto"
                 />
               </>
             )}
