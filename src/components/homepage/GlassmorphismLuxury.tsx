@@ -382,7 +382,10 @@ export function GlassmorphismLuxury() {
       <AnimatePresence>
         {showScrollIndicator && (
           <motion.div 
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-50 md:hidden"
+            className="absolute left-1/2 transform -translate-x-1/2 z-50 md:hidden"
+            style={{ 
+              bottom: 'calc(env(safe-area-inset-bottom, 0px) + 80px)' // Account for iOS Safari bottom bar
+            }}
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
