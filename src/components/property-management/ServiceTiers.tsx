@@ -104,20 +104,20 @@ export function ServiceTiers() {
         </div>
 
         {/* Tier Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12 pt-4">
           {tiers.map((tier, index) => {
             const Icon = tier.icon
             return (
               <div
                 key={tier.name}
-                className={`relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 ${
+                className={`relative bg-white rounded-2xl shadow-lg transition-all duration-300 ${
                   tier.popular ? 'ring-2 ring-terracotta scale-105' : ''
                 } hover:shadow-2xl`}
                 onMouseEnter={() => setSelectedTier(index)}
               >
                 {/* Popular Badge */}
                 {tier.popular && (
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-deep-green text-white px-6 py-2 rounded-full shadow-lg z-10">
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-deep-green text-white px-6 py-2 rounded-full shadow-lg z-10">
                     <span className="text-sm font-bold uppercase tracking-wider">Most Popular</span>
                   </div>
                 )}
