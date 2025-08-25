@@ -52,11 +52,11 @@ export default function Home() {
         {/* How We Work Process */}
         <HowWeWork />
 
-        {/* Technology Section - Smart Tools, Human Touch */}
-        <TechnologySection />
-
         {/* Qualification Form - Is Your Villa Right for AURA? */}
         <QualificationForm />
+
+        {/* Technology Section - Smart Tools, Human Touch */}
+        <TechnologySection />
 
         {/* Three Service Tiers */}
         <ServiceTiers />
