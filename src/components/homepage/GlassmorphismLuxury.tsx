@@ -119,13 +119,13 @@ export function GlassmorphismLuxury() {
 
       {/* Calculator Container - Full height on mobile, centered on desktop */}
       <motion.div 
-        className="h-screen md:h-full w-full flex items-center justify-center px-4 md:px-0"
+        className="h-screen md:h-full w-full flex items-center justify-center"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, delay: 0.3 }}
       >
         <div 
-          className="calculator-card relative w-full max-w-[450px] h-[calc(100vh-2rem)] md:h-auto mx-auto p-6 sm:p-8 lg:p-[50px] md:rounded-[20px] overflow-hidden border border-black/50"
+          className="calculator-card relative w-full md:max-w-[450px] h-screen md:h-auto md:mx-auto p-6 sm:p-8 lg:p-[50px] md:rounded-[20px] overflow-hidden md:border md:border-black/50"
           style={{
             background: 'linear-gradient(135deg, #1a1a1a 0%, #2F4A3C 40%, #1a1a1a 100%)',
             boxShadow: '0 20px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1), inset 0 -1px 0 rgba(0,0,0,0.5)'

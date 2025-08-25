@@ -4,13 +4,14 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X } from 'lucide-react'
+import { X } from 'lucide-react'
 
 export const Navigation = () => {
   const [windowHeight, setWindowHeight] = useState(800)
   const [isMenuOverDark, setIsMenuOverDark] = useState(false)
   const [showComingSoon, setShowComingSoon] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isOverWhiteBg, setIsOverWhiteBg] = useState(false)
   const pathname = usePathname()
   
   const isHomePage = pathname === '/'
@@ -70,6 +71,7 @@ export const Navigation = () => {
       }
       
       let isDark = false
+      let isWhite = false
       
       for (const element of elementsAtPoint) {
         if (element === menuElement || menuElement.contains(element)) {
@@ -80,6 +82,15 @@ export const Navigation = () => {
         const bgColor = computedStyle.backgroundColor
         const bgImage = computedStyle.backgroundImage
         
+        // Check for white backgrounds
+        if (bgColor === 'rgb(255, 255, 255)' || 
+            bgColor === 'rgba(255, 255, 255, 1)' ||
+            element.classList.contains('bg-white')) {
+          isWhite = true
+          break
+        }
+        
+        // Check for dark backgrounds
         if (element.classList.contains('glassmorphism-section') || 
             element.classList.contains('bg-deep-green') ||
             element.classList.contains('bg-[#2F4A3C]') ||
@@ -93,6 +104,7 @@ export const Navigation = () => {
       }
       
       setIsMenuOverDark(isDark)
+      setIsOverWhiteBg(isWhite)
     }
     
     checkMenuBackground()
@@ -122,8 +134,9 @@ export const Navigation = () => {
   )
   
   const menuTextColor = isMenuOverDark ? '#F8F4F0' : '#2F4A3C'
-  const logoTextColor = isMenuOverDark ? '#F8F4F0' : '#C96F4A'
-  const logoSubtitleColor = isMenuOverDark ? '#F8F4F0' : '#2F4A3C'
+  const logoTextColor = isOverWhiteBg ? '#C96F4A' : (isMenuOverDark ? '#F8F4F0' : '#C96F4A')
+  const logoSubtitleColor = isOverWhiteBg ? '#2F4A3C' : (isMenuOverDark ? '#F8F4F0' : '#2F4A3C')
+  const hamburgerColor = isOverWhiteBg ? '#C96F4A' : (isMenuOverDark ? '#F8F4F0' : '#2F4A3C')
   
   return (
     <>
@@ -253,13 +266,13 @@ export const Navigation = () => {
             <div>
               <span 
                 className="font-serif text-2xl font-bold tracking-wider transition-colors duration-300"
-                style={{ color: isMenuOverDark ? '#F8F4F0' : '#C96F4A' }}
+                style={{ color: logoTextColor }}
               >
                 AURA
               </span>
               <span 
                 className="text-[10px] tracking-[0.2em] uppercase block transition-colors duration-300"
-                style={{ color: isMenuOverDark ? '#F8F4F0' : '#2F4A3C' }}
+                style={{ color: logoSubtitleColor }}
               >
                 Villas Bali
               </span>
@@ -267,22 +280,36 @@ export const Navigation = () => {
           </Link>
         </motion.div>
 
-        {/* Hamburger Menu Button */}
+        {/* Modern Hamburger Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="p-2 rounded-lg transition-colors duration-300"
+          className="relative p-3 transition-all duration-300"
           style={{ 
-            backgroundColor: isMenuOverDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)',
             minWidth: '44px',
             minHeight: '44px'
           }}
           aria-label="Toggle menu"
         >
-          {mobileMenuOpen ? (
-            <X size={24} style={{ color: isMenuOverDark ? '#F8F4F0' : '#2F4A3C' }} />
-          ) : (
-            <Menu size={24} style={{ color: isMenuOverDark ? '#F8F4F0' : '#2F4A3C' }} />
-          )}
+          <div className="w-6 h-5 relative flex flex-col justify-between">
+            {mobileMenuOpen ? (
+              <X size={24} style={{ color: hamburgerColor }} className="absolute top-0 left-0" />
+            ) : (
+              <>
+                <span 
+                  className="block h-0.5 w-6 transition-all duration-300"
+                  style={{ backgroundColor: hamburgerColor }}
+                />
+                <span 
+                  className="block h-0.5 w-4 transition-all duration-300 ml-auto"
+                  style={{ backgroundColor: hamburgerColor }}
+                />
+                <span 
+                  className="block h-0.5 w-5 transition-all duration-300 ml-auto"
+                  style={{ backgroundColor: hamburgerColor }}
+                />
+              </>
+            )}
+          </div>
         </button>
       </div>
 
