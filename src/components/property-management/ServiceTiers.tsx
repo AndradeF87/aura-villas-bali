@@ -117,8 +117,8 @@ export function ServiceTiers() {
               >
                 {/* Popular Badge */}
                 {tier.popular && (
-                  <div className="absolute top-0 right-0 bg-terracotta text-white px-4 py-1 rounded-bl-lg">
-                    <span className="text-sm font-medium">Most Popular</span>
+                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-deep-green text-white px-6 py-2 rounded-full shadow-lg z-10">
+                    <span className="text-sm font-bold uppercase tracking-wider">Most Popular</span>
                   </div>
                 )}
 
