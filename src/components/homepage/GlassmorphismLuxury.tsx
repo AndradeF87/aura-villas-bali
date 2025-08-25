@@ -178,13 +178,13 @@ export function GlassmorphismLuxury() {
                 transition={{ duration: 0.3 }}
               >
                 <h2 
-                  className="text-2xl md:text-[32px] text-white text-center mb-3 leading-[1.2] font-serif"
+                  className="text-3xl md:text-[32px] text-white text-center mb-3 leading-[1.2] font-serif"
                   style={{
                     textShadow: '0 2px 4px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.1)'
                   }}
                 >
                   Estimate Your Villa's<br/>
-                  <span className="text-[#C96F4A]">Earning Potential</span>
+                  <span className="text-[#C96F4A] text-[34px] md:text-[32px]">Earning Potential</span>
                 </h2>
                 <p className="text-sm md:text-[15px] text-[rgba(255,255,255,0.8)] text-center mb-6 md:mb-[35px]">
                   Start by selecting your villa's location
