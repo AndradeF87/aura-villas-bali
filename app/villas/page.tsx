@@ -165,25 +165,17 @@ Each bedroom is a private sanctuary with ocean views, boutique linens, and spa-i
   }
 
   return (
-    <main className="pt-20">
+    <main>
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/30 z-10" />
-        <Image
-          src="/images/placeholder.svg"
-          alt="Uluwatu Cliffs"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="relative z-20 text-center text-white max-w-4xl mx-auto px-4">
+      <section className="relative h-[60vh] bg-sand-light flex items-center justify-center overflow-hidden">
+        <div className="relative z-20 text-center text-deep-green max-w-4xl mx-auto px-4">
           <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl mb-4">
             Our Villas
           </h1>
-          <p className="text-xl sm:text-2xl text-sand-light">
+          <p className="text-xl sm:text-2xl text-deep-green/80">
             Where Dramatic Cliffs Meet Boutique Living
           </p>
-          <div className="mt-8 flex items-center justify-center gap-2 text-sand-light">
+          <div className="mt-8 flex items-center justify-center gap-2 text-deep-green/80">
             <MapPin className="w-5 h-5" />
             <span>Uluwatu, Bali</span>
           </div>
@@ -191,13 +183,13 @@ Each bedroom is a private sanctuary with ocean views, boutique linens, and spa-i
       </section>
 
       {/* Introduction */}
-      <section className="py-16 bg-sand-light">
+      <section className="py-16 bg-deep-green">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="font-serif text-3xl sm:text-4xl text-deep-green mb-6">
+            <h2 className="font-serif text-3xl sm:text-4xl text-white mb-6">
               Discover Our Finest Villas
             </h2>
-            <p className="text-lg text-deep-green/80 leading-relaxed">
+            <p className="text-lg text-white/90 leading-relaxed">
               Perched on limestone cliffs overlooking the Indian Ocean, our villas offer 
               some of Bali&apos;s most spectacular villa experiences. From world-class surf 
               breaks to ancient temples, boutique beach clubs to dramatic sunsets, this is 
@@ -208,7 +200,7 @@ Each bedroom is a private sanctuary with ocean views, boutique linens, and spa-i
       </section>
 
       {/* Villa Listings */}
-      <section className="py-20 bg-white">
+      <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-24">
             {villas.map((villa, index) => (

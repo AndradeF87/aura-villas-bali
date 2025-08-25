@@ -7,7 +7,7 @@ export function ConditionalNavigation() {
   const pathname = usePathname()
   
   // Don't show navigation on standalone pages
-  if (pathname?.startsWith('/home-v3') || pathname?.startsWith('/testui')) {
+  if (pathname?.startsWith('/home-v3')) {
     return null
   }
   

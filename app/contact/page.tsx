@@ -142,7 +142,7 @@ export default function Contact() {
   }
 
   return (
-    <main className="pt-20">
+    <main>
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-sand to-sand-light py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

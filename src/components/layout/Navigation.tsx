@@ -1,219 +1,247 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X, ChevronDown } from 'lucide-react'
 
 export const Navigation = () => {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+  const [windowHeight, setWindowHeight] = useState(800) // Default height
+  const [isMenuOverDark, setIsMenuOverDark] = useState(false)
+  const [showComingSoon, setShowComingSoon] = useState(false)
   const pathname = usePathname()
   
-  // Check if we're on the property management page
-  const isPropertyManagement = pathname === '/property-management'
+  // Check if we're on the home page
+  const isHomePage = pathname === '/'
   
-  // Pages that should have a solid navigation bar (no hero image)
-  // Note: /villas pages have hero images, so they should have transparent nav initially
-  const solidNavPages = ['/contact', '/experiences', '/destinations']
-  const needsSolidNav = solidNavPages.some(page => pathname?.startsWith(page))
-
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    setWindowHeight(window.innerHeight)
+    const handleResize = () => setWindowHeight(window.innerHeight)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
   }, [])
-
-  // Guest-focused navigation
-  const navLinks = [
-    { 
-      href: '/villas', 
-      label: 'Our Villas',
-      dropdown: [
-        { href: '/villas', label: 'All Villas' },
-        { href: '/villas/uluwatu', label: 'Uluwatu (2 properties)' },
-        { href: '/villas/canggu', label: 'Canggu (Coming Soon)' },
-        { href: '/villas/seminyak', label: 'Seminyak (Coming Soon)' },
-      ]
-    },
-    { 
-      href: '/destinations', 
-      label: 'Destinations',
-      dropdown: [
-        { href: '/destinations/uluwatu', label: 'Uluwatu' },
-        { href: '/destinations/canggu', label: 'Canggu' },
-        { href: '/destinations/seminyak', label: 'Seminyak' },
-      ]
-    },
-    { href: '/experiences', label: 'Experiences' },
-    { href: '/contact', label: 'Contact' },
-  ]
-
-  // Secondary link for property owners
-  const ownerLink = { href: '/property-management', label: 'Property Management' }
-
+  
+  // Check if menu is over dark background
+  useEffect(() => {
+    const checkMenuBackground = () => {
+      // Check if running in browser and function exists
+      if (typeof window === 'undefined' || !document.elementsFromPoint) {
+        return
+      }
+      
+      // Get the menu position (updated selector for new layout)
+      const menuElement = document.querySelector('.fixed.top-8')
+      if (!menuElement) return
+      
+      const menuRect = menuElement.getBoundingClientRect()
+      const menuCenterX = menuRect.left + menuRect.width / 2
+      const menuCenterY = menuRect.top + menuRect.height / 2
+      
+      // Temporarily hide menu elements to check what's behind
+      const originalPointerEvents = (menuElement as HTMLElement).style.pointerEvents
+      const originalVisibility = (menuElement as HTMLElement).style.visibility;
+      (menuElement as HTMLElement).style.pointerEvents = 'none';
+      (menuElement as HTMLElement).style.visibility = 'hidden'
+      
+      let elementsAtPoint: Element[] = []
+      
+      try {
+        // Get all elements at the menu position
+        elementsAtPoint = document.elementsFromPoint(menuCenterX, menuCenterY)
+      } catch (e) {
+        // Fallback for older browsers
+        const element = document.elementFromPoint(menuCenterX, menuCenterY)
+        if (element) {
+          elementsAtPoint = [element]
+        }
+      }
+      
+      // Restore menu visibility
+      (menuElement as HTMLElement).style.visibility = originalVisibility;
+      (menuElement as HTMLElement).style.pointerEvents = originalPointerEvents
+      
+      let isDark = false
+      
+      // Check all elements at that point for dark background
+      for (const element of elementsAtPoint) {
+        const styles = window.getComputedStyle(element as HTMLElement)
+        const bgColor = styles.backgroundColor
+        const bgImage = styles.backgroundImage
+        
+        // Check for dark green color (#2F4A3C) or gradient containing it
+        // Also check if it's the glassmorphism section with dark gradient
+        if (bgColor === 'rgb(47, 74, 60)' || // #2F4A3C in RGB
+            bgImage.includes('47, 74, 60') || 
+            bgImage.includes('2f4a3c') ||
+            bgImage.includes('linear-gradient') && element.id === 'original' ||
+            bgImage.includes('1a1a1a') || // Check for dark calculator background
+            (element.classList && element.classList.toString().includes('calculator-card'))) {
+          isDark = true
+          break
+        }
+      }
+      
+      setIsMenuOverDark(isDark)
+    }
+    
+    // Check on scroll and animation frame for smooth updates
+    let animationFrame: number
+    const handleScroll = () => {
+      cancelAnimationFrame(animationFrame)
+      animationFrame = requestAnimationFrame(checkMenuBackground)
+    }
+    
+    window.addEventListener('scroll', handleScroll)
+    checkMenuBackground() // Initial check
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      cancelAnimationFrame(animationFrame)
+    }
+  }, [])
+  
+  // Scroll-based animation for menu
+  const { scrollY } = useScroll()
+  // For home page: Fade in the nav AURA inversely with the centered one
+  // For other pages: Always show the AURA logo
+  const navOpacity = useTransform(
+    scrollY, 
+    [0, 400], 
+    isHomePage ? [0, 1] : [1, 1]
+  )
+  // For home page: Fade in the menu background pill at 80% viewport
+  // For other pages: Show pill immediately on scroll
+  const menuBgOpacity = useTransform(
+    scrollY, 
+    isHomePage ? [windowHeight * 0.8, windowHeight * 0.9] : [0, 20], 
+    [0, 1]
+  )
+  
+  // Use state-based colors instead of scroll-based
+  const menuTextColor = isMenuOverDark ? '#F8F4F0' : '#2F4A3C'
+  const logoTextColor = isMenuOverDark ? '#F8F4F0' : '#C96F4A'
+  const logoSubtitleColor = isMenuOverDark ? '#F8F4F0' : '#2F4A3C'
+  
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled || needsSolidNav
-        ? 'bg-white shadow-lg' 
-        : 'bg-transparent'
-    }`}>
-      <div className="w-full px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 group">
-            <div className={`transition-all duration-300 ${
-              isScrolled || needsSolidNav ? 'text-terracotta' : 'text-white drop-shadow-lg'
-            }`}>
-              <span className="font-serif text-3xl font-bold tracking-wider group-hover:text-terracotta-light transition-colors">
+    <div className="fixed top-8 left-16 right-16 z-[100] flex justify-between items-center">
+      <div className="flex items-center">
+        {/* AURA Logo - appears when animation completes */}
+        <motion.div
+          className="flex items-center space-x-2"
+          style={{ 
+            opacity: navOpacity
+          }}
+        >
+          <Link href="/" className="block">
+            <div>
+              <span 
+                className="font-serif text-3xl font-bold tracking-wider transition-colors duration-300"
+                style={{ color: logoTextColor }}
+              >
                 AURA
               </span>
-              <span className="text-xs tracking-[0.3em] uppercase mt-1 block">
+              <span 
+                className="text-xs tracking-[0.3em] uppercase mt-1 block transition-colors duration-300"
+                style={{ color: logoSubtitleColor }}
+              >
                 Villas Bali
               </span>
             </div>
           </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <div key={link.href} className="relative group">
-                {link.dropdown ? (
-                  <>
-                    <button
-                      className={`flex items-center space-x-1 transition-all duration-300 font-medium hover:text-terracotta ${
-                        isScrolled || needsSolidNav ? 'text-deep-green' : 'text-white drop-shadow-lg'
-                      }`}
-                      onMouseEnter={() => setActiveDropdown(link.label)}
-                      onMouseLeave={() => setActiveDropdown(null)}
-                    >
-                      <span>{link.label}</span>
-                      <ChevronDown className="w-4 h-4" />
-                    </button>
-                    
-                    {/* Dropdown Menu */}
-                    <div className={`absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-xl overflow-hidden transition-all duration-300 ${
-                      activeDropdown === link.label 
-                        ? 'opacity-100 translate-y-0 visible' 
-                        : 'opacity-0 -translate-y-2 invisible'
-                    }`}
-                      onMouseEnter={() => setActiveDropdown(link.label)}
-                      onMouseLeave={() => setActiveDropdown(null)}
-                    >
-                      {link.dropdown.map((item) => (
-                        <Link
-                          key={item.href}
-                          href={item.href}
-                          className="block px-4 py-3 text-deep-green hover:bg-sand-light hover:text-terracotta transition-colors"
-                        >
-                          {item.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </>
-                ) : (
-                  <Link
-                    href={link.href}
-                    className={`transition-all duration-300 font-medium hover:text-terracotta ${
-                      isScrolled || needsSolidNav ? 'text-deep-green' : 'text-white drop-shadow-lg'
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                )}
-              </div>
-            ))}
-            
-            {/* Divider */}
-            <div className={`h-6 w-px ${
-              isScrolled || needsSolidNav ? 'bg-gray-300' : 'bg-white/30'
-            }`} />
-            
-            {/* Owner Link with Glass Effect */}
-            <Link
-              href={ownerLink.href}
-              className={`px-6 py-2.5 rounded-full font-medium transition-all duration-300 ${
-                isScrolled || needsSolidNav
-                  ? 'bg-terracotta/10 text-terracotta border border-terracotta/20 hover:bg-terracotta hover:text-white'
-                  : 'bg-white/10 backdrop-blur-md text-white border border-white/20 hover:bg-white/20 drop-shadow-lg'
-              }`}
+        </motion.div>
+        
+        {/* Green Circle Indicator - always visible, centered between logo and menu */}
+        <div 
+          className="w-4 h-4 rounded-full mx-8 transition-colors duration-300"
+          style={{ 
+            backgroundColor: menuTextColor // Use same color as menu text
+          }}
+        />
+        
+        {/* Menu Items Container */}
+        <div className="relative">
+          {/* Glassmorphic Background - appears on scroll */}
+          <motion.div 
+            className="absolute inset-0 rounded-full"
+            style={{
+              background: `rgba(255, 255, 255, 0.1)`,
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+              opacity: menuBgOpacity
+            }}
+          />
+          {/* Menu Items - always visible */}
+          <div className="relative flex items-center px-8 py-3">
+            <Link 
+              href="/villas"
+              className="text-lg font-bold hover:text-[#C96F4A] transition-colors duration-300 mr-20"
+              style={{ color: menuTextColor }}
             >
-              {ownerLink.label}
+              Villas
+            </Link>
+            <Link 
+              href="/about"
+              className="text-lg font-bold hover:text-[#C96F4A] transition-colors duration-300 mr-20"
+              style={{ color: menuTextColor }}
+            >
+              About Us
+            </Link>
+            <Link 
+              href="/contact"
+              className="text-lg font-bold hover:text-[#C96F4A] transition-colors duration-300"
+              style={{ color: menuTextColor }}
+            >
+              Contact
             </Link>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`lg:hidden p-2 transition-colors ${
-              isScrolled || needsSolidNav ? 'text-deep-green' : 'text-white drop-shadow-lg'
-            }`}
+        </div>
+      </div>
+      
+      {/* Buy & Rent Button - Right side - Always visible */}
+      <div className="relative">
+        {/* Glassmorphic Background - appears on scroll */}
+        <motion.div 
+          className="absolute inset-0 rounded-full"
+          style={{
+            background: `rgba(255, 255, 255, 0.1)`,
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+            opacity: menuBgOpacity
+          }}
+        />
+        {/* Buy & Rent Button - same style as other menu items */}
+        <div className="relative flex items-center px-8 py-3">
+          <button 
+            onMouseEnter={() => setShowComingSoon(true)}
+            onMouseLeave={() => setShowComingSoon(false)}
+            className="text-lg font-bold hover:text-[#C96F4A] transition-colors duration-300"
+            style={{ color: menuTextColor }}
           >
-            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            Buy & Rent
           </button>
         </div>
-      </div>
-
-      {/* Mobile Menu */}
-      <div className={`lg:hidden fixed inset-0 top-20 bg-white transition-transform duration-300 ${
-        isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-      }`}>
-        <div className="px-4 py-6 space-y-4">
-          {navLinks.map((link) => (
-            <div key={link.href}>
-              {link.dropdown ? (
-                <div>
-                  <button
-                    className="w-full text-left px-4 py-3 text-deep-green font-medium flex items-center justify-between"
-                    onClick={() => setActiveDropdown(activeDropdown === link.label ? null : link.label)}
-                  >
-                    <span>{link.label}</span>
-                    <ChevronDown className={`w-4 h-4 transition-transform ${
-                      activeDropdown === link.label ? 'rotate-180' : ''
-                    }`} />
-                  </button>
-                  {activeDropdown === link.label && (
-                    <div className="pl-8 space-y-2">
-                      {link.dropdown.map((item) => (
-                        <Link
-                          key={item.href}
-                          href={item.href}
-                          className="block py-2 text-deep-green/70 hover:text-terracotta"
-                          onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                          {item.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <Link
-                  href={link.href}
-                  className="block px-4 py-3 text-deep-green font-medium hover:text-terracotta transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              )}
-            </div>
-          ))}
-          
-          <div className="pt-4 px-4 space-y-3">
-            <Link
-              href={ownerLink.href}
-              className="block w-full text-center px-6 py-3 bg-terracotta/10 text-terracotta border border-terracotta/20 rounded-full font-medium hover:bg-terracotta hover:text-white transition-colors"
-              onClick={() => setIsMobileMenuOpen(false)}
+        
+        {/* Coming Soon Popup */}
+        <AnimatePresence>
+          {showComingSoon && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="absolute top-full mt-2 right-0 bg-white rounded-lg shadow-xl px-6 py-3 z-50"
+              onMouseEnter={() => setShowComingSoon(true)}
+              onMouseLeave={() => setShowComingSoon(false)}
             >
-              {ownerLink.label}
-            </Link>
-          </div>
-        </div>
+              <p className="text-deep-green font-medium">Coming Soon</p>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-    </nav>
+    </div>
   )
 }
