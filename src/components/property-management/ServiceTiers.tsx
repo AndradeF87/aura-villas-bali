@@ -25,10 +25,12 @@ const tiers = [
       'Utility Bills Payment Assistance'
     ],
     notIncluded: [
-      'Custom villa branding',
-      'Direct booking website',
-      'Revenue optimization',
-      'Concierge services'
+      '24/7 Guest Support',
+      'Concierge Services (Tours, Spa, Transport)',
+      'Dedicated Operations Manager',
+      'Direct Staffing & Payroll Management',
+      'Tax Reporting & Compliance',
+      'Full Financial Management'
     ],
     bestFor: 'Villas with existing reputation seeking operational support',
     color: 'from-gray-600 to-gray-700'
