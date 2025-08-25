@@ -82,15 +82,25 @@ export const Navigation = () => {
         const bgColor = computedStyle.backgroundColor
         const bgImage = computedStyle.backgroundImage
         
-        // Check for white backgrounds
-        if (bgColor === 'rgb(255, 255, 255)' || 
+        // Check for white/light backgrounds
+        if (element.classList.contains('bg-white') ||
+            element.classList.contains('bg-sand-light') ||
+            element.classList.contains('bg-cream') ||
+            bgColor === 'rgb(255, 255, 255)' || 
             bgColor === 'rgba(255, 255, 255, 1)' ||
-            element.classList.contains('bg-white')) {
+            // Check for sand color RGB values (approximately)
+            bgColor === 'rgb(251, 247, 242)' ||
+            bgColor === 'rgba(251, 247, 242, 1)' ||
+            // Check for light colors with high RGB values
+            (bgColor && bgColor.startsWith('rgb') && 
+             bgColor.match(/\d+/g) && 
+             bgColor.match(/\d+/g).length >= 3 &&
+             bgColor.match(/\d+/g).slice(0, 3).every(val => parseInt(val) > 230))) {
           isWhite = true
-          break
+          // Don't break - check if there's a dark background on top
         }
         
-        // Check for dark backgrounds
+        // Check for dark backgrounds (these take priority)
         if (element.classList.contains('glassmorphism-section') || 
             element.classList.contains('bg-deep-green') ||
             element.classList.contains('bg-[#2F4A3C]') ||
@@ -99,6 +109,7 @@ export const Navigation = () => {
             bgColor === 'rgba(47, 74, 60, 1)' ||
             (bgImage && bgImage !== 'none')) {
           isDark = true
+          isWhite = false // Dark takes priority
           break
         }
       }
