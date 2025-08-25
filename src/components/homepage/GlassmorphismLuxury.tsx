@@ -99,8 +99,8 @@ export function GlassmorphismLuxury() {
         }
       `}</style>
 
-      {/* Left Side - AURA Branding */}
-      <div className="absolute left-0 top-0 h-full w-2/5 flex flex-col items-center justify-center z-10">
+      {/* Left Side - AURA Branding - Hidden on mobile */}
+      <div className="hidden md:flex absolute left-0 top-0 h-full w-2/5 flex-col items-center justify-center z-10">
         <motion.h1 
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-[#C96F4A] mb-3"
           style={{
@@ -117,23 +117,33 @@ export function GlassmorphismLuxury() {
         </motion.p>
       </div>
 
-      {/* Calculator Container - Centered */}
+      {/* Calculator Container - Full height on mobile, centered on desktop */}
       <motion.div 
-        className="h-full w-full flex items-center justify-center"
+        className="h-screen md:h-full w-full flex items-center justify-center px-4 md:px-0"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, delay: 0.3 }}
       >
         <div 
-          className="calculator-card relative w-full max-w-[450px] mx-auto p-6 sm:p-8 lg:p-[50px] rounded-[20px] overflow-hidden"
+          className="calculator-card relative w-full max-w-[450px] h-[calc(100vh-2rem)] md:h-auto mx-auto p-6 sm:p-8 lg:p-[50px] md:rounded-[20px] overflow-hidden border border-black/50"
           style={{
             background: 'linear-gradient(135deg, #1a1a1a 0%, #2F4A3C 40%, #1a1a1a 100%)',
             boxShadow: '0 20px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1), inset 0 -1px 0 rgba(0,0,0,0.5)'
           }}
         >
-          {/* AURA watermark */}
+          {/* AURA branding for mobile - visible only on mobile with fade effect */}
+          <motion.div 
+            className="block md:hidden mb-6"
+            style={{ opacity: subtitleOpacity }}
+          >
+            <h1 className="text-3xl font-serif text-[#C96F4A] mb-2">AURA</h1>
+            <p className="text-sm text-[#F8F4F0] opacity-80">Property Management Bali</p>
+            <div className="w-full h-[1px] bg-[#C96F4A] mt-4 mb-6"></div>
+          </motion.div>
+
+          {/* AURA watermark - hidden on mobile */}
           <div 
-            className="absolute top-5 right-10 text-[14px] tracking-[4px]"
+            className="hidden md:block absolute top-5 right-10 text-[14px] tracking-[4px]"
             style={{
               color: 'rgba(212,175,55,0.3)',
               textShadow: '0 1px 0 rgba(255,255,255,0.1), 0 -1px 0 rgba(0,0,0,0.5)'
@@ -143,7 +153,7 @@ export function GlassmorphismLuxury() {
           </div>
 
           {/* Progress Indicators */}
-          <div className="flex justify-center gap-5 mb-[35px]">
+          <div className="flex justify-center gap-3 md:gap-5 mb-6 md:mb-[35px]">
             {[1, 2, 3].map((num) => (
               <div
                 key={num}
@@ -168,7 +178,7 @@ export function GlassmorphismLuxury() {
                 transition={{ duration: 0.3 }}
               >
                 <h2 
-                  className="text-[32px] text-white text-center mb-3 leading-[1.2] font-serif"
+                  className="text-2xl md:text-[32px] text-white text-center mb-3 leading-[1.2] font-serif"
                   style={{
                     textShadow: '0 2px 4px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.1)'
                   }}
@@ -176,16 +186,16 @@ export function GlassmorphismLuxury() {
                   Estimate Your Villa's<br/>
                   <span className="text-[#C96F4A]">Earning Potential</span>
                 </h2>
-                <p className="text-[15px] text-[rgba(255,255,255,0.8)] text-center mb-[35px]">
+                <p className="text-sm md:text-[15px] text-[rgba(255,255,255,0.8)] text-center mb-6 md:mb-[35px]">
                   Start by selecting your villa's location
                 </p>
                 
-                <div className="space-y-[15px]">
+                <div className="space-y-3 md:space-y-[15px] overflow-y-auto max-h-[40vh] md:max-h-none">
                   {locations.map((loc) => (
                     <button
                       key={loc}
                       onClick={() => handleLocationSelect(loc)}
-                      className="location-button relative w-full p-5 rounded-xl text-white text-[17px] cursor-pointer transition-all duration-300 overflow-hidden"
+                      className="location-button relative w-full p-4 md:p-5 rounded-xl text-white text-base md:text-[17px] cursor-pointer transition-all duration-300 overflow-hidden"
                       style={{
                         background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)',
                         border: '1px solid rgba(212,175,55,0.2)',
@@ -221,7 +231,7 @@ export function GlassmorphismLuxury() {
                 transition={{ duration: 0.3 }}
               >
                 <h2 
-                  className="text-[32px] text-white text-center mb-3 leading-[1.2] font-serif"
+                  className="text-2xl md:text-[32px] text-white text-center mb-3 leading-[1.2] font-serif"
                   style={{
                     textShadow: '0 2px 4px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.1)'
                   }}
@@ -229,7 +239,7 @@ export function GlassmorphismLuxury() {
                   Number of<br/>
                   <span className="text-[#C96F4A]">Bedrooms</span>
                 </h2>
-                <p className="text-[15px] text-[rgba(255,255,255,0.8)] text-center mb-[35px]">
+                <p className="text-sm md:text-[15px] text-[rgba(255,255,255,0.8)] text-center mb-6 md:mb-[35px]">
                   How many bedrooms does your villa have?
                 </p>
                 
@@ -292,7 +302,7 @@ export function GlassmorphismLuxury() {
                 transition={{ duration: 0.3 }}
               >
                 <h2 
-                  className="text-[32px] text-white text-center mb-3 leading-[1.2] font-serif"
+                  className="text-2xl md:text-[32px] text-white text-center mb-3 leading-[1.2] font-serif"
                   style={{
                     textShadow: '0 2px 4px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.1)'
                   }}
