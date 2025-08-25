@@ -9,7 +9,6 @@ const tiers = [
     icon: Star,
     commission: '15%',
     description: 'For established villas that need a reliable partner',
-    minBookingValue: '$500/night',
     features: [
       'Daily Housekeeping Supervision',
       'Guest Check-in & Check-out Assistance',
@@ -39,7 +38,6 @@ const tiers = [
     icon: Sparkles,
     commission: '18%',
     description: 'Full-service management with growth focus',
-    minBookingValue: '$400/night',
     popular: true,
     features: [
       'Everything in Essential, plus:',
@@ -129,11 +127,12 @@ export function ServiceTiers() {
 
                 {/* Content */}
                 <div className="p-6">
-                  {/* Minimum Booking Value */}
-                  <div className="mb-6 pb-6 border-b border-gray-200">
-                    <div className="text-sm text-gray-600 mb-1">Minimum nightly rate</div>
-                    <div className="font-semibold text-deep-green">{tier.minBookingValue}</div>
-                  </div>
+                  {/* Minimum Booking Value - Only for Boutique Full */}
+                  {tier.name === 'Boutique Full' && (
+                    <div className="mb-6 pb-6 border-b border-gray-200">
+                      <div className="font-bold text-deep-green">Available by Invitation Only</div>
+                    </div>
+                  )}
 
                   {/* Features */}
                   <div className="mb-6">
