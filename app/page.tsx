@@ -30,16 +30,16 @@ export default function Home() {
       <div className="homepage relative overflow-x-hidden">
       {/* Timeline Navigation - Fixed to right side */}
       <TimelineNavigation />
-      {/* Original Design - Fixed/Static */}
-      <section id="original" className="fixed top-0 left-0 right-0 min-h-screen w-full z-0">
+      {/* Original Design - Fixed on desktop, static on mobile */}
+      <section id="original" className="md:fixed md:top-0 md:left-0 md:right-0 min-h-screen w-full md:z-0">
         <GlassmorphismLuxury />
       </section>
       
-      {/* Spacer to allow scrolling */}
-      <div className="h-screen"></div>
+      {/* Spacer to allow scrolling - Desktop only */}
+      <div className="hidden md:block h-screen"></div>
       
-      {/* Main Page Sections - All slide up on scroll */}
-      <div className="relative z-10 bg-white">
+      {/* Main Page Sections - All slide up on scroll on desktop, normal flow on mobile */}
+      <div className="relative md:z-10 bg-white">
         {/* Hero Section with UVP */}
         <PropertyManagementHero />
 
