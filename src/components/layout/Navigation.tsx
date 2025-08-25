@@ -268,55 +268,64 @@ export const Navigation = () => {
       </div>
 
       {/* Mobile Navigation */}
-      <div className="navigation-header fixed top-4 left-4 right-4 z-[100] flex md:hidden justify-between items-center">
-        {/* Mobile Logo - Always Orange */}
-        <motion.div
-          style={{ opacity: isHomePage ? navOpacity : 1 }}
-        >
-          <Link href="/" className="block">
-            <div>
-              <span 
-                className="font-serif text-2xl font-bold tracking-wider text-[#C96F4A]"
-              >
-                AURA
-              </span>
-              <span 
-                className="text-[10px] tracking-[0.2em] uppercase block text-[#C96F4A]"
-              >
-                Villas Bali
-              </span>
-            </div>
-          </Link>
-        </motion.div>
+      <div className="navigation-header fixed top-0 left-0 right-0 z-[100] md:hidden">
+        {/* Mobile Nav Background - appears on scroll */}
+        <motion.div 
+          className="absolute inset-0 bg-deep-green shadow-lg"
+          style={{ opacity: menuBgOpacity }}
+        />
+        
+        {/* Mobile Nav Content */}
+        <div className="relative flex justify-between items-center px-4 py-4">
+          {/* Mobile Logo - Always Orange */}
+          <motion.div
+            style={{ opacity: isHomePage ? navOpacity : 1 }}
+          >
+            <Link href="/" className="block">
+              <div>
+                <span 
+                  className="font-serif text-2xl font-bold tracking-wider text-[#C96F4A]"
+                >
+                  AURA
+                </span>
+                <span 
+                  className="text-[10px] tracking-[0.2em] uppercase block text-white"
+                >
+                  Villas Bali
+                </span>
+              </div>
+            </Link>
+          </motion.div>
 
-        {/* Modern Hamburger Menu Button - Always Orange */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="relative p-3 transition-all duration-300"
-          style={{ 
-            minWidth: '44px',
-            minHeight: '44px'
-          }}
-          aria-label="Toggle menu"
-        >
-          <div className="w-6 h-5 relative flex flex-col justify-between">
-            {mobileMenuOpen ? (
-              <X size={24} className="absolute top-0 left-0 text-[#C96F4A]" />
-            ) : (
-              <>
-                <span 
-                  className="block h-0.5 w-6 bg-[#C96F4A] transition-all duration-300"
-                />
-                <span 
-                  className="block h-0.5 w-4 bg-[#C96F4A] transition-all duration-300 ml-auto"
-                />
-                <span 
-                  className="block h-0.5 w-5 bg-[#C96F4A] transition-all duration-300 ml-auto"
-                />
-              </>
-            )}
-          </div>
-        </button>
+          {/* Modern Hamburger Menu Button - Always Orange */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="relative p-3 transition-all duration-300"
+            style={{ 
+              minWidth: '44px',
+              minHeight: '44px'
+            }}
+            aria-label="Toggle menu"
+          >
+            <div className="w-6 h-5 relative flex flex-col justify-between">
+              {mobileMenuOpen ? (
+                <X size={24} className="absolute top-0 left-0 text-[#C96F4A]" />
+              ) : (
+                <>
+                  <span 
+                    className="block h-0.5 w-6 bg-[#C96F4A] transition-all duration-300"
+                  />
+                  <span 
+                    className="block h-0.5 w-4 bg-[#C96F4A] transition-all duration-300 ml-auto"
+                  />
+                  <span 
+                    className="block h-0.5 w-5 bg-[#C96F4A] transition-all duration-300 ml-auto"
+                  />
+                </>
+              )}
+            </div>
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu Overlay */}

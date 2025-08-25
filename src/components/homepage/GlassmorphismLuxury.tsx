@@ -1,12 +1,14 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
+import { ChevronDown } from 'lucide-react'
 
 export function GlassmorphismLuxury() {
   const [step, setStep] = useState(1)
   const [location, setLocation] = useState('')
   const [bedrooms, setBedrooms] = useState(0)
+  const [showScrollIndicator, setShowScrollIndicator] = useState(true)
   
   const locations = ['Canggu', 'Seminyak', 'Uluwatu']
   const bedroomOptions = [1, 2, 3, 4, 5]
@@ -22,6 +24,20 @@ export function GlassmorphismLuxury() {
   
   // Fade in the nav AURA inversely - as center fades out, nav fades in
   const navOpacity = useTransform(scrollY, [0, 400], [0, 1])
+  
+  // Hide scroll indicator once user starts scrolling
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setShowScrollIndicator(false)
+      } else {
+        setShowScrollIndicator(true)
+      }
+    }
+    
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const handleLocationSelect = (loc: string) => {
     setLocation(loc)
@@ -361,6 +377,43 @@ export function GlassmorphismLuxury() {
           </AnimatePresence>
         </div>
       </motion.div>
+      
+      {/* Mobile Scroll Indicator */}
+      <AnimatePresence>
+        {showScrollIndicator && (
+          <motion.div 
+            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-50 md:hidden"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ 
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="flex flex-col items-center"
+              onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+            >
+              <span className="text-white text-xs mb-2 font-medium">Scroll to explore</span>
+              <div className="w-6 h-10 border-2 border-white/60 rounded-full flex justify-center p-1">
+                <motion.div 
+                  className="w-1.5 h-3 bg-white rounded-full"
+                  animate={{ y: [0, 12, 0] }}
+                  transition={{ 
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
