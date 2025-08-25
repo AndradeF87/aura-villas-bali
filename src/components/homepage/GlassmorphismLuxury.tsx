@@ -391,19 +391,19 @@ export function GlassmorphismLuxury() {
                 <div className="mb-6">
                   <p className="text-white text-sm mb-3 opacity-80">Bedrooms:</p>
                   <div className="grid grid-cols-3 gap-2">
-                    {[2, 3, 4, 5, 6, '7+'].map((num) => (
+                    {[1, 2, 3, 4, 5, '6+'].map((num) => (
                       <button
                         key={num}
                         onClick={() => {
-                          setBedrooms(typeof num === 'string' ? 7 : num)
+                          setBedrooms(typeof num === 'string' ? 6 : num)
                         }}
                         className={`p-3 rounded-lg text-white transition-all duration-300 ${
-                          bedrooms === (typeof num === 'string' ? 7 : num)
+                          bedrooms === (typeof num === 'string' ? 6 : num)
                             ? 'bg-[#C96F4A] border-[#C96F4A]'
                             : ''
                         }`}
                         style={{
-                          background: bedrooms === (typeof num === 'string' ? 7 : num)
+                          background: bedrooms === (typeof num === 'string' ? 6 : num)
                             ? ''
                             : 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)',
                           border: '1px solid rgba(212,175,55,0.2)',
