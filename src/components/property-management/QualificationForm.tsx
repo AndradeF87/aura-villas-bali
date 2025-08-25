@@ -81,7 +81,7 @@ export function QualificationForm() {
 
   if (submitted) {
     return (
-      <section id="qualification" className="py-20 bg-warm-ivory">
+      <section id="qualification" className="min-h-screen flex items-center justify-center py-20 bg-warm-ivory">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
             <div className="w-20 h-20 bg-terracotta rounded-full flex items-center justify-center mx-auto mb-6">
@@ -104,21 +104,22 @@ export function QualificationForm() {
   }
 
   return (
-    <section id="qualification" className="py-20 bg-warm-ivory">
+    <section id="qualification" className="min-h-screen py-20 bg-warm-ivory flex items-center">
       <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="font-serif text-4xl md:text-5xl text-deep-green mb-4">
-            Is Your Villa Right for AURA?
-          </h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-            Tell us about your property and goals. This 2-minute assessment helps us understand 
-            if we're the right partner for your villa's success.
-          </p>
-        </div>
+        <div className="w-full">
+          {/* Section Header */}
+          <div className="text-center mb-12">
+            <h2 className="font-serif text-4xl md:text-5xl text-deep-green mb-4">
+              Is Your Villa Right for AURA?
+            </h2>
+            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+              Tell us about your property and goals. This 2-minute assessment helps us understand 
+              if we're the right partner for your villa's success.
+            </p>
+          </div>
 
-        {/* Progress Bar */}
-        <div className="max-w-3xl mx-auto mb-8">
+          {/* Progress Bar */}
+          <div className="max-w-3xl mx-auto mb-8">
           <div className="flex items-center justify-between mb-4">
             {[1, 2, 3].map((step) => (
               <div
@@ -468,6 +469,7 @@ export function QualificationForm() {
             </div>
           )}
         </form>
+        </div>
       </div>
     </section>
   )
