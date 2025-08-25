@@ -11,12 +11,19 @@ const tiers = [
     description: 'For established villas that need a reliable partner',
     minBookingValue: '$500/night',
     features: [
-      'Professional photography (12 photos)',
-      'Listing on Booking.com & Airbnb',
-      'Basic guest communication',
-      'Check-in/check-out coordination',
-      'Monthly performance reports',
-      'Standard cleaning protocols'
+      'Daily Housekeeping Supervision',
+      'Guest Check-in & Check-out Assistance',
+      'Guest Support (8 AM – 8 PM)',
+      'Maintenance Coordination (Plumbing, AC, Electrical)',
+      'Pool & Garden Scheduling',
+      'Booking Calendar Management',
+      'Monthly Stock Inventory',
+      'Laundry Coordination',
+      'Monthly Owner Report',
+      'Basic Amenities Restocking',
+      'Digital Guest Guidebook',
+      'Monthly Preventive Maintenance Walkthrough',
+      'Utility Bills Payment Assistance'
     ],
     notIncluded: [
       'Custom villa branding',
