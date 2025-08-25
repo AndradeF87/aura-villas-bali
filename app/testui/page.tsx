@@ -27,6 +27,11 @@ export default function TestUI() {
   // Check if menu is over dark background
   useEffect(() => {
     const checkMenuBackground = () => {
+      // Check if running in browser and function exists
+      if (typeof window === 'undefined' || !document.elementsFromPoint) {
+        return
+      }
+      
       // Get the menu position
       const menuElement = document.querySelector('.fixed.top-8.left-16')
       if (!menuElement) return
@@ -41,8 +46,18 @@ export default function TestUI() {
       (menuElement as HTMLElement).style.pointerEvents = 'none';
       (menuElement as HTMLElement).style.visibility = 'hidden'
       
-      // Get all elements at the menu position
-      const elementsAtPoint = document.elementsFromPoint(menuCenterX, menuCenterY)
+      let elementsAtPoint: Element[] = []
+      
+      try {
+        // Get all elements at the menu position
+        elementsAtPoint = document.elementsFromPoint(menuCenterX, menuCenterY)
+      } catch (e) {
+        // Fallback for older browsers
+        const element = document.elementFromPoint(menuCenterX, menuCenterY)
+        if (element) {
+          elementsAtPoint = [element]
+        }
+      }
       
       // Restore menu visibility
       (menuElement as HTMLElement).style.visibility = originalVisibility;
@@ -62,7 +77,8 @@ export default function TestUI() {
             bgImage.includes('47, 74, 60') || 
             bgImage.includes('2f4a3c') ||
             bgImage.includes('linear-gradient') && element.id === 'original' ||
-            (element.classList && element.classList.toString().includes('glassmorphism'))) {
+            bgImage.includes('1a1a1a') || // Check for dark calculator background
+            (element.classList && element.classList.toString().includes('calculator-card'))) {
           isDark = true
           break
         }
