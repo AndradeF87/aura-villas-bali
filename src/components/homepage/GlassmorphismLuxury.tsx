@@ -102,7 +102,7 @@ export function GlassmorphismLuxury() {
       {/* Left Side - AURA Branding */}
       <div className="absolute left-0 top-0 h-full w-2/5 flex flex-col items-center justify-center z-10">
         <motion.h1 
-          className="text-8xl font-serif text-[#C96F4A] mb-3"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-[#C96F4A] mb-3"
           style={{
             opacity: animatedOpacity
           }}
@@ -110,7 +110,7 @@ export function GlassmorphismLuxury() {
           AURA
         </motion.h1>
         <motion.p 
-          className="text-2xl text-[#2F4A3C] font-bold"
+          className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#2F4A3C] font-bold"
           style={{ opacity: subtitleOpacity }}
         >
           Property Management Bali
@@ -125,7 +125,7 @@ export function GlassmorphismLuxury() {
         transition={{ duration: 0.5, delay: 0.3 }}
       >
         <div 
-          className="calculator-card relative w-[450px] p-[50px] rounded-[20px] overflow-hidden"
+          className="calculator-card relative w-full max-w-[450px] mx-auto p-6 sm:p-8 lg:p-[50px] rounded-[20px] overflow-hidden"
           style={{
             background: 'linear-gradient(135deg, #1a1a1a 0%, #2F4A3C 40%, #1a1a1a 100%)',
             boxShadow: '0 20px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1), inset 0 -1px 0 rgba(0,0,0,0.5)'

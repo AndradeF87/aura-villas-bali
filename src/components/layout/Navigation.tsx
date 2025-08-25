@@ -4,14 +4,15 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { Menu, X } from 'lucide-react'
 
 export const Navigation = () => {
-  const [windowHeight, setWindowHeight] = useState(800) // Default height
+  const [windowHeight, setWindowHeight] = useState(800)
   const [isMenuOverDark, setIsMenuOverDark] = useState(false)
   const [showComingSoon, setShowComingSoon] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const pathname = usePathname()
   
-  // Check if we're on the home page
   const isHomePage = pathname === '/'
   
   useEffect(() => {
@@ -21,23 +22,37 @@ export const Navigation = () => {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
   
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileMenuOpen(false)
+  }, [pathname])
+  
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [mobileMenuOpen])
+  
   // Check if menu is over dark background
   useEffect(() => {
     const checkMenuBackground = () => {
-      // Check if running in browser and function exists
       if (typeof window === 'undefined' || !document.elementsFromPoint) {
         return
       }
       
-      // Get the menu position (updated selector for new layout)
-      const menuElement = document.querySelector('.fixed.top-8')
+      const menuElement = document.querySelector('.navigation-header')
       if (!menuElement) return
       
       const menuRect = menuElement.getBoundingClientRect()
       const menuCenterX = menuRect.left + menuRect.width / 2
       const menuCenterY = menuRect.top + menuRect.height / 2
       
-      // Temporarily hide menu elements to check what's behind
       const originalPointerEvents = (menuElement as HTMLElement).style.pointerEvents
       const originalVisibility = (menuElement as HTMLElement).style.visibility;
       (menuElement as HTMLElement).style.pointerEvents = 'none';
@@ -46,36 +61,32 @@ export const Navigation = () => {
       let elementsAtPoint: Element[] = []
       
       try {
-        // Get all elements at the menu position
         elementsAtPoint = document.elementsFromPoint(menuCenterX, menuCenterY)
       } catch (e) {
-        // Fallback for older browsers
-        const element = document.elementFromPoint(menuCenterX, menuCenterY)
-        if (element) {
-          elementsAtPoint = [element]
-        }
+        console.error('elementsFromPoint not supported:', e)
+      } finally {
+        (menuElement as HTMLElement).style.pointerEvents = originalPointerEvents;
+        (menuElement as HTMLElement).style.visibility = originalVisibility
       }
-      
-      // Restore menu visibility
-      (menuElement as HTMLElement).style.visibility = originalVisibility;
-      (menuElement as HTMLElement).style.pointerEvents = originalPointerEvents
       
       let isDark = false
       
-      // Check all elements at that point for dark background
       for (const element of elementsAtPoint) {
-        const styles = window.getComputedStyle(element as HTMLElement)
-        const bgColor = styles.backgroundColor
-        const bgImage = styles.backgroundImage
+        if (element === menuElement || menuElement.contains(element)) {
+          continue
+        }
         
-        // Check for dark green color (#2F4A3C) or gradient containing it
-        // Also check if it's the glassmorphism section with dark gradient
-        if (bgColor === 'rgb(47, 74, 60)' || // #2F4A3C in RGB
-            bgImage.includes('47, 74, 60') || 
-            bgImage.includes('2f4a3c') ||
-            bgImage.includes('linear-gradient') && element.id === 'original' ||
-            bgImage.includes('1a1a1a') || // Check for dark calculator background
-            (element.classList && element.classList.toString().includes('calculator-card'))) {
+        const computedStyle = window.getComputedStyle(element)
+        const bgColor = computedStyle.backgroundColor
+        const bgImage = computedStyle.backgroundImage
+        
+        if (element.classList.contains('glassmorphism-section') || 
+            element.classList.contains('bg-deep-green') ||
+            element.classList.contains('bg-[#2F4A3C]') ||
+            element.classList.contains('dark-section') ||
+            bgColor === 'rgb(47, 74, 60)' ||
+            bgColor === 'rgba(47, 74, 60, 1)' ||
+            (bgImage && bgImage !== 'none')) {
           isDark = true
           break
         }
@@ -84,83 +95,113 @@ export const Navigation = () => {
       setIsMenuOverDark(isDark)
     }
     
-    // Check on scroll and animation frame for smooth updates
-    let animationFrame: number
-    const handleScroll = () => {
-      cancelAnimationFrame(animationFrame)
-      animationFrame = requestAnimationFrame(checkMenuBackground)
-    }
+    checkMenuBackground()
+    window.addEventListener('scroll', checkMenuBackground)
+    window.addEventListener('resize', checkMenuBackground)
     
-    window.addEventListener('scroll', handleScroll)
-    checkMenuBackground() // Initial check
+    const observer = new MutationObserver(checkMenuBackground)
+    observer.observe(document.body, { childList: true, subtree: true })
     
     return () => {
-      window.removeEventListener('scroll', handleScroll)
-      cancelAnimationFrame(animationFrame)
+      window.removeEventListener('scroll', checkMenuBackground)
+      window.removeEventListener('resize', checkMenuBackground)
+      observer.disconnect()
     }
   }, [])
   
-  // Scroll-based animation for menu
   const { scrollY } = useScroll()
-  // For home page: Fade in the nav AURA inversely with the centered one
-  // For other pages: Always show the AURA logo
   const navOpacity = useTransform(
     scrollY, 
     [0, 400], 
     isHomePage ? [0, 1] : [1, 1]
   )
-  // For home page: Fade in the menu background pill at 80% viewport
-  // For other pages: Show pill immediately on scroll
   const menuBgOpacity = useTransform(
     scrollY, 
     isHomePage ? [windowHeight * 0.8, windowHeight * 0.9] : [0, 20], 
     [0, 1]
   )
   
-  // Use state-based colors instead of scroll-based
   const menuTextColor = isMenuOverDark ? '#F8F4F0' : '#2F4A3C'
   const logoTextColor = isMenuOverDark ? '#F8F4F0' : '#C96F4A'
   const logoSubtitleColor = isMenuOverDark ? '#F8F4F0' : '#2F4A3C'
   
   return (
-    <div className="fixed top-8 left-16 right-16 z-[100] flex justify-between items-center">
-      <div className="flex items-center">
-        {/* AURA Logo - appears when animation completes */}
-        <motion.div
-          className="flex items-center space-x-2"
-          style={{ 
-            opacity: navOpacity
-          }}
-        >
-          <Link href="/" className="block">
-            <div>
-              <span 
-                className="font-serif text-3xl font-bold tracking-wider transition-colors duration-300"
-                style={{ color: logoTextColor }}
+    <>
+      {/* Desktop Navigation */}
+      <div className="navigation-header fixed top-4 md:top-8 left-4 md:left-16 right-4 md:right-16 z-[100] hidden md:flex justify-between items-center">
+        <div className="flex items-center">
+          {/* AURA Logo */}
+          <motion.div
+            className="flex items-center space-x-2"
+            style={{ opacity: navOpacity }}
+          >
+            <Link href="/" className="block">
+              <div>
+                <span 
+                  className="font-serif text-2xl md:text-3xl font-bold tracking-wider transition-colors duration-300"
+                  style={{ color: logoTextColor }}
+                >
+                  AURA
+                </span>
+                <span 
+                  className="text-xs tracking-[0.3em] uppercase mt-1 block transition-colors duration-300"
+                  style={{ color: logoSubtitleColor }}
+                >
+                  Villas Bali
+                </span>
+              </div>
+            </Link>
+          </motion.div>
+          
+          {/* Green Circle Indicator */}
+          <div 
+            className="w-4 h-4 rounded-full mx-8 transition-colors duration-300"
+            style={{ backgroundColor: menuTextColor }}
+          />
+          
+          {/* Menu Items Container */}
+          <div className="relative">
+            {/* Glassmorphic Background */}
+            <motion.div 
+              className="absolute inset-0 rounded-full"
+              style={{
+                background: `rgba(255, 255, 255, 0.1)`,
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+                opacity: menuBgOpacity
+              }}
+            />
+            {/* Menu Items */}
+            <div className="relative flex items-center px-8 py-3">
+              <Link 
+                href="/villas"
+                className="text-lg font-bold hover:text-[#C96F4A] transition-colors duration-300 mr-20"
+                style={{ color: menuTextColor }}
               >
-                AURA
-              </span>
-              <span 
-                className="text-xs tracking-[0.3em] uppercase mt-1 block transition-colors duration-300"
-                style={{ color: logoSubtitleColor }}
+                Villas
+              </Link>
+              <Link 
+                href="/about"
+                className="text-lg font-bold hover:text-[#C96F4A] transition-colors duration-300 mr-20"
+                style={{ color: menuTextColor }}
               >
-                Villas Bali
-              </span>
+                About Us
+              </Link>
+              <Link 
+                href="/contact"
+                className="text-lg font-bold hover:text-[#C96F4A] transition-colors duration-300"
+                style={{ color: menuTextColor }}
+              >
+                Contact
+              </Link>
             </div>
-          </Link>
-        </motion.div>
+          </div>
+        </div>
         
-        {/* Green Circle Indicator - always visible, centered between logo and menu */}
-        <div 
-          className="w-4 h-4 rounded-full mx-8 transition-colors duration-300"
-          style={{ 
-            backgroundColor: menuTextColor // Use same color as menu text
-          }}
-        />
-        
-        {/* Menu Items Container */}
+        {/* Buy & Rent Button - Desktop */}
         <div className="relative">
-          {/* Glassmorphic Background - appears on scroll */}
           <motion.div 
             className="absolute inset-0 rounded-full"
             style={{
@@ -172,76 +213,163 @@ export const Navigation = () => {
               opacity: menuBgOpacity
             }}
           />
-          {/* Menu Items - always visible */}
           <div className="relative flex items-center px-8 py-3">
-            <Link 
-              href="/villas"
-              className="text-lg font-bold hover:text-[#C96F4A] transition-colors duration-300 mr-20"
-              style={{ color: menuTextColor }}
-            >
-              Villas
-            </Link>
-            <Link 
-              href="/about"
-              className="text-lg font-bold hover:text-[#C96F4A] transition-colors duration-300 mr-20"
-              style={{ color: menuTextColor }}
-            >
-              About Us
-            </Link>
-            <Link 
-              href="/contact"
+            <button 
+              onMouseEnter={() => setShowComingSoon(true)}
+              onMouseLeave={() => setShowComingSoon(false)}
               className="text-lg font-bold hover:text-[#C96F4A] transition-colors duration-300"
               style={{ color: menuTextColor }}
             >
-              Contact
-            </Link>
+              Buy & Rent
+            </button>
           </div>
+          
+          {/* Coming Soon Popup */}
+          <AnimatePresence>
+            {showComingSoon && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+                className="absolute top-full mt-2 right-0 bg-white rounded-lg shadow-xl px-6 py-3 z-50"
+                onMouseEnter={() => setShowComingSoon(true)}
+                onMouseLeave={() => setShowComingSoon(false)}
+              >
+                <p className="text-deep-green font-medium">Coming Soon</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
-      
-      {/* Buy & Rent Button - Right side - Always visible */}
-      <div className="relative">
-        {/* Glassmorphic Background - appears on scroll */}
-        <motion.div 
-          className="absolute inset-0 rounded-full"
-          style={{
-            background: `rgba(255, 255, 255, 0.1)`,
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
-            border: '1px solid rgba(255, 255, 255, 0.2)',
-            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
-            opacity: menuBgOpacity
+
+      {/* Mobile Navigation */}
+      <div className="navigation-header fixed top-4 left-4 right-4 z-[100] flex md:hidden justify-between items-center">
+        {/* Mobile Logo */}
+        <motion.div
+          style={{ opacity: isHomePage ? navOpacity : 1 }}
+        >
+          <Link href="/" className="block">
+            <div>
+              <span 
+                className="font-serif text-2xl font-bold tracking-wider transition-colors duration-300"
+                style={{ color: isMenuOverDark ? '#F8F4F0' : '#C96F4A' }}
+              >
+                AURA
+              </span>
+              <span 
+                className="text-[10px] tracking-[0.2em] uppercase block transition-colors duration-300"
+                style={{ color: isMenuOverDark ? '#F8F4F0' : '#2F4A3C' }}
+              >
+                Villas Bali
+              </span>
+            </div>
+          </Link>
+        </motion.div>
+
+        {/* Hamburger Menu Button */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="p-2 rounded-lg transition-colors duration-300"
+          style={{ 
+            backgroundColor: isMenuOverDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)',
+            minWidth: '44px',
+            minHeight: '44px'
           }}
-        />
-        {/* Buy & Rent Button - same style as other menu items */}
-        <div className="relative flex items-center px-8 py-3">
-          <button 
-            onMouseEnter={() => setShowComingSoon(true)}
-            onMouseLeave={() => setShowComingSoon(false)}
-            className="text-lg font-bold hover:text-[#C96F4A] transition-colors duration-300"
-            style={{ color: menuTextColor }}
-          >
-            Buy & Rent
-          </button>
-        </div>
-        
-        {/* Coming Soon Popup */}
-        <AnimatePresence>
-          {showComingSoon && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-              className="absolute top-full mt-2 right-0 bg-white rounded-lg shadow-xl px-6 py-3 z-50"
-              onMouseEnter={() => setShowComingSoon(true)}
-              onMouseLeave={() => setShowComingSoon(false)}
-            >
-              <p className="text-deep-green font-medium">Coming Soon</p>
-            </motion.div>
+          aria-label="Toggle menu"
+        >
+          {mobileMenuOpen ? (
+            <X size={24} style={{ color: isMenuOverDark ? '#F8F4F0' : '#2F4A3C' }} />
+          ) : (
+            <Menu size={24} style={{ color: isMenuOverDark ? '#F8F4F0' : '#2F4A3C' }} />
           )}
-        </AnimatePresence>
+        </button>
       </div>
-    </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-black/80 z-[99] md:hidden"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+              className="absolute right-0 top-0 bottom-0 w-[80%] max-w-sm bg-white shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Mobile Menu Header */}
+              <div className="flex justify-between items-center p-6 border-b border-gray-100">
+                <div>
+                  <span className="font-serif text-2xl font-bold text-[#C96F4A] tracking-wider">
+                    AURA
+                  </span>
+                  <span className="text-[10px] tracking-[0.2em] uppercase block text-deep-green mt-1">
+                    Villas Bali
+                  </span>
+                </div>
+                <button
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="p-2 rounded-lg bg-gray-50 min-w-[44px] min-h-[44px]"
+                  aria-label="Close menu"
+                >
+                  <X size={24} className="text-deep-green" />
+                </button>
+              </div>
+
+              {/* Mobile Menu Links */}
+              <nav className="p-6">
+                <Link
+                  href="/villas"
+                  className="block py-4 text-xl font-semibold text-deep-green hover:text-[#C96F4A] transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Villas
+                </Link>
+                <Link
+                  href="/about"
+                  className="block py-4 text-xl font-semibold text-deep-green hover:text-[#C96F4A] transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  About Us
+                </Link>
+                <Link
+                  href="/contact"
+                  className="block py-4 text-xl font-semibold text-deep-green hover:text-[#C96F4A] transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Contact
+                </Link>
+                <button
+                  className="block w-full text-left py-4 text-xl font-semibold text-deep-green hover:text-[#C96F4A] transition-colors"
+                  onClick={() => {
+                    setMobileMenuOpen(false)
+                    // Show coming soon toast or modal
+                    alert('Coming Soon')
+                  }}
+                >
+                  Buy & Rent
+                  <span className="text-sm text-gray-500 block mt-1">Coming Soon</span>
+                </button>
+              </nav>
+
+              {/* Mobile Menu Footer */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-gray-100">
+                <p className="text-sm text-gray-500 text-center">
+                  © 2025 AURA Villas Bali
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   )
 }

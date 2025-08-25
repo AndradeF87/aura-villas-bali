@@ -205,12 +205,22 @@ export function TimelineNavigation() {
   const labelTextColor = isOverDarkBg ? '#F8F4F0' : '#2F4A3C'
 
   return (
-    <div 
-      className="fixed right-12 top-1/2 -translate-y-1/2 z-[90] hidden md:block" 
-      style={{ height: '70vh' }}
-      onMouseEnter={() => setIsTimelineHovered(true)}
-      onMouseLeave={() => setIsTimelineHovered(false)}
-    >
+    <>
+      {/* Mobile Progress Bar */}
+      <div className="fixed top-0 left-0 right-0 h-1 bg-gray-200/30 z-[90] md:hidden">
+        <motion.div 
+          className="h-full bg-gradient-to-r from-[#C96F4A] to-[#2F4A3C]"
+          style={{ width: scrollYProgress }}
+        />
+      </div>
+
+      {/* Desktop Timeline Navigation */}
+      <div 
+        className="fixed right-12 top-1/2 -translate-y-1/2 z-[90] hidden md:block" 
+        style={{ height: '70vh' }}
+        onMouseEnter={() => setIsTimelineHovered(true)}
+        onMouseLeave={() => setIsTimelineHovered(false)}
+      >
       {/* Timeline container - now with explicit height */}
       <div className="relative h-full flex items-center">
         {/* Background line */}
@@ -289,5 +299,6 @@ export function TimelineNavigation() {
         </div>
       </div>
     </div>
+    </>
   )
 }
