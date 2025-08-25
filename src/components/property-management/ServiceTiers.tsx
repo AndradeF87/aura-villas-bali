@@ -8,6 +8,7 @@ const tiers = [
     name: 'Essential',
     icon: Star,
     commission: '15%',
+    commissionNote: '(after OTA Fees)',
     description: 'For established villas that need a reliable partner',
     features: [
       'Daily Housekeeping Supervision',
@@ -39,6 +40,7 @@ const tiers = [
     name: 'Premium',
     icon: Sparkles,
     commission: '18%',
+    commissionNote: '(after OTA Fees)',
     description: 'Full-service management with growth focus',
     popular: true,
     features: [
@@ -62,7 +64,8 @@ const tiers = [
   {
     name: 'Boutique Full',
     icon: Crown,
-    commission: '20-22%',
+    commission: '23%',
+    commissionNote: '(after OTA Fees)',
     description: 'White-glove service for exceptional properties',
     minBookingValue: 'By invitation',
     features: [
@@ -125,7 +128,7 @@ export function ServiceTiers() {
                     <Icon className="w-8 h-8" />
                     <div className="text-right">
                       <div className="text-3xl font-bold">{tier.commission}</div>
-                      <div className="text-sm opacity-90">commission</div>
+                      <div className="text-xs opacity-90">{tier.commissionNote}</div>
                     </div>
                   </div>
                   <h3 className="font-serif text-2xl mb-2">{tier.name}</h3>
