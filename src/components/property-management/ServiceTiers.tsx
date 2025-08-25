@@ -41,14 +41,18 @@ const tiers = [
     popular: true,
     features: [
       'Everything in Essential, plus:',
-      'Custom villa storytelling & branding',
-      'Professional photography (24+ photos)',
-      'Direct booking website',
-      'Dynamic pricing optimization',
-      'Guest concierge services',
-      'Social media management',
-      'Quarterly strategy reviews',
-      'Enhanced cleaning with amenities'
+      '24/7 Guest Support',
+      'In-Villa Welcome (with refreshments)',
+      'Concierge Services (Tours, Spa, Transport)',
+      'Weekly Villa Inspections (with photo/video reports)',
+      'Dedicated Operations Manager',
+      'Monthly Deep Cleaning Coordination',
+      'Priority Maintenance Response + Repairs Buffer (Rp 500,000/month included)',
+      'Personalized Guest Gifts',
+      'VIP Amenities (Premium toiletries & gifts – at cost)',
+      'Staff Hiring Assistance (optional)',
+      'Quarterly Performance Review',
+      'Local Authority Liaison (Banjar, licensing)'
     ],
     bestFor: 'Villas wanting to maximize revenue and guest satisfaction',
     color: 'from-terracotta to-terracotta-dark'
