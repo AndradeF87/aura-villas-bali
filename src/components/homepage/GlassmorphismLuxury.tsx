@@ -211,7 +211,7 @@ export function GlassmorphismLuxury() {
                     <button
                       key={loc}
                       onClick={() => handleLocationSelect(loc)}
-                      className="location-button relative w-full p-4 md:p-5 rounded-xl text-white text-base md:text-[17px] cursor-pointer transition-all duration-300 overflow-hidden"
+                      className="location-button relative w-full p-4 md:p-5 rounded-xl text-white text-lg md:text-[17px] font-medium cursor-pointer transition-all duration-300 overflow-hidden"
                       style={{
                         background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)',
                         border: '1px solid rgba(212,175,55,0.2)',
@@ -384,7 +384,7 @@ export function GlassmorphismLuxury() {
           <motion.div 
             className="absolute left-1/2 transform -translate-x-1/2 z-50 md:hidden"
             style={{ 
-              bottom: 'calc(env(safe-area-inset-bottom, 0px) + 80px)' // Account for iOS Safari bottom bar
+              bottom: 'calc(env(safe-area-inset-bottom, 0px) + 120px)' // Higher position for iOS Safari bottom bar
             }}
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}

@@ -1,8 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
 
 interface Testimonial {
   id: number
@@ -55,6 +55,22 @@ const testimonials: Testimonial[] = [
 export function SuccessStories() {
   const [activeIndex, setActiveIndex] = useState(0)
   const activeTestimonial = testimonials[activeIndex]
+  const containerRef = useRef<HTMLDivElement>(null)
+  const x = useMotionValue(0)
+  
+  // Handle swipe gestures
+  const handleDragEnd = (event: any, info: any) => {
+    const swipeThreshold = 50
+    
+    if (info.offset.x > swipeThreshold && activeIndex > 0) {
+      setActiveIndex(activeIndex - 1)
+    } else if (info.offset.x < -swipeThreshold && activeIndex < testimonials.length - 1) {
+      setActiveIndex(activeIndex + 1)
+    }
+    
+    // Reset position
+    animate(x, 0, { type: 'spring', stiffness: 300, damping: 30 })
+  }
 
   return (
     <section className="py-24 bg-white">
@@ -76,7 +92,16 @@ export function SuccessStories() {
         </motion.div>
 
         {/* Testimonial Card */}
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <motion.div 
+          className="grid md:grid-cols-2 gap-12 items-center overflow-hidden"
+          ref={containerRef}
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0.2}
+          onDragEnd={handleDragEnd}
+          style={{ x }}
+          whileTap={{ cursor: 'grabbing' }}
+        >
           {/* Left side - Content */}
           <motion.div
             key={activeTestimonial.id}
@@ -84,40 +109,56 @@ export function SuccessStories() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="mb-8">
-              <h3 className="text-3xl font-serif text-[#2F4A3C] mb-2">
+            {/* Navigation Dots - Mobile Only at Top */}
+            <div className="flex md:hidden justify-center gap-3 mb-6">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveIndex(index)}
+                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                    index === activeIndex 
+                      ? 'bg-[#C96F4A] w-6' 
+                      : 'bg-gray-300'
+                  }`}
+                  aria-label={`View testimonial ${index + 1}`}
+                />
+              ))}
+            </div>
+            
+            <div className="mb-6 md:mb-8">
+              <h3 className="text-xl md:text-3xl font-serif text-[#2F4A3C] mb-1 md:mb-2">
                 {activeTestimonial.name}
               </h3>
-              <p className="text-gray-600">
+              <p className="text-sm md:text-base text-gray-600">
                 {activeTestimonial.villaName}, {activeTestimonial.location}
               </p>
             </div>
 
-            <blockquote className="text-xl text-gray-700 italic mb-12">
+            <blockquote className="text-base md:text-xl text-gray-700 italic mb-8 md:mb-12">
               "{activeTestimonial.quote}"
             </blockquote>
 
             {/* Revenue Results */}
-            <div className="space-y-6">
-              <h4 className="text-lg font-bold text-[#2F4A3C]">Revenue Results</h4>
+            <div className="space-y-4 md:space-y-6">
+              <h4 className="text-base md:text-lg font-bold text-[#2F4A3C]">Revenue Results</h4>
               
-              <div className="grid grid-cols-2 gap-8">
+              <div className="grid grid-cols-2 gap-4 md:gap-8">
                 <div>
-                  <p className="text-sm text-gray-500 mb-1">Before AURA</p>
-                  <p className="text-2xl font-bold text-gray-700">
+                  <p className="text-xs md:text-sm text-gray-500 mb-1">Before AURA</p>
+                  <p className="text-xl md:text-2xl font-bold text-gray-700">
                     {activeTestimonial.beforeRevenue}
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500 mb-1">With AURA</p>
-                  <p className="text-2xl font-bold text-[#C96F4A]">
+                  <p className="text-xs md:text-sm text-gray-500 mb-1">With AURA</p>
+                  <p className="text-xl md:text-2xl font-bold text-[#C96F4A]">
                     {activeTestimonial.afterRevenue}
                   </p>
                 </div>
               </div>
 
-              <div className="pt-6 border-t border-gray-200">
-                <p className="text-3xl font-bold text-[#2F4A3C]">
+              <div className="pt-4 md:pt-6 border-t border-gray-200">
+                <p className="text-2xl md:text-3xl font-bold text-[#2F4A3C]">
                   {activeTestimonial.increasePercent}% revenue increase
                 </p>
               </div>
@@ -144,10 +185,10 @@ export function SuccessStories() {
             />
             */}
           </motion.div>
-        </div>
+        </motion.div>
 
-        {/* Navigation Dots */}
-        <div className="flex justify-center gap-3 mt-12">
+        {/* Navigation Dots - Desktop Only */}
+        <div className="hidden md:flex justify-center gap-3 mt-12">
           {testimonials.map((_, index) => (
             <button
               key={index}
