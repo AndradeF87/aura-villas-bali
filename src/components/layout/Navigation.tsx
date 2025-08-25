@@ -201,24 +201,36 @@ export const Navigation = () => {
             <div className="relative flex items-center px-8 py-3">
               <Link 
                 href="/villas"
-                className="text-lg font-bold hover:text-[#C96F4A] transition-colors duration-300 mr-20"
+                className="text-lg font-bold hover:text-[#C96F4A] transition-colors duration-300 mr-20 relative group"
                 style={{ color: menuTextColor }}
               >
                 Villas
+                <span 
+                  className="absolute bottom-0 left-0 w-0 h-[2px] transition-all duration-300 group-hover:w-full"
+                  style={{ backgroundColor: menuTextColor }}
+                />
               </Link>
               <Link 
                 href="/about"
-                className="text-lg font-bold hover:text-[#C96F4A] transition-colors duration-300 mr-20"
+                className="text-lg font-bold hover:text-[#C96F4A] transition-colors duration-300 mr-20 relative group"
                 style={{ color: menuTextColor }}
               >
                 About Us
+                <span 
+                  className="absolute bottom-0 left-0 w-0 h-[2px] transition-all duration-300 group-hover:w-full"
+                  style={{ backgroundColor: menuTextColor }}
+                />
               </Link>
               <Link 
                 href="/contact"
-                className="text-lg font-bold hover:text-[#C96F4A] transition-colors duration-300"
+                className="text-lg font-bold hover:text-[#C96F4A] transition-colors duration-300 relative group"
                 style={{ color: menuTextColor }}
               >
                 Contact
+                <span 
+                  className="absolute bottom-0 left-0 w-0 h-[2px] transition-all duration-300 group-hover:w-full"
+                  style={{ backgroundColor: menuTextColor }}
+                />
               </Link>
             </div>
           </div>
@@ -241,10 +253,14 @@ export const Navigation = () => {
             <button 
               onMouseEnter={() => setShowComingSoon(true)}
               onMouseLeave={() => setShowComingSoon(false)}
-              className="text-lg font-bold hover:text-[#C96F4A] transition-colors duration-300"
+              className="text-lg font-bold hover:text-[#C96F4A] transition-colors duration-300 relative group"
               style={{ color: menuTextColor }}
             >
               Buy & Rent
+              <span 
+                className="absolute bottom-0 left-0 w-0 h-[2px] transition-all duration-300 group-hover:w-full"
+                style={{ backgroundColor: menuTextColor }}
+              />
             </button>
           </div>
           
