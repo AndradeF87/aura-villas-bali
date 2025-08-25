@@ -57,7 +57,7 @@ export function SuccessStories() {
   const activeTestimonial = testimonials[activeIndex]
 
   return (
-    <section className="py-24 bg-[#F8F4F0]">
+    <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-8">
         {/* Header */}
         <motion.div 

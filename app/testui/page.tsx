@@ -9,7 +9,6 @@ import { HowWeWork } from '@/components/property-management/HowWeWork'
 import { QualificationForm } from '@/components/property-management/QualificationForm'
 import { EarlyPartnerProgram } from '@/components/property-management/EarlyPartnerProgram'
 import { TechnologySection } from '@/components/property-management/TechnologySection'
-import { EarningsCalculator } from '@/components/property-management/EarningsCalculator'
 import { WhatsAppButton } from '@/components/homepage/WhatsAppButton'
 import { TimelineNavigation } from '@/components/testui/TimelineNavigation'
 import { SuccessStories } from '@/components/testui/SuccessStories'
@@ -145,20 +144,22 @@ export default function TestUI() {
               opacity: navOpacity
             }}
           >
-            <div>
-              <span 
-                className="font-serif text-3xl font-bold tracking-wider transition-colors duration-300"
-                style={{ color: logoTextColor }}
-              >
-                AURA
-              </span>
-              <span 
-                className="text-xs tracking-[0.3em] uppercase mt-1 block transition-colors duration-300"
-                style={{ color: logoSubtitleColor }}
-              >
-                Villas Bali
-              </span>
-            </div>
+            <a href="/" className="block">
+              <div>
+                <span 
+                  className="font-serif text-3xl font-bold tracking-wider transition-colors duration-300"
+                  style={{ color: logoTextColor }}
+                >
+                  AURA
+                </span>
+                <span 
+                  className="text-xs tracking-[0.3em] uppercase mt-1 block transition-colors duration-300"
+                  style={{ color: logoSubtitleColor }}
+                >
+                  Villas Bali
+                </span>
+              </div>
+            </a>
           </motion.div>
           
           {/* Green Circle Indicator - always visible, centered between logo and menu */}
@@ -245,12 +246,6 @@ export default function TestUI() {
         {/* Hero Section with UVP */}
         <PropertyManagementHero />
 
-        {/* Three Service Tiers */}
-        <ServiceTiers />
-
-        {/* Earnings Calculator */}
-        <EarningsCalculator />
-
         {/* Success Stories Section */}
         <SuccessStories />
 
@@ -263,11 +258,14 @@ export default function TestUI() {
         {/* Technology Section - Smart Tools, Human Touch */}
         <TechnologySection />
 
+        {/* Qualification Form - Is Your Villa Right for AURA? */}
+        <QualificationForm />
+
+        {/* Three Service Tiers */}
+        <ServiceTiers />
+
         {/* Early Partner Program */}
         <EarlyPartnerProgram />
-
-        {/* Qualification Form */}
-        <QualificationForm />
 
         {/* WhatsApp Button */}
         <WhatsAppButton />
