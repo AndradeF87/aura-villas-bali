@@ -4,7 +4,8 @@ import { GlassmorphismLuxury } from '@/components/homepage/GlassmorphismLuxury'
 import { PropertyManagementHero } from '@/components/property-management/PropertyManagementHero'
 import { ServiceTiers } from '@/components/property-management/ServiceTiers'
 import { HowWeWork } from '@/components/property-management/HowWeWork'
-import { TechnologySectionWrapper } from '@/components/homepage/TechnologySectionWrapper'
+import { QualificationForm } from '@/components/property-management/QualificationForm'
+import { TechnologySection } from '@/components/property-management/TechnologySection'
 import { WhatsAppButton } from '@/components/homepage/WhatsAppButton'
 import { TimelineNavigation } from '@/components/homepage/TimelineNavigation'
 import { SuccessStories } from '@/components/homepage/SuccessStories'
@@ -50,13 +51,13 @@ export default function Home() {
 
         {/* How We Work Process */}
         <HowWeWork />
-      </div>
 
-      {/* Technology Section with Fixed Scroll Effect */}
-      <TechnologySectionWrapper />
+        {/* Technology Section - Smart Tools, Human Touch */}
+        <TechnologySection />
 
-      {/* Continue with normal scroll */}
-      <div className="relative z-10 bg-white">
+        {/* Qualification Form - Is Your Villa Right for AURA? */}
+        <QualificationForm />
+
         {/* Three Service Tiers */}
         <ServiceTiers />
 
