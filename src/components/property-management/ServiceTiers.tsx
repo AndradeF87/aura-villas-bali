@@ -65,15 +65,16 @@ const tiers = [
     minBookingValue: 'By invitation',
     features: [
       'Everything in Premium, plus:',
-      'Dedicated villa manager',
-      'Boutique amenity partnerships',
-      'Influencer marketing program',
-      'Custom guest experiences',
-      'Priority booking management',
-      'Weekly performance optimization',
-      'Staff training & development',
-      'Exclusive AURA Collection benefits',
-      '24/7 owner support line'
+      'Direct Staffing Management - We hire, train, and pay villa staff under AURA payroll',
+      'Complete HR Management (leave, replacement, bonus structure)',
+      'Expense & Cash Flow Management - All operational expenses processed directly',
+      'One simple monthly invoice covering all costs',
+      'Monthly Tax Reporting & Compliance - PPH Tax Reports submitted on your behalf',
+      'Full compliance with Indonesian tax laws',
+      'Monthly financial report with complete breakdown',
+      'Annual Profit & Loss Summary',
+      'Quarterly staff evaluations and performance reports',
+      'Annual CAPEX Planning Assistance for villa improvements'
     ],
     bestFor: 'Boutique villas seeking the highest level of service and revenue',
     color: 'from-deep-green to-deep-green/90'
