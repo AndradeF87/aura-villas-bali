@@ -10,8 +10,8 @@ interface Testimonial {
   villaName: string
   location: string
   quote: string
-  beforeRevenue: string
-  afterRevenue: string
+  beforeOccupancy: string
+  afterOccupancy: string
   increasePercent: number
   image: string
 }
@@ -23,8 +23,8 @@ const testimonials: Testimonial[] = [
     villaName: "Tropical Paradise",
     location: "Seminyak",
     quote: "We live abroad and AURA handles everything perfectly. It's like having a trusted partner who cares about our property as much as we do.",
-    beforeRevenue: "Rp 180M/year",
-    afterRevenue: "Rp 480M/year",
+    beforeOccupancy: "45%",
+    afterOccupancy: "92%",
     increasePercent: 167,
     image: "/images/villa-tropical-paradise.jpg"
   },
@@ -34,8 +34,8 @@ const testimonials: Testimonial[] = [
     villaName: "Ocean View Estate",
     location: "Uluwatu",
     quote: "AURA transformed our villa from a personal retreat into a profitable investment. Their attention to detail is exceptional.",
-    beforeRevenue: "Rp 220M/year",
-    afterRevenue: "Rp 540M/year",
+    beforeOccupancy: "52%",
+    afterOccupancy: "88%",
     increasePercent: 145,
     image: "/images/villa-ocean-view.jpg"
   },
@@ -45,8 +45,8 @@ const testimonials: Testimonial[] = [
     villaName: "Sunset Haven",
     location: "Canggu",
     quote: "The personalized service and strategic marketing have exceeded our expectations. Our occupancy rate has never been higher.",
-    beforeRevenue: "Rp 150M/year",
-    afterRevenue: "Rp 420M/year",
+    beforeOccupancy: "40%",
+    afterOccupancy: "95%",
     increasePercent: 180,
     image: "/images/villa-sunset-haven.jpg"
   }
@@ -138,21 +138,21 @@ export function SuccessStories() {
               "{activeTestimonial.quote}"
             </blockquote>
 
-            {/* Revenue Results */}
+            {/* Occupancy Results */}
             <div className="space-y-4 md:space-y-6">
-              <h4 className="text-base md:text-lg font-bold text-[#2F4A3C]">Revenue Results</h4>
+              <h4 className="text-base md:text-lg font-bold text-[#2F4A3C]">Occupancy Results</h4>
               
               <div className="grid grid-cols-2 gap-4 md:gap-8">
                 <div>
                   <p className="text-xs md:text-sm text-gray-500 mb-1">Before AURA</p>
                   <p className="text-xl md:text-2xl font-bold text-gray-700">
-                    {activeTestimonial.beforeRevenue}
+                    {activeTestimonial.beforeOccupancy}
                   </p>
                 </div>
                 <div>
                   <p className="text-xs md:text-sm text-gray-500 mb-1">With AURA</p>
                   <p className="text-xl md:text-2xl font-bold text-[#C96F4A]">
-                    {activeTestimonial.afterRevenue}
+                    {activeTestimonial.afterOccupancy}
                   </p>
                 </div>
               </div>

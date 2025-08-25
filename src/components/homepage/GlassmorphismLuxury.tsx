@@ -9,7 +9,20 @@ export function GlassmorphismLuxury() {
   const [location, setLocation] = useState('')
   const [bedrooms, setBedrooms] = useState(0)
   const [villaCategory, setVillaCategory] = useState('')
+  const [amenities, setAmenities] = useState<string[]>([])
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
   const [showScrollIndicator, setShowScrollIndicator] = useState(true)
+  
+  // Auto-hide scroll indicator after 8 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowScrollIndicator(false)
+    }, 8000)
+    
+    return () => clearTimeout(timer)
+  }, [])
   
   const locations = ['Canggu', 'Seminyak', 'Uluwatu']
   const bedroomOptions = [1, 2, 3, 4, 5]
@@ -455,7 +468,7 @@ export function GlassmorphismLuxury() {
                     e.currentTarget.style.boxShadow = '0 4px 10px rgba(201,111,74,0.3)'
                   }}
                 >
-                  Calculate Earnings
+                  Get My Earnings Estimate →
                 </button>
               </motion.div>
             )}
@@ -474,54 +487,106 @@ export function GlassmorphismLuxury() {
                     textShadow: '0 2px 4px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.1)'
                   }}
                 >
-                  Your Potential<br/>
-                  <span className="text-[#C96F4A]">Earnings</span>
+                  Get Your<br/>
+                  <span className="text-[#C96F4A]">Earnings Estimate</span>
                 </h2>
                 
-                <div className="mt-8 space-y-4">
-                  <div 
-                    className="p-4 rounded-xl"
-                    style={{ 
-                      background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)',
-                      border: '1px solid rgba(212,175,55,0.1)'
-                    }}
-                  >
-                    <p className="text-[rgba(255,255,255,0.6)] text-sm">Per Night</p>
-                    <p className="text-3xl font-serif text-white">${calculateEarnings().nightly}</p>
+                <p className="text-sm text-[rgba(255,255,255,0.8)] text-center mb-4">
+                  Based on your inputs, we can provide an initial earnings estimate for your {villaCategory || 'luxury'} villa in {location || 'Bali'}
+                </p>
+                
+                <div className="bg-[rgba(255,255,255,0.05)] backdrop-blur-sm rounded-xl p-4 mb-6 border border-[rgba(201,111,74,0.2)]">
+                  <p className="text-xs text-[rgba(255,255,255,0.7)] mb-3 font-semibold">What happens next:</p>
+                  <ul className="space-y-2 text-xs text-[rgba(255,255,255,0.9)]">
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#C96F4A] mt-0.5">✓</span>
+                      <span>Personalized earnings estimate with AURA managing your {bedrooms || '3'}-bedroom {villaCategory || 'luxury'} villa</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#C96F4A] mt-0.5">✓</span>
+                      <span>How AURA achieves an average 90% occupancy vs 74% market average</span>
+                    </li>
+                  </ul>
+                  <div className="mt-3 pt-3 border-t border-[rgba(255,255,255,0.1)]">
+                    <p className="text-[10px] text-[rgba(255,255,255,0.6)] text-center">
+                      <span className="text-white font-semibold">No Obligation</span> • 
+                      <span className="text-[#C96F4A] font-bold">Free Estimate within 24h</span>
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="space-y-4">
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="Your Name *"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className="w-full p-4 rounded-xl bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-white placeholder-[rgba(255,255,255,0.4)] focus:outline-none focus:border-[#C96F4A] transition-colors"
+                      style={{
+                        backdropFilter: 'blur(10px)',
+                        WebkitBackdropFilter: 'blur(10px)'
+                      }}
+                    />
                   </div>
                   
-                  <div 
-                    className="p-4 rounded-xl"
-                    style={{ 
-                      background: 'linear-gradient(135deg, rgba(201,111,74,0.1) 0%, rgba(201,111,74,0.05) 100%)',
-                      border: '1px solid rgba(201,111,74,0.2)'
-                    }}
-                  >
-                    <p className="text-[rgba(255,255,255,0.6)] text-sm">Monthly (est. 20 nights)</p>
-                    <p className="text-3xl font-serif text-[#C96F4A]">${calculateEarnings().monthly.toLocaleString()}</p>
+                  <div>
+                    <input
+                      type="email"
+                      placeholder="Email Address *"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="w-full p-4 rounded-xl bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-white placeholder-[rgba(255,255,255,0.4)] focus:outline-none focus:border-[#C96F4A] transition-colors"
+                      style={{
+                        backdropFilter: 'blur(10px)',
+                        WebkitBackdropFilter: 'blur(10px)'
+                      }}
+                    />
                   </div>
                   
-                  <div 
-                    className="p-4 rounded-xl"
-                    style={{ 
-                      background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)',
-                      border: '1px solid rgba(212,175,55,0.1)'
-                    }}
-                  >
-                    <p className="text-[rgba(255,255,255,0.6)] text-sm">Yearly Potential</p>
-                    <p className="text-3xl font-serif text-white">${calculateEarnings().yearly.toLocaleString()}</p>
+                  <div>
+                    <input
+                      type="tel"
+                      placeholder="Phone Number (Optional)"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      className="w-full p-4 rounded-xl bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-white placeholder-[rgba(255,255,255,0.4)] focus:outline-none focus:border-[#C96F4A] transition-colors"
+                      style={{
+                        backdropFilter: 'blur(10px)',
+                        WebkitBackdropFilter: 'blur(10px)'
+                      }}
+                    />
                   </div>
                 </div>
 
                 <button
                   onClick={() => {
+                    if (!name || !email) {
+                      alert('Please fill in all required fields')
+                      return
+                    }
+                    // Validate email format
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+                    if (!emailRegex.test(email)) {
+                      alert('Please enter a valid email address')
+                      return
+                    }
+                    // Handle form submission here
+                    alert(`Thank you ${name}! We'll send your earnings estimate to ${email} and contact you to schedule a consultation for a detailed, property-specific assessment.`)
+                    // Reset form
                     setStep(1)
                     setLocation('')
+                    setVillaCategory('')
                     setBedrooms(0)
+                    setAmenities([])
+                    setName('')
+                    setEmail('')
+                    setPhone('')
                   }}
-                  className="mt-8 w-full p-4 rounded-full bg-[#C96F4A] text-white font-semibold transition-all duration-300 hover:bg-[#B05F3A] hover:shadow-[0_4px_15px_rgba(201,111,74,0.3)]"
+                  className="mt-8 w-full p-4 rounded-full bg-[#C96F4A] text-white font-semibold transition-all duration-300 hover:bg-[#B05F3A] hover:shadow-[0_4px_15px_rgba(201,111,74,0.3)] disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={!name || !email}
                 >
-                  Calculate Again
+                  Get My Estimate
                 </button>
               </motion.div>
             )}
