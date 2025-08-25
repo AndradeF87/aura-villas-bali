@@ -8,6 +8,7 @@ export function GlassmorphismLuxury() {
   const [step, setStep] = useState(1)
   const [location, setLocation] = useState('')
   const [bedrooms, setBedrooms] = useState(0)
+  const [villaCategory, setVillaCategory] = useState('')
   const [showScrollIndicator, setShowScrollIndicator] = useState(true)
   
   const locations = ['Canggu', 'Seminyak', 'Uluwatu']
@@ -50,14 +51,23 @@ export function GlassmorphismLuxury() {
   }
   
   const calculateEarnings = () => {
-    const baseRates: { [key: string]: number } = {
-      'Canggu': 500,
-      'Seminyak': 600,
-      'Uluwatu': 700
+    // Base rates by location
+    const locationRates: { [key: string]: number } = {
+      'Canggu': 1.0,
+      'Seminyak': 1.2,
+      'Uluwatu': 1.3
     }
     
-    const baseRate = baseRates[location] || 500
-    const nightlyRate = baseRate + (bedrooms * 100)
+    // Base rates by villa category
+    const categoryRates: { [key: string]: number } = {
+      'premium': 400,
+      'luxury': 800,
+      'ultra-luxury': 1500
+    }
+    
+    const baseRate = categoryRates[villaCategory] || 400
+    const locationMultiplier = locationRates[location] || 1.0
+    const nightlyRate = Math.round(baseRate * locationMultiplier)
     const monthlyEarnings = nightlyRate * 20 // Assuming 20 nights/month occupancy
     const yearlyEarnings = monthlyEarnings * 12
     
@@ -170,7 +180,7 @@ export function GlassmorphismLuxury() {
 
           {/* Progress Indicators */}
           <div className="flex justify-center gap-3 md:gap-5 mb-6 md:mb-[35px]">
-            {[1, 2, 3].map((num) => (
+            {[1, 2, 3, 4].map((num) => (
               <div
                 key={num}
                 className={`w-10 h-10 rounded-full border-2 flex items-center justify-center text-sm font-medium transition-all duration-300 ${
@@ -252,41 +262,33 @@ export function GlassmorphismLuxury() {
                     textShadow: '0 2px 4px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.1)'
                   }}
                 >
-                  Number of<br/>
-                  <span className="text-[#C96F4A]">Bedrooms</span>
+                  Villa<br/>
+                  <span className="text-[#C96F4A]">Category</span>
                 </h2>
                 <p className="text-sm md:text-[15px] text-[rgba(255,255,255,0.8)] text-center mb-6 md:mb-[35px]">
-                  How many bedrooms does your villa have?
+                  Select your villa category
                 </p>
                 
-                <div className="grid grid-cols-3 gap-4">
-                  {bedroomOptions.map((num) => (
-                    <button
-                      key={num}
-                      onClick={() => handleBedroomSelect(num)}
-                      className="location-button relative p-6 rounded-xl text-white cursor-pointer transition-all duration-300 overflow-hidden"
-                      style={{
-                        background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)',
-                        border: '1px solid rgba(212,175,55,0.2)',
-                        boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.05), 0 2px 5px rgba(0,0,0,0.2)'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'linear-gradient(135deg, rgba(212,175,55,0.1) 0%, rgba(212,175,55,0.05) 100%)'
-                        e.currentTarget.style.borderColor = 'rgba(212,175,55,0.4)'
-                        e.currentTarget.style.transform = 'translateY(-2px)'
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)'
-                        e.currentTarget.style.borderColor = 'rgba(212,175,55,0.2)'
-                        e.currentTarget.style.transform = 'translateY(0)'
-                      }}
-                    >
-                      <div className="text-3xl font-serif">{num}</div>
-                    </button>
-                  ))}
+                <div className="space-y-3">
+                  {/* Standard - Disabled */}
+                  <div
+                    className="relative w-full p-4 rounded-xl text-white opacity-50 cursor-not-allowed"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(100,100,100,0.05) 0%, rgba(100,100,100,0.02) 100%)',
+                      border: '1px solid rgba(100,100,100,0.2)',
+                    }}
+                  >
+                    <div className="font-serif text-lg">Standard</div>
+                    <small className="block text-[13px] text-[rgba(255,255,255,0.4)] mt-1">Not available for AURA management</small>
+                  </div>
+
+                  {/* Premium */}
                   <button
-                    onClick={() => handleBedroomSelect(6)}
-                    className="location-button relative col-span-3 p-6 rounded-xl text-white cursor-pointer transition-all duration-300 overflow-hidden"
+                    onClick={() => {
+                      setVillaCategory('premium')
+                      setStep(3)
+                    }}
+                    className="location-button relative w-full p-4 rounded-xl text-white cursor-pointer transition-all duration-300 overflow-hidden"
                     style={{
                       background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)',
                       border: '1px solid rgba(212,175,55,0.2)',
@@ -303,7 +305,62 @@ export function GlassmorphismLuxury() {
                       e.currentTarget.style.transform = 'translateY(0)'
                     }}
                   >
-                    <div className="text-xl font-serif">6+ Bedrooms</div>
+                    <div className="font-serif text-lg">Premium</div>
+                    <small className="block text-[13px] text-[rgba(255,255,255,0.6)] mt-1">High-quality villas with modern amenities</small>
+                  </button>
+
+                  {/* Luxury */}
+                  <button
+                    onClick={() => {
+                      setVillaCategory('luxury')
+                      setStep(3)
+                    }}
+                    className="location-button relative w-full p-4 rounded-xl text-white cursor-pointer transition-all duration-300 overflow-hidden"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)',
+                      border: '1px solid rgba(212,175,55,0.2)',
+                      boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.05), 0 2px 5px rgba(0,0,0,0.2)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'linear-gradient(135deg, rgba(212,175,55,0.1) 0%, rgba(212,175,55,0.05) 100%)'
+                      e.currentTarget.style.borderColor = 'rgba(212,175,55,0.4)'
+                      e.currentTarget.style.transform = 'translateY(-2px)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)'
+                      e.currentTarget.style.borderColor = 'rgba(212,175,55,0.2)'
+                      e.currentTarget.style.transform = 'translateY(0)'
+                    }}
+                  >
+                    <div className="font-serif text-lg">Luxury</div>
+                    <small className="block text-[13px] text-[rgba(255,255,255,0.6)] mt-1">Exceptional properties with premium features</small>
+                  </button>
+
+                  {/* Ultra-Luxury */}
+                  <button
+                    onClick={() => {
+                      setVillaCategory('ultra-luxury')
+                      setStep(3)
+                    }}
+                    className="location-button relative w-full p-4 rounded-xl text-white cursor-pointer transition-all duration-300 overflow-hidden"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)',
+                      border: '1px solid rgba(212,175,55,0.2)',
+                      boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.05), 0 2px 5px rgba(0,0,0,0.2)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'linear-gradient(135deg, rgba(212,175,55,0.1) 0%, rgba(212,175,55,0.05) 100%)'
+                      e.currentTarget.style.borderColor = 'rgba(212,175,55,0.4)'
+                      e.currentTarget.style.transform = 'translateY(-2px)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)'
+                      e.currentTarget.style.borderColor = 'rgba(212,175,55,0.2)'
+                      e.currentTarget.style.transform = 'translateY(0)'
+                    }}
+                  >
+                    <div className="font-serif text-lg">Ultra-Luxury</div>
+                    <small className="block text-[13px] text-[rgba(255,255,255,0.6)] mt-1">Elite estates with world-class amenities</small>
                   </button>
                 </div>
               </motion.div>
@@ -312,6 +369,100 @@ export function GlassmorphismLuxury() {
             {step === 3 && (
               <motion.div
                 key="step3"
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.3 }}
+              >
+                <h2 
+                  className="text-2xl md:text-[32px] text-white text-center mb-3 leading-[1.2] font-serif"
+                  style={{
+                    textShadow: '0 2px 4px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.1)'
+                  }}
+                >
+                  Property<br/>
+                  <span className="text-[#C96F4A]">Details</span>
+                </h2>
+                <p className="text-sm md:text-[15px] text-[rgba(255,255,255,0.8)] text-center mb-6 md:mb-[35px]">
+                  Number of bedrooms and amenities
+                </p>
+                
+                {/* Bedrooms Selection */}
+                <div className="mb-6">
+                  <p className="text-white text-sm mb-3 opacity-80">Bedrooms:</p>
+                  <div className="grid grid-cols-3 gap-2">
+                    {[2, 3, 4, 5, 6, '7+'].map((num) => (
+                      <button
+                        key={num}
+                        onClick={() => {
+                          setBedrooms(typeof num === 'string' ? 7 : num)
+                        }}
+                        className={`p-3 rounded-lg text-white transition-all duration-300 ${
+                          bedrooms === (typeof num === 'string' ? 7 : num)
+                            ? 'bg-[#C96F4A] border-[#C96F4A]'
+                            : ''
+                        }`}
+                        style={{
+                          background: bedrooms === (typeof num === 'string' ? 7 : num)
+                            ? ''
+                            : 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)',
+                          border: '1px solid rgba(212,175,55,0.2)',
+                        }}
+                      >
+                        <div className="text-lg font-serif">{num}</div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Amenities */}
+                <div className="mb-6">
+                  <p className="text-white text-sm mb-3 opacity-80">Select amenities:</p>
+                  <div className="space-y-2">
+                    {['Private Pool', 'Ocean View', 'Beach Access', 'Chef Service'].map((amenity) => (
+                      <label
+                        key={amenity}
+                        className="flex items-center p-3 rounded-lg cursor-pointer transition-all duration-300"
+                        style={{
+                          background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)',
+                          border: '1px solid rgba(212,175,55,0.2)',
+                        }}
+                      >
+                        <input
+                          type="checkbox"
+                          className="mr-3 w-4 h-4"
+                          style={{ accentColor: '#C96F4A' }}
+                        />
+                        <span className="text-white text-sm">{amenity}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => setStep(4)}
+                  className="w-full py-4 rounded-xl text-white font-medium transition-all duration-300"
+                  style={{
+                    background: 'linear-gradient(135deg, #C96F4A 0%, #D4AF37 100%)',
+                    boxShadow: '0 4px 10px rgba(201,111,74,0.3)',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-2px)'
+                    e.currentTarget.style.boxShadow = '0 6px 15px rgba(201,111,74,0.4)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)'
+                    e.currentTarget.style.boxShadow = '0 4px 10px rgba(201,111,74,0.3)'
+                  }}
+                >
+                  Calculate Earnings
+                </button>
+              </motion.div>
+            )}
+
+            {step === 4 && (
+              <motion.div
+                key="step4"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
