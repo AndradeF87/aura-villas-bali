@@ -36,16 +36,19 @@ export async function POST(req: NextRequest) {
           <p><strong>Name:</strong> ${data.ownerName}</p>
           <p><strong>Email:</strong> ${data.email}</p>
           <p><strong>Phone:</strong> ${data.phone || 'Not provided'}</p>
-          <p><strong>Location:</strong> ${data.ownerLocation}</p>
+          <p><strong>Preferred Contact Method:</strong> ${data.preferredContact || 'Email'}</p>
           <hr />
           <h3>Property Details:</h3>
           <p><strong>Villa Name:</strong> ${data.villaName}</p>
-          <p><strong>Location:</strong> ${data.villaLocation}</p>
+          <p><strong>Location:</strong> ${data.location}</p>
           <p><strong>Bedrooms:</strong> ${data.bedrooms}</p>
-          <p><strong>Current Status:</strong> ${data.currentStatus}</p>
-          <p><strong>Goal:</strong> ${data.goal}</p>
-          ${data.additionalInfo ? `<p><strong>Additional Info:</strong> ${data.additionalInfo}</p>` : ''}
-          ${data.challenges ? `<p><strong>Challenges:</strong> ${data.challenges}</p>` : ''}
+          <p><strong>Current Occupancy Rate:</strong> ${data.currentOccupancy}</p>
+          <hr />
+          <h3>Management Information:</h3>
+          <p><strong>Current Management Status:</strong> ${data.managementStatus}</p>
+          <p><strong>Ready Date:</strong> ${data.readyDate}</p>
+          <p><strong>Investment Ready:</strong> ${data.investmentReady}</p>
+          <p><strong>Goals:</strong> ${data.goals}</p>
         `
         break
 

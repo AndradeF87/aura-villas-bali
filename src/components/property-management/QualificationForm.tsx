@@ -88,14 +88,15 @@ export function QualificationForm() {
             ownerName: formData.ownerName,
             email: formData.email,
             phone: formData.phone,
-            ownerLocation: formData.ownerLocation,
+            preferredContact: formData.preferredContact,
             villaName: formData.villaName,
-            villaLocation: formData.location,
+            location: formData.location,
             bedrooms: formData.bedrooms,
-            currentStatus: formData.currentStatus,
-            goal: formData.goal,
-            additionalInfo: formData.additionalInfo,
-            challenges: formData.challenges
+            currentOccupancy: formData.currentOccupancy,
+            managementStatus: formData.managementStatus,
+            readyDate: formData.readyDate,
+            investmentReady: formData.investmentReady,
+            goals: formData.goals
           }
         })
       })

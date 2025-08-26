@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { Check, Star, Sparkles, Crown } from 'lucide-react'
+import { Check, Star, Sparkles, Crown, X, Mail } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const tiers = [
   {
@@ -88,6 +89,66 @@ const tiers = [
 
 export function ServiceTiers() {
   const [selectedTier, setSelectedTier] = useState<number>(1)
+  const [showModal, setShowModal] = useState(false)
+  const [selectedTierName, setSelectedTierName] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [showEnvelope, setShowEnvelope] = useState(false)
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    tier: ''
+  })
+
+  const handleOpenModal = (tierName: string) => {
+    setSelectedTierName(tierName)
+    setFormData({ ...formData, tier: tierName })
+    setShowModal(true)
+  }
+
+  const handleCloseModal = () => {
+    setShowModal(false)
+    setFormData({ name: '', email: '', phone: '', tier: '' })
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: 'contact-form',
+          data: {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            message: `I am interested in learning more about the ${formData.tier} partnership tier. Please contact me with more information.`
+          }
+        })
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to send email')
+      }
+
+      // Show envelope animation
+      setShowEnvelope(true)
+      setTimeout(() => {
+        handleCloseModal()
+        setShowEnvelope(false)
+      }, 2000)
+    } catch (error) {
+      console.error('Error:', error)
+      alert('Sorry, there was an error. Please try again or contact us directly.')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <section id="tiers" className="py-20 bg-warm-ivory">
@@ -179,7 +240,9 @@ export function ServiceTiers() {
                   </div>
 
                   {/* CTA Button */}
-                  <button className={`w-full mt-6 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                  <button 
+                    onClick={() => handleOpenModal(tier.name)}
+                    className={`w-full mt-6 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                     tier.popular 
                       ? 'bg-terracotta text-white hover:bg-terracotta-dark' 
                       : 'bg-white border-2 border-deep-green text-deep-green hover:bg-deep-green hover:text-white'
@@ -202,6 +265,135 @@ export function ServiceTiers() {
           </a>
         </div>
       </div>
+
+      {/* Contact Modal */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl max-w-md w-full p-8 relative">
+            {/* Close button */}
+            <button
+              onClick={handleCloseModal}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            {/* Modal content */}
+            <h3 className="font-serif text-2xl text-deep-green mb-2">
+              {selectedTierName === 'Boutique Full' ? 'Apply for Boutique Full' : `Get Started with ${selectedTierName}`}
+            </h3>
+            <p className="text-gray-600 mb-6">
+              Leave your details and we'll contact you within 24 hours with more information.
+            </p>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Name *
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-terracotta focus:border-transparent"
+                  placeholder="Your name"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Email *
+                </label>
+                <input
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-terracotta focus:border-transparent"
+                  placeholder="your@email.com"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Phone (optional)
+                </label>
+                <input
+                  type="tel"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-terracotta focus:border-transparent"
+                  placeholder="+62 xxx xxxx xxxx"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full px-6 py-3 bg-terracotta text-white rounded-full font-medium hover:bg-terracotta-dark transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? 'Sending...' : 'Submit'}
+              </button>
+            </form>
+
+            <p className="text-xs text-gray-500 mt-4 text-center">
+              By submitting, you agree to be contacted by AURA Villas Bali
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Envelope Animation */}
+      <AnimatePresence>
+        {showEnvelope && (
+          <motion.div
+            className="fixed inset-0 flex items-center justify-center z-[60] pointer-events-none"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              initial={{ scale: 0, x: 0, y: 0 }}
+              animate={{ 
+                scale: [0, 1.2, 1],
+                x: [0, 0, 500],
+                y: [0, -50, -200],
+                rotate: [0, -15, -30]
+              }}
+              transition={{ 
+                duration: 1.5,
+                times: [0, 0.3, 1],
+                ease: "easeOut"
+              }}
+              className="bg-white rounded-lg shadow-2xl p-4"
+            >
+              <Mail className="w-16 h-16 text-terracotta" />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+              className="absolute"
+            >
+              <motion.div
+                animate={{
+                  scale: [1, 1.2, 1],
+                }}
+                transition={{
+                  duration: 0.6,
+                  repeat: 2,
+                  ease: "easeInOut"
+                }}
+                className="text-terracotta font-serif text-2xl"
+              >
+                Message Sent!
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }

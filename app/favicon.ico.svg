@@ -1,4 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-  <rect width="16" height="16" fill="#F8F4F0" rx="2"/>
-  <circle cx="8" cy="8" r="2" fill="#2B6B4F"/>
+  <circle cx="8" cy="8" r="8" fill="#F8F4F0"/>
+  <circle cx="8" cy="8" r="5.3" fill="#2B6B4F"/>
 </svg>

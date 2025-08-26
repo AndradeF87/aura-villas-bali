@@ -19,9 +19,9 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "Emma & David Thompson",
-    villaName: "Tropical Paradise",
-    location: "Seminyak",
+    name: "Yanina & Fede",
+    villaName: "SUYAI Villas Bali",
+    location: "Uluwatu",
     quote: "We live abroad and AURA handles everything perfectly. It's like having a trusted partner who cares about our property as much as we do.",
     beforeOccupancy: "45%",
     afterOccupancy: "92%",

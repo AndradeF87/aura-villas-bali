@@ -30,9 +30,9 @@ const technologies = [
   },
   {
     icon: Shield,
-    title: 'Verified Guest Screening',
-    description: 'Automated background checks and verification systems protect your property while maintaining a smooth booking experience.',
-    benefit: '99.9% incident-free stays'
+    title: 'Respectful Stays',
+    description: 'Smart booking filters and personalized checks ensure your villa is always treated with care.',
+    benefit: '99%+ incident-free stays'
   },
   {
     icon: Zap,
