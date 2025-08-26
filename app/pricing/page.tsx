@@ -482,8 +482,7 @@ export default function PricingPage() {
                           
                           const feature = pkg.features.find(f => f.name === featureName);
                           const isIncluded = feature?.included || 
-                            (featureName === 'Monthly Financial Reports' && pkg.id === 'boutique') ||
-                            (featureName === 'Annual P&L Summary' && pkg.id === 'boutique') ||
+                            pkg.id === 'boutique' || // Boutique Full has everything
                             (featureName === 'Personalized Guest Gifts' && pkg.id === 'premium') ||
                             (featureName === 'VIP Amenities' && pkg.id === 'premium') ||
                             (featureName === 'Quarterly Performance Review' && pkg.id === 'premium');
