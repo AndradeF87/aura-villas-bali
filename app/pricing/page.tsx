@@ -347,7 +347,7 @@ export default function PricingPage() {
       </section>
 
       {/* Tab Navigation */}
-      <section className="sticky top-20 z-40 bg-white border-b border-sand">
+      <section className="sticky top-0 z-40 bg-white border-b border-sand pt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center">
             <div className="inline-flex rounded-full bg-sand-light p-1 my-6">
