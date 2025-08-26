@@ -18,6 +18,7 @@ export const Navigation = () => {
   const isAboutPage = pathname === '/about'
   const isContactPage = pathname === '/contact'
   const isVillasPage = pathname === '/villas'
+  const isPricingPage = pathname === '/pricing'
   
   useEffect(() => {
     setWindowHeight(window.innerHeight)
@@ -153,8 +154,8 @@ export const Navigation = () => {
     [0, 1]
   )
   
-  // On About, Contact, and Villas pages, start with dark text but allow it to change based on background
-  const shouldStartDark = (isAboutPage || isContactPage || isVillasPage) && !isMenuOverDark
+  // On About, Contact, Villas, and Pricing pages, start with dark text but allow it to change based on background
+  const shouldStartDark = (isAboutPage || isContactPage || isVillasPage || isPricingPage) && !isMenuOverDark
   
   const menuTextColor = isMenuOverDark ? '#F8F4F0' : '#2F4A3C'
   const logoTextColor = (shouldStartDark || isOverWhiteBg) && !isMenuOverDark ? '#C96F4A' : (isMenuOverDark ? '#F8F4F0' : '#C96F4A')
@@ -217,6 +218,17 @@ export const Navigation = () => {
                 style={{ color: menuTextColor }}
               >
                 Villas
+                <span 
+                  className="absolute bottom-0 left-0 w-0 h-[2px] transition-all duration-300 group-hover:w-full"
+                  style={{ backgroundColor: menuTextColor }}
+                />
+              </Link>
+              <Link 
+                href="/pricing"
+                className="text-lg font-bold hover:text-[#C96F4A] transition-colors duration-300 mr-20 relative group"
+                style={{ color: menuTextColor }}
+              >
+                Pricing
                 <span 
                   className="absolute bottom-0 left-0 w-0 h-[2px] transition-all duration-300 group-hover:w-full"
                   style={{ backgroundColor: menuTextColor }}
@@ -402,6 +414,13 @@ export const Navigation = () => {
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Villas
+                </Link>
+                <Link
+                  href="/pricing"
+                  className="block py-4 text-xl font-semibold text-deep-green hover:text-[#C96F4A] transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Pricing
                 </Link>
                 <Link
                   href="/about"
