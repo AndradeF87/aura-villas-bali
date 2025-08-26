@@ -167,13 +167,13 @@ export function SuccessStories() {
 
           {/* Right side - Image */}
           <motion.div
-            className="relative h-[500px] bg-gray-200 rounded-2xl overflow-hidden shadow-2xl"
+            className="relative h-[500px] rounded-2xl overflow-hidden"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             style={{
-              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.15), 0 10px 15px rgba(0, 0, 0, 0.12)'
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 10px 25px -5px rgba(0, 0, 0, 0.15)'
             }}
           >
             <Image
