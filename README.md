@@ -114,4 +114,4 @@ vercel
 
 ## 📄 License
 
-© 2024 AURA Villas Bali. All rights reserved.
+© 2024 AURA Villas Bali. All rights reserved.# Trigger Vercel rebuild
