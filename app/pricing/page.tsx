@@ -380,13 +380,13 @@ export default function PricingPage() {
 
       {/* Operational Packages */}
       {activeTab === 'operations' && (
-        <section className="py-20 bg-deep-green">
+        <section className="py-20 bg-gradient-to-b from-white to-sand-light">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="font-serif text-4xl text-white mb-4">
+              <h2 className="font-serif text-4xl text-deep-green mb-4">
                 Villa Operations Management
               </h2>
-              <p className="text-lg text-white/80 max-w-3xl mx-auto">
+              <p className="text-lg text-deep-green/70 max-w-3xl mx-auto">
                 End-to-end villa management with transparent commission-based pricing. 
                 From daily operations to full financial transparency.
               </p>
@@ -394,15 +394,16 @@ export default function PricingPage() {
 
             {/* Comparison Table */}
             <div className="mb-12 pt-10">
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl shadow-xl overflow-visible relative border border-white/20">
+              <div className="bg-white rounded-2xl shadow-xl overflow-visible relative">
                 <div className="overflow-x-auto">
                   <table className="w-full">
                     <thead>
-                      <tr className="border-b-2 border-white/30 relative">
-                      <th className="text-left p-6">
+                      <tr className="border-b-2 border-sand relative">
+                      <th className="text-left p-6 bg-sand-light/50">
+                        <span className="font-serif text-xl text-deep-green">Features</span>
                       </th>
                       {operationalPackages.map((pkg) => (
-                        <th key={pkg.id} className="text-center bg-white/5 min-w-[200px] h-[140px] relative">
+                        <th key={pkg.id} className="text-center bg-sand-light/30 min-w-[200px] h-[140px] relative">
                           {pkg.recommended && (
                             <div className="absolute -top-8 inset-x-0 bg-terracotta text-white text-xs py-1 font-medium rounded-t-lg">
                               MOST POPULAR
@@ -413,18 +414,18 @@ export default function PricingPage() {
                               <div className="text-2xl font-bold text-terracotta">
                                 {pkg.commission}
                               </div>
-                              <div className="text-[10px] text-white/70">
+                              <div className="text-[10px] text-deep-green/60">
                                 (after OTA fees)
                               </div>
                             </div>
                             <div className="absolute bottom-10 left-0 right-0 text-center">
-                              <h3 className="font-serif text-3xl text-white">
+                              <h3 className="font-serif text-3xl text-deep-green">
                                 {pkg.name.split(' ')[0]}
                               </h3>
                             </div>
                             {pkg.id === 'boutique' && (
                               <div className="absolute bottom-3 left-0 right-0 text-center">
-                                <p className="text-xs text-white/60 italic">
+                                <p className="text-xs text-deep-green/60 italic">
                                   by invitation only
                                 </p>
                               </div>
@@ -463,8 +464,8 @@ export default function PricingPage() {
                       'Monthly Financial Reports',
                       'Annual P&L Summary'
                     ].map((featureName, idx) => (
-                      <tr key={idx} className={`border-b border-white/10 ${idx % 2 === 0 ? 'bg-white/5' : 'bg-white/10'}`}>
-                        <td className="p-4 text-sm text-white font-medium">
+                      <tr key={idx} className={`border-b border-sand/30 ${idx % 2 === 0 ? 'bg-white' : 'bg-sand-light/10'}`}>
+                        <td className="p-4 text-sm text-deep-green font-medium">
                           {featureName === 'Guest Support' ? 'Guest Support (8 AM – 8 PM)' : featureName}
                         </td>
                         {operationalPackages.map((pkg) => {
@@ -513,10 +514,10 @@ export default function PricingPage() {
                     ))}
                   </tbody>
                   <tfoot>
-                    <tr className="border-t-2 border-white/30">
-                      <td className="p-6"></td>
+                    <tr className="border-t-2 border-sand">
+                      <td className="p-6 bg-sand-light/50"></td>
                       {operationalPackages.map((pkg) => (
-                        <td key={pkg.id} className="p-6 text-center bg-white/5">
+                        <td key={pkg.id} className="p-6 text-center bg-sand-light/30">
                           <Link
                             href="/contact"
                             className={`inline-block px-6 py-3 rounded-full font-medium transition-all duration-300 ${
@@ -537,23 +538,23 @@ export default function PricingPage() {
           </div>
 
             {/* Trust Indicators */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+            <div className="bg-deep-green rounded-2xl p-8 text-white">
               <div className="grid md:grid-cols-4 gap-8 text-center">
                 <div>
-                  <div className="text-3xl font-bold mb-2 text-white">100+</div>
-                  <div className="text-white/90">Villas Managed</div>
+                  <div className="text-3xl font-bold mb-2">100+</div>
+                  <div className="text-white/80">Villas Managed</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold mb-2 text-white">95%</div>
-                  <div className="text-white/90">Occupancy Rate</div>
+                  <div className="text-3xl font-bold mb-2">95%</div>
+                  <div className="text-white/80">Occupancy Rate</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold mb-2 text-white">50%</div>
-                  <div className="text-white/90">Revenue Increase</div>
+                  <div className="text-3xl font-bold mb-2">50%</div>
+                  <div className="text-white/80">Revenue Increase</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold mb-2 text-white">4.9★</div>
-                  <div className="text-white/90">Guest Rating</div>
+                  <div className="text-3xl font-bold mb-2">4.9★</div>
+                  <div className="text-white/80">Guest Rating</div>
                 </div>
               </div>
             </div>
