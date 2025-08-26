@@ -393,7 +393,7 @@ export default function PricingPage() {
                             </div>
                           )}
                           <div className="relative h-full">
-                            <div className="absolute top-4 right-4 text-right">
+                            <div className="absolute top-2 right-2 text-right">
                               <div className="text-2xl font-bold text-terracotta">
                                 {pkg.commission}
                               </div>
