@@ -120,7 +120,15 @@ export function ChallengesSection() {
               Let us handle the challenges while you enjoy consistent returns. 
               That's the AURA promise—professional management without the stress.
             </p>
-            <button className="px-8 py-3 bg-deep-green text-white rounded-full font-medium hover:bg-deep-green/90 transition-colors duration-300">
+            <button 
+              onClick={() => {
+                const element = document.getElementById('qualification')
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' })
+                }
+              }}
+              className="px-8 py-3 bg-deep-green text-white rounded-full font-medium hover:bg-deep-green/90 transition-colors duration-300"
+            >
               Discover the AURA Difference
             </button>
           </div>
