@@ -416,13 +416,10 @@ export default function PricingPage() {
                               (after OTA fees)
                             </div>
                           </div>
-                          <div className={`${pkg.recommended ? 'pt-8' : 'pt-2'}`}>
-                            <h3 className="font-serif text-2xl text-deep-green mb-2">
+                          <div className={`${pkg.recommended ? 'pt-10' : 'pt-4'}`}>
+                            <h3 className="font-serif text-3xl text-deep-green">
                               {pkg.name.split(' ')[0]}
                             </h3>
-                            <div className="text-xs text-deep-green/70 mt-2 px-4">
-                              {pkg.description}
-                            </div>
                           </div>
                         </th>
                       ))}
