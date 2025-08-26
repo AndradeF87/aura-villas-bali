@@ -30,17 +30,6 @@ const testimonials: Testimonial[] = [
   },
   {
     id: 2,
-    name: "Sarah Mitchell",
-    villaName: "Ocean View Estate",
-    location: "Uluwatu",
-    quote: "AURA transformed our villa from a personal retreat into a profitable investment. Their attention to detail is exceptional.",
-    beforeOccupancy: "52%",
-    afterOccupancy: "88%",
-    increasePercent: 145,
-    image: "/images/villa-ocean-view.jpg"
-  },
-  {
-    id: 3,
     name: "James & Linda Chen",
     villaName: "Sunset Haven",
     location: "Canggu",
