@@ -416,16 +416,18 @@ export default function PricingPage() {
                               (after OTA fees)
                             </div>
                           </div>
-                          <div className="absolute bottom-4 left-0 right-0 text-center">
+                          <div className="absolute bottom-10 left-0 right-0 text-center">
                             <h3 className="font-serif text-3xl text-deep-green">
                               {pkg.name.split(' ')[0]}
                             </h3>
-                            {pkg.id === 'boutique' && (
-                              <p className="text-xs text-deep-green/60 italic mt-1">
+                          </div>
+                          {pkg.id === 'boutique' && (
+                            <div className="absolute bottom-3 left-0 right-0 text-center">
+                              <p className="text-xs text-deep-green/60 italic">
                                 by invitation only
                               </p>
-                            )}
-                          </div>
+                            </div>
+                          )}
                         </th>
                       ))}
                     </tr>
