@@ -399,11 +399,10 @@ export default function PricingPage() {
                   <table className="w-full">
                     <thead>
                       <tr className="border-b-2 border-sand relative">
-                      <th className="text-left p-6 bg-sand-light/50">
-                        <span className="font-serif text-xl text-deep-green">Features</span>
+                      <th className="text-left p-6 bg-sand-light/50 rounded-tl-2xl">
                       </th>
-                      {operationalPackages.map((pkg) => (
-                        <th key={pkg.id} className="text-center bg-sand-light/30 min-w-[200px] h-[140px] relative">
+                      {operationalPackages.map((pkg, index) => (
+                        <th key={pkg.id} className={`text-center bg-sand-light/30 min-w-[200px] h-[140px] relative ${index === operationalPackages.length - 1 ? 'rounded-tr-2xl' : ''}`}>
                           {pkg.recommended && (
                             <div className="absolute -top-8 inset-x-0 bg-terracotta text-white text-xs py-1 font-medium rounded-t-lg">
                               MOST POPULAR
@@ -465,7 +464,7 @@ export default function PricingPage() {
                       'Annual P&L Summary'
                     ].map((featureName, idx) => (
                       <tr key={idx} className={`border-b border-sand/30 ${idx % 2 === 0 ? 'bg-white' : 'bg-sand-light/10'}`}>
-                        <td className="p-4 text-sm text-deep-green font-medium">
+                        <td className="p-4 text-base text-deep-green font-medium">
                           {featureName === 'Guest Support' ? 'Guest Support (8 AM – 8 PM)' : featureName}
                         </td>
                         {operationalPackages.map((pkg) => {
@@ -515,9 +514,9 @@ export default function PricingPage() {
                   </tbody>
                   <tfoot>
                     <tr className="border-t-2 border-sand">
-                      <td className="p-6 bg-sand-light/50"></td>
-                      {operationalPackages.map((pkg) => (
-                        <td key={pkg.id} className="p-6 text-center bg-sand-light/30">
+                      <td className="p-6 bg-sand-light/50 rounded-bl-2xl"></td>
+                      {operationalPackages.map((pkg, index) => (
+                        <td key={pkg.id} className={`p-6 text-center bg-sand-light/30 ${index === operationalPackages.length - 1 ? 'rounded-br-2xl' : ''}`}>
                           <Link
                             href="/contact"
                             className={`inline-block px-6 py-3 rounded-full font-medium transition-all duration-300 ${
