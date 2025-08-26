@@ -431,8 +431,7 @@ export default function PricingPage() {
                     {[
                       'Daily Housekeeping Supervision',
                       'Guest Check-in & Check-out Assistance',
-                      'Guest Support (8 AM – 8 PM)',
-                      '24/7 Guest Support',
+                      'Guest Support',
                       'Maintenance Coordination',
                       'Pool & Garden Scheduling',
                       'Booking Calendar Management',
@@ -458,15 +457,31 @@ export default function PricingPage() {
                     ].map((featureName, idx) => (
                       <tr key={idx} className={`border-b border-sand/30 ${idx % 2 === 0 ? 'bg-white' : 'bg-sand-light/10'}`}>
                         <td className="p-4 text-sm text-deep-green font-medium">
-                          {featureName}
+                          {featureName === 'Guest Support' ? 'Guest Support (8 AM – 8 PM)' : featureName}
                         </td>
                         {operationalPackages.map((pkg) => {
-                          const feature = pkg.features.find(f => 
-                            f.name === featureName || 
-                            (featureName === 'Guest Support (8 AM – 8 PM)' && pkg.id === 'essential' && f.name === 'Guest Check-in & Check-out Assistance')
-                          );
+                          // Special handling for Guest Support
+                          if (featureName === 'Guest Support') {
+                            if (pkg.id === 'essential') {
+                              return (
+                                <td key={pkg.id} className="p-4 text-center">
+                                  <div className="inline-flex items-center justify-center w-8 h-8 bg-terracotta/10 rounded-full">
+                                    <Check className="w-5 h-5 text-terracotta" />
+                                  </div>
+                                </td>
+                              );
+                            } else {
+                              // Premium and Boutique get "24/7" text
+                              return (
+                                <td key={pkg.id} className="p-4 text-center">
+                                  <span className="text-sm font-semibold text-terracotta">24/7</span>
+                                </td>
+                              );
+                            }
+                          }
+                          
+                          const feature = pkg.features.find(f => f.name === featureName);
                           const isIncluded = feature?.included || 
-                            (featureName === 'Guest Support (8 AM – 8 PM)' && pkg.id === 'essential') ||
                             (featureName === 'Monthly Financial Reports' && pkg.id === 'boutique') ||
                             (featureName === 'Annual P&L Summary' && pkg.id === 'boutique') ||
                             (featureName === 'Personalized Guest Gifts' && pkg.id === 'premium') ||
