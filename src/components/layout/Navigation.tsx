@@ -17,6 +17,7 @@ export const Navigation = () => {
   const isHomePage = pathname === '/'
   const isAboutPage = pathname === '/about'
   const isContactPage = pathname === '/contact'
+  const isVillasPage = pathname === '/villas'
   
   useEffect(() => {
     setWindowHeight(window.innerHeight)
@@ -152,8 +153,8 @@ export const Navigation = () => {
     [0, 1]
   )
   
-  // On About and Contact pages, start with dark text but allow it to change based on background
-  const shouldStartDark = (isAboutPage || isContactPage) && !isMenuOverDark
+  // On About, Contact, and Villas pages, start with dark text but allow it to change based on background
+  const shouldStartDark = (isAboutPage || isContactPage || isVillasPage) && !isMenuOverDark
   
   const menuTextColor = isMenuOverDark ? '#F8F4F0' : '#2F4A3C'
   const logoTextColor = (shouldStartDark || isOverWhiteBg) && !isMenuOverDark ? '#C96F4A' : (isMenuOverDark ? '#F8F4F0' : '#C96F4A')
