@@ -28,6 +28,7 @@ import {
 
 export default function PricingPage() {
   const [activeTab, setActiveTab] = useState<'marketing' | 'operations'>('operations')
+  const [activeMarketingSection, setActiveMarketingSection] = useState<'strategy' | 'website' | 'maintenance' | 'social'>('strategy')
   const [expandedPackage, setExpandedPackage] = useState<string | null>(null)
   const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'annual'>('monthly')
 
@@ -549,7 +550,58 @@ export default function PricingPage() {
       {activeTab === 'marketing' && (
         <section className="py-20 bg-gradient-to-b from-white to-sand-light">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Marketing Submenu */}
+            <div className="flex justify-center mb-12">
+              <div className="inline-flex rounded-full bg-sand-light p-1">
+                <button
+                  onClick={() => setActiveMarketingSection('strategy')}
+                  className={`px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
+                    activeMarketingSection === 'strategy'
+                      ? 'bg-deep-green text-white'
+                      : 'text-deep-green hover:text-deep-green/70'
+                  }`}
+                >
+                  <Sparkles className="w-4 h-4 inline mr-1" />
+                  Strategic Brand Growth
+                </button>
+                <button
+                  onClick={() => setActiveMarketingSection('website')}
+                  className={`px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
+                    activeMarketingSection === 'website'
+                      ? 'bg-deep-green text-white'
+                      : 'text-deep-green hover:text-deep-green/70'
+                  }`}
+                >
+                  <Globe className="w-4 h-4 inline mr-1" />
+                  Web Presence
+                </button>
+                <button
+                  onClick={() => setActiveMarketingSection('maintenance')}
+                  className={`px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
+                    activeMarketingSection === 'maintenance'
+                      ? 'bg-deep-green text-white'
+                      : 'text-deep-green hover:text-deep-green/70'
+                  }`}
+                >
+                  <Search className="w-4 h-4 inline mr-1" />
+                  Get Found, Get Booked
+                </button>
+                <button
+                  onClick={() => setActiveMarketingSection('social')}
+                  className={`px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
+                    activeMarketingSection === 'social'
+                      ? 'bg-deep-green text-white'
+                      : 'text-deep-green hover:text-deep-green/70'
+                  }`}
+                >
+                  <MessageSquare className="w-4 h-4 inline mr-1" />
+                  Social Engagement
+                </button>
+              </div>
+            </div>
+
             {/* Strategy Section */}
+            {activeMarketingSection === 'strategy' && (
             <div className="mb-20">
               <div className="text-center mb-12">
                 <div className="flex justify-center items-center gap-3 mb-4">
@@ -563,56 +615,96 @@ export default function PricingPage() {
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                {marketingPackages.strategy.packages.map((pkg) => (
-                  <div
-                    key={pkg.id}
-                    className={`relative bg-white rounded-2xl shadow-lg p-8 ${
-                      pkg.recommended ? 'ring-2 ring-terracotta' : ''
-                    }`}
-                  >
-                    {pkg.recommended && (
-                      <div className="absolute -top-4 right-8 bg-terracotta text-white px-4 py-1 rounded-full text-sm font-medium">
-                        Recommended
-                      </div>
-                    )}
-                    <h3 className="font-serif text-2xl text-deep-green mb-4">{pkg.name}</h3>
-                    <div className="mb-6">
-                      <span className="text-3xl font-bold text-terracotta">
-                        {formatCurrency(pkg.price)}
-                      </span>
-                      <span className="text-deep-green/60 ml-2">one time</span>
-                    </div>
-                    <ul className="space-y-3 mb-8">
-                      {pkg.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-2">
-                          {feature.included ? (
-                            <Check className="w-5 h-5 text-terracotta flex-shrink-0 mt-0.5" />
-                          ) : (
-                            <X className="w-5 h-5 text-gray-300 flex-shrink-0 mt-0.5" />
-                          )}
-                          <span className={`text-sm ${feature.included ? 'text-deep-green' : 'text-gray-400'}`}>
-                            {feature.name}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                    <Link
-                      href="/contact"
-                      className={`block w-full text-center px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                        pkg.recommended
-                          ? 'bg-terracotta text-white hover:bg-terracotta-dark'
-                          : 'border-2 border-terracotta text-terracotta hover:bg-terracotta hover:text-white'
-                      }`}
-                    >
-                      Get Started
-                    </Link>
+              {/* Comparison Table for Strategy */}
+              <div className="mb-12 pt-10">
+                <div className="bg-white rounded-2xl shadow-xl overflow-visible relative max-w-4xl mx-auto">
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead>
+                        <tr className="border-b-2 border-sand relative">
+                          <th className="text-left p-6 bg-sand-light/50 rounded-tl-2xl"></th>
+                          {marketingPackages.strategy.packages.map((pkg, index) => (
+                            <th key={pkg.id} className={`text-center bg-sand-light/30 min-w-[200px] h-[140px] relative ${index === marketingPackages.strategy.packages.length - 1 ? 'rounded-tr-2xl' : ''}`}>
+                              {pkg.recommended && (
+                                <div className="absolute -top-8 inset-x-0 bg-terracotta text-white text-xs py-1 font-medium rounded-t-lg">
+                                  RECOMMENDED
+                                </div>
+                              )}
+                              <div className="relative h-full">
+                                <div className="absolute top-2 right-2 text-right">
+                                  <div className="text-xl font-bold text-terracotta">
+                                    {formatCurrency(pkg.price)}
+                                  </div>
+                                  <div className="text-[10px] text-deep-green/60">
+                                    one time
+                                  </div>
+                                </div>
+                                <div className="absolute bottom-10 left-0 right-0 text-center">
+                                  <h3 className="font-serif text-3xl text-deep-green">
+                                    {pkg.name}
+                                  </h3>
+                                </div>
+                              </div>
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {/* Get all unique features */}
+                        {[...new Set(marketingPackages.strategy.packages.flatMap(pkg => pkg.features.map(f => f.name)))].map((featureName, idx) => (
+                          <tr key={idx} className={`border-b border-sand/30 ${idx % 2 === 0 ? 'bg-white' : 'bg-sand-light/10'}`}>
+                            <td className="p-4 text-base text-deep-green font-medium">
+                              {featureName}
+                            </td>
+                            {marketingPackages.strategy.packages.map((pkg) => {
+                              const feature = pkg.features.find(f => f.name === featureName);
+                              const isIncluded = feature?.included || false;
+                              
+                              return (
+                                <td key={pkg.id} className="p-4 text-center">
+                                  {isIncluded ? (
+                                    <div className="inline-flex items-center justify-center w-8 h-8 bg-terracotta rounded-full">
+                                      <Check className="w-5 h-5 text-white font-bold" />
+                                    </div>
+                                  ) : (
+                                    <div className="inline-flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full">
+                                      <X className="w-5 h-5 text-gray-400" />
+                                    </div>
+                                  )}
+                                </td>
+                              );
+                            })}
+                          </tr>
+                        ))}
+                      </tbody>
+                      <tfoot>
+                        <tr className="border-t-2 border-sand">
+                          <td className="p-6 bg-sand-light/50 rounded-bl-2xl"></td>
+                          {marketingPackages.strategy.packages.map((pkg, index) => (
+                            <td key={pkg.id} className={`p-6 text-center bg-sand-light/30 ${index === marketingPackages.strategy.packages.length - 1 ? 'rounded-br-2xl' : ''}`}>
+                              <Link
+                                href="/contact"
+                                className={`inline-block px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                                  pkg.recommended
+                                    ? 'bg-terracotta text-white hover:bg-terracotta-dark transform hover:scale-105'
+                                    : 'border-2 border-terracotta text-terracotta hover:bg-terracotta hover:text-white'
+                                }`}
+                              >
+                                Get Started
+                              </Link>
+                            </td>
+                          ))}
+                        </tr>
+                      </tfoot>
+                    </table>
                   </div>
-                ))}
+                </div>
               </div>
             </div>
+            )}
 
             {/* Website Section */}
+            {activeMarketingSection === 'website' && (
             <div className="mb-20">
               <div className="text-center mb-12">
                 <div className="flex justify-center items-center gap-3 mb-4">
@@ -626,179 +718,299 @@ export default function PricingPage() {
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                {marketingPackages.website.packages.map((pkg) => (
-                  <div
-                    key={pkg.id}
-                    className={`relative bg-white rounded-2xl shadow-lg p-8 ${
-                      pkg.recommended ? 'ring-2 ring-terracotta' : ''
-                    }`}
-                  >
-                    {pkg.recommended && (
-                      <div className="absolute -top-4 right-8 bg-terracotta text-white px-4 py-1 rounded-full text-sm font-medium">
-                        Recommended
-                      </div>
-                    )}
-                    <h3 className="font-serif text-2xl text-deep-green mb-4">{pkg.name}</h3>
-                    <div className="mb-6">
-                      <span className="text-3xl font-bold text-terracotta">
-                        {formatCurrency(pkg.price)}
-                      </span>
-                      <span className="text-deep-green/60 ml-2">one time</span>
-                    </div>
-                    <ul className="space-y-3 mb-8">
-                      {pkg.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-2">
-                          {feature.included ? (
-                            <Check className="w-5 h-5 text-terracotta flex-shrink-0 mt-0.5" />
-                          ) : (
-                            <X className="w-5 h-5 text-gray-300 flex-shrink-0 mt-0.5" />
-                          )}
-                          <span className={`text-sm ${feature.included ? 'text-deep-green' : 'text-gray-400'}`}>
-                            {feature.name}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                    <Link
-                      href="/contact"
-                      className={`block w-full text-center px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                        pkg.recommended
-                          ? 'bg-terracotta text-white hover:bg-terracotta-dark'
-                          : 'border-2 border-terracotta text-terracotta hover:bg-terracotta hover:text-white'
-                      }`}
-                    >
-                      Get Started
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Maintenance & Social Grid */}
-            <div className="grid lg:grid-cols-2 gap-12">
-              {/* Maintenance Section */}
-              <div>
-                <div className="text-center mb-8">
-                  <div className="flex justify-center items-center gap-3 mb-4">
-                    <Search className="w-6 h-6 text-terracotta" />
-                    <h3 className="font-serif text-3xl text-deep-green">
-                      {marketingPackages.maintenance.name}
-                    </h3>
-                  </div>
-                  <p className="text-deep-green/70">
-                    {marketingPackages.maintenance.description}
-                  </p>
-                </div>
-
-                <div className="space-y-6">
-                  {marketingPackages.maintenance.packages.map((pkg) => (
-                    <div
-                      key={pkg.id}
-                      className={`relative bg-white rounded-xl shadow-lg p-6 ${
-                        pkg.recommended ? 'ring-2 ring-terracotta' : ''
-                      }`}
-                    >
-                      {pkg.recommended && (
-                        <div className="absolute -top-3 right-6 bg-terracotta text-white px-3 py-0.5 rounded-full text-xs font-medium">
-                          Recommended
-                        </div>
-                      )}
-                      <div className="flex justify-between items-start mb-4">
-                        <h4 className="font-serif text-xl text-deep-green">{pkg.name}</h4>
-                        <div className="text-right">
-                          <div className="text-2xl font-bold text-terracotta">
-                            {formatCurrency(pkg.price)}
-                          </div>
-                          <div className="text-xs text-deep-green/60">per month</div>
-                        </div>
-                      </div>
-                      <ul className="space-y-2 mb-6">
-                        {pkg.features.slice(0, 5).map((feature, idx) => (
-                          <li key={idx} className="flex items-center gap-2">
-                            {feature.included ? (
-                              <Check className="w-4 h-4 text-terracotta flex-shrink-0" />
-                            ) : (
-                              <X className="w-4 h-4 text-gray-300 flex-shrink-0" />
-                            )}
-                            <span className={`text-xs ${feature.included ? 'text-deep-green' : 'text-gray-400'}`}>
-                              {feature.name}
-                            </span>
-                          </li>
+              {/* Comparison Table for Website */}
+              <div className="mb-12 pt-10">
+                <div className="bg-white rounded-2xl shadow-xl overflow-visible relative max-w-4xl mx-auto">
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead>
+                        <tr className="border-b-2 border-sand relative">
+                          <th className="text-left p-6 bg-sand-light/50 rounded-tl-2xl"></th>
+                          {marketingPackages.website.packages.map((pkg, index) => (
+                            <th key={pkg.id} className={`text-center bg-sand-light/30 min-w-[200px] h-[140px] relative ${index === marketingPackages.website.packages.length - 1 ? 'rounded-tr-2xl' : ''}`}>
+                              {pkg.recommended && (
+                                <div className="absolute -top-8 inset-x-0 bg-terracotta text-white text-xs py-1 font-medium rounded-t-lg">
+                                  RECOMMENDED
+                                </div>
+                              )}
+                              <div className="relative h-full">
+                                <div className="absolute top-2 right-2 text-right">
+                                  <div className="text-xl font-bold text-terracotta">
+                                    {formatCurrency(pkg.price)}
+                                  </div>
+                                  <div className="text-[10px] text-deep-green/60">
+                                    one time
+                                  </div>
+                                </div>
+                                <div className="absolute bottom-10 left-0 right-0 text-center">
+                                  <h3 className="font-serif text-3xl text-deep-green">
+                                    {pkg.name}
+                                  </h3>
+                                </div>
+                              </div>
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {/* Get all unique features */}
+                        {[...new Set(marketingPackages.website.packages.flatMap(pkg => pkg.features.map(f => f.name)))].map((featureName, idx) => (
+                          <tr key={idx} className={`border-b border-sand/30 ${idx % 2 === 0 ? 'bg-white' : 'bg-sand-light/10'}`}>
+                            <td className="p-4 text-base text-deep-green font-medium">
+                              {featureName}
+                            </td>
+                            {marketingPackages.website.packages.map((pkg) => {
+                              const feature = pkg.features.find(f => f.name === featureName);
+                              const isIncluded = feature?.included || false;
+                              
+                              return (
+                                <td key={pkg.id} className="p-4 text-center">
+                                  {isIncluded ? (
+                                    <div className="inline-flex items-center justify-center w-8 h-8 bg-terracotta rounded-full">
+                                      <Check className="w-5 h-5 text-white font-bold" />
+                                    </div>
+                                  ) : (
+                                    <div className="inline-flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full">
+                                      <X className="w-5 h-5 text-gray-400" />
+                                    </div>
+                                  )}
+                                </td>
+                              );
+                            })}
+                          </tr>
                         ))}
-                      </ul>
-                      <Link
-                        href="/contact"
-                        className="block w-full text-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border-2 border-terracotta text-terracotta hover:bg-terracotta hover:text-white"
-                      >
-                        Select Plan
-                      </Link>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Social Section */}
-              <div>
-                <div className="text-center mb-8">
-                  <div className="flex justify-center items-center gap-3 mb-4">
-                    <MessageSquare className="w-6 h-6 text-terracotta" />
-                    <h3 className="font-serif text-3xl text-deep-green">
-                      {marketingPackages.social.name}
-                    </h3>
+                      </tbody>
+                      <tfoot>
+                        <tr className="border-t-2 border-sand">
+                          <td className="p-6 bg-sand-light/50 rounded-bl-2xl"></td>
+                          {marketingPackages.website.packages.map((pkg, index) => (
+                            <td key={pkg.id} className={`p-6 text-center bg-sand-light/30 ${index === marketingPackages.website.packages.length - 1 ? 'rounded-br-2xl' : ''}`}>
+                              <Link
+                                href="/contact"
+                                className={`inline-block px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                                  pkg.recommended
+                                    ? 'bg-terracotta text-white hover:bg-terracotta-dark transform hover:scale-105'
+                                    : 'border-2 border-terracotta text-terracotta hover:bg-terracotta hover:text-white'
+                                }`}
+                              >
+                                Get Started
+                              </Link>
+                            </td>
+                          ))}
+                        </tr>
+                      </tfoot>
+                    </table>
                   </div>
-                  <p className="text-deep-green/70">
-                    {marketingPackages.social.description}
-                  </p>
-                </div>
-
-                <div className="space-y-6">
-                  {marketingPackages.social.packages.map((pkg) => (
-                    <div
-                      key={pkg.id}
-                      className={`relative bg-white rounded-xl shadow-lg p-6 ${
-                        pkg.recommended ? 'ring-2 ring-terracotta' : ''
-                      }`}
-                    >
-                      {pkg.recommended && (
-                        <div className="absolute -top-3 right-6 bg-terracotta text-white px-3 py-0.5 rounded-full text-xs font-medium">
-                          Recommended
-                        </div>
-                      )}
-                      <div className="flex justify-between items-start mb-4">
-                        <h4 className="font-serif text-xl text-deep-green">{pkg.name}</h4>
-                        <div className="text-right">
-                          <div className="text-2xl font-bold text-terracotta">
-                            {formatCurrency(pkg.price)}
-                          </div>
-                          <div className="text-xs text-deep-green/60">per month</div>
-                        </div>
-                      </div>
-                      <ul className="space-y-2 mb-6">
-                        {pkg.features.slice(0, 5).map((feature, idx) => (
-                          <li key={idx} className="flex items-center gap-2">
-                            {feature.included ? (
-                              <Check className="w-4 h-4 text-terracotta flex-shrink-0" />
-                            ) : (
-                              <X className="w-4 h-4 text-gray-300 flex-shrink-0" />
-                            )}
-                            <span className={`text-xs ${feature.included ? 'text-deep-green' : 'text-gray-400'}`}>
-                              {feature.name}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                      <Link
-                        href="/contact"
-                        className="block w-full text-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border-2 border-terracotta text-terracotta hover:bg-terracotta hover:text-white"
-                      >
-                        Select Plan
-                      </Link>
-                    </div>
-                  ))}
                 </div>
               </div>
             </div>
+            )}
+
+            {/* Maintenance Section */}
+            {activeMarketingSection === 'maintenance' && (
+            <div className="mb-20">
+              <div className="text-center mb-12">
+                <div className="flex justify-center items-center gap-3 mb-4">
+                  <Search className="w-8 h-8 text-terracotta" />
+                  <h2 className="font-serif text-4xl text-deep-green">
+                    {marketingPackages.maintenance.name}
+                  </h2>
+                </div>
+                <p className="text-lg text-deep-green/70">
+                  {marketingPackages.maintenance.description}
+                </p>
+              </div>
+
+              {/* Comparison Table for Maintenance */}
+              <div className="mb-12 pt-10">
+                <div className="bg-white rounded-2xl shadow-xl overflow-visible relative max-w-4xl mx-auto">
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead>
+                        <tr className="border-b-2 border-sand relative">
+                          <th className="text-left p-6 bg-sand-light/50 rounded-tl-2xl"></th>
+                          {marketingPackages.maintenance.packages.map((pkg, index) => (
+                            <th key={pkg.id} className={`text-center bg-sand-light/30 min-w-[200px] h-[140px] relative ${index === marketingPackages.maintenance.packages.length - 1 ? 'rounded-tr-2xl' : ''}`}>
+                              {pkg.recommended && (
+                                <div className="absolute -top-8 inset-x-0 bg-terracotta text-white text-xs py-1 font-medium rounded-t-lg">
+                                  RECOMMENDED
+                                </div>
+                              )}
+                              <div className="relative h-full">
+                                <div className="absolute top-2 right-2 text-right">
+                                  <div className="text-xl font-bold text-terracotta">
+                                    {formatCurrency(pkg.price)}
+                                  </div>
+                                  <div className="text-[10px] text-deep-green/60">
+                                    per month
+                                  </div>
+                                </div>
+                                <div className="absolute bottom-10 left-0 right-0 text-center">
+                                  <h3 className="font-serif text-3xl text-deep-green">
+                                    {pkg.name}
+                                  </h3>
+                                </div>
+                              </div>
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {/* Get all unique features */}
+                        {[...new Set(marketingPackages.maintenance.packages.flatMap(pkg => pkg.features.map(f => f.name)))].map((featureName, idx) => (
+                          <tr key={idx} className={`border-b border-sand/30 ${idx % 2 === 0 ? 'bg-white' : 'bg-sand-light/10'}`}>
+                            <td className="p-4 text-base text-deep-green font-medium">
+                              {featureName}
+                            </td>
+                            {marketingPackages.maintenance.packages.map((pkg) => {
+                              const feature = pkg.features.find(f => f.name === featureName);
+                              const isIncluded = feature?.included || false;
+                              
+                              return (
+                                <td key={pkg.id} className="p-4 text-center">
+                                  {isIncluded ? (
+                                    <div className="inline-flex items-center justify-center w-8 h-8 bg-terracotta rounded-full">
+                                      <Check className="w-5 h-5 text-white font-bold" />
+                                    </div>
+                                  ) : (
+                                    <div className="inline-flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full">
+                                      <X className="w-5 h-5 text-gray-400" />
+                                    </div>
+                                  )}
+                                </td>
+                              );
+                            })}
+                          </tr>
+                        ))}
+                      </tbody>
+                      <tfoot>
+                        <tr className="border-t-2 border-sand">
+                          <td className="p-6 bg-sand-light/50 rounded-bl-2xl"></td>
+                          {marketingPackages.maintenance.packages.map((pkg, index) => (
+                            <td key={pkg.id} className={`p-6 text-center bg-sand-light/30 ${index === marketingPackages.maintenance.packages.length - 1 ? 'rounded-br-2xl' : ''}`}>
+                              <Link
+                                href="/contact"
+                                className={`inline-block px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                                  pkg.recommended
+                                    ? 'bg-terracotta text-white hover:bg-terracotta-dark transform hover:scale-105'
+                                    : 'border-2 border-terracotta text-terracotta hover:bg-terracotta hover:text-white'
+                                }`}
+                              >
+                                Get Started
+                              </Link>
+                            </td>
+                          ))}
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            )}
+
+            {/* Social Section */}
+            {activeMarketingSection === 'social' && (
+            <div className="mb-20">
+              <div className="text-center mb-12">
+                <div className="flex justify-center items-center gap-3 mb-4">
+                  <MessageSquare className="w-8 h-8 text-terracotta" />
+                  <h2 className="font-serif text-4xl text-deep-green">
+                    {marketingPackages.social.name}
+                  </h2>
+                </div>
+                <p className="text-lg text-deep-green/70">
+                  {marketingPackages.social.description}
+                </p>
+              </div>
+
+              {/* Comparison Table for Social */}
+              <div className="mb-12 pt-10">
+                <div className="bg-white rounded-2xl shadow-xl overflow-visible relative max-w-4xl mx-auto">
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead>
+                        <tr className="border-b-2 border-sand relative">
+                          <th className="text-left p-6 bg-sand-light/50 rounded-tl-2xl"></th>
+                          {marketingPackages.social.packages.map((pkg, index) => (
+                            <th key={pkg.id} className={`text-center bg-sand-light/30 min-w-[200px] h-[140px] relative ${index === marketingPackages.social.packages.length - 1 ? 'rounded-tr-2xl' : ''}`}>
+                              {pkg.recommended && (
+                                <div className="absolute -top-8 inset-x-0 bg-terracotta text-white text-xs py-1 font-medium rounded-t-lg">
+                                  RECOMMENDED
+                                </div>
+                              )}
+                              <div className="relative h-full">
+                                <div className="absolute top-2 right-2 text-right">
+                                  <div className="text-xl font-bold text-terracotta">
+                                    {formatCurrency(pkg.price)}
+                                  </div>
+                                  <div className="text-[10px] text-deep-green/60">
+                                    per month
+                                  </div>
+                                </div>
+                                <div className="absolute bottom-10 left-0 right-0 text-center">
+                                  <h3 className="font-serif text-3xl text-deep-green">
+                                    {pkg.name}
+                                  </h3>
+                                </div>
+                              </div>
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {/* Get all unique features */}
+                        {[...new Set(marketingPackages.social.packages.flatMap(pkg => pkg.features.map(f => f.name)))].map((featureName, idx) => (
+                          <tr key={idx} className={`border-b border-sand/30 ${idx % 2 === 0 ? 'bg-white' : 'bg-sand-light/10'}`}>
+                            <td className="p-4 text-base text-deep-green font-medium">
+                              {featureName}
+                            </td>
+                            {marketingPackages.social.packages.map((pkg) => {
+                              const feature = pkg.features.find(f => f.name === featureName);
+                              const isIncluded = feature?.included || false;
+                              
+                              return (
+                                <td key={pkg.id} className="p-4 text-center">
+                                  {isIncluded ? (
+                                    <div className="inline-flex items-center justify-center w-8 h-8 bg-terracotta rounded-full">
+                                      <Check className="w-5 h-5 text-white font-bold" />
+                                    </div>
+                                  ) : (
+                                    <div className="inline-flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full">
+                                      <X className="w-5 h-5 text-gray-400" />
+                                    </div>
+                                  )}
+                                </td>
+                              );
+                            })}
+                          </tr>
+                        ))}
+                      </tbody>
+                      <tfoot>
+                        <tr className="border-t-2 border-sand">
+                          <td className="p-6 bg-sand-light/50 rounded-bl-2xl"></td>
+                          {marketingPackages.social.packages.map((pkg, index) => (
+                            <td key={pkg.id} className={`p-6 text-center bg-sand-light/30 ${index === marketingPackages.social.packages.length - 1 ? 'rounded-br-2xl' : ''}`}>
+                              <Link
+                                href="/contact"
+                                className={`inline-block px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                                  pkg.recommended
+                                    ? 'bg-terracotta text-white hover:bg-terracotta-dark transform hover:scale-105'
+                                    : 'border-2 border-terracotta text-terracotta hover:bg-terracotta hover:text-white'
+                                }`}
+                              >
+                                Get Started
+                              </Link>
+                            </td>
+                          ))}
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            )}
           </div>
         </section>
       )}
