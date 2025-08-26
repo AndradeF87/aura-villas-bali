@@ -25,7 +25,7 @@ const testimonials: Testimonial[] = [
     quote: "We live abroad and AURA handles everything perfectly. It's like having a trusted partner who cares about our property as much as we do.",
     beforeOccupancy: "62%",
     afterOccupancy: "74%",
-    increasePercent: 167,
+    increasePercent: 67,
     image: "/images/villas/SUYAIVillaUluwatu/SUYAI-Villa_Pool.webp"
   },
   {
