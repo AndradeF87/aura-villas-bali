@@ -167,11 +167,14 @@ export function SuccessStories() {
 
           {/* Right side - Image */}
           <motion.div
-            className="relative h-[500px] bg-gray-200 rounded-2xl overflow-hidden"
+            className="relative h-[500px] bg-gray-200 rounded-2xl overflow-hidden shadow-2xl"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            style={{
+              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.15), 0 10px 15px rgba(0, 0, 0, 0.12)'
+            }}
           >
             <Image
               src={activeTestimonial.image}
