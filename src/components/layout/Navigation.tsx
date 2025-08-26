@@ -47,6 +47,13 @@ export const Navigation = () => {
   // Check if menu is over dark background
   useEffect(() => {
     const checkMenuBackground = () => {
+      // Skip background detection on pricing page - keep colors consistent
+      if (isPricingPage) {
+        setIsMenuOverDark(false)
+        setIsOverWhiteBg(true)
+        return
+      }
+      
       if (typeof window === 'undefined' || !document.elementsFromPoint) {
         return
       }
@@ -140,7 +147,7 @@ export const Navigation = () => {
       window.removeEventListener('resize', checkMenuBackground)
       observer.disconnect()
     }
-  }, [])
+  }, [isPricingPage])
   
   const { scrollY } = useScroll()
   const navOpacity = useTransform(
