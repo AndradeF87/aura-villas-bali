@@ -410,7 +410,7 @@ export default function PricingPage() {
                             </div>
                           )}
                           <div className="relative h-full">
-                            <div className="absolute top-4 left-4 text-left">
+                            <div className="absolute top-4 right-4 text-right">
                               <div className="text-2xl font-bold text-terracotta">
                                 {pkg.commission}
                               </div>
@@ -535,6 +535,7 @@ export default function PricingPage() {
                 </table>
               </div>
             </div>
+          </div>
 
             {/* Trust Indicators */}
             <div className="bg-deep-green rounded-2xl p-8 text-white">
