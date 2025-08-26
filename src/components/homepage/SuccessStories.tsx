@@ -173,17 +173,12 @@ export function SuccessStories() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-              Villa Image
-            </div>
-            {/* Uncomment when images are available
             <Image
               src={activeTestimonial.image}
               alt={activeTestimonial.villaName}
               fill
               className="object-cover"
             />
-            */}
           </motion.div>
         </motion.div>
 
