@@ -35,8 +35,8 @@ const testimonials: Testimonial[] = [
     location: "Uluwatu",
     quote: "At the start our expectations with AURA was that they would help us improve our occupancy and increase our revenue, but they didn't just do that, they come to us with constant ideas on how we can improve our service and provide memorable moments to our Guests. The entire team loves to work with them, it was an amazing addition to us.",
     beforeOccupancy: "40%",
-    afterOccupancy: "95%",
-    increasePercent: 180,
+    afterOccupancy: "82%",
+    increasePercent: 27,
     image: "/images/villas/ONAYABaliResort/ONAYA_Pool.webp"
   }
 ]
