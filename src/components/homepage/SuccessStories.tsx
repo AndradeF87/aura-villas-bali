@@ -30,14 +30,14 @@ const testimonials: Testimonial[] = [
   },
   {
     id: 2,
-    name: "James & Linda Chen",
-    villaName: "Sunset Haven",
-    location: "Canggu",
-    quote: "The personalized service and strategic marketing have exceeded our expectations. Our occupancy rate has never been higher.",
+    name: "Agung Permana",
+    villaName: "Manager, ONAYA Bali Resort",
+    location: "Uluwatu",
+    quote: "At the start our expectations with AURA was that they would help us improve our occupancy and increase our revenue, but they didn't just do that, they come to us with constant ideas on how we can improve our service and provide memorable moments to our Guests. The entire team loves to work with them, it was an amazing addition to us.",
     beforeOccupancy: "40%",
     afterOccupancy: "95%",
     increasePercent: 180,
-    image: "/images/villa-sunset-haven.jpg"
+    image: "/images/villas/ONAYABaliResort/ONAYA_Pool.webp"
   }
 ]
 
