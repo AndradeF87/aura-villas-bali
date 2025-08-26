@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { ConditionalNavigation } from "@/components/layout/ConditionalNavigation";
+import { ScrollbarController } from "@/components/layout/ScrollbarController";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -73,6 +74,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className={`${inter.className} antialiased`}>
         <ConditionalNavigation />
+        <ScrollbarController />
         {children}
       </body>
     </html>

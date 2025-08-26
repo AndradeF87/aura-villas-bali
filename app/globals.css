@@ -171,6 +171,36 @@
   }
 }
 
+/* Scrollbar styling for specific pages */
+body.scrollbar-on-scroll {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+body.scrollbar-on-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+body.scrollbar-on-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body.scrollbar-on-scroll::-webkit-scrollbar-thumb {
+  background: rgba(201, 111, 74, 0);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+/* Show scrollbar when scrolling */
+body.scrollbar-on-scroll.is-scrolling::-webkit-scrollbar-thumb {
+  background: rgba(201, 111, 74, 0.5);
+}
+
+body.scrollbar-on-scroll.is-scrolling::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 111, 74, 0.7);
+}
+
 /* Glass Morphism Search Bar Styles */
 .glass-search-bar {
   background: rgba(255, 255, 255, 0.1);
