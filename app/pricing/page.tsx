@@ -402,22 +402,24 @@ export default function PricingPage() {
                         <span className="font-serif text-xl text-deep-green">Features</span>
                       </th>
                       {operationalPackages.map((pkg) => (
-                        <th key={pkg.id} className="p-6 text-center bg-sand-light/30 relative">
+                        <th key={pkg.id} className="p-6 text-center bg-sand-light/30 relative min-w-[200px]">
                           {pkg.recommended && (
                             <div className="absolute top-0 inset-x-0 bg-terracotta text-white text-xs py-1 font-medium">
                               MOST POPULAR
                             </div>
                           )}
-                          <div className={`${pkg.recommended ? 'pt-6' : ''}`}>
-                            <h3 className="font-serif text-2xl text-deep-green mb-2">
-                              {pkg.name}
-                            </h3>
-                            <div className="text-3xl font-bold text-terracotta mb-1">
+                          <div className="absolute top-2 right-2 text-right">
+                            <div className="text-2xl font-bold text-terracotta">
                               {pkg.commission}
                             </div>
-                            <div className="text-sm text-deep-green/60">
-                              of gross revenue
+                            <div className="text-[10px] text-deep-green/60">
+                              (after OTA fees)
                             </div>
+                          </div>
+                          <div className={`${pkg.recommended ? 'pt-8' : 'pt-2'}`}>
+                            <h3 className="font-serif text-2xl text-deep-green mb-2">
+                              {pkg.name.split(' ')[0]}
+                            </h3>
                             <div className="text-xs text-deep-green/70 mt-2 px-4">
                               {pkg.description}
                             </div>
