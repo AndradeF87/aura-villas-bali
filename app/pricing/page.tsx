@@ -402,13 +402,13 @@ export default function PricingPage() {
                         <span className="font-serif text-xl text-deep-green">Features</span>
                       </th>
                       {operationalPackages.map((pkg) => (
-                        <th key={pkg.id} className="p-6 text-center bg-sand-light/30 relative min-w-[200px]">
+                        <th key={pkg.id} className="text-center bg-sand-light/30 relative min-w-[200px] h-[120px]">
                           {pkg.recommended && (
-                            <div className="absolute top-0 inset-x-0 bg-terracotta text-white text-xs py-1 font-medium">
+                            <div className="absolute top-0 inset-x-0 bg-terracotta text-white text-xs py-1 font-medium z-10">
                               MOST POPULAR
                             </div>
                           )}
-                          <div className="absolute top-2 right-2 text-right">
+                          <div className={`absolute right-4 text-right ${pkg.recommended ? 'top-7' : 'top-4'}`}>
                             <div className="text-2xl font-bold text-terracotta">
                               {pkg.commission}
                             </div>
@@ -416,7 +416,7 @@ export default function PricingPage() {
                               (after OTA fees)
                             </div>
                           </div>
-                          <div className={`${pkg.recommended ? 'pt-10' : 'pt-4'}`}>
+                          <div className="h-full flex items-center justify-center">
                             <h3 className="font-serif text-3xl text-deep-green">
                               {pkg.name.split(' ')[0]}
                             </h3>
