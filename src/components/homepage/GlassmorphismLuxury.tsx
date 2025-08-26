@@ -15,6 +15,7 @@ export function GlassmorphismLuxury() {
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [showScrollIndicator, setShowScrollIndicator] = useState(true)
+  const [hasHiddenScrollIndicator, setHasHiddenScrollIndicator] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [strategy, setStrategy] = useState('Balanced')
   const [showMobileForm, setShowMobileForm] = useState(false)
@@ -23,6 +24,7 @@ export function GlassmorphismLuxury() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowScrollIndicator(false)
+      setHasHiddenScrollIndicator(true)
     }, 3000)
     
     return () => clearTimeout(timer)
@@ -43,19 +45,18 @@ export function GlassmorphismLuxury() {
   // Fade in the nav AURA inversely - as center fades out, nav fades in
   const navOpacity = useTransform(scrollY, [0, 400], [0, 1])
   
-  // Hide scroll indicator once user starts scrolling
+  // Hide scroll indicator once user starts scrolling (permanently)
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 50 && !hasHiddenScrollIndicator) {
         setShowScrollIndicator(false)
-      } else {
-        setShowScrollIndicator(true)
+        setHasHiddenScrollIndicator(true)
       }
     }
     
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [hasHiddenScrollIndicator])
 
   const handleLocationSelect = (loc: string) => {
     setLocation(loc)
