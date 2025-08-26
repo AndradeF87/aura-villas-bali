@@ -15,6 +15,8 @@ export const Navigation = () => {
   const pathname = usePathname()
   
   const isHomePage = pathname === '/'
+  const isAboutPage = pathname === '/about'
+  const isContactPage = pathname === '/contact'
   
   useEffect(() => {
     setWindowHeight(window.innerHeight)
@@ -150,10 +152,13 @@ export const Navigation = () => {
     [0, 1]
   )
   
-  const menuTextColor = isMenuOverDark ? '#F8F4F0' : '#2F4A3C'
-  const logoTextColor = isOverWhiteBg ? '#C96F4A' : (isMenuOverDark ? '#F8F4F0' : '#C96F4A')
-  const logoSubtitleColor = isOverWhiteBg ? '#2F4A3C' : (isMenuOverDark ? '#F8F4F0' : '#2F4A3C')
-  const hamburgerColor = isOverWhiteBg ? '#C96F4A' : (isMenuOverDark ? '#F8F4F0' : '#2F4A3C')
+  // Force dark text on About and Contact pages since they start with beige backgrounds
+  const forceWhiteBg = isAboutPage || isContactPage
+  
+  const menuTextColor = (!forceWhiteBg && isMenuOverDark) ? '#F8F4F0' : '#2F4A3C'
+  const logoTextColor = (forceWhiteBg || isOverWhiteBg) ? '#C96F4A' : (isMenuOverDark ? '#F8F4F0' : '#C96F4A')
+  const logoSubtitleColor = (forceWhiteBg || isOverWhiteBg) ? '#2F4A3C' : (isMenuOverDark ? '#F8F4F0' : '#2F4A3C')
+  const hamburgerColor = (forceWhiteBg || isOverWhiteBg) ? '#C96F4A' : (isMenuOverDark ? '#F8F4F0' : '#2F4A3C')
   
   return (
     <>
