@@ -81,16 +81,33 @@ export default function About() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-sand to-sand-light py-24">
+      <section className="relative h-[60vh] bg-sand-light flex items-center justify-center overflow-hidden">
+        <div className="relative z-20 text-center text-deep-green max-w-4xl mx-auto px-4">
+          <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl mb-4">
+            Every Villa Has a Story,
+            <span className="block text-terracotta mt-2">Ours Began in Bali</span>
+          </h1>
+          <p className="text-xl sm:text-2xl text-deep-green/80">
+            Where Ancient Balinese Wisdom Meets Modern Innovation
+          </p>
+          <div className="mt-8 flex items-center justify-center gap-2 text-deep-green/80">
+            <TreePalm className="w-5 h-5" />
+            <span>Since 2018</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Introduction */}
+      <section className="py-16 bg-deep-green">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl text-deep-green mb-6">
-              Every Villa Has a Story,
-              <span className="block text-terracotta mt-2">Ours Began in Bali</span>
-            </h1>
-            <p className="text-xl text-deep-green/80 leading-relaxed">
-              Where ancient Balinese wisdom meets modern innovation, creating unforgettable 
-              experiences for guests and exceptional returns for property owners.
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="font-serif text-3xl sm:text-4xl text-white mb-6">
+              Redefining Boutique Villa Management
+            </h2>
+            <p className="text-lg text-white/90 leading-relaxed">
+              AURA combines the warmth of traditional Balinese hospitality with cutting-edge AI technology 
+              to deliver exceptional experiences for guests and maximized returns for property owners. 
+              Our story is one of innovation, respect for culture, and unwavering commitment to excellence.
             </p>
           </div>
         </div>

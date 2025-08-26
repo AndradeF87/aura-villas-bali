@@ -117,51 +117,64 @@ export default function Contact() {
 
   return (
     <main>
-      {/* Hero Section with Contact Info */}
-      <section className="relative bg-gradient-to-br from-sand/30 to-white pt-32 pb-12">
+      {/* Hero Section */}
+      <section className="relative h-[60vh] bg-sand-light flex items-center justify-center overflow-hidden">
+        <div className="relative z-20 text-center text-deep-green max-w-4xl mx-auto px-4">
+          <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl mb-4">
+            Get in Touch
+          </h1>
+          <p className="text-xl sm:text-2xl text-deep-green/80">
+            We're Here to Help You Create Unforgettable Bali Experiences
+          </p>
+          <div className="mt-8 flex items-center justify-center gap-2 text-deep-green/80">
+            <MapPin className="w-5 h-5" />
+            <span>Seminyak, Ubud & Canggu</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Contact Bar */}
+      <section className="py-16 bg-deep-green">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-8">
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-deep-green mb-4">
-              Get in Touch
-            </h1>
-            <p className="text-lg text-deep-green/70">
-              We're here to help you create unforgettable Bali experiences
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="font-serif text-3xl sm:text-4xl text-white mb-6">
+              Connect With Our Team
+            </h2>
+            <p className="text-lg text-white/90 leading-relaxed mb-8">
+              Whether you're planning your dream vacation or looking to list your property, 
+              our dedicated team is ready to assist you with personalized service and local expertise.
             </p>
-          </div>
-
-          {/* Quick Contact Options */}
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <a 
-              href="tel:+623611234567" 
-              className="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm hover:shadow-md transition-shadow text-deep-green"
-            >
-              <Phone className="w-4 h-4 text-terracotta" />
-              <span className="text-sm font-medium">+62 361 123 4567</span>
-            </a>
-            <a 
-              href="mailto:hello@auravillasbali.com" 
-              className="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm hover:shadow-md transition-shadow text-deep-green"
-            >
-              <Mail className="w-4 h-4 text-terracotta" />
-              <span className="text-sm font-medium">hello@auravillasbali.com</span>
-            </a>
-            <a 
-              href="https://wa.me/623611234567" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm hover:shadow-md transition-shadow text-deep-green"
-            >
-              <MessageCircle className="w-4 h-4 text-terracotta" />
-              <span className="text-sm font-medium">WhatsApp</span>
-            </a>
-          </div>
-
-          {/* 24/7 Emergency Hotline */}
-          <div className="text-center">
-            <p className="text-sm text-deep-green/60 mb-1">24/7 Guest Emergency Hotline</p>
-            <a href="tel:+6281234567890" className="text-xl font-bold text-terracotta hover:text-terracotta-dark transition-colors">
-              +62 812 3456 7890
-            </a>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a 
+                href="tel:+623611234567" 
+                className="flex items-center gap-2 px-5 py-2.5 bg-white/10 backdrop-blur rounded-full hover:bg-white/20 transition-all text-white"
+              >
+                <Phone className="w-4 h-4" />
+                <span className="text-sm font-medium">+62 361 123 4567</span>
+              </a>
+              <a 
+                href="mailto:hello@auravillasbali.com" 
+                className="flex items-center gap-2 px-5 py-2.5 bg-white/10 backdrop-blur rounded-full hover:bg-white/20 transition-all text-white"
+              >
+                <Mail className="w-4 h-4" />
+                <span className="text-sm font-medium">hello@auravillasbali.com</span>
+              </a>
+              <a 
+                href="https://wa.me/623611234567" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center gap-2 px-5 py-2.5 bg-white/10 backdrop-blur rounded-full hover:bg-white/20 transition-all text-white"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span className="text-sm font-medium">WhatsApp</span>
+              </a>
+            </div>
+            <div className="mt-8 pt-8 border-t border-white/20">
+              <p className="text-sm text-white/70 mb-2">24/7 Guest Emergency Hotline</p>
+              <a href="tel:+6281234567890" className="text-2xl font-bold text-white hover:text-sand-light transition-colors">
+                +62 812 3456 7890
+              </a>
+            </div>
           </div>
         </div>
       </section>
