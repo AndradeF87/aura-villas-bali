@@ -408,7 +408,7 @@ export default function PricingPage() {
                               MOST POPULAR
                             </div>
                           )}
-                          <div className={`absolute right-4 text-right ${pkg.recommended ? 'top-7' : 'top-4'}`}>
+                          <div className="absolute top-8 right-4 text-right">
                             <div className="text-2xl font-bold text-terracotta">
                               {pkg.commission}
                             </div>
