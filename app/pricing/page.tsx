@@ -393,41 +393,44 @@ export default function PricingPage() {
             </div>
 
             {/* Comparison Table */}
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden mb-12">
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b-2 border-sand">
+            <div className="mb-12 pt-10">
+              <div className="bg-white rounded-2xl shadow-xl overflow-visible relative">
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b-2 border-sand relative">
                       <th className="text-left p-6 bg-sand-light/50">
                         <span className="font-serif text-xl text-deep-green">Features</span>
                       </th>
                       {operationalPackages.map((pkg) => (
-                        <th key={pkg.id} className="text-center bg-sand-light/30 relative min-w-[200px] h-[140px]">
+                        <th key={pkg.id} className="text-center bg-sand-light/30 min-w-[200px] h-[140px] relative">
                           {pkg.recommended && (
-                            <div className="absolute top-0 inset-x-0 bg-terracotta text-white text-xs py-1 font-medium z-10">
+                            <div className="absolute -top-8 inset-x-0 bg-terracotta text-white text-xs py-1 font-medium rounded-t-lg">
                               MOST POPULAR
                             </div>
                           )}
-                          <div className="absolute top-8 right-4 text-right">
-                            <div className="text-2xl font-bold text-terracotta">
-                              {pkg.commission}
+                          <div className="relative h-full">
+                            <div className="absolute top-4 left-4 text-left">
+                              <div className="text-2xl font-bold text-terracotta">
+                                {pkg.commission}
+                              </div>
+                              <div className="text-[10px] text-deep-green/60">
+                                (after OTA fees)
+                              </div>
                             </div>
-                            <div className="text-[10px] text-deep-green/60">
-                              (after OTA fees)
+                            <div className="absolute bottom-10 left-0 right-0 text-center">
+                              <h3 className="font-serif text-3xl text-deep-green">
+                                {pkg.name.split(' ')[0]}
+                              </h3>
                             </div>
+                            {pkg.id === 'boutique' && (
+                              <div className="absolute bottom-3 left-0 right-0 text-center">
+                                <p className="text-xs text-deep-green/60 italic">
+                                  by invitation only
+                                </p>
+                              </div>
+                            )}
                           </div>
-                          <div className="absolute bottom-10 left-0 right-0 text-center">
-                            <h3 className="font-serif text-3xl text-deep-green">
-                              {pkg.name.split(' ')[0]}
-                            </h3>
-                          </div>
-                          {pkg.id === 'boutique' && (
-                            <div className="absolute bottom-3 left-0 right-0 text-center">
-                              <p className="text-xs text-deep-green/60 italic">
-                                by invitation only
-                              </p>
-                            </div>
-                          )}
                         </th>
                       ))}
                     </tr>
