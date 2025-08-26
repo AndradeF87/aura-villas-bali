@@ -26,7 +26,7 @@ const testimonials: Testimonial[] = [
     beforeOccupancy: "62%",
     afterOccupancy: "74%",
     increasePercent: 167,
-    image: "/images/villas/suyaivillauluwatu/SUYAI-Villa_Pool.webp"
+    image: "/images/villas/SUYAIVillaUluwatu/SUYAI-Villa_Pool.webp"
   },
   {
     id: 2,
