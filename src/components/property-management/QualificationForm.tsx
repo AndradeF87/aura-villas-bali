@@ -47,6 +47,7 @@ export function QualificationForm() {
   const [currentStep, setCurrentStep] = useState(1)
   const [formData, setFormData] = useState<FormData>(initialFormData)
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const totalSteps = 3
 
@@ -73,10 +74,43 @@ export function QualificationForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
-    // Here you would normally send the data to your backend
-    console.log('Form submitted:', formData)
+    setIsSubmitting(true)
     
-    setSubmitted(true)
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: 'qualification-form',
+          data: {
+            ownerName: formData.ownerName,
+            email: formData.email,
+            phone: formData.phone,
+            ownerLocation: formData.ownerLocation,
+            villaName: formData.villaName,
+            villaLocation: formData.location,
+            bedrooms: formData.bedrooms,
+            currentStatus: formData.currentStatus,
+            goal: formData.goal,
+            additionalInfo: formData.additionalInfo,
+            challenges: formData.challenges
+          }
+        })
+      })
+      
+      if (!response.ok) {
+        throw new Error('Failed to send email')
+      }
+      
+      setSubmitted(true)
+    } catch (error) {
+      console.error('Error sending form:', error)
+      alert('Sorry, there was an error sending your request. Please try again or contact us directly.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   if (submitted) {
@@ -461,9 +495,10 @@ export function QualificationForm() {
                 </button>
                 <button
                   type="submit"
-                  className="px-8 py-3 bg-terracotta text-white rounded-full font-medium hover:bg-terracotta-dark transition-colors duration-300"
+                  className="px-8 py-3 bg-terracotta text-white rounded-full font-medium hover:bg-terracotta-dark transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={isSubmitting}
                 >
-                  Submit Application
+                  {isSubmitting ? 'Sending...' : 'Submit Application'}
                 </button>
               </div>
             </div>

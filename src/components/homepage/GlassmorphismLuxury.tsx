@@ -14,6 +14,7 @@ export function GlassmorphismLuxury() {
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [showScrollIndicator, setShowScrollIndicator] = useState(true)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   
   // Auto-hide scroll indicator after 8 seconds
   useEffect(() => {
@@ -560,7 +561,7 @@ export function GlassmorphismLuxury() {
                 </div>
 
                 <button
-                  onClick={() => {
+                  onClick={async () => {
                     if (!name || !email) {
                       alert('Please fill in all required fields')
                       return
@@ -571,22 +572,55 @@ export function GlassmorphismLuxury() {
                       alert('Please enter a valid email address')
                       return
                     }
-                    // Handle form submission here
-                    alert(`Thank you ${name}! We'll send your earnings estimate to ${email} and contact you to schedule a consultation for a detailed, property-specific assessment.`)
-                    // Reset form
-                    setStep(1)
-                    setLocation('')
-                    setVillaCategory('')
-                    setBedrooms(0)
-                    setAmenities([])
-                    setName('')
-                    setEmail('')
-                    setPhone('')
+                    
+                    setIsSubmitting(true)
+                    
+                    try {
+                      const response = await fetch('/api/send-email', {
+                        method: 'POST',
+                        headers: {
+                          'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                          type: 'earnings-calculator',
+                          data: {
+                            name,
+                            email,
+                            phone,
+                            location,
+                            villaCategory,
+                            bedrooms,
+                            amenities
+                          }
+                        })
+                      })
+                      
+                      if (!response.ok) {
+                        throw new Error('Failed to send email')
+                      }
+                      
+                      alert(`Thank you ${name}! We'll send your earnings estimate to ${email} and contact you to schedule a consultation for a detailed, property-specific assessment.`)
+                      
+                      // Reset form
+                      setStep(1)
+                      setLocation('')
+                      setVillaCategory('')
+                      setBedrooms(0)
+                      setAmenities([])
+                      setName('')
+                      setEmail('')
+                      setPhone('')
+                    } catch (error) {
+                      console.error('Error sending email:', error)
+                      alert('Sorry, there was an error sending your request. Please try again or contact us directly.')
+                    } finally {
+                      setIsSubmitting(false)
+                    }
                   }}
                   className="mt-8 w-full p-4 rounded-full bg-[#C96F4A] text-white font-semibold transition-all duration-300 hover:bg-[#B05F3A] hover:shadow-[0_4px_15px_rgba(201,111,74,0.3)] disabled:opacity-50 disabled:cursor-not-allowed"
-                  disabled={!name || !email}
+                  disabled={!name || !email || isSubmitting}
                 >
-                  Get My Estimate
+                  {isSubmitting ? 'Sending...' : 'Get My Estimate'}
                 </button>
               </motion.div>
             )}
