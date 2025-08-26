@@ -152,13 +152,13 @@ export const Navigation = () => {
     [0, 1]
   )
   
-  // Force dark text on About and Contact pages since they start with beige backgrounds
-  const forceWhiteBg = isAboutPage || isContactPage
+  // On About and Contact pages, start with dark text but allow it to change based on background
+  const shouldStartDark = (isAboutPage || isContactPage) && !isMenuOverDark
   
-  const menuTextColor = (!forceWhiteBg && isMenuOverDark) ? '#F8F4F0' : '#2F4A3C'
-  const logoTextColor = (forceWhiteBg || isOverWhiteBg) ? '#C96F4A' : (isMenuOverDark ? '#F8F4F0' : '#C96F4A')
-  const logoSubtitleColor = (forceWhiteBg || isOverWhiteBg) ? '#2F4A3C' : (isMenuOverDark ? '#F8F4F0' : '#2F4A3C')
-  const hamburgerColor = (forceWhiteBg || isOverWhiteBg) ? '#C96F4A' : (isMenuOverDark ? '#F8F4F0' : '#2F4A3C')
+  const menuTextColor = isMenuOverDark ? '#F8F4F0' : '#2F4A3C'
+  const logoTextColor = (shouldStartDark || isOverWhiteBg) && !isMenuOverDark ? '#C96F4A' : (isMenuOverDark ? '#F8F4F0' : '#C96F4A')
+  const logoSubtitleColor = (shouldStartDark || isOverWhiteBg) && !isMenuOverDark ? '#2F4A3C' : (isMenuOverDark ? '#F8F4F0' : '#2F4A3C')
+  const hamburgerColor = (shouldStartDark || isOverWhiteBg) && !isMenuOverDark ? '#C96F4A' : (isMenuOverDark ? '#F8F4F0' : '#2F4A3C')
   
   return (
     <>
