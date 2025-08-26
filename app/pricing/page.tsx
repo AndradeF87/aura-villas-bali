@@ -330,24 +330,8 @@ export default function PricingPage() {
 
   return (
     <main>
-      {/* Hero Section */}
-      <section className="relative h-[60vh] bg-sand-light flex items-center justify-center overflow-hidden">
-        <div className="relative z-20 text-center text-deep-green max-w-4xl mx-auto px-4">
-          <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl mb-4">
-            Transparent Pricing
-          </h1>
-          <p className="text-xl sm:text-2xl text-deep-green/80">
-            Choose the Perfect Package for Your Villa's Success
-          </p>
-          <div className="mt-8 flex items-center justify-center gap-2 text-deep-green/80">
-            <Calculator className="w-5 h-5" />
-            <span>Commission-Based & Fixed Pricing Options</span>
-          </div>
-        </div>
-      </section>
-
       {/* Tab Navigation */}
-      <section className="sticky top-0 z-40 bg-white border-b border-sand pt-20">
+      <section className="sticky top-0 z-40 bg-white border-b border-sand pt-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center">
             <div className="inline-flex rounded-full bg-sand-light p-1 my-6">
