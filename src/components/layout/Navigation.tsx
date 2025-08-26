@@ -82,10 +82,16 @@ export const Navigation = () => {
         const bgColor = computedStyle.backgroundColor
         const bgImage = computedStyle.backgroundImage
         
-        // Check for white/light backgrounds
+        // Check for white/light backgrounds including sand/beige gradients
         if (element.classList.contains('bg-white') ||
             element.classList.contains('bg-sand-light') ||
+            element.classList.contains('bg-sand') ||
             element.classList.contains('bg-cream') ||
+            element.classList.contains('bg-warm-ivory') ||
+            element.classList.contains('from-sand') ||
+            element.classList.contains('to-sand-light') ||
+            element.classList.contains('from-sand-light') ||
+            element.classList.contains('to-sand') ||
             bgColor === 'rgb(255, 255, 255)' || 
             bgColor === 'rgba(255, 255, 255, 1)' ||
             // Check for sand color RGB values (approximately)
