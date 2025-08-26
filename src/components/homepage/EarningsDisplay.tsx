@@ -293,8 +293,8 @@ export function EarningsDisplay({ location, villaCategory, bedrooms, strategy = 
 
       </div>
 
-      {/* Disclaimer */}
-      <div className="mt-4 p-3 bg-white/10 rounded-lg">
+      {/* Disclaimer - Hidden on mobile */}
+      <div className="hidden md:block mt-4 p-3 bg-white/10 rounded-lg">
         <p className="text-xs text-white/80 leading-relaxed">
           <span className="font-semibold text-white">Note:</span> These are estimated figures based on current market data. 
           Actual results may vary based on property specifics, seasonality, and market conditions.
