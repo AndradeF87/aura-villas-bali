@@ -23,10 +23,10 @@ const testimonials: Testimonial[] = [
     villaName: "SUYAI Villas Bali",
     location: "Uluwatu",
     quote: "We live abroad and AURA handles everything perfectly. It's like having a trusted partner who cares about our property as much as we do.",
-    beforeOccupancy: "45%",
-    afterOccupancy: "92%",
-    increasePercent: 167,
-    image: "/images/villa-tropical-paradise.jpg"
+    beforeOccupancy: "62%",
+    afterOccupancy: "74%",
+    increasePercent: 19,
+    image: "/images/villas/suyaivillauluwatu/SUYAI-Villa_Pool.webp"
   },
   {
     id: 2,
