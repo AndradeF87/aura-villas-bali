@@ -473,8 +473,8 @@ export default function PricingPage() {
                             if (pkg.id === 'essential') {
                               return (
                                 <td key={pkg.id} className="p-4 text-center">
-                                  <div className="inline-flex items-center justify-center w-8 h-8 bg-terracotta/10 rounded-full">
-                                    <Check className="w-5 h-5 text-terracotta" />
+                                  <div className="inline-flex items-center justify-center w-8 h-8 bg-terracotta rounded-full">
+                                    <Check className="w-5 h-5 text-white font-bold" />
                                   </div>
                                 </td>
                               );
@@ -498,8 +498,8 @@ export default function PricingPage() {
                           return (
                             <td key={pkg.id} className="p-4 text-center">
                               {isIncluded ? (
-                                <div className="inline-flex items-center justify-center w-8 h-8 bg-terracotta/10 rounded-full">
-                                  <Check className="w-5 h-5 text-terracotta" />
+                                <div className="inline-flex items-center justify-center w-8 h-8 bg-terracotta rounded-full">
+                                  <Check className="w-5 h-5 text-white font-bold" />
                                 </div>
                               ) : (
                                 <div className="inline-flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full">
