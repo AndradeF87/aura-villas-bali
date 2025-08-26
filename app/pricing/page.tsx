@@ -617,7 +617,7 @@ export default function PricingPage() {
 
               {/* Comparison Table for Strategy */}
               <div className="mb-12 pt-10">
-                <div className="bg-white rounded-2xl shadow-xl overflow-visible relative max-w-4xl mx-auto">
+                <div className="bg-white rounded-2xl shadow-xl overflow-visible relative">
                   <div className="overflow-x-auto">
                     <table className="w-full">
                       <thead>
@@ -720,7 +720,7 @@ export default function PricingPage() {
 
               {/* Comparison Table for Website */}
               <div className="mb-12 pt-10">
-                <div className="bg-white rounded-2xl shadow-xl overflow-visible relative max-w-4xl mx-auto">
+                <div className="bg-white rounded-2xl shadow-xl overflow-visible relative">
                   <div className="overflow-x-auto">
                     <table className="w-full">
                       <thead>
@@ -823,7 +823,7 @@ export default function PricingPage() {
 
               {/* Comparison Table for Maintenance */}
               <div className="mb-12 pt-10">
-                <div className="bg-white rounded-2xl shadow-xl overflow-visible relative max-w-4xl mx-auto">
+                <div className="bg-white rounded-2xl shadow-xl overflow-visible relative">
                   <div className="overflow-x-auto">
                     <table className="w-full">
                       <thead>
@@ -926,7 +926,7 @@ export default function PricingPage() {
 
               {/* Comparison Table for Social */}
               <div className="mb-12 pt-10">
-                <div className="bg-white rounded-2xl shadow-xl overflow-visible relative max-w-4xl mx-auto">
+                <div className="bg-white rounded-2xl shadow-xl overflow-visible relative">
                   <div className="overflow-x-auto">
                     <table className="w-full">
                       <thead>
