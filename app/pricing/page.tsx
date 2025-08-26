@@ -392,92 +392,125 @@ export default function PricingPage() {
               </p>
             </div>
 
-            {/* Pricing Cards */}
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
-              {operationalPackages.map((pkg) => (
-                <div
-                  key={pkg.id}
-                  className={`relative bg-white rounded-2xl shadow-lg overflow-hidden ${
-                    pkg.recommended ? 'ring-2 ring-terracotta transform scale-105' : ''
-                  }`}
-                >
-                  {pkg.recommended && (
-                    <div className="absolute top-0 right-0 bg-terracotta text-white px-4 py-1 rounded-bl-xl text-sm font-medium">
-                      Most Popular
-                    </div>
-                  )}
-                  
-                  <div className="p-8">
-                    <h3 className="font-serif text-2xl text-deep-green mb-2">
-                      {pkg.name}
-                    </h3>
-                    <div className="mb-4">
-                      <span className="text-4xl font-bold text-terracotta">{pkg.commission}</span>
-                      <span className="text-deep-green/60 ml-2">of gross revenue</span>
-                    </div>
-                    <p className="text-deep-green/70 mb-6">
-                      {pkg.description}
-                    </p>
-
-                    {/* Key Features */}
-                    <ul className="space-y-3 mb-8">
-                      {pkg.features.slice(0, 5).map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-2">
-                          {feature.included ? (
-                            <Check className="w-5 h-5 text-terracotta flex-shrink-0 mt-0.5" />
-                          ) : (
-                            <X className="w-5 h-5 text-gray-300 flex-shrink-0 mt-0.5" />
+            {/* Comparison Table */}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden mb-12">
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b-2 border-sand">
+                      <th className="text-left p-6 bg-sand-light/50">
+                        <span className="font-serif text-xl text-deep-green">Features</span>
+                      </th>
+                      {operationalPackages.map((pkg) => (
+                        <th key={pkg.id} className="p-6 text-center bg-sand-light/30 relative">
+                          {pkg.recommended && (
+                            <div className="absolute top-0 inset-x-0 bg-terracotta text-white text-xs py-1 font-medium">
+                              MOST POPULAR
+                            </div>
                           )}
-                          <span className={`text-sm ${feature.included ? 'text-deep-green' : 'text-gray-400'}`}>
-                            {feature.name}
-                          </span>
-                        </li>
+                          <div className={`${pkg.recommended ? 'pt-6' : ''}`}>
+                            <h3 className="font-serif text-2xl text-deep-green mb-2">
+                              {pkg.name}
+                            </h3>
+                            <div className="text-3xl font-bold text-terracotta mb-1">
+                              {pkg.commission}
+                            </div>
+                            <div className="text-sm text-deep-green/60">
+                              of gross revenue
+                            </div>
+                            <div className="text-xs text-deep-green/70 mt-2 px-4">
+                              {pkg.description}
+                            </div>
+                          </div>
+                        </th>
                       ))}
-                    </ul>
-
-                    <button
-                      onClick={() => setExpandedPackage(expandedPackage === pkg.id ? null : pkg.id)}
-                      className="text-terracotta text-sm font-medium hover:text-terracotta-dark transition-colors mb-6 flex items-center gap-1"
-                    >
-                      {expandedPackage === pkg.id ? 'Show Less' : 'Show All Features'}
-                      {expandedPackage === pkg.id ? (
-                        <ChevronUp className="w-4 h-4" />
-                      ) : (
-                        <ChevronDown className="w-4 h-4" />
-                      )}
-                    </button>
-
-                    {/* Expanded Features */}
-                    {expandedPackage === pkg.id && (
-                      <ul className="space-y-3 mb-8 border-t border-sand pt-6">
-                        {pkg.features.slice(5).map((feature, idx) => (
-                          <li key={idx} className="flex items-start gap-2">
-                            {feature.included ? (
-                              <Check className="w-5 h-5 text-terracotta flex-shrink-0 mt-0.5" />
-                            ) : (
-                              <X className="w-5 h-5 text-gray-300 flex-shrink-0 mt-0.5" />
-                            )}
-                            <span className={`text-sm ${feature.included ? 'text-deep-green' : 'text-gray-400'}`}>
-                              {feature.name}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-
-                    <Link
-                      href="/contact"
-                      className={`block w-full text-center px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                        pkg.recommended
-                          ? 'bg-terracotta text-white hover:bg-terracotta-dark'
-                          : 'border-2 border-terracotta text-terracotta hover:bg-terracotta hover:text-white'
-                      }`}
-                    >
-                      Get Started
-                    </Link>
-                  </div>
-                </div>
-              ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {/* Get unique features list */}
+                    {[
+                      'Daily Housekeeping Supervision',
+                      'Guest Check-in & Check-out Assistance',
+                      'Guest Support (8 AM – 8 PM)',
+                      '24/7 Guest Support',
+                      'Maintenance Coordination',
+                      'Pool & Garden Scheduling',
+                      'Booking Calendar Management',
+                      'Monthly Stock Inventory',
+                      'Laundry Coordination',
+                      'Monthly Owner Report',
+                      'Basic Amenities Restocking',
+                      'Digital Guest Guidebook',
+                      'Monthly Preventive Maintenance',
+                      'Utility Bills Payment Assistance',
+                      'In-Villa Welcome Service',
+                      'Concierge Services',
+                      'Weekly Villa Inspections',
+                      'Dedicated Operations Manager',
+                      'Priority Maintenance Response',
+                      'Personalized Guest Gifts',
+                      'VIP Amenities',
+                      'Quarterly Performance Review',
+                      'Direct Staff Management',
+                      'Tax Reporting & Compliance',
+                      'Monthly Financial Reports',
+                      'Annual P&L Summary'
+                    ].map((featureName, idx) => (
+                      <tr key={idx} className={`border-b border-sand/30 ${idx % 2 === 0 ? 'bg-white' : 'bg-sand-light/10'}`}>
+                        <td className="p-4 text-sm text-deep-green font-medium">
+                          {featureName}
+                        </td>
+                        {operationalPackages.map((pkg) => {
+                          const feature = pkg.features.find(f => 
+                            f.name === featureName || 
+                            (featureName === 'Guest Support (8 AM – 8 PM)' && pkg.id === 'essential' && f.name === 'Guest Check-in & Check-out Assistance')
+                          );
+                          const isIncluded = feature?.included || 
+                            (featureName === 'Guest Support (8 AM – 8 PM)' && pkg.id === 'essential') ||
+                            (featureName === 'Monthly Financial Reports' && pkg.id === 'boutique') ||
+                            (featureName === 'Annual P&L Summary' && pkg.id === 'boutique') ||
+                            (featureName === 'Personalized Guest Gifts' && pkg.id === 'premium') ||
+                            (featureName === 'VIP Amenities' && pkg.id === 'premium') ||
+                            (featureName === 'Quarterly Performance Review' && pkg.id === 'premium');
+                          
+                          return (
+                            <td key={pkg.id} className="p-4 text-center">
+                              {isIncluded ? (
+                                <div className="inline-flex items-center justify-center w-8 h-8 bg-terracotta/10 rounded-full">
+                                  <Check className="w-5 h-5 text-terracotta" />
+                                </div>
+                              ) : (
+                                <div className="inline-flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full">
+                                  <X className="w-5 h-5 text-gray-400" />
+                                </div>
+                              )}
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ))}
+                  </tbody>
+                  <tfoot>
+                    <tr className="border-t-2 border-sand">
+                      <td className="p-6 bg-sand-light/50"></td>
+                      {operationalPackages.map((pkg) => (
+                        <td key={pkg.id} className="p-6 text-center bg-sand-light/30">
+                          <Link
+                            href="/contact"
+                            className={`inline-block px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                              pkg.recommended
+                                ? 'bg-terracotta text-white hover:bg-terracotta-dark transform hover:scale-105'
+                                : 'border-2 border-terracotta text-terracotta hover:bg-terracotta hover:text-white'
+                            }`}
+                          >
+                            Get Started
+                          </Link>
+                        </td>
+                      ))}
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
             </div>
 
             {/* Trust Indicators */}
