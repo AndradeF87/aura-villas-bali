@@ -790,7 +790,7 @@ export default function PricingPage() {
                                 : 'border-2 border-terracotta text-terracotta hover:bg-terracotta hover:text-white'
                             }`}
                           >
-                            {pkg.id === 'boutique' ? 'Apply for Invitation' : 'Get Started'}
+                            {pkg.id === 'boutique' ? 'Apply' : 'Get Started'}
                           </button>
                         </td>
                       ))}
