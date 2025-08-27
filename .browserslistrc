@@ -1,0 +1,15 @@
+# Target modern browsers only - no legacy support needed
+# This significantly reduces bundle size by avoiding unnecessary polyfills
+
+# Support browsers with >1% global usage that support ES2022 features
+defaults and supports es6-module
+not dead
+not op_mini all
+not ie > 0
+not and_uc > 0
+
+# Explicitly support recent versions of major browsers (last 2 years)
+Chrome >= 100
+Firefox >= 100
+Safari >= 15.4
+Edge >= 100

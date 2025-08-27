@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Target modern browsers only
+  swcMinify: true,
+  
   // Enable experimental features for better performance
   experimental: {
     optimizePackageImports: ['gsap', 'framer-motion', 'three', 'lucide-react'],
@@ -35,6 +38,11 @@ const nextConfig: NextConfig = {
     removeConsole: process.env.NODE_ENV === 'production' ? {
       exclude: ['error', 'warn'],
     } : false,
+    // Target modern browsers to minimize polyfills
+    emotion: {
+      sourceMap: false,
+      autoLabel: 'never',
+    },
   },
   
   // Configure webpack for animation libraries
