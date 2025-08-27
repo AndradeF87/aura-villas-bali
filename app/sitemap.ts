@@ -1,39 +1,5 @@
 import { MetadataRoute } from 'next';
 
-// Mock data for villas - replace with your actual data source
-interface Villa {
-  slug: string;
-  name: string;
-  updatedAt: string;
-  priority: number;
-}
-
-// Get all villas from your data source
-async function getAllVillas(): Promise<Villa[]> {
-  // This would typically fetch from your database/CMS
-  // For now, returning mock data that matches your actual villas
-  return [
-    {
-      slug: 'suyai',
-      name: 'SUYAI',
-      updatedAt: '2024-08-26T10:00:00.000Z',
-      priority: 0.9
-    },
-    {
-      slug: 'amerta',
-      name: 'AMERTA',
-      updatedAt: '2024-08-26T10:00:00.000Z',
-      priority: 0.9
-    },
-    {
-      slug: 'shambala',
-      name: 'SHAMBALA',
-      updatedAt: '2024-08-26T10:00:00.000Z',
-      priority: 0.9
-    }
-  ];
-}
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://auravillasbali.com';
   const currentDate = new Date().toISOString();
@@ -72,20 +38,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // Dynamic villa pages
-  const villas = await getAllVillas();
-  const villaPages: MetadataRoute.Sitemap = villas.map((villa) => ({
-    url: `${baseUrl}/villas/${villa.slug}`,
-    lastModified: villa.updatedAt,
-    changeFrequency: 'weekly',
-    priority: villa.priority,
-  }));
+  // Note: Individual villa pages will be added here when actual villas are configured
+  // Currently no individual villa pages exist
 
-  // Combine all pages
-  const allPages = [
-    ...staticPages,
-    ...villaPages,
-  ];
+  const allPages = [...staticPages];
 
   // Sort by priority (highest first) and lastModified (newest first)
   return allPages.sort((a, b) => {
