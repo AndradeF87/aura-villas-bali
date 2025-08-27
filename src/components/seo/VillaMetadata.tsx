@@ -27,7 +27,7 @@ export function generateVillaMetadata(villa: Villa): Metadata {
     openGraph: {
       title,
       description,
-      url: `https://aura-villas-bali.com/villas/${villa.slug}`,
+      url: `https://auravillasbali.com/villas/${villa.slug}`,
       siteName: 'AURA Villas Bali',
       images,
       locale: 'en_US',
@@ -51,7 +51,7 @@ export function generateVillaMetadata(villa: Villa): Metadata {
       },
     },
     alternates: {
-      canonical: `https://aura-villas-bali.com/villas/${villa.slug}`,
+      canonical: `https://auravillasbali.com/villas/${villa.slug}`,
     },
   }
 }
@@ -62,7 +62,7 @@ export function VillaStructuredData({ villa }: { villa: Villa }) {
     '@type': 'LodgingBusiness',
     name: villa.name,
     description: villa.story || villa.storyTeaser,
-    url: `https://aura-villas-bali.com/villas/${villa.slug}`,
+    url: `https://auravillasbali.com/villas/${villa.slug}`,
     image: villa.images?.map(img => img.url) || [],
     priceRange: villa.pricing ? `${villa.pricing.currency}${villa.pricing.basePrice}` : undefined,
     address: {

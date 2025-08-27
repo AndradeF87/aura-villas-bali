@@ -23,8 +23,8 @@ export async function POST(request: NextRequest) {
     const resend = new Resend(process.env.RESEND_API_KEY)
 
     await resend.emails.send({
-      from: 'bookings@aura-villas-bali.com',
-      to: ['reservations@aura-villas-bali.com'],
+      from: 'bookings@auravillasbali.com',
+      to: ['reservations@auravillasbali.com'],
       subject: `New Villa Inquiry - ${bookingReference}`,
       html: `
         <h2>New Villa Booking Inquiry</h2>
@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
 
     // Also send confirmation to guest
     await resend.emails.send({
-      from: 'bookings@aura-villas-bali.com',
+      from: 'bookings@auravillasbali.com',
       to: [guestEmail],
       subject: `Your Villa Inquiry - ${bookingReference}`,
       html: `

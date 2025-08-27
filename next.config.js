@@ -72,7 +72,7 @@ const nextConfig = {
 
   // Environment variables
   env: {
-    NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || 'https://aura-villas-bali.com',
+    NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || 'https://auravillasbali.com',
   },
 
   // Enable TypeScript and ESLint

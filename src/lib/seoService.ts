@@ -11,7 +11,7 @@ export class SEOService {
       openGraph: {
         title,
         description,
-        url: `https://aura-villas-bali.com/villas/${villa.slug}`,
+        url: `https://auravillasbali.com/villas/${villa.slug}`,
         images: [
           {
             url: villa.images?.[0]?.url || '/images/og-default.jpg',
@@ -42,7 +42,7 @@ export class SEOService {
       openGraph: {
         title,
         description,
-        url: 'https://aura-villas-bali.com/villas',
+        url: 'https://auravillasbali.com/villas',
         type: 'website',
       },
     }
@@ -54,7 +54,7 @@ export class SEOService {
       '@type': 'Accommodation',
       name: villa.name,
       description: villa.story || villa.storyTeaser,
-      url: `https://aura-villas-bali.com/villas/${villa.slug}`,
+      url: `https://auravillasbali.com/villas/${villa.slug}`,
       image: villa.images?.map(img => img.url) || [],
       address: {
         '@type': 'PostalAddress',

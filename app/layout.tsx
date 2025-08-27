@@ -17,14 +17,14 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://aura-villas-bali.com'),
+  metadataBase: new URL('https://auravillasbali.com'),
   title: "AURA Villas Bali - Creating Good Memories",
   description: "Life is all about creating good memories. Discover our exclusive collection of luxury villas where your story begins.",
   keywords: "luxury villas Bali, exclusive Bali villas, Uluwatu villas, Canggu villas, Seminyak villas, beachfront villas Bali, clifftop villas Bali, villa rental Bali, Bali memories",
   openGraph: {
     title: "AURA Villas Bali - Creating Good Memories",
     description: "Life is all about creating good memories. Book your perfect villa today.",
-    url: "https://aura-villas-bali.com",
+    url: "https://auravillasbali.com",
     siteName: "AURA Villas Bali",
     images: [
       {
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "your-google-verification-code",
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || "",
   },
 };
 
