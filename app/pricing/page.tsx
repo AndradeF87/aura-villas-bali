@@ -46,6 +46,57 @@ export default function PricingPage() {
     packageType: ''
   })
 
+  const handleOpenModal = (packageName: string, packageType: 'operations' | 'marketing') => {
+    setSelectedPackageName(packageName)
+    setSelectedPackageType(packageType)
+    setFormData({ ...formData, packageName, packageType })
+    setShowModal(true)
+  }
+
+  const handleCloseModal = () => {
+    setShowModal(false)
+    setFormData({ name: '', email: '', phone: '', packageName: '', packageType: '' })
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: 'contact-form',
+          data: {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            message: `I am interested in the ${formData.packageName} ${formData.packageType} package. Please contact me with more information.`
+          }
+        })
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to send email')
+      }
+
+      // Show envelope animation
+      setShowEnvelope(true)
+      setTimeout(() => {
+        handleCloseModal()
+        setShowEnvelope(false)
+      }, 2000)
+    } catch (error) {
+      console.error('Error:', error)
+      alert('Sorry, there was an error. Please try again or contact us directly.')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   // Operational Packages
   const operationalPackages = [
     {
