@@ -94,7 +94,7 @@ export function TechnologySection() {
                   </motion.div>
 
                   {/* Content - Always visible */}
-                  <h3 className="font-serif text-xl text-deep-green mb-3">
+                  <h3 className="font-serif text-xl font-bold text-deep-green mb-3">
                     {tech.title}
                   </h3>
                   <p className="text-gray-700 mb-4 leading-relaxed">

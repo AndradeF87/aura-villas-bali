@@ -43,7 +43,7 @@ export default function PricingPage() {
       features: [
         { name: 'Daily Housekeeping Supervision', included: true },
         { name: 'Guest Check-in & Check-out Assistance', included: true },
-        { name: 'Guest Support (8 AM - 8 PM)', included: true },
+        { name: 'Guest Support (8 AM – 8 PM)', included: true },
         { name: 'Maintenance Coordination', included: true },
         { name: 'Pool & Garden Scheduling', included: true },
         { name: 'Booking Calendar Management', included: true },
@@ -52,15 +52,27 @@ export default function PricingPage() {
         { name: 'Monthly Owner Report', included: true },
         { name: 'Basic Amenities Restocking', included: true },
         { name: 'Digital Guest Guidebook', included: true },
-        { name: 'Monthly Preventive Maintenance', included: true },
+        { name: 'Monthly Preventive Maintenance Walkthrough', included: true },
         { name: 'Utility Bills Payment Assistance', included: true },
-        { name: '24/7 Guest Support', included: false },
-        { name: 'In-Villa Welcome Service', included: false },
-        { name: 'Concierge Services', included: false },
-        { name: 'Weekly Villa Inspections', included: false },
+        { name: 'In-Villa Welcome (with refreshments)', included: false },
+        { name: 'Concierge Services (Tours, Spa, Transport)', included: false },
+        { name: 'Weekly Villa Inspections (with photo/video reports)', included: false },
         { name: 'Dedicated Operations Manager', included: false },
-        { name: 'Direct Staff Management', included: false },
-        { name: 'Tax Reporting & Compliance', included: false }
+        { name: 'Monthly Deep Cleaning Coordination', included: false },
+        { name: 'Priority Maintenance Response + Repairs Buffer (Rp 500,000/month included)', included: false },
+        { name: 'Personalized Guest Gifts', included: false },
+        { name: 'VIP Amenities (Premium toiletries & gifts – at cost)', included: false },
+        { name: 'Staff Hiring Assistance (optional)', included: false },
+        { name: 'Quarterly Performance Review', included: false },
+        { name: 'Local Authority Liaison (Banjar, licensing)', included: false },
+        { name: 'Direct Staffing Management - We hire, train, and pay villa staff under AURA payroll', included: false },
+        { name: 'Complete HR Management (leave, replacement, bonus structure)', included: false },
+        { name: 'Expense & Cash Flow Management - All operational expenses processed directly with one simple monthly invoice covering all costs', included: false },
+        { name: 'Monthly Tax Reporting & Compliance - PPH Tax Reports submitted on your behalf', included: false },
+        { name: 'Monthly financial report with complete breakdown', included: false },
+        { name: 'Annual Profit & Loss Summary', included: false },
+        { name: 'Quarterly staff evaluations and performance reports', included: false },
+        { name: 'Annual CAPEX Planning Assistance for villa improvements', included: false }
       ]
     },
     {
@@ -72,7 +84,7 @@ export default function PricingPage() {
       features: [
         { name: 'Daily Housekeeping Supervision', included: true },
         { name: 'Guest Check-in & Check-out Assistance', included: true },
-        { name: '24/7 Guest Support', included: true },
+        { name: 'Guest Support (8 AM – 8 PM)', included: '24/7' },
         { name: 'Maintenance Coordination', included: true },
         { name: 'Pool & Garden Scheduling', included: true },
         { name: 'Booking Calendar Management', included: true },
@@ -81,15 +93,27 @@ export default function PricingPage() {
         { name: 'Monthly Owner Report', included: true },
         { name: 'Basic Amenities Restocking', included: true },
         { name: 'Digital Guest Guidebook', included: true },
-        { name: 'Monthly Preventive Maintenance', included: true },
+        { name: 'Monthly Preventive Maintenance Walkthrough', included: true },
         { name: 'Utility Bills Payment Assistance', included: true },
-        { name: 'In-Villa Welcome Service', included: true },
-        { name: 'Concierge Services', included: true },
-        { name: 'Weekly Villa Inspections', included: true },
+        { name: 'In-Villa Welcome (with refreshments)', included: true },
+        { name: 'Concierge Services (Tours, Spa, Transport)', included: true },
+        { name: 'Weekly Villa Inspections (with photo/video reports)', included: true },
         { name: 'Dedicated Operations Manager', included: true },
-        { name: 'Priority Maintenance Response', included: true },
-        { name: 'Direct Staff Management', included: false },
-        { name: 'Tax Reporting & Compliance', included: false }
+        { name: 'Monthly Deep Cleaning Coordination', included: true },
+        { name: 'Priority Maintenance Response + Repairs Buffer (Rp 500,000/month included)', included: true },
+        { name: 'Personalized Guest Gifts', included: true },
+        { name: 'VIP Amenities (Premium toiletries & gifts – at cost)', included: true },
+        { name: 'Staff Hiring Assistance (optional)', included: true },
+        { name: 'Quarterly Performance Review', included: true },
+        { name: 'Local Authority Liaison (Banjar, licensing)', included: true },
+        { name: 'Direct Staffing Management - We hire, train, and pay villa staff under AURA payroll', included: false },
+        { name: 'Complete HR Management (leave, replacement, bonus structure)', included: false },
+        { name: 'Expense & Cash Flow Management - All operational expenses processed directly with one simple monthly invoice covering all costs', included: false },
+        { name: 'Monthly Tax Reporting & Compliance - PPH Tax Reports submitted on your behalf', included: false },
+        { name: 'Monthly financial report with complete breakdown', included: false },
+        { name: 'Annual Profit & Loss Summary', included: false },
+        { name: 'Quarterly staff evaluations and performance reports', included: false },
+        { name: 'Annual CAPEX Planning Assistance for villa improvements', included: false }
       ]
     },
     {
@@ -101,7 +125,7 @@ export default function PricingPage() {
       features: [
         { name: 'Daily Housekeeping Supervision', included: true },
         { name: 'Guest Check-in & Check-out Assistance', included: true },
-        { name: '24/7 Guest Support', included: true },
+        { name: 'Guest Support (8 AM – 8 PM)', included: '24/7' },
         { name: 'Maintenance Coordination', included: true },
         { name: 'Pool & Garden Scheduling', included: true },
         { name: 'Booking Calendar Management', included: true },
@@ -110,15 +134,27 @@ export default function PricingPage() {
         { name: 'Monthly Owner Report', included: true },
         { name: 'Basic Amenities Restocking', included: true },
         { name: 'Digital Guest Guidebook', included: true },
-        { name: 'Monthly Preventive Maintenance', included: true },
+        { name: 'Monthly Preventive Maintenance Walkthrough', included: true },
         { name: 'Utility Bills Payment Assistance', included: true },
-        { name: 'In-Villa Welcome Service', included: true },
-        { name: 'Concierge Services', included: true },
-        { name: 'Weekly Villa Inspections', included: true },
+        { name: 'In-Villa Welcome (with refreshments)', included: true },
+        { name: 'Concierge Services (Tours, Spa, Transport)', included: true },
+        { name: 'Weekly Villa Inspections (with photo/video reports)', included: true },
         { name: 'Dedicated Operations Manager', included: true },
-        { name: 'Priority Maintenance Response', included: true },
-        { name: 'Direct Staff Management', included: true },
-        { name: 'Tax Reporting & Compliance', included: true }
+        { name: 'Monthly Deep Cleaning Coordination', included: true },
+        { name: 'Priority Maintenance Response + Repairs Buffer (Rp 500,000/month included)', included: true },
+        { name: 'Personalized Guest Gifts', included: true },
+        { name: 'VIP Amenities (Premium toiletries & gifts – at cost)', included: true },
+        { name: 'Staff Hiring Assistance (optional)', included: true },
+        { name: 'Quarterly Performance Review', included: true },
+        { name: 'Local Authority Liaison (Banjar, licensing)', included: true },
+        { name: 'Direct Staffing Management - We hire, train, and pay villa staff under AURA payroll', included: true },
+        { name: 'Complete HR Management (leave, replacement, bonus structure)', included: true },
+        { name: 'Expense & Cash Flow Management - All operational expenses processed directly with one simple monthly invoice covering all costs', included: true },
+        { name: 'Monthly Tax Reporting & Compliance - PPH Tax Reports submitted on your behalf', included: true },
+        { name: 'Monthly financial report with complete breakdown', included: true },
+        { name: 'Annual Profit & Loss Summary', included: true },
+        { name: 'Quarterly staff evaluations and performance reports', included: true },
+        { name: 'Annual CAPEX Planning Assistance for villa improvements', included: true }
       ]
     }
   ]
@@ -135,43 +171,43 @@ export default function PricingPage() {
           price: 10500000,
           oneTime: true,
           features: [
-            { name: 'Brand positioning', included: true },
-            { name: 'Target audience definition', included: true },
-            { name: 'Unique Selling Propositions', included: true },
-            { name: 'Marketing channels recommendations', included: true },
-            { name: 'Launch roadmap', included: true },
-            { name: 'Brand tone of voice', included: true },
-            { name: 'Messaging pillars', included: true },
-            { name: 'Brand story', included: false },
-            { name: 'Customer personas', included: false },
-            { name: 'Competitor analysis', included: false },
-            { name: 'Pricing strategy', included: false },
-            { name: 'Content strategy', included: false },
-            { name: 'KPI & goal mapping', included: false },
-            { name: 'Marketing funnel', included: false }
+            { name: 'Brand positioning – Define how your brand stands out in the market', included: true },
+            { name: 'Target audience definition – Identify who your ideal customers are', included: true },
+            { name: 'Unique Selling Propositions (USPs) – Highlight what makes your offer different', included: true },
+            { name: 'Suggested marketing channels – Recommend the best platforms to reach your audience', included: true },
+            { name: 'Launch roadmap – Outline key steps to introduce your brand or campaign', included: true },
+            { name: 'Brand tone of voice – Set the style and personality of your brand communication', included: true },
+            { name: 'Messaging pillars – Create consistent themes to guide all your messages', included: true },
+            { name: 'Brand story – Craft a compelling narrative behind your brand', included: false },
+            { name: 'Customer personas – Build detailed profiles of your key customer types', included: false },
+            { name: 'Competitor analysis – Review how your brand compares to others in the market', included: false },
+            { name: 'Pricing strategy – Plan Yearly pricing for each season and year over year adjustment', included: false },
+            { name: 'Content strategy – Decide what content to post, when, and where', included: false },
+            { name: 'KPI & goal mapping – Define measurable targets to track success', included: false },
+            { name: 'Marketing funnel – Map the customer journey from awareness to loyalty', included: false }
           ]
         },
         {
           id: 'strategy-premium',
-          name: 'Premium',
+          name: 'Boutique',
           price: 13000000,
           oneTime: true,
           recommended: true,
           features: [
-            { name: 'Brand positioning', included: true },
-            { name: 'Target audience definition', included: true },
-            { name: 'Unique Selling Propositions', included: true },
-            { name: 'Marketing channels recommendations', included: true },
-            { name: 'Launch roadmap', included: true },
-            { name: 'Brand tone of voice', included: true },
-            { name: 'Messaging pillars', included: true },
-            { name: 'Brand story', included: true },
-            { name: 'Customer personas', included: true },
-            { name: 'Competitor analysis', included: true },
-            { name: 'Pricing strategy', included: true },
-            { name: 'Content strategy', included: true },
-            { name: 'KPI & goal mapping', included: true },
-            { name: 'Marketing funnel', included: true }
+            { name: 'Brand positioning – Define how your brand stands out in the market', included: true },
+            { name: 'Target audience definition – Identify who your ideal customers are', included: true },
+            { name: 'Unique Selling Propositions (USPs) – Highlight what makes your offer different', included: true },
+            { name: 'Suggested marketing channels – Recommend the best platforms to reach your audience', included: true },
+            { name: 'Launch roadmap – Outline key steps to introduce your brand or campaign', included: true },
+            { name: 'Brand tone of voice – Set the style and personality of your brand communication', included: true },
+            { name: 'Messaging pillars – Create consistent themes to guide all your messages', included: true },
+            { name: 'Brand story – Craft a compelling narrative behind your brand', included: true },
+            { name: 'Customer personas – Build detailed profiles of your key customer types', included: true },
+            { name: 'Competitor analysis – Review how your brand compares to others in the market', included: true },
+            { name: 'Pricing strategy – Plan Yearly pricing for each season and year over year adjustment', included: true },
+            { name: 'Content strategy – Decide what content to post, when, and where', included: true },
+            { name: 'KPI & goal mapping – Define measurable targets to track success', included: true },
+            { name: 'Marketing funnel – Map the customer journey from awareness to loyalty', included: true }
           ]
         }
       ]
@@ -186,45 +222,45 @@ export default function PricingPage() {
           price: 14500000,
           oneTime: true,
           features: [
-            { name: 'Semi-custom template design', included: true },
+            { name: 'Website Design', included: 'semi-custom (Template)' },
             { name: 'Mobile-responsive layout', included: true },
-            { name: 'Up to 8 core pages', included: true },
-            { name: 'Booking engine integration', included: true },
-            { name: 'Photo & video gallery', included: true },
-            { name: 'Contact form with notifications', included: true },
-            { name: 'Speed optimization', included: true },
-            { name: 'Basic SEO structure', included: true },
-            { name: '3 months maintenance', included: true },
-            { name: 'Blog section', included: false },
-            { name: 'Daily/weekly backup setup', included: false },
-            { name: 'Website hosting (1 year)', included: false },
-            { name: 'Google Analytics & Maps', included: false },
-            { name: 'Live chat integration', included: false },
-            { name: 'Sticky header/smart navigation', included: false }
+            { name: 'Core Pages', included: 'up to 8' },
+            { name: 'Booking Engine Integration', included: true },
+            { name: 'Photo & Video Gallery', included: true },
+            { name: 'Contact Form with Email Notification', included: true },
+            { name: 'Speed Optimization (lazy loading, caching setup)', included: true },
+            { name: 'Basic SEO Structure (clean URLs, header tags, etc.)', included: true },
+            { name: '3 Months Maintenance', included: true },
+            { name: 'Blog Section', included: false },
+            { name: 'Daily/Weekly Backup Setup', included: false },
+            { name: 'Website Hosting (one year)', included: false },
+            { name: 'Google Analytics & Google Maps Integration', included: false },
+            { name: 'Live Chat Integration (WhatsApp or others)', included: false },
+            { name: 'Sticky Header or Smart Navigation', included: false }
           ]
         },
         {
           id: 'website-premium',
-          name: 'Premium',
+          name: 'Boutique',
           price: 22700000,
           oneTime: true,
           recommended: true,
           features: [
-            { name: 'Custom design', included: true },
+            { name: 'Website Design', included: 'custom' },
             { name: 'Mobile-responsive layout', included: true },
-            { name: 'Up to 12 core pages', included: true },
-            { name: 'Booking engine integration', included: true },
-            { name: 'Photo & video gallery', included: true },
-            { name: 'Contact form with notifications', included: true },
-            { name: 'Speed optimization', included: true },
-            { name: 'Basic SEO structure', included: true },
-            { name: '3 months maintenance', included: true },
-            { name: 'Blog section', included: true },
-            { name: 'Daily/weekly backup setup', included: true },
-            { name: 'Website hosting (1 year)', included: true },
-            { name: 'Google Analytics & Maps', included: true },
-            { name: 'Live chat integration', included: true },
-            { name: 'Sticky header/smart navigation', included: true }
+            { name: 'Core Pages', included: 'up to 12' },
+            { name: 'Booking Engine Integration', included: true },
+            { name: 'Photo & Video Gallery', included: true },
+            { name: 'Contact Form with Email Notification', included: true },
+            { name: 'Speed Optimization (lazy loading, caching setup)', included: true },
+            { name: 'Basic SEO Structure (clean URLs, header tags, etc.)', included: true },
+            { name: '3 Months Maintenance', included: true },
+            { name: 'Blog Section', included: true },
+            { name: 'Daily/Weekly Backup Setup', included: true },
+            { name: 'Website Hosting (one year)', included: true },
+            { name: 'Google Analytics & Google Maps Integration', included: true },
+            { name: 'Live Chat Integration (WhatsApp or others)', included: true },
+            { name: 'Sticky Header or Smart Navigation', included: true }
           ]
         }
       ]
@@ -238,38 +274,38 @@ export default function PricingPage() {
           name: 'Essential',
           price: 6000000,
           features: [
-            { name: 'Website maintenance & support', included: true },
-            { name: 'Technical SEO (sitemap, robots)', included: true },
-            { name: 'Image & performance optimization', included: true },
-            { name: 'On-page optimization', included: true },
+            { name: 'Website Maintenance & Technical Support (Security Updates, Backups & more)', included: true },
+            { name: 'Technical SEO (sitemap, robots.txt, crawl fixes)', included: true },
+            { name: 'Image and performance optimization', included: true },
+            { name: 'On-page optimization (titles, meta tags, headings)', included: true },
             { name: 'Google Search Console monitoring', included: true },
-            { name: 'Local SEO management', included: true },
-            { name: 'SEO copywriting', included: true },
-            { name: '2 blog posts per month', included: true },
-            { name: 'Roadmap planning', included: false },
-            { name: 'Monthly performance dashboard', included: false },
-            { name: 'Website edits (1 per month)', included: false },
-            { name: 'SEO health audit', included: false }
+            { name: 'Local SEO (Google Business Profile management)', included: true },
+            { name: 'Copywriting for SEO and conversions', included: true },
+            { name: 'Blog Posts', included: '2 per month' },
+            { name: 'Roadmap planning (Future website features/changes)', included: false },
+            { name: 'Monthly performance dashboard (traffic, goals, rankings)', included: false },
+            { name: 'Website Edits / Change Requests', included: false },
+            { name: 'SEO health audit (monthly or quarterly)', included: false }
           ]
         },
         {
           id: 'maintenance-premium',
-          name: 'Premium',
+          name: 'Boutique',
           price: 7500000,
           recommended: true,
           features: [
-            { name: 'Website maintenance & support', included: true },
-            { name: 'Technical SEO (sitemap, robots)', included: true },
-            { name: 'Image & performance optimization', included: true },
-            { name: 'On-page optimization', included: true },
+            { name: 'Website Maintenance & Technical Support (Security Updates, Backups & more)', included: true },
+            { name: 'Technical SEO (sitemap, robots.txt, crawl fixes)', included: true },
+            { name: 'Image and performance optimization', included: true },
+            { name: 'On-page optimization (titles, meta tags, headings)', included: true },
             { name: 'Google Search Console monitoring', included: true },
-            { name: 'Local SEO management', included: true },
-            { name: 'SEO copywriting', included: true },
-            { name: '4 blog posts per month', included: true },
-            { name: 'Roadmap planning', included: true },
-            { name: 'Monthly performance dashboard', included: true },
-            { name: 'Website edits (1 per month)', included: true },
-            { name: 'SEO health audit', included: true }
+            { name: 'Local SEO (Google Business Profile management)', included: true },
+            { name: 'Copywriting for SEO and conversions', included: true },
+            { name: 'Blog Posts', included: '4 per month' },
+            { name: 'Roadmap planning (Future website features/changes)', included: true },
+            { name: 'Monthly performance dashboard (traffic, goals, rankings)', included: true },
+            { name: 'Website Edits / Change Requests', included: '1 per month' },
+            { name: 'SEO health audit (monthly or quarterly)', included: true }
           ]
         }
       ]
@@ -283,42 +319,42 @@ export default function PricingPage() {
           name: 'Essential',
           price: 6500000,
           features: [
-            { name: 'Monthly content production', included: true },
-            { name: '2 feed posts per week', included: true },
-            { name: '2 reels per month', included: true },
-            { name: 'Post copywriting aligned with brand', included: true },
-            { name: 'Instagram & Facebook optimization', included: true },
-            { name: 'Ad campaign management', included: true },
-            { name: 'Engagement handling', included: true },
-            { name: 'Seasonal greetings & graphics', included: true },
-            { name: 'Performance report (monthly)', included: true },
+            { name: 'Monthly content production (Photos & Videos)', included: true },
+            { name: 'Original feed Posts (Instagram)', included: '2 per week' },
+            { name: 'Original feed Reels (Instagram)', included: '2 per month' },
+            { name: 'Post copywriting aligned with Brand and Marketing strategy', included: true },
+            { name: 'Optimization and maintenance of Instagram and Facebook profile/page', included: true },
+            { name: 'Ad campaign management (Ad costs not included. Budgeted by Customer)', included: true },
+            { name: 'Engagement handling (Comments, DMs, resharing stories with personalized covers)', included: true },
+            { name: 'Seasonal greetings and promotional graphics', included: true },
+            { name: 'Performance report (Monthly)', included: true },
             { name: 'Google Maps recommendation lists', included: false },
             { name: 'Drone video (one-time)', included: false },
-            { name: 'Pinterest pins', included: false },
-            { name: 'Campaign strategy', included: false },
-            { name: 'Content strategy', included: false }
+            { name: 'Pinterest Pins', included: false },
+            { name: 'Campaign strategy – Plan ideas and structure for promotional campaigns', included: false },
+            { name: 'Content strategy – Decide what content to post, when, and where', included: false }
           ]
         },
         {
           id: 'social-premium',
-          name: 'Premium',
+          name: 'Boutique',
           price: 8000000,
           recommended: true,
           features: [
-            { name: 'Monthly content production', included: true },
-            { name: '3 feed posts per week', included: true },
-            { name: '3 reels per month', included: true },
-            { name: 'Post copywriting aligned with brand', included: true },
-            { name: 'Instagram & Facebook optimization', included: true },
-            { name: 'Ad campaign management', included: true },
-            { name: 'Engagement handling', included: true },
-            { name: 'Seasonal greetings & graphics', included: true },
-            { name: 'Performance report (monthly)', included: true },
+            { name: 'Monthly content production (Photos & Videos)', included: true },
+            { name: 'Original feed Posts (Instagram)', included: '3 per week' },
+            { name: 'Original feed Reels (Instagram)', included: '3 per month' },
+            { name: 'Post copywriting aligned with Brand and Marketing strategy', included: true },
+            { name: 'Optimization and maintenance of Instagram and Facebook profile/page', included: true },
+            { name: 'Ad campaign management (Ad costs not included. Budgeted by Customer)', included: true },
+            { name: 'Engagement handling (Comments, DMs, resharing stories with personalized covers)', included: true },
+            { name: 'Seasonal greetings and promotional graphics', included: true },
+            { name: 'Performance report (Monthly)', included: true },
             { name: 'Google Maps recommendation lists', included: true },
             { name: 'Drone video (one-time)', included: true },
-            { name: 'Pinterest pins', included: true },
-            { name: 'Campaign strategy', included: true },
-            { name: 'Content strategy', included: true }
+            { name: 'Pinterest Pins', included: true },
+            { name: 'Campaign strategy – Plan ideas and structure for promotional campaigns', included: true },
+            { name: 'Content strategy – Decide what content to post, when, and where', included: true }
           ]
         }
       ]
@@ -337,7 +373,10 @@ export default function PricingPage() {
           <div className="flex justify-center">
             <div className="inline-flex rounded-full bg-sand-light p-1 my-3 md:my-6">
               <button
-                onClick={() => setActiveTab('operations')}
+                onClick={() => {
+                  setActiveTab('operations')
+                  window.scrollTo(0, 0)
+                }}
                 className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                   activeTab === 'operations'
                     ? 'bg-deep-green text-white'
@@ -348,7 +387,10 @@ export default function PricingPage() {
                 Operations Management
               </button>
               <button
-                onClick={() => setActiveTab('marketing')}
+                onClick={() => {
+                  setActiveTab('marketing')
+                  window.scrollTo(0, 0)
+                }}
                 className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                   activeTab === 'marketing'
                     ? 'bg-deep-green text-white'
@@ -420,7 +462,7 @@ export default function PricingPage() {
                   {[
                     'Daily Housekeeping Supervision',
                     'Guest Check-in & Check-out Assistance',
-                    'Guest Support',
+                    'Guest Support (8 AM – 8 PM)',
                     'Maintenance Coordination',
                     'Pool & Garden Scheduling',
                     'Booking Calendar Management',
@@ -429,23 +471,29 @@ export default function PricingPage() {
                     'Monthly Owner Report',
                     'Basic Amenities Restocking',
                     'Digital Guest Guidebook',
-                    'Monthly Preventive Maintenance',
+                    'Monthly Preventive Maintenance Walkthrough',
                     'Utility Bills Payment Assistance',
-                    'In-Villa Welcome Service',
-                    'Concierge Services',
-                    'Weekly Villa Inspections',
+                    'In-Villa Welcome (with refreshments)',
+                    'Concierge Services (Tours, Spa, Transport)',
+                    'Weekly Villa Inspections (with photo/video reports)',
                     'Dedicated Operations Manager',
-                    'Priority Maintenance Response',
+                    'Monthly Deep Cleaning Coordination',
+                    'Priority Maintenance Response + Repairs Buffer (Rp 500,000/month included)',
                     'Personalized Guest Gifts',
-                    'VIP Amenities',
+                    'VIP Amenities (Premium toiletries & gifts – at cost)',
+                    'Staff Hiring Assistance (optional)',
                     'Quarterly Performance Review',
-                    'Direct Staff Management',
-                    'Tax Reporting & Compliance',
-                    'Monthly Financial Reports',
-                    'Annual P&L Summary'
+                    'Local Authority Liaison (Banjar, licensing)',
+                    'Direct Staffing Management - We hire, train, and pay villa staff under AURA payroll',
+                    'Complete HR Management (leave, replacement, bonus structure)',
+                    'Expense & Cash Flow Management - All operational expenses processed directly with one simple monthly invoice covering all costs',
+                    'Monthly Tax Reporting & Compliance - PPH Tax Reports submitted on your behalf',
+                    'Monthly financial report with complete breakdown',
+                    'Annual Profit & Loss Summary',
+                    'Quarterly staff evaluations and performance reports',
+                    'Annual CAPEX Planning Assistance for villa improvements'
                   ].map((featureName, idx) => {
-                    // Special formatting for Guest Support to match desktop
-                    const displayName = featureName === 'Guest Support' ? 'Guest Support (8 AM – 8 PM)' : featureName;
+                    const displayName = featureName;
                     
                     return (
                       <div key={idx} className={`flex items-center border-b border-sand/30 ${idx % 2 === 0 ? 'bg-white' : 'bg-sand-light/10'}`}>
@@ -483,10 +531,7 @@ export default function PricingPage() {
                           // Regular feature handling
                           const feature = pkg.features.find(f => f.name === featureName);
                           const isIncluded = feature?.included || 
-                            pkg.id === 'boutique' || // Boutique Full has everything
-                            (featureName === 'Personalized Guest Gifts' && pkg.id === 'premium') ||
-                            (featureName === 'VIP Amenities' && pkg.id === 'premium') ||
-                            (featureName === 'Quarterly Performance Review' && pkg.id === 'premium');
+                            pkg.id === 'boutique'; // Boutique Full has everything
                           
                           const included = isIncluded
                           const colors = [
@@ -498,7 +543,11 @@ export default function PricingPage() {
                           
                           return (
                             <div key={pkg.id} className="w-9 px-1 flex justify-center">
-                              {included ? (
+                              {included === '24/7' ? (
+                                <div className={`text-xs font-bold ${pkgIndex === 0 ? 'text-terracotta' : pkgIndex === 1 ? 'text-terracotta' : 'text-deep-green'}`}>
+                                  24/7
+                                </div>
+                              ) : included ? (
                                 <div className={`w-5 h-5 rounded-full flex items-center justify-center ${color.bg}`}>
                                   <Check className={`w-3 h-3 ${color.check}`} />
                                 </div>
@@ -575,7 +624,7 @@ export default function PricingPage() {
                     {[
                       'Daily Housekeeping Supervision',
                       'Guest Check-in & Check-out Assistance',
-                      'Guest Support',
+                      'Guest Support (8 AM – 8 PM)',
                       'Maintenance Coordination',
                       'Pool & Garden Scheduling',
                       'Booking Calendar Management',
@@ -584,24 +633,31 @@ export default function PricingPage() {
                       'Monthly Owner Report',
                       'Basic Amenities Restocking',
                       'Digital Guest Guidebook',
-                      'Monthly Preventive Maintenance',
+                      'Monthly Preventive Maintenance Walkthrough',
                       'Utility Bills Payment Assistance',
-                      'In-Villa Welcome Service',
-                      'Concierge Services',
-                      'Weekly Villa Inspections',
+                      'In-Villa Welcome (with refreshments)',
+                      'Concierge Services (Tours, Spa, Transport)',
+                      'Weekly Villa Inspections (with photo/video reports)',
                       'Dedicated Operations Manager',
-                      'Priority Maintenance Response',
+                      'Monthly Deep Cleaning Coordination',
+                      'Priority Maintenance Response + Repairs Buffer (Rp 500,000/month included)',
                       'Personalized Guest Gifts',
-                      'VIP Amenities',
+                      'VIP Amenities (Premium toiletries & gifts – at cost)',
+                      'Staff Hiring Assistance (optional)',
                       'Quarterly Performance Review',
-                      'Direct Staff Management',
-                      'Tax Reporting & Compliance',
-                      'Monthly Financial Reports',
-                      'Annual P&L Summary'
+                      'Local Authority Liaison (Banjar, licensing)',
+                      'Direct Staffing Management - We hire, train, and pay villa staff under AURA payroll',
+                      'Complete HR Management (leave, replacement, bonus structure)',
+                      'Expense & Cash Flow Management - All operational expenses processed directly with one simple monthly invoice covering all costs',
+                      'Monthly Tax Reporting & Compliance - PPH Tax Reports submitted on your behalf',
+                      'Monthly financial report with complete breakdown',
+                      'Annual Profit & Loss Summary',
+                      'Quarterly staff evaluations and performance reports',
+                      'Annual CAPEX Planning Assistance for villa improvements'
                     ].map((featureName, idx) => (
                       <tr key={idx} className={`border-b border-sand/30 ${idx % 2 === 0 ? 'bg-white' : 'bg-sand-light/10'}`}>
                         <td className="p-4 text-base text-deep-green font-medium">
-                          {featureName === 'Guest Support' ? 'Guest Support (8 AM – 8 PM)' : featureName}
+                          {featureName}
                         </td>
                         {operationalPackages.map((pkg, pkgIndex) => {
                           const colors = [
@@ -633,14 +689,15 @@ export default function PricingPage() {
                           
                           const feature = pkg.features.find(f => f.name === featureName);
                           const isIncluded = feature?.included || 
-                            pkg.id === 'boutique' || // Boutique Full has everything
-                            (featureName === 'Personalized Guest Gifts' && pkg.id === 'premium') ||
-                            (featureName === 'VIP Amenities' && pkg.id === 'premium') ||
-                            (featureName === 'Quarterly Performance Review' && pkg.id === 'premium');
+                            pkg.id === 'boutique'; // Boutique Full has everything
                           
                           return (
                             <td key={pkg.id} className="p-4 text-center">
-                              {isIncluded ? (
+                              {isIncluded === '24/7' ? (
+                                <div className={`font-bold text-lg ${pkgIndex === 0 ? 'text-terracotta' : pkgIndex === 1 ? 'text-terracotta' : 'text-deep-green'}`}>
+                                  24/7
+                                </div>
+                              ) : isIncluded ? (
                                 <div className={`inline-flex items-center justify-center w-8 h-8 ${color.bg} rounded-full`}>
                                   <Check className={`w-5 h-5 ${color.check} font-bold`} />
                                 </div>
@@ -713,7 +770,10 @@ export default function PricingPage() {
               <div className="flex justify-center py-4">
                 <div className="inline-flex rounded-full bg-sand-light p-1">
                   <button
-                    onClick={() => setActiveMarketingSection('strategy')}
+                    onClick={() => {
+                      setActiveMarketingSection('strategy')
+                      window.scrollTo(0, 0)
+                    }}
                     className={`px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
                       activeMarketingSection === 'strategy'
                         ? 'bg-deep-green text-white'
@@ -724,7 +784,10 @@ export default function PricingPage() {
                     Strategic Brand Growth
                   </button>
                   <button
-                    onClick={() => setActiveMarketingSection('website')}
+                    onClick={() => {
+                      setActiveMarketingSection('website')
+                      window.scrollTo(0, 0)
+                    }}
                     className={`px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
                       activeMarketingSection === 'website'
                         ? 'bg-deep-green text-white'
@@ -735,7 +798,10 @@ export default function PricingPage() {
                     Web Presence
                   </button>
                   <button
-                    onClick={() => setActiveMarketingSection('maintenance')}
+                    onClick={() => {
+                      setActiveMarketingSection('maintenance')
+                      window.scrollTo(0, 0)
+                    }}
                     className={`px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
                       activeMarketingSection === 'maintenance'
                         ? 'bg-deep-green text-white'
@@ -746,7 +812,10 @@ export default function PricingPage() {
                     Get Found, Get Booked
                   </button>
                   <button
-                    onClick={() => setActiveMarketingSection('social')}
+                    onClick={() => {
+                      setActiveMarketingSection('social')
+                      window.scrollTo(0, 0)
+                    }}
                     className={`px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
                       activeMarketingSection === 'social'
                         ? 'bg-deep-green text-white'
@@ -829,7 +898,7 @@ export default function PricingPage() {
                           const color = colors[pkgIndex]
                           
                           return (
-                            <div key={pkg.id} className="w-9 px-1 flex justify-center">
+                            <div key={pkg.id} className="min-w-[80px] px-1 flex justify-center">
                               {included ? (
                                 <div className={`w-5 h-5 rounded-full flex items-center justify-center ${color.bg}`}>
                                   <Check className={`w-3 h-3 ${color.check}`} />
@@ -923,8 +992,12 @@ export default function PricingPage() {
                             const color = colors[pkgIndex]
                             
                             return (
-                              <div key={pkg.id} className="w-9 px-1 flex justify-center">
-                                {included ? (
+                              <div key={pkg.id} className="min-w-[80px] px-1 flex justify-center">
+                                {typeof included === 'string' ? (
+                                  <div className={`text-[9px] font-bold ${pkgIndex === 0 ? 'text-terracotta' : pkgIndex === 1 ? 'text-terracotta' : 'text-deep-green'} text-center leading-tight`}>
+                                    {included}
+                                  </div>
+                                ) : included ? (
                                   <div className={`w-5 h-5 rounded-full flex items-center justify-center ${color.bg}`}>
                                     <Check className={`w-3 h-3 ${color.check}`} />
                                   </div>
@@ -1017,8 +1090,12 @@ export default function PricingPage() {
                             const color = colors[pkgIndex]
                             
                             return (
-                              <div key={pkg.id} className="w-9 px-1 flex justify-center">
-                                {included ? (
+                              <div key={pkg.id} className="min-w-[80px] px-1 flex justify-center">
+                                {typeof included === 'string' ? (
+                                  <div className={`text-[9px] font-bold ${pkgIndex === 0 ? 'text-terracotta' : pkgIndex === 1 ? 'text-terracotta' : 'text-deep-green'} text-center leading-tight`}>
+                                    {included}
+                                  </div>
+                                ) : included ? (
                                   <div className={`w-5 h-5 rounded-full flex items-center justify-center ${color.bg}`}>
                                     <Check className={`w-3 h-3 ${color.check}`} />
                                   </div>
@@ -1109,8 +1186,12 @@ export default function PricingPage() {
                             const color = colors[pkgIndex]
                             
                             return (
-                              <div key={pkg.id} className="w-9 px-1 flex justify-center">
-                                {included ? (
+                              <div key={pkg.id} className="min-w-[80px] px-1 flex justify-center">
+                                {typeof included === 'string' ? (
+                                  <div className={`text-[9px] font-bold ${pkgIndex === 0 ? 'text-terracotta' : 'text-deep-green'} text-center leading-tight`}>
+                                    {included}
+                                  </div>
+                                ) : included ? (
                                   <div className={`w-5 h-5 rounded-full flex items-center justify-center ${color.bg}`}>
                                     <Check className={`w-3 h-3 ${color.check}`} />
                                   </div>
@@ -1210,7 +1291,11 @@ export default function PricingPage() {
                               
                               return (
                                 <td key={pkg.id} className="p-4 text-center">
-                                  {isIncluded ? (
+                                  {typeof isIncluded === 'string' ? (
+                                    <div className={`font-bold text-base ${pkgIndex === 0 ? 'text-terracotta' : 'text-deep-green'}`}>
+                                      {isIncluded}
+                                    </div>
+                                  ) : isIncluded ? (
                                     <div className={`inline-flex items-center justify-center w-8 h-8 ${color.bg} rounded-full`}>
                                       <Check className={`w-5 h-5 ${color.check} font-bold`} />
                                     </div>
@@ -1371,7 +1456,11 @@ export default function PricingPage() {
                               
                               return (
                                 <td key={pkg.id} className="p-4 text-center">
-                                  {isIncluded ? (
+                                  {typeof isIncluded === 'string' ? (
+                                    <div className={`font-bold text-base ${pkgIndex === 0 ? 'text-terracotta' : 'text-deep-green'}`}>
+                                      {isIncluded}
+                                    </div>
+                                  ) : isIncluded ? (
                                     <div className={`inline-flex items-center justify-center w-8 h-8 ${color.bg} rounded-full`}>
                                       <Check className={`w-5 h-5 ${color.check} font-bold`} />
                                     </div>
@@ -1533,7 +1622,11 @@ export default function PricingPage() {
                               
                               return (
                                 <td key={pkg.id} className="p-4 text-center">
-                                  {isIncluded ? (
+                                  {typeof isIncluded === 'string' ? (
+                                    <div className={`font-bold text-base ${pkgIndex === 0 ? 'text-terracotta' : pkgIndex === 1 ? 'text-terracotta' : 'text-deep-green'}`}>
+                                      {isIncluded}
+                                    </div>
+                                  ) : isIncluded ? (
                                     <div className={`inline-flex items-center justify-center w-8 h-8 ${color.bg} rounded-full`}>
                                       <Check className={`w-5 h-5 ${color.check} font-bold`} />
                                     </div>
@@ -1616,12 +1709,26 @@ export default function PricingPage() {
                           <h4 className="font-semibold text-deep-green border-b border-sand pb-2">Features</h4>
                           {pkg.features.map((feature) => (
                             <div key={feature.name} className="flex items-start gap-2">
-                              <div className={`mt-1 ${feature.included ? 'text-terracotta' : 'text-gray-300'}`}>
-                                {feature.included ? <Check className="w-4 h-4" /> : <X className="w-4 h-4" />}
-                              </div>
-                              <span className={`text-sm ${feature.included ? 'text-deep-green' : 'text-gray-400'}`}>
-                                {feature.name}
-                              </span>
+                              {typeof feature.included === 'string' ? (
+                                <>
+                                  <div className="mt-1 text-terracotta">
+                                    <Check className="w-4 h-4" />
+                                  </div>
+                                  <span className="text-sm text-deep-green">
+                                    {feature.name}
+                                    <span className="font-bold text-terracotta ml-1">({feature.included})</span>
+                                  </span>
+                                </>
+                              ) : (
+                                <>
+                                  <div className={`mt-1 ${feature.included ? 'text-terracotta' : 'text-gray-300'}`}>
+                                    {feature.included ? <Check className="w-4 h-4" /> : <X className="w-4 h-4" />}
+                                  </div>
+                                  <span className={`text-sm ${feature.included ? 'text-deep-green' : 'text-gray-400'}`}>
+                                    {feature.name}
+                                  </span>
+                                </>
+                              )}
                             </div>
                           ))}
                         </div>
@@ -1694,7 +1801,11 @@ export default function PricingPage() {
                               
                               return (
                                 <td key={pkg.id} className="p-4 text-center">
-                                  {isIncluded ? (
+                                  {typeof isIncluded === 'string' ? (
+                                    <div className={`font-bold text-base ${pkgIndex === 0 ? 'text-terracotta' : 'text-deep-green'}`}>
+                                      {isIncluded}
+                                    </div>
+                                  ) : isIncluded ? (
                                     <div className={`inline-flex items-center justify-center w-8 h-8 ${color.bg} rounded-full`}>
                                       <Check className={`w-5 h-5 ${color.check} font-bold`} />
                                     </div>
