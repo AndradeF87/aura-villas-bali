@@ -1,0 +1,141 @@
+/* Critical CSS - Inlined for above-the-fold content */
+/* Only essential styles for initial render */
+
+:root {
+  --font-inter: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-playfair: 'Playfair Display', Georgia, serif;
+  --sand-light: #F8F4F0;
+  --sand: #E5D4C1;
+  --terracotta: #C96F4A;
+  --terracotta-dark: #B85A35;
+  --deep-green: #2F4A3C;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-inter);
+  background-color: var(--sand-light);
+  color: var(--deep-green);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Typography essentials */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair);
+  line-height: 1.2;
+}
+
+/* Layout essentials */
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+/* Hero section critical styles */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--sand-light) 0%, var(--sand) 100%);
+}
+
+/* Navigation critical styles */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 50;
+  transition: all 0.3s ease;
+}
+
+/* Loading skeleton */
+.skeleton {
+  animation: skeleton-loading 1s infinite alternate;
+  background: linear-gradient(
+    90deg,
+    var(--sand-light) 25%,
+    var(--sand) 50%,
+    var(--sand-light) 75%
+  );
+  background-size: 200% 100%;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Prevent layout shift */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Button base styles */
+button, .btn {
+  font-family: var(--font-inter);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Visibility utilities */
+.hidden {
+  display: none;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+/* Font loading optimization */
+.font-inter {
+  font-family: var(--font-inter);
+}
+
+.font-playfair {
+  font-family: var(--font-playfair);
+}

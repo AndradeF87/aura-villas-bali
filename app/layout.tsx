@@ -75,6 +75,22 @@ export const viewport = {
   maximumScale: 1,
 };
 
+const criticalCSS = `
+  :root {
+    --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-playfair: 'Playfair Display', Georgia, serif;
+    --sand-light: #F8F4F0;
+    --sand: #E5D4C1;
+    --terracotta: #C96F4A;
+    --terracotta-dark: #B85A35;
+    --deep-green: #2F4A3C;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  body { font-family: var(--font-inter); background: var(--sand-light); color: var(--deep-green); }
+  h1,h2,h3,h4,h5,h6 { font-family: var(--font-playfair); }
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -82,6 +98,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <head>
+        <style dangerouslySetInnerHTML={{ __html: criticalCSS }} />
+      </head>
       <body className={`${inter.className} antialiased`}>
         <ConditionalNavigation />
         <ScrollbarController />

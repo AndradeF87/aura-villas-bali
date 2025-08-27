@@ -8,6 +8,17 @@ const nextConfig: NextConfig = {
     webVitalsAttribution: ['CLS', 'LCP', 'FCP', 'FID', 'TTFB', 'INP'],
   },
   
+  // CSS optimization
+  sassOptions: {
+    includePaths: ['./styles'],
+  },
+  
+  // Optimize production builds
+  productionBrowserSourceMaps: false,
+  poweredByHeader: false,
+  generateEtags: true,
+  compress: true,
+  
   // Optimize images for animation performance
   images: {
     formats: ['image/webp', 'image/avif'],
