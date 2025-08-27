@@ -450,23 +450,26 @@ export function GlassmorphismLuxury() {
                 {/* Amenities */}
                 <div className="mb-6">
                   <p className="text-white text-sm mb-3 opacity-80">Select amenities:</p>
-                  <div className="space-y-2">
+                  <div className="grid grid-cols-2 gap-2">
                     {['Private Pool', 'Ocean View', 'Beach Access', 'Chef Service'].map((amenity) => (
-                      <label
+                      <button
                         key={amenity}
-                        className="flex items-center p-3 rounded-lg cursor-pointer transition-all duration-300"
-                        style={{
-                          background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)',
-                          border: '1px solid rgba(212,175,55,0.2)',
+                        type="button"
+                        onClick={() => {
+                          setAmenities(prev => 
+                            prev.includes(amenity) 
+                              ? prev.filter(a => a !== amenity)
+                              : [...prev, amenity]
+                          )
                         }}
+                        className={`p-3 rounded-lg text-sm font-medium transition-all duration-300 ${
+                          amenities.includes(amenity)
+                            ? 'bg-[#C96F4A] text-white border-2 border-[#C96F4A] shadow-[0_0_10px_rgba(201,111,74,0.3)]'
+                            : 'bg-[rgba(255,255,255,0.05)] text-white border border-[rgba(212,175,55,0.2)] hover:border-[#C96F4A] hover:bg-[rgba(201,111,74,0.1)]'
+                        }`}
                       >
-                        <input
-                          type="checkbox"
-                          className="mr-3 w-4 h-4"
-                          style={{ accentColor: '#C96F4A' }}
-                        />
-                        <span className="text-white text-sm">{amenity}</span>
-                      </label>
+                        {amenity}
+                      </button>
                     ))}
                   </div>
                 </div>

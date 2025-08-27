@@ -131,7 +131,7 @@ export default function PricingPage() {
       packages: [
         {
           id: 'strategy-basic',
-          name: 'Basic',
+          name: 'Essential',
           price: 10500000,
           oneTime: true,
           features: [
@@ -182,7 +182,7 @@ export default function PricingPage() {
       packages: [
         {
           id: 'website-basic',
-          name: 'Basic',
+          name: 'Essential',
           price: 14500000,
           oneTime: true,
           features: [
@@ -235,7 +235,7 @@ export default function PricingPage() {
       packages: [
         {
           id: 'maintenance-basic',
-          name: 'Basic',
+          name: 'Essential',
           price: 6000000,
           features: [
             { name: 'Website maintenance & support', included: true },
@@ -280,7 +280,7 @@ export default function PricingPage() {
       packages: [
         {
           id: 'social-basic',
-          name: 'Basic',
+          name: 'Essential',
           price: 6500000,
           features: [
             { name: 'Monthly content production', included: true },
@@ -335,7 +335,7 @@ export default function PricingPage() {
       <section className="sticky top-0 z-40 bg-white border-b border-sand pt-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center">
-            <div className="inline-flex rounded-full bg-sand-light p-1 my-6">
+            <div className="inline-flex rounded-full bg-sand-light p-1 my-3 md:my-6">
               <button
                 onClick={() => setActiveTab('operations')}
                 className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
@@ -377,8 +377,159 @@ export default function PricingPage() {
               </p>
             </div>
 
-            {/* Comparison Table */}
-            <div className="mb-12 pt-10">
+            {/* Mobile Comparison Layout */}
+            <div className="block md:hidden mb-12 pt-10">
+              {/* Package Indicators */}
+              <div className="bg-white rounded-t-2xl p-4 space-y-3">
+                {operationalPackages.map((pkg, index) => {
+                  const colors = [
+                    { bg: 'bg-sand-light', check: 'text-terracotta' },
+                    { bg: 'bg-terracotta', check: 'text-white' },
+                    { bg: 'bg-deep-green', check: 'text-white' }
+                  ]
+                  const color = colors[index]
+                  
+                  return (
+                    <div key={pkg.id} className="flex items-center gap-3">
+                      <div className={`w-6 h-6 rounded-full flex items-center justify-center ${color.bg}`}>
+                        <Check className={`w-4 h-4 ${color.check}`} />
+                      </div>
+                      <span className="text-sm font-medium text-deep-green">
+                        {pkg.name} — {pkg.commission}
+                        {pkg.recommended && (
+                          <span className="ml-2 text-xs bg-terracotta text-white px-2 py-0.5 rounded-full">
+                            POPULAR
+                          </span>
+                        )}
+                        {pkg.id === 'boutique' && (
+                          <span className="ml-2 text-xs text-deep-green/60 italic">
+                            by invitation only
+                          </span>
+                        )}
+                      </span>
+                    </div>
+                  )
+                })}
+              </div>
+              
+              {/* Comparison Table */}
+              <div className="bg-white rounded-b-2xl shadow-xl overflow-hidden border-t-2 border-sand">
+                
+                {/* Features List - Same as desktop */}
+                <div>
+                  {[
+                    'Daily Housekeeping Supervision',
+                    'Guest Check-in & Check-out Assistance',
+                    'Guest Support',
+                    'Maintenance Coordination',
+                    'Pool & Garden Scheduling',
+                    'Booking Calendar Management',
+                    'Monthly Stock Inventory',
+                    'Laundry Coordination',
+                    'Monthly Owner Report',
+                    'Basic Amenities Restocking',
+                    'Digital Guest Guidebook',
+                    'Monthly Preventive Maintenance',
+                    'Utility Bills Payment Assistance',
+                    'In-Villa Welcome Service',
+                    'Concierge Services',
+                    'Weekly Villa Inspections',
+                    'Dedicated Operations Manager',
+                    'Priority Maintenance Response',
+                    'Personalized Guest Gifts',
+                    'VIP Amenities',
+                    'Quarterly Performance Review',
+                    'Direct Staff Management',
+                    'Tax Reporting & Compliance',
+                    'Monthly Financial Reports',
+                    'Annual P&L Summary'
+                  ].map((featureName, idx) => {
+                    // Special formatting for Guest Support to match desktop
+                    const displayName = featureName === 'Guest Support' ? 'Guest Support (8 AM – 8 PM)' : featureName;
+                    
+                    return (
+                      <div key={idx} className={`flex items-center border-b border-sand/30 ${idx % 2 === 0 ? 'bg-white' : 'bg-sand-light/10'}`}>
+                        <div className="flex-1 p-3 text-xs text-deep-green leading-tight">
+                          {displayName}
+                        </div>
+                        {operationalPackages.map((pkg, pkgIndex) => {
+                          // Special handling for Guest Support - same as desktop
+                          if (featureName === 'Guest Support') {
+                            const colors = [
+                              { bg: 'bg-sand-light', check: 'text-terracotta' },
+                              { bg: 'bg-terracotta', check: 'text-white' },
+                              { bg: 'bg-deep-green', check: 'text-white' }
+                            ]
+                            const color = colors[pkgIndex]
+                            
+                            if (pkg.id === 'essential') {
+                              return (
+                                <div key={pkg.id} className="w-9 px-1 flex justify-center">
+                                  <div className={`w-5 h-5 rounded-full flex items-center justify-center ${color.bg}`}>
+                                    <Check className={`w-3 h-3 ${color.check}`} />
+                                  </div>
+                                </div>
+                              )
+                            } else {
+                              // Premium and Boutique get "24/7" text
+                              return (
+                                <div key={pkg.id} className="w-9 px-1 flex justify-center">
+                                  <span className="text-[10px] font-semibold text-terracotta">24/7</span>
+                                </div>
+                              )
+                            }
+                          }
+                          
+                          // Regular feature handling
+                          const feature = pkg.features.find(f => f.name === featureName);
+                          const isIncluded = feature?.included || 
+                            pkg.id === 'boutique' || // Boutique Full has everything
+                            (featureName === 'Personalized Guest Gifts' && pkg.id === 'premium') ||
+                            (featureName === 'VIP Amenities' && pkg.id === 'premium') ||
+                            (featureName === 'Quarterly Performance Review' && pkg.id === 'premium');
+                          
+                          const included = isIncluded
+                          const colors = [
+                            { bg: 'bg-sand-light', check: 'text-terracotta' },
+                            { bg: 'bg-terracotta', check: 'text-white' },
+                            { bg: 'bg-deep-green', check: 'text-white' }
+                          ]
+                          const color = colors[pkgIndex]
+                          
+                          return (
+                            <div key={pkg.id} className="w-9 px-1 flex justify-center">
+                              {included ? (
+                                <div className={`w-5 h-5 rounded-full flex items-center justify-center ${color.bg}`}>
+                                  <Check className={`w-3 h-3 ${color.check}`} />
+                                </div>
+                              ) : (
+                                <div className="w-5 h-5 rounded-full flex items-center justify-center bg-gray-100">
+                                  <X className="w-3 h-3 text-gray-300" />
+                                </div>
+                              )}
+                            </div>
+                          )
+                        })}
+                      </div>
+                    )
+                  })}
+                </div>
+                
+              </div>
+              
+              {/* Single CTA */}
+              <div className="mt-4">
+                <Link
+                  href="/contact"
+                  className="block w-full text-center px-6 py-3 bg-terracotta text-white rounded-full font-medium transition-all duration-300 hover:bg-terracotta-dark"
+                >
+                  Get Started
+                </Link>
+              </div>
+            </div>
+
+            {/* Desktop Comparison Table */}
+            <div className="hidden md:block mb-12 pt-10">
               <div className="bg-white rounded-2xl shadow-xl overflow-visible relative">
                 <div className="overflow-x-auto">
                   <table className="w-full">
@@ -452,14 +603,21 @@ export default function PricingPage() {
                         <td className="p-4 text-base text-deep-green font-medium">
                           {featureName === 'Guest Support' ? 'Guest Support (8 AM – 8 PM)' : featureName}
                         </td>
-                        {operationalPackages.map((pkg) => {
+                        {operationalPackages.map((pkg, pkgIndex) => {
+                          const colors = [
+                            { bg: 'bg-sand-light', check: 'text-terracotta' },
+                            { bg: 'bg-terracotta', check: 'text-white' },
+                            { bg: 'bg-deep-green', check: 'text-white' }
+                          ]
+                          const color = colors[pkgIndex]
+                          
                           // Special handling for Guest Support
                           if (featureName === 'Guest Support') {
                             if (pkg.id === 'essential') {
                               return (
                                 <td key={pkg.id} className="p-4 text-center">
-                                  <div className="inline-flex items-center justify-center w-8 h-8 bg-terracotta rounded-full">
-                                    <Check className="w-5 h-5 text-white font-bold" />
+                                  <div className={`inline-flex items-center justify-center w-8 h-8 ${color.bg} rounded-full`}>
+                                    <Check className={`w-5 h-5 ${color.check} font-bold`} />
                                   </div>
                                 </td>
                               );
@@ -483,8 +641,8 @@ export default function PricingPage() {
                           return (
                             <td key={pkg.id} className="p-4 text-center">
                               {isIncluded ? (
-                                <div className="inline-flex items-center justify-center w-8 h-8 bg-terracotta rounded-full">
-                                  <Check className="w-5 h-5 text-white font-bold" />
+                                <div className={`inline-flex items-center justify-center w-8 h-8 ${color.bg} rounded-full`}>
+                                  <Check className={`w-5 h-5 ${color.check} font-bold`} />
                                 </div>
                               ) : (
                                 <div className="inline-flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full">
@@ -548,57 +706,442 @@ export default function PricingPage() {
 
       {/* Marketing Packages */}
       {activeTab === 'marketing' && (
-        <section className="py-20 bg-gradient-to-b from-white to-sand-light">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Marketing Submenu */}
-            <div className="flex justify-center mb-12">
-              <div className="inline-flex rounded-full bg-sand-light p-1">
-                <button
-                  onClick={() => setActiveMarketingSection('strategy')}
-                  className={`px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
-                    activeMarketingSection === 'strategy'
-                      ? 'bg-deep-green text-white'
-                      : 'text-deep-green hover:text-deep-green/70'
-                  }`}
-                >
-                  <Sparkles className="w-4 h-4 inline mr-1" />
-                  Strategic Brand Growth
-                </button>
-                <button
-                  onClick={() => setActiveMarketingSection('website')}
-                  className={`px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
-                    activeMarketingSection === 'website'
-                      ? 'bg-deep-green text-white'
-                      : 'text-deep-green hover:text-deep-green/70'
-                  }`}
-                >
-                  <Globe className="w-4 h-4 inline mr-1" />
-                  Web Presence
-                </button>
-                <button
-                  onClick={() => setActiveMarketingSection('maintenance')}
-                  className={`px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
-                    activeMarketingSection === 'maintenance'
-                      ? 'bg-deep-green text-white'
-                      : 'text-deep-green hover:text-deep-green/70'
-                  }`}
-                >
-                  <Search className="w-4 h-4 inline mr-1" />
-                  Get Found, Get Booked
-                </button>
-                <button
-                  onClick={() => setActiveMarketingSection('social')}
-                  className={`px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
-                    activeMarketingSection === 'social'
-                      ? 'bg-deep-green text-white'
-                      : 'text-deep-green hover:text-deep-green/70'
-                  }`}
-                >
-                  <MessageSquare className="w-4 h-4 inline mr-1" />
-                  Social Engagement
-                </button>
+        <>
+          {/* Marketing Submenu - Desktop Only */}
+          <section className="hidden md:block sticky top-[216px] z-30 bg-white border-b border-sand">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex justify-center py-4">
+                <div className="inline-flex rounded-full bg-sand-light p-1">
+                  <button
+                    onClick={() => setActiveMarketingSection('strategy')}
+                    className={`px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
+                      activeMarketingSection === 'strategy'
+                        ? 'bg-deep-green text-white'
+                        : 'text-deep-green hover:text-deep-green/70'
+                    }`}
+                  >
+                    <Sparkles className="w-4 h-4 inline mr-1" />
+                    Strategic Brand Growth
+                  </button>
+                  <button
+                    onClick={() => setActiveMarketingSection('website')}
+                    className={`px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
+                      activeMarketingSection === 'website'
+                        ? 'bg-deep-green text-white'
+                        : 'text-deep-green hover:text-deep-green/70'
+                    }`}
+                  >
+                    <Globe className="w-4 h-4 inline mr-1" />
+                    Web Presence
+                  </button>
+                  <button
+                    onClick={() => setActiveMarketingSection('maintenance')}
+                    className={`px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
+                      activeMarketingSection === 'maintenance'
+                        ? 'bg-deep-green text-white'
+                        : 'text-deep-green hover:text-deep-green/70'
+                    }`}
+                  >
+                    <Search className="w-4 h-4 inline mr-1" />
+                    Get Found, Get Booked
+                  </button>
+                  <button
+                    onClick={() => setActiveMarketingSection('social')}
+                    className={`px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
+                      activeMarketingSection === 'social'
+                        ? 'bg-deep-green text-white'
+                        : 'text-deep-green hover:text-deep-green/70'
+                    }`}
+                  >
+                    <MessageSquare className="w-4 h-4 inline mr-1" />
+                    Social Engagement
+                  </button>
+                </div>
               </div>
             </div>
+          </section>
+
+          <section className="py-20 bg-gradient-to-b from-white to-sand-light">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            {/* On Mobile - Show All Sections */}
+            <div className="block md:hidden space-y-20">
+              
+              {/* Strategy Section Mobile */}
+              <div>
+              <div className="text-center mb-12">
+                <div className="flex justify-center items-center gap-3 mb-4">
+                  <Sparkles className="w-8 h-8 text-terracotta" />
+                  <h2 className="font-serif text-4xl text-deep-green">
+                    {marketingPackages.strategy.name}
+                  </h2>
+                </div>
+                <p className="text-lg text-deep-green/70">
+                  {marketingPackages.strategy.description}
+                </p>
+              </div>
+
+              {/* Mobile Comparison Layout for Strategy - Same style as Operations */}
+              <div className="mb-12">
+                {/* Package Indicators */}
+                <div className="bg-white rounded-t-2xl p-4 space-y-3">
+                  {marketingPackages.strategy.packages.map((pkg, index) => {
+                    const colors = [
+                      { bg: 'bg-sand-light', check: 'text-terracotta' },
+                      { bg: 'bg-terracotta', check: 'text-white' }
+                    ]
+                    const color = colors[index]
+                    
+                    return (
+                      <div key={pkg.id} className="flex items-center gap-3">
+                        <div className={`w-6 h-6 rounded-full flex items-center justify-center ${color.bg}`}>
+                          <Check className={`w-4 h-4 ${color.check}`} />
+                        </div>
+                        <span className="text-sm font-medium text-deep-green">
+                          {pkg.name} — {formatCurrency(pkg.price)}
+                          {pkg.recommended && (
+                            <span className="ml-2 text-xs bg-terracotta text-white px-2 py-0.5 rounded-full">
+                              RECOMMENDED
+                            </span>
+                          )}
+                        </span>
+                      </div>
+                    )
+                  })}
+                </div>
+                
+                {/* Comparison Table */}
+                <div className="bg-white rounded-b-2xl shadow-xl overflow-hidden border-t-2 border-sand">
+                  {/* Features List */}
+                  <div>
+                    {[...new Set(marketingPackages.strategy.packages.flatMap(pkg => pkg.features.map(f => f.name)))].map((featureName, idx) => (
+                      <div key={idx} className={`flex items-center border-b border-sand/30 ${idx % 2 === 0 ? 'bg-white' : 'bg-sand-light/10'}`}>
+                        <div className="flex-1 p-3 text-xs text-deep-green leading-tight">
+                          {featureName}
+                        </div>
+                        {marketingPackages.strategy.packages.map((pkg, pkgIndex) => {
+                          const feature = pkg.features.find(f => f.name === featureName)
+                          const included = feature?.included || false
+                          const colors = [
+                            { bg: 'bg-sand-light', check: 'text-terracotta' },
+                            { bg: 'bg-terracotta', check: 'text-white' }
+                          ]
+                          const color = colors[pkgIndex]
+                          
+                          return (
+                            <div key={pkg.id} className="w-9 px-1 flex justify-center">
+                              {included ? (
+                                <div className={`w-5 h-5 rounded-full flex items-center justify-center ${color.bg}`}>
+                                  <Check className={`w-3 h-3 ${color.check}`} />
+                                </div>
+                              ) : (
+                                <div className="w-5 h-5 rounded-full flex items-center justify-center bg-gray-100">
+                                  <X className="w-3 h-3 text-gray-300" />
+                                </div>
+                              )}
+                            </div>
+                          )
+                        })}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Single CTA */}
+                <div className="mt-4">
+                  <Link
+                    href="/contact"
+                    className="block w-full text-center px-6 py-3 bg-terracotta text-white rounded-full font-medium transition-all duration-300 hover:bg-terracotta-dark"
+                  >
+                    Get Started
+                  </Link>
+                </div>
+              </div>
+              </div>
+
+              {/* Website Section Mobile */}
+              <div>
+                <div className="text-center mb-12">
+                  <div className="flex justify-center items-center gap-3 mb-4">
+                    <Globe className="w-8 h-8 text-terracotta" />
+                    <h2 className="font-serif text-4xl text-deep-green">
+                      {marketingPackages.website.name}
+                    </h2>
+                  </div>
+                  <p className="text-lg text-deep-green/70">
+                    {marketingPackages.website.description}
+                  </p>
+                </div>
+
+                {/* Mobile Comparison Layout for Website - Same style as Operations */}
+                <div className="mb-12">
+                  {/* Package Indicators */}
+                  <div className="bg-white rounded-t-2xl p-4 space-y-3">
+                    {marketingPackages.website.packages.map((pkg, index) => {
+                      const colors = [
+                        { bg: 'bg-sand-light', check: 'text-terracotta' },
+                        { bg: 'bg-terracotta', check: 'text-white' },
+                        { bg: 'bg-deep-green', check: 'text-white' }
+                      ]
+                      const color = colors[index]
+                      
+                      return (
+                        <div key={pkg.id} className="flex items-center gap-3">
+                          <div className={`w-6 h-6 rounded-full flex items-center justify-center ${color.bg}`}>
+                            <Check className={`w-4 h-4 ${color.check}`} />
+                          </div>
+                          <span className="text-sm font-medium text-deep-green">
+                            {pkg.name} — {formatCurrency(pkg.price)}
+                            {pkg.recommended && (
+                              <span className="ml-2 text-xs bg-terracotta text-white px-2 py-0.5 rounded-full">
+                                RECOMMENDED
+                              </span>
+                            )}
+                          </span>
+                        </div>
+                      )
+                    })}
+                  </div>
+                  
+                  {/* Comparison Table */}
+                  <div className="bg-white rounded-b-2xl shadow-xl overflow-hidden border-t-2 border-sand">
+                    {/* Features List */}
+                    <div>
+                      {[...new Set(marketingPackages.website.packages.flatMap(pkg => pkg.features.map(f => f.name)))].map((featureName, idx) => (
+                        <div key={idx} className={`flex items-center border-b border-sand/30 ${idx % 2 === 0 ? 'bg-white' : 'bg-sand-light/10'}`}>
+                          <div className="flex-1 p-3 text-xs text-deep-green leading-tight">
+                            {featureName}
+                          </div>
+                          {marketingPackages.website.packages.map((pkg, pkgIndex) => {
+                            const feature = pkg.features.find(f => f.name === featureName)
+                            const included = feature?.included || false
+                            const colors = [
+                              { bg: 'bg-sand-light', check: 'text-terracotta' },
+                              { bg: 'bg-terracotta', check: 'text-white' },
+                              { bg: 'bg-deep-green', check: 'text-white' }
+                            ]
+                            const color = colors[pkgIndex]
+                            
+                            return (
+                              <div key={pkg.id} className="w-9 px-1 flex justify-center">
+                                {included ? (
+                                  <div className={`w-5 h-5 rounded-full flex items-center justify-center ${color.bg}`}>
+                                    <Check className={`w-3 h-3 ${color.check}`} />
+                                  </div>
+                                ) : (
+                                  <div className="w-5 h-5 rounded-full flex items-center justify-center bg-gray-100">
+                                    <X className="w-3 h-3 text-gray-300" />
+                                  </div>
+                                )}
+                              </div>
+                            )
+                          })}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Single CTA */}
+                  <div className="mt-4">
+                    <Link
+                      href="/contact"
+                      className="block w-full text-center px-6 py-3 bg-terracotta text-white rounded-full font-medium transition-all duration-300 hover:bg-terracotta-dark"
+                    >
+                      Get Started
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              {/* Maintenance Section Mobile */}
+              <div>
+                <div className="text-center mb-12">
+                  <div className="flex justify-center items-center gap-3 mb-4">
+                    <Search className="w-8 h-8 text-terracotta" />
+                    <h2 className="font-serif text-4xl text-deep-green">
+                      {marketingPackages.maintenance.name}
+                    </h2>
+                  </div>
+                  <p className="text-lg text-deep-green/70">
+                    {marketingPackages.maintenance.description}
+                  </p>
+                </div>
+
+                {/* Mobile Comparison Layout for Maintenance - Same style as Operations */}
+                <div className="mb-12">
+                  {/* Package Indicators */}
+                  <div className="bg-white rounded-t-2xl p-4 space-y-3">
+                    {marketingPackages.maintenance.packages.map((pkg, index) => {
+                      const colors = [
+                        { bg: 'bg-sand-light', check: 'text-terracotta' },
+                        { bg: 'bg-terracotta', check: 'text-white' },
+                        { bg: 'bg-deep-green', check: 'text-white' }
+                      ]
+                      const color = colors[index]
+                      
+                      return (
+                        <div key={pkg.id} className="flex items-center gap-3">
+                          <div className={`w-6 h-6 rounded-full flex items-center justify-center ${color.bg}`}>
+                            <Check className={`w-4 h-4 ${color.check}`} />
+                          </div>
+                          <span className="text-sm font-medium text-deep-green">
+                            {pkg.name} — {formatCurrency(pkg.price)}/month
+                            {pkg.recommended && (
+                              <span className="ml-2 text-xs bg-terracotta text-white px-2 py-0.5 rounded-full">
+                                RECOMMENDED
+                              </span>
+                            )}
+                          </span>
+                        </div>
+                      )
+                    })}
+                  </div>
+                  
+                  {/* Comparison Table */}
+                  <div className="bg-white rounded-b-2xl shadow-xl overflow-hidden border-t-2 border-sand">
+                    {/* Features List */}
+                    <div>
+                      {[...new Set(marketingPackages.maintenance.packages.flatMap(pkg => pkg.features.map(f => f.name)))].map((featureName, idx) => (
+                        <div key={idx} className={`flex items-center border-b border-sand/30 ${idx % 2 === 0 ? 'bg-white' : 'bg-sand-light/10'}`}>
+                          <div className="flex-1 p-3 text-xs text-deep-green leading-tight">
+                            {featureName}
+                          </div>
+                          {marketingPackages.maintenance.packages.map((pkg, pkgIndex) => {
+                            const feature = pkg.features.find(f => f.name === featureName)
+                            const included = feature?.included || false
+                            const colors = [
+                              { bg: 'bg-sand-light', check: 'text-terracotta' },
+                              { bg: 'bg-terracotta', check: 'text-white' },
+                              { bg: 'bg-deep-green', check: 'text-white' }
+                            ]
+                            const color = colors[pkgIndex]
+                            
+                            return (
+                              <div key={pkg.id} className="w-9 px-1 flex justify-center">
+                                {included ? (
+                                  <div className={`w-5 h-5 rounded-full flex items-center justify-center ${color.bg}`}>
+                                    <Check className={`w-3 h-3 ${color.check}`} />
+                                  </div>
+                                ) : (
+                                  <div className="w-5 h-5 rounded-full flex items-center justify-center bg-gray-100">
+                                    <X className="w-3 h-3 text-gray-300" />
+                                  </div>
+                                )}
+                              </div>
+                            )
+                          })}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Single CTA */}
+                  <div className="mt-4">
+                    <Link
+                      href="/contact"
+                      className="block w-full text-center px-6 py-3 bg-terracotta text-white rounded-full font-medium transition-all duration-300 hover:bg-terracotta-dark"
+                    >
+                      Get Started
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              {/* Social Section Mobile */}
+              <div>
+                <div className="text-center mb-12">
+                  <div className="flex justify-center items-center gap-3 mb-4">
+                    <MessageSquare className="w-8 h-8 text-terracotta" />
+                    <h2 className="font-serif text-4xl text-deep-green">
+                      {marketingPackages.social.name}
+                    </h2>
+                  </div>
+                  <p className="text-lg text-deep-green/70">
+                    {marketingPackages.social.description}
+                  </p>
+                </div>
+
+                {/* Mobile Comparison Layout for Social - Same style as Operations */}
+                <div className="mb-12">
+                  {/* Package Indicators */}
+                  <div className="bg-white rounded-t-2xl p-4 space-y-3">
+                    {marketingPackages.social.packages.map((pkg, index) => {
+                      const colors = [
+                        { bg: 'bg-sand-light', check: 'text-terracotta' },
+                        { bg: 'bg-terracotta', check: 'text-white' }
+                      ]
+                      const color = colors[index]
+                      
+                      return (
+                        <div key={pkg.id} className="flex items-center gap-3">
+                          <div className={`w-6 h-6 rounded-full flex items-center justify-center ${color.bg}`}>
+                            <Check className={`w-4 h-4 ${color.check}`} />
+                          </div>
+                          <span className="text-sm font-medium text-deep-green">
+                            {pkg.name} — {formatCurrency(pkg.price)}/month
+                            {pkg.recommended && (
+                              <span className="ml-2 text-xs bg-terracotta text-white px-2 py-0.5 rounded-full">
+                                RECOMMENDED
+                              </span>
+                            )}
+                          </span>
+                        </div>
+                      )
+                    })}
+                  </div>
+                  
+                  {/* Comparison Table */}
+                  <div className="bg-white rounded-b-2xl shadow-xl overflow-hidden border-t-2 border-sand">
+                    {/* Features List */}
+                    <div>
+                      {[...new Set(marketingPackages.social.packages.flatMap(pkg => pkg.features.map(f => f.name)))].map((featureName, idx) => (
+                        <div key={idx} className={`flex items-center border-b border-sand/30 ${idx % 2 === 0 ? 'bg-white' : 'bg-sand-light/10'}`}>
+                          <div className="flex-1 p-3 text-xs text-deep-green leading-tight">
+                            {featureName}
+                          </div>
+                          {marketingPackages.social.packages.map((pkg, pkgIndex) => {
+                            const feature = pkg.features.find(f => f.name === featureName)
+                            const included = feature?.included || false
+                            const colors = [
+                              { bg: 'bg-sand-light', check: 'text-terracotta' },
+                              { bg: 'bg-terracotta', check: 'text-white' }
+                            ]
+                            const color = colors[pkgIndex]
+                            
+                            return (
+                              <div key={pkg.id} className="w-9 px-1 flex justify-center">
+                                {included ? (
+                                  <div className={`w-5 h-5 rounded-full flex items-center justify-center ${color.bg}`}>
+                                    <Check className={`w-3 h-3 ${color.check}`} />
+                                  </div>
+                                ) : (
+                                  <div className="w-5 h-5 rounded-full flex items-center justify-center bg-gray-100">
+                                    <X className="w-3 h-3 text-gray-300" />
+                                  </div>
+                                )}
+                              </div>
+                            )
+                          })}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Single CTA */}
+                  <div className="mt-4">
+                    <Link
+                      href="/contact"
+                      className="block w-full text-center px-6 py-3 bg-terracotta text-white rounded-full font-medium transition-all duration-300 hover:bg-terracotta-dark"
+                    >
+                      Get Started
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Desktop Sections with Conditional Display */}
+            <div className="hidden md:block">
 
             {/* Strategy Section */}
             {activeMarketingSection === 'strategy' && (
@@ -615,7 +1158,7 @@ export default function PricingPage() {
                 </p>
               </div>
 
-              {/* Comparison Table for Strategy */}
+              {/* Desktop Comparison Table for Strategy */}
               <div className="mb-12 pt-10">
                 <div className="bg-white rounded-2xl shadow-xl overflow-visible relative">
                   <div className="overflow-x-auto">
@@ -656,15 +1199,20 @@ export default function PricingPage() {
                             <td className="p-4 text-base text-deep-green font-medium">
                               {featureName}
                             </td>
-                            {marketingPackages.strategy.packages.map((pkg) => {
+                            {marketingPackages.strategy.packages.map((pkg, pkgIndex) => {
                               const feature = pkg.features.find(f => f.name === featureName);
                               const isIncluded = feature?.included || false;
+                              const colors = [
+                                { bg: 'bg-sand-light', check: 'text-terracotta' },
+                                { bg: 'bg-terracotta', check: 'text-white' }
+                              ]
+                              const color = colors[pkgIndex]
                               
                               return (
                                 <td key={pkg.id} className="p-4 text-center">
                                   {isIncluded ? (
-                                    <div className="inline-flex items-center justify-center w-8 h-8 bg-terracotta rounded-full">
-                                      <Check className="w-5 h-5 text-white font-bold" />
+                                    <div className={`inline-flex items-center justify-center w-8 h-8 ${color.bg} rounded-full`}>
+                                      <Check className={`w-5 h-5 ${color.check} font-bold`} />
                                     </div>
                                   ) : (
                                     <div className="inline-flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full">
@@ -703,7 +1251,7 @@ export default function PricingPage() {
             </div>
             )}
 
-            {/* Website Section */}
+            {/* Website Section Desktop */}
             {activeMarketingSection === 'website' && (
             <div className="mb-20">
               <div className="text-center mb-12">
@@ -718,8 +1266,61 @@ export default function PricingPage() {
                 </p>
               </div>
 
-              {/* Comparison Table for Website */}
-              <div className="mb-12 pt-10">
+              {/* Mobile Card Layout for Website */}
+              <div className="block md:hidden mb-12 pt-10">
+                <div className="space-y-4">
+                  {marketingPackages.website.packages.map((pkg) => (
+                    <div key={pkg.id} className="bg-white rounded-2xl shadow-xl overflow-hidden">
+                      {pkg.recommended && (
+                        <div className="bg-terracotta text-white text-xs py-2 text-center font-medium">
+                          RECOMMENDED
+                        </div>
+                      )}
+                      <div className="p-6">
+                        <div className="text-center mb-4">
+                          <h3 className="font-serif text-3xl text-deep-green mb-2">
+                            {pkg.name}
+                          </h3>
+                          <div className="text-xl font-bold text-terracotta">
+                            {formatCurrency(pkg.price)}
+                          </div>
+                          <div className="text-xs text-deep-green/60">
+                            one time
+                          </div>
+                        </div>
+                        
+                        <div className="space-y-3 mb-6">
+                          <h4 className="font-semibold text-deep-green border-b border-sand pb-2">Features</h4>
+                          {pkg.features.map((feature) => (
+                            <div key={feature.name} className="flex items-start gap-2">
+                              <div className={`mt-1 ${feature.included ? 'text-terracotta' : 'text-gray-300'}`}>
+                                {feature.included ? <Check className="w-4 h-4" /> : <X className="w-4 h-4" />}
+                              </div>
+                              <span className={`text-sm ${feature.included ? 'text-deep-green' : 'text-gray-400'}`}>
+                                {feature.name}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                        
+                        <Link
+                          href="/contact"
+                          className={`block w-full text-center px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                            pkg.recommended
+                              ? 'bg-terracotta text-white hover:bg-terracotta-dark'
+                              : 'border-2 border-terracotta text-terracotta hover:bg-terracotta hover:text-white'
+                          }`}
+                        >
+                          Get Started
+                        </Link>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Desktop Comparison Table for Website */}
+              <div className="hidden md:block mb-12 pt-10">
                 <div className="bg-white rounded-2xl shadow-xl overflow-visible relative">
                   <div className="overflow-x-auto">
                     <table className="w-full">
@@ -759,15 +1360,20 @@ export default function PricingPage() {
                             <td className="p-4 text-base text-deep-green font-medium">
                               {featureName}
                             </td>
-                            {marketingPackages.website.packages.map((pkg) => {
+                            {marketingPackages.website.packages.map((pkg, pkgIndex) => {
                               const feature = pkg.features.find(f => f.name === featureName);
                               const isIncluded = feature?.included || false;
+                              const colors = [
+                                { bg: 'bg-sand-light', check: 'text-terracotta' },
+                                { bg: 'bg-terracotta', check: 'text-white' }
+                              ]
+                              const color = colors[pkgIndex]
                               
                               return (
                                 <td key={pkg.id} className="p-4 text-center">
                                   {isIncluded ? (
-                                    <div className="inline-flex items-center justify-center w-8 h-8 bg-terracotta rounded-full">
-                                      <Check className="w-5 h-5 text-white font-bold" />
+                                    <div className={`inline-flex items-center justify-center w-8 h-8 ${color.bg} rounded-full`}>
+                                      <Check className={`w-5 h-5 ${color.check} font-bold`} />
                                     </div>
                                   ) : (
                                     <div className="inline-flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full">
@@ -821,8 +1427,61 @@ export default function PricingPage() {
                 </p>
               </div>
 
-              {/* Comparison Table for Maintenance */}
-              <div className="mb-12 pt-10">
+              {/* Mobile Card Layout for Maintenance */}
+              <div className="block md:hidden mb-12 pt-10">
+                <div className="space-y-4">
+                  {marketingPackages.maintenance.packages.map((pkg) => (
+                    <div key={pkg.id} className="bg-white rounded-2xl shadow-xl overflow-hidden">
+                      {pkg.recommended && (
+                        <div className="bg-terracotta text-white text-xs py-2 text-center font-medium">
+                          RECOMMENDED
+                        </div>
+                      )}
+                      <div className="p-6">
+                        <div className="text-center mb-4">
+                          <h3 className="font-serif text-3xl text-deep-green mb-2">
+                            {pkg.name}
+                          </h3>
+                          <div className="text-xl font-bold text-terracotta">
+                            {formatCurrency(pkg.price)}
+                          </div>
+                          <div className="text-xs text-deep-green/60">
+                            per month
+                          </div>
+                        </div>
+                        
+                        <div className="space-y-3 mb-6">
+                          <h4 className="font-semibold text-deep-green border-b border-sand pb-2">Features</h4>
+                          {pkg.features.map((feature) => (
+                            <div key={feature.name} className="flex items-start gap-2">
+                              <div className={`mt-1 ${feature.included ? 'text-terracotta' : 'text-gray-300'}`}>
+                                {feature.included ? <Check className="w-4 h-4" /> : <X className="w-4 h-4" />}
+                              </div>
+                              <span className={`text-sm ${feature.included ? 'text-deep-green' : 'text-gray-400'}`}>
+                                {feature.name}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                        
+                        <Link
+                          href="/contact"
+                          className={`block w-full text-center px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                            pkg.recommended
+                              ? 'bg-terracotta text-white hover:bg-terracotta-dark'
+                              : 'border-2 border-terracotta text-terracotta hover:bg-terracotta hover:text-white'
+                          }`}
+                        >
+                          Get Started
+                        </Link>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Desktop Comparison Table for Maintenance */}
+              <div className="hidden md:block mb-12 pt-10">
                 <div className="bg-white rounded-2xl shadow-xl overflow-visible relative">
                   <div className="overflow-x-auto">
                     <table className="w-full">
@@ -862,15 +1521,21 @@ export default function PricingPage() {
                             <td className="p-4 text-base text-deep-green font-medium">
                               {featureName}
                             </td>
-                            {marketingPackages.maintenance.packages.map((pkg) => {
+                            {marketingPackages.maintenance.packages.map((pkg, pkgIndex) => {
                               const feature = pkg.features.find(f => f.name === featureName);
                               const isIncluded = feature?.included || false;
+                              const colors = [
+                                { bg: 'bg-sand-light', check: 'text-terracotta' },
+                                { bg: 'bg-terracotta', check: 'text-white' },
+                                { bg: 'bg-deep-green', check: 'text-white' }
+                              ]
+                              const color = colors[pkgIndex]
                               
                               return (
                                 <td key={pkg.id} className="p-4 text-center">
                                   {isIncluded ? (
-                                    <div className="inline-flex items-center justify-center w-8 h-8 bg-terracotta rounded-full">
-                                      <Check className="w-5 h-5 text-white font-bold" />
+                                    <div className={`inline-flex items-center justify-center w-8 h-8 ${color.bg} rounded-full`}>
+                                      <Check className={`w-5 h-5 ${color.check} font-bold`} />
                                     </div>
                                   ) : (
                                     <div className="inline-flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full">
@@ -924,8 +1589,61 @@ export default function PricingPage() {
                 </p>
               </div>
 
-              {/* Comparison Table for Social */}
-              <div className="mb-12 pt-10">
+              {/* Mobile Card Layout for Social */}
+              <div className="block md:hidden mb-12 pt-10">
+                <div className="space-y-4">
+                  {marketingPackages.social.packages.map((pkg) => (
+                    <div key={pkg.id} className="bg-white rounded-2xl shadow-xl overflow-hidden">
+                      {pkg.recommended && (
+                        <div className="bg-terracotta text-white text-xs py-2 text-center font-medium">
+                          RECOMMENDED
+                        </div>
+                      )}
+                      <div className="p-6">
+                        <div className="text-center mb-4">
+                          <h3 className="font-serif text-3xl text-deep-green mb-2">
+                            {pkg.name}
+                          </h3>
+                          <div className="text-xl font-bold text-terracotta">
+                            {formatCurrency(pkg.price)}
+                          </div>
+                          <div className="text-xs text-deep-green/60">
+                            per month
+                          </div>
+                        </div>
+                        
+                        <div className="space-y-3 mb-6">
+                          <h4 className="font-semibold text-deep-green border-b border-sand pb-2">Features</h4>
+                          {pkg.features.map((feature) => (
+                            <div key={feature.name} className="flex items-start gap-2">
+                              <div className={`mt-1 ${feature.included ? 'text-terracotta' : 'text-gray-300'}`}>
+                                {feature.included ? <Check className="w-4 h-4" /> : <X className="w-4 h-4" />}
+                              </div>
+                              <span className={`text-sm ${feature.included ? 'text-deep-green' : 'text-gray-400'}`}>
+                                {feature.name}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                        
+                        <Link
+                          href="/contact"
+                          className={`block w-full text-center px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                            pkg.recommended
+                              ? 'bg-terracotta text-white hover:bg-terracotta-dark'
+                              : 'border-2 border-terracotta text-terracotta hover:bg-terracotta hover:text-white'
+                          }`}
+                        >
+                          Get Started
+                        </Link>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Desktop Comparison Table for Social */}
+              <div className="hidden md:block mb-12 pt-10">
                 <div className="bg-white rounded-2xl shadow-xl overflow-visible relative">
                   <div className="overflow-x-auto">
                     <table className="w-full">
@@ -965,15 +1683,20 @@ export default function PricingPage() {
                             <td className="p-4 text-base text-deep-green font-medium">
                               {featureName}
                             </td>
-                            {marketingPackages.social.packages.map((pkg) => {
+                            {marketingPackages.social.packages.map((pkg, pkgIndex) => {
                               const feature = pkg.features.find(f => f.name === featureName);
                               const isIncluded = feature?.included || false;
+                              const colors = [
+                                { bg: 'bg-sand-light', check: 'text-terracotta' },
+                                { bg: 'bg-terracotta', check: 'text-white' }
+                              ]
+                              const color = colors[pkgIndex]
                               
                               return (
                                 <td key={pkg.id} className="p-4 text-center">
                                   {isIncluded ? (
-                                    <div className="inline-flex items-center justify-center w-8 h-8 bg-terracotta rounded-full">
-                                      <Check className="w-5 h-5 text-white font-bold" />
+                                    <div className={`inline-flex items-center justify-center w-8 h-8 ${color.bg} rounded-full`}>
+                                      <Check className={`w-5 h-5 ${color.check} font-bold`} />
                                     </div>
                                   ) : (
                                     <div className="inline-flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full">
@@ -1011,9 +1734,9 @@ export default function PricingPage() {
               </div>
             </div>
             )}
+            </div>
           </div>
         </section>
-      )}
 
       {/* FAQ Section */}
       <section className="py-20 bg-white">
@@ -1081,22 +1804,24 @@ export default function PricingPage() {
           <p className="text-xl text-white/90 mb-8">
             Join 100+ villa owners who trust AURA with their properties
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/property-management"
-              className="px-8 py-3 bg-white text-terracotta rounded-full font-medium hover:bg-sand-light transition-all duration-300 transform hover:scale-105"
-            >
-              Calculate Your Earnings
-            </Link>
-            <Link
-              href="/contact"
-              className="px-8 py-3 bg-white/10 backdrop-blur text-white rounded-full font-medium hover:bg-white/20 transition-all duration-300 border border-white/30"
-            >
-              Schedule Consultation
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/property-management"
+                className="px-8 py-3 bg-white text-terracotta rounded-full font-medium hover:bg-sand-light transition-all duration-300 transform hover:scale-105"
+              >
+                Calculate Your Earnings
+              </Link>
+              <Link
+                href="/contact"
+                className="px-8 py-3 bg-white/10 backdrop-blur text-white rounded-full font-medium hover:bg-white/20 transition-all duration-300 border border-white/30"
+              >
+                Schedule Consultation
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+        </>
+      )}
     </main>
   )
 }
