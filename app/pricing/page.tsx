@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { motion, AnimatePresence } from 'framer-motion'
 import { 
   Check, 
   X, 
@@ -23,7 +24,8 @@ import {
   HeadphonesIcon,
   Calculator,
   FileText,
-  Award
+  Award,
+  Mail
 } from 'lucide-react'
 
 export default function PricingPage() {
@@ -31,6 +33,18 @@ export default function PricingPage() {
   const [activeMarketingSection, setActiveMarketingSection] = useState<'strategy' | 'website' | 'maintenance' | 'social'>('strategy')
   const [expandedPackage, setExpandedPackage] = useState<string | null>(null)
   const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'annual'>('monthly')
+  const [showModal, setShowModal] = useState(false)
+  const [selectedPackageName, setSelectedPackageName] = useState('')
+  const [selectedPackageType, setSelectedPackageType] = useState<'operations' | 'marketing'>('operations')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [showEnvelope, setShowEnvelope] = useState(false)
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    packageName: '',
+    packageType: ''
+  })
 
   // Operational Packages
   const operationalPackages = [
@@ -568,12 +582,12 @@ export default function PricingPage() {
               
               {/* Single CTA */}
               <div className="mt-4">
-                <Link
-                  href="/contact"
+                <button
+                  onClick={() => handleOpenModal('Operations Packages', 'operations')}
                   className="block w-full text-center px-6 py-3 bg-terracotta text-white rounded-full font-medium transition-all duration-300 hover:bg-terracotta-dark"
                 >
                   Get Started
-                </Link>
+                </button>
               </div>
             </div>
 
@@ -717,8 +731,8 @@ export default function PricingPage() {
                       <td className="p-6 bg-sand-light/50 rounded-bl-2xl"></td>
                       {operationalPackages.map((pkg, index) => (
                         <td key={pkg.id} className={`p-6 text-center bg-sand-light/30 ${index === operationalPackages.length - 1 ? 'rounded-br-2xl' : ''}`}>
-                          <Link
-                            href="/contact"
+                          <button
+                            onClick={() => handleOpenModal(pkg.name, 'operations')}
                             className={`inline-block px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                               pkg.recommended
                                 ? 'bg-terracotta text-white hover:bg-terracotta-dark transform hover:scale-105'
@@ -726,7 +740,7 @@ export default function PricingPage() {
                             }`}
                           >
                             Get Started
-                          </Link>
+                          </button>
                         </td>
                       ))}
                     </tr>
@@ -918,12 +932,12 @@ export default function PricingPage() {
                 
                 {/* Single CTA */}
                 <div className="mt-4">
-                  <Link
-                    href="/contact"
+                  <button
+                    onClick={() => handleOpenModal('Marketing Package', 'marketing')}
                     className="block w-full text-center px-6 py-3 bg-terracotta text-white rounded-full font-medium transition-all duration-300 hover:bg-terracotta-dark"
                   >
                     Get Started
-                  </Link>
+                  </button>
                 </div>
               </div>
               </div>
@@ -1016,12 +1030,12 @@ export default function PricingPage() {
                   
                   {/* Single CTA */}
                   <div className="mt-4">
-                    <Link
-                      href="/contact"
+                    <button
+                      onClick={() => handleOpenModal('Marketing Package', 'marketing')}
                       className="block w-full text-center px-6 py-3 bg-terracotta text-white rounded-full font-medium transition-all duration-300 hover:bg-terracotta-dark"
                     >
                       Get Started
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -1114,12 +1128,12 @@ export default function PricingPage() {
                   
                   {/* Single CTA */}
                   <div className="mt-4">
-                    <Link
-                      href="/contact"
+                    <button
+                      onClick={() => handleOpenModal('Marketing Package', 'marketing')}
                       className="block w-full text-center px-6 py-3 bg-terracotta text-white rounded-full font-medium transition-all duration-300 hover:bg-terracotta-dark"
                     >
                       Get Started
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -1210,12 +1224,12 @@ export default function PricingPage() {
                   
                   {/* Single CTA */}
                   <div className="mt-4">
-                    <Link
-                      href="/contact"
+                    <button
+                      onClick={() => handleOpenModal('Marketing Package', 'marketing')}
                       className="block w-full text-center px-6 py-3 bg-terracotta text-white rounded-full font-medium transition-all duration-300 hover:bg-terracotta-dark"
                     >
                       Get Started
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -1315,8 +1329,8 @@ export default function PricingPage() {
                           <td className="p-6 bg-sand-light/50 rounded-bl-2xl"></td>
                           {marketingPackages.strategy.packages.map((pkg, index) => (
                             <td key={pkg.id} className={`p-6 text-center bg-sand-light/30 ${index === marketingPackages.strategy.packages.length - 1 ? 'rounded-br-2xl' : ''}`}>
-                              <Link
-                                href="/contact"
+                              <button
+                                onClick={() => handleOpenModal('Marketing Package', 'marketing')}
                                 className={`inline-block px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                                   pkg.recommended
                                     ? 'bg-terracotta text-white hover:bg-terracotta-dark transform hover:scale-105'
@@ -1324,7 +1338,7 @@ export default function PricingPage() {
                                 }`}
                               >
                                 Get Started
-                              </Link>
+                              </button>
                             </td>
                           ))}
                         </tr>
@@ -1388,8 +1402,8 @@ export default function PricingPage() {
                           ))}
                         </div>
                         
-                        <Link
-                          href="/contact"
+                        <button
+                          onClick={() => handleOpenModal('Marketing Package', 'marketing')}
                           className={`block w-full text-center px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                             pkg.recommended
                               ? 'bg-terracotta text-white hover:bg-terracotta-dark'
@@ -1397,7 +1411,7 @@ export default function PricingPage() {
                           }`}
                         >
                           Get Started
-                        </Link>
+                        </button>
                       </div>
                     </div>
                   ))}
@@ -1480,8 +1494,8 @@ export default function PricingPage() {
                           <td className="p-6 bg-sand-light/50 rounded-bl-2xl"></td>
                           {marketingPackages.website.packages.map((pkg, index) => (
                             <td key={pkg.id} className={`p-6 text-center bg-sand-light/30 ${index === marketingPackages.website.packages.length - 1 ? 'rounded-br-2xl' : ''}`}>
-                              <Link
-                                href="/contact"
+                              <button
+                                onClick={() => handleOpenModal('Marketing Package', 'marketing')}
                                 className={`inline-block px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                                   pkg.recommended
                                     ? 'bg-terracotta text-white hover:bg-terracotta-dark transform hover:scale-105'
@@ -1489,7 +1503,7 @@ export default function PricingPage() {
                                 }`}
                               >
                                 Get Started
-                              </Link>
+                              </button>
                             </td>
                           ))}
                         </tr>
@@ -1553,8 +1567,8 @@ export default function PricingPage() {
                           ))}
                         </div>
                         
-                        <Link
-                          href="/contact"
+                        <button
+                          onClick={() => handleOpenModal('Marketing Package', 'marketing')}
                           className={`block w-full text-center px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                             pkg.recommended
                               ? 'bg-terracotta text-white hover:bg-terracotta-dark'
@@ -1562,7 +1576,7 @@ export default function PricingPage() {
                           }`}
                         >
                           Get Started
-                        </Link>
+                        </button>
                       </div>
                     </div>
                   ))}
@@ -1646,8 +1660,8 @@ export default function PricingPage() {
                           <td className="p-6 bg-sand-light/50 rounded-bl-2xl"></td>
                           {marketingPackages.maintenance.packages.map((pkg, index) => (
                             <td key={pkg.id} className={`p-6 text-center bg-sand-light/30 ${index === marketingPackages.maintenance.packages.length - 1 ? 'rounded-br-2xl' : ''}`}>
-                              <Link
-                                href="/contact"
+                              <button
+                                onClick={() => handleOpenModal('Marketing Package', 'marketing')}
                                 className={`inline-block px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                                   pkg.recommended
                                     ? 'bg-terracotta text-white hover:bg-terracotta-dark transform hover:scale-105'
@@ -1655,7 +1669,7 @@ export default function PricingPage() {
                                 }`}
                               >
                                 Get Started
-                              </Link>
+                              </button>
                             </td>
                           ))}
                         </tr>
@@ -1733,8 +1747,8 @@ export default function PricingPage() {
                           ))}
                         </div>
                         
-                        <Link
-                          href="/contact"
+                        <button
+                          onClick={() => handleOpenModal('Marketing Package', 'marketing')}
                           className={`block w-full text-center px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                             pkg.recommended
                               ? 'bg-terracotta text-white hover:bg-terracotta-dark'
@@ -1742,7 +1756,7 @@ export default function PricingPage() {
                           }`}
                         >
                           Get Started
-                        </Link>
+                        </button>
                       </div>
                     </div>
                   ))}
@@ -1825,8 +1839,8 @@ export default function PricingPage() {
                           <td className="p-6 bg-sand-light/50 rounded-bl-2xl"></td>
                           {marketingPackages.social.packages.map((pkg, index) => (
                             <td key={pkg.id} className={`p-6 text-center bg-sand-light/30 ${index === marketingPackages.social.packages.length - 1 ? 'rounded-br-2xl' : ''}`}>
-                              <Link
-                                href="/contact"
+                              <button
+                                onClick={() => handleOpenModal('Marketing Package', 'marketing')}
                                 className={`inline-block px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                                   pkg.recommended
                                     ? 'bg-terracotta text-white hover:bg-terracotta-dark transform hover:scale-105'
@@ -1834,7 +1848,7 @@ export default function PricingPage() {
                                 }`}
                               >
                                 Get Started
-                              </Link>
+                              </button>
                             </td>
                           ))}
                         </tr>
@@ -1922,17 +1936,146 @@ export default function PricingPage() {
               >
                 Calculate Your Earnings
               </Link>
-              <Link
-                href="/contact"
+              <button
+                onClick={() => handleOpenModal('Consultation', 'operations')}
                 className="px-8 py-3 bg-white/10 backdrop-blur text-white rounded-full font-medium hover:bg-white/20 transition-all duration-300 border border-white/30"
               >
                 Schedule Consultation
-              </Link>
+              </button>
             </div>
           </div>
         </section>
         </>
       )}
+
+      {/* Contact Modal */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl max-w-md w-full p-8 relative">
+            {/* Close button */}
+            <button
+              onClick={handleCloseModal}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            {/* Modal content */}
+            <h3 className="font-serif text-2xl text-deep-green mb-2">
+              Get Started with {selectedPackageName}
+            </h3>
+            <p className="text-gray-600 mb-6">
+              Leave your details and we'll contact you within 24 hours to discuss your {selectedPackageType === 'operations' ? 'villa management' : 'marketing'} needs.
+            </p>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Name *
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-terracotta focus:border-transparent"
+                  placeholder="Your name"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Email *
+                </label>
+                <input
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-terracotta focus:border-transparent"
+                  placeholder="your@email.com"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Phone (optional)
+                </label>
+                <input
+                  type="tel"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-terracotta focus:border-transparent"
+                  placeholder="+62 xxx xxxx xxxx"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full px-6 py-3 bg-terracotta text-white rounded-full font-medium hover:bg-terracotta-dark transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? 'Sending...' : 'Submit'}
+              </button>
+            </form>
+
+            <p className="text-xs text-gray-500 mt-4 text-center">
+              By submitting, you agree to be contacted by AURA Villas Bali
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Envelope Animation */}
+      <AnimatePresence>
+        {showEnvelope && (
+          <motion.div
+            className="fixed inset-0 flex items-center justify-center z-[60] pointer-events-none"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              initial={{ scale: 0, x: 0, y: 0 }}
+              animate={{ 
+                scale: [0, 1.2, 1],
+                x: [0, 0, 500],
+                y: [0, -50, -200],
+                rotate: [0, -15, -30]
+              }}
+              transition={{ 
+                duration: 1.5,
+                times: [0, 0.3, 1],
+                ease: "easeOut"
+              }}
+              className="bg-white rounded-lg shadow-2xl p-4"
+            >
+              <Mail className="w-16 h-16 text-terracotta" />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+              className="absolute"
+            >
+              <motion.div
+                animate={{
+                  scale: [1, 1.2, 1],
+                }}
+                transition={{
+                  duration: 0.6,
+                  repeat: 2,
+                  ease: "easeInOut"
+                }}
+                className="text-terracotta font-serif text-2xl"
+              >
+                Message Sent!
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   )
 }
