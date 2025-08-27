@@ -119,13 +119,16 @@ export default function Home() {
       <div className="homepage relative overflow-x-hidden">
         <GlassmorphismLuxury />
         <PropertyManagementHero />
-        <ServiceTiers />
+        <SuccessStories />
+        <ChallengesSection />
         <HowWeWork />
         <TechnologySection />
-        <ChallengesSection />
-        <SuccessStories />
-        <TimelineNavigation />
         <QualificationForm />
+        
+        
+        <TimelineNavigation />
+        
+        <ServiceTiers />
         <WhatsAppButton />
       </div>
     </>
