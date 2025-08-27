@@ -257,12 +257,18 @@ export function ServiceTiers() {
 
         {/* Bottom Note */}
         <div className="text-center">
-          <p className="text-gray-600 mb-4">
-            All tiers include our proprietary AI-powered marketing tools and genuine Balinese hospitality
-          </p>
-          <a href="#qualification" className="text-terracotta hover:text-terracotta-dark font-medium">
-            Not sure which tier is right for you? Take our qualification quiz →
-          </a>
+          <div className="flex flex-col items-center gap-4">
+            <a href="#qualification" className="text-terracotta hover:text-terracotta-dark font-medium">
+              Not sure which tier is right for you? Take our qualification quiz →
+            </a>
+            <a 
+              href="/pricing" 
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-terracotta text-terracotta rounded-full font-medium hover:bg-terracotta hover:text-white transition-all duration-300"
+            >
+              <Sparkles className="w-5 h-5" />
+              View Our Marketing Packages
+            </a>
+          </div>
         </div>
       </div>
 

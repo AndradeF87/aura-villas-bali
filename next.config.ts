@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
     webVitalsAttribution: ['CLS', 'LCP', 'FCP', 'FID', 'TTFB', 'INP'],
   },
   
+  // Disable polyfills for modern browsers
+  transpilePackages: [],
+  excludeDefaultMomentLocales: true,
+  
   // CSS optimization
   sassOptions: {
     includePaths: ['./styles'],
@@ -52,12 +56,37 @@ const nextConfig: NextConfig = {
       ...config.resolve.alias,
       'gsap/ScrollTrigger': 'gsap/dist/ScrollTrigger',
       'gsap/TextPlugin': 'gsap/dist/TextPlugin',
+      // Disable core-js polyfills
+      'core-js': false,
+      'core-js-pure': false,
     }
 
     // Add rules for Lottie files
     config.module.rules.push({
       test: /\.lottie$/,
       type: 'asset/resource',
+    })
+    
+    // Exclude polyfills from being bundled
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        // Disable Node.js polyfills
+        fs: false,
+        path: false,
+        crypto: false,
+      }
+    }
+    
+    // Configure to skip transpiling modern JS features
+    config.module.rules.forEach(rule => {
+      if (rule.oneOf) {
+        rule.oneOf.forEach(oneOfRule => {
+          if (oneOfRule.use && oneOfRule.use.loader && oneOfRule.use.loader.includes('babel-loader')) {
+            oneOfRule.exclude = /node_modules/
+          }
+        })
+      }
     })
 
     return config
