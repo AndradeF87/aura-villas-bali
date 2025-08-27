@@ -72,7 +72,8 @@ export const metadata: Metadata = {
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
+  maximumScale: 5, // Allow zooming up to 5x for accessibility
+  userScalable: 'yes', // Explicitly allow user scaling
 };
 
 const criticalCSS = `
