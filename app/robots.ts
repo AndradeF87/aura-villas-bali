@@ -90,11 +90,9 @@ export default function robots(): MetadataRoute.Robots {
         allow: [
           '/',
           '/villas/',
-          '/blog/',
-          '/experiences/',
           '/about',
           '/contact',
-          '/services',
+          '/pricing',
           '/*.jpg$',
           '/*.jpeg$',
           '/*.png$',
@@ -135,8 +133,8 @@ export default function robots(): MetadataRoute.Robots {
         allow: [
           '/',
           '/villas/',
-          '/blog/',
-          '/experiences/',
+          '/about',
+          '/pricing',
         ],
         disallow: [
           '/admin/*',
@@ -151,8 +149,8 @@ export default function robots(): MetadataRoute.Robots {
         allow: [
           '/',
           '/villas/',
-          '/blog/',
-          '/experiences/',
+          '/about',
+          '/pricing',
         ],
         disallow: [
           '/admin/*',
@@ -167,8 +165,8 @@ export default function robots(): MetadataRoute.Robots {
         allow: [
           '/',
           '/villas/',
-          '/blog/',
           '/about',
+          '/pricing',
         ],
         disallow: [
           '/admin/*',
@@ -227,12 +225,8 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     
-    // Multiple sitemaps for better organization
-    sitemap: [
-      `${baseUrl}/sitemap.xml`,
-      `${baseUrl}/sitemap-images.xml`, // Separate image sitemap
-      `${baseUrl}/sitemap-news.xml`, // News/blog sitemap if applicable
-    ],
+    // Single sitemap for current site structure
+    sitemap: `${baseUrl}/sitemap.xml`,
     
     // Specify the host (helpful for crawlers)
     host: baseUrl,

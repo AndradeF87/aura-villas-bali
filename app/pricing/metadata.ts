@@ -34,54 +34,123 @@ export const pricingMetadata: Metadata = {
 // Schema markup for pricing page
 export const pricingSchema = {
   '@context': 'https://schema.org',
-  '@type': 'PriceSpecification',
-  '@id': 'https://auravillasbali.com/pricing/#pricespecification',
+  '@type': 'WebPage',
+  '@id': 'https://auravillasbali.com/pricing/#webpage',
   url: 'https://auravillasbali.com/pricing',
-  priceCurrency: 'USD',
-  offers: [
-    {
-      '@type': 'Offer',
-      name: 'Essential Operations Package',
-      description: 'Professional villa management with 20% commission',
-      price: '20',
-      priceCurrency: 'USD',
-      unitText: 'percent commission',
-      eligibleQuantity: {
-        '@type': 'QuantitativeValue',
-        minValue: 1,
-        unitText: 'property'
-      }
+  name: 'Villa Management Pricing - AURA Villas Bali',
+  description: 'Transparent pricing for professional villa management services in Bali',
+  isPartOf: {
+    '@id': 'https://auravillasbali.com/#website'
+  },
+  mainEntity: {
+    '@type': 'Service',
+    '@id': 'https://auravillasbali.com/pricing/#service',
+    name: 'Villa Management Services',
+    provider: {
+      '@type': 'Organization',
+      '@id': 'https://auravillasbali.com/#organization',
+      name: 'AURA Villas Bali',
+      url: 'https://auravillasbali.com'
     },
-    {
-      '@type': 'Offer',
-      name: 'Professional Operations Package',
-      description: 'Enhanced management with 17.5% commission',
-      price: '17.5',
-      priceCurrency: 'USD',
-      unitText: 'percent commission',
-      eligibleQuantity: {
-        '@type': 'QuantitativeValue',
-        minValue: 2,
-        unitText: 'properties'
-      }
+    serviceType: 'Property Management',
+    areaServed: {
+      '@type': 'Place',
+      name: 'Bali, Indonesia'
     },
-    {
-      '@type': 'Offer',
-      name: 'Boutique Collection',
-      description: 'Exclusive management for luxury villas with 15% commission',
-      price: '15',
-      priceCurrency: 'USD',
-      unitText: 'percent commission',
-      eligibleQuantity: {
-        '@type': 'QuantitativeValue',
-        minValue: 1,
-        unitText: 'luxury property'
-      }
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Villa Management Packages',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          '@id': 'https://auravillasbali.com/pricing/#essential',
+          name: 'Essential Operations Package',
+          description: 'Professional villa management with comprehensive services',
+          price: '23',
+          priceCurrency: 'USD',
+          priceSpecification: {
+            '@type': 'PriceSpecification',
+            price: '23',
+            priceCurrency: 'USD',
+            unitText: 'percent of revenue',
+            valueAddedTaxIncluded: false
+          },
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Essential Villa Management',
+            description: 'Complete operational management for 1 property'
+          },
+          eligibleQuantity: {
+            '@type': 'QuantitativeValue',
+            minValue: 1,
+            unitText: 'property'
+          },
+          validFrom: '2024-01-01',
+          seller: {
+            '@id': 'https://auravillasbali.com/#organization'
+          }
+        },
+        {
+          '@type': 'Offer',
+          '@id': 'https://auravillasbali.com/pricing/#professional',
+          name: 'Professional Operations Package',
+          description: 'Enhanced management with priority support',
+          price: '20',
+          priceCurrency: 'USD',
+          priceSpecification: {
+            '@type': 'PriceSpecification',
+            price: '20',
+            priceCurrency: 'USD',
+            unitText: 'percent of revenue',
+            valueAddedTaxIncluded: false
+          },
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Professional Villa Management',
+            description: 'Premium management for 2-4 properties with enhanced services'
+          },
+          eligibleQuantity: {
+            '@type': 'QuantitativeValue',
+            minValue: 2,
+            maxValue: 4,
+            unitText: 'properties'
+          },
+          validFrom: '2024-01-01',
+          seller: {
+            '@id': 'https://auravillasbali.com/#organization'
+          }
+        },
+        {
+          '@type': 'Offer',
+          '@id': 'https://auravillasbali.com/pricing/#boutique',
+          name: 'Boutique Collection',
+          description: 'Exclusive management for luxury villas',
+          price: '15',
+          priceCurrency: 'USD',
+          priceSpecification: {
+            '@type': 'PriceSpecification',
+            price: '15',
+            priceCurrency: 'USD',
+            unitText: 'percent of revenue',
+            valueAddedTaxIncluded: false
+          },
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Boutique Villa Management',
+            description: 'White-glove service for ultra-luxury properties'
+          },
+          eligibleQuantity: {
+            '@type': 'QuantitativeValue',
+            minValue: 1,
+            unitText: 'luxury property'
+          },
+          eligibleCustomerType: 'Invitation Only',
+          validFrom: '2024-01-01',
+          seller: {
+            '@id': 'https://auravillasbali.com/#organization'
+          }
+        }
+      ]
     }
-  ],
-  provider: {
-    '@type': 'Organization',
-    name: 'AURA Villas Bali',
-    url: 'https://auravillasbali.com'
   }
 }
