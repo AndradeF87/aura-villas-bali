@@ -22,39 +22,6 @@ export default function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
 
-  const offices = [
-    {
-      location: 'Seminyak',
-      address: 'Jl. Kayu Aya No. 68, Seminyak, Badung, Bali 80361',
-      phone: '+62 361 123 4567',
-      email: 'seminyak@auravillasbali.com',
-      hours: {
-        weekdays: 'Mon-Fri: 8:00 AM - 8:00 PM',
-        weekends: 'Sat-Sun: 9:00 AM - 6:00 PM'
-      }
-    },
-    {
-      location: 'Ubud',
-      address: 'Jl. Raya Sanggingan No. 21, Ubud, Gianyar, Bali 80571',
-      phone: '+62 361 234 5678',
-      email: 'ubud@auravillasbali.com',
-      hours: {
-        weekdays: 'Mon-Fri: 8:00 AM - 7:00 PM',
-        weekends: 'Sat-Sun: 9:00 AM - 5:00 PM'
-      }
-    },
-    {
-      location: 'Canggu',
-      address: 'Jl. Pantai Batu Bolong No. 44, Canggu, Badung, Bali 80361',
-      phone: '+62 361 345 6789',
-      email: 'canggu@auravillasbali.com',
-      hours: {
-        weekdays: 'Mon-Fri: 8:00 AM - 7:00 PM',
-        weekends: 'Sat-Sun: 9:00 AM - 5:00 PM'
-      }
-    }
-  ]
-
   const validateForm = () => {
     const newErrors: Record<string, string> = {}
     
@@ -303,40 +270,31 @@ export default function Contact() {
               </form>
             </div>
 
-            {/* Office Locations */}
+            {/* FAQ Section */}
             <div>
-              <h2 className="font-serif text-2xl text-deep-green mb-6">Our Offices</h2>
+              <h2 className="font-serif text-2xl text-deep-green mb-6">Frequently Asked Questions</h2>
               <div className="space-y-4">
-                {offices.map((office, index) => (
-                  <div key={index} className="bg-sand/10 rounded-lg p-5 border border-sand/20">
-                    <h3 className="font-semibold text-lg text-deep-green mb-3">{office.location}</h3>
-                    <div className="space-y-2 text-sm">
-                      <div className="flex items-start gap-2">
-                        <MapPin className="w-4 h-4 text-terracotta mt-0.5 flex-shrink-0" />
-                        <span className="text-deep-green/70">{office.address}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Phone className="w-4 h-4 text-terracotta flex-shrink-0" />
-                        <a href={`tel:${office.phone.replace(/\s/g, '')}`} className="text-deep-green/70 hover:text-terracotta transition-colors">
-                          {office.phone}
-                        </a>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Mail className="w-4 h-4 text-terracotta flex-shrink-0" />
-                        <a href={`mailto:${office.email}`} className="text-deep-green/70 hover:text-terracotta transition-colors">
-                          {office.email}
-                        </a>
-                      </div>
-                      <div className="flex items-start gap-2">
-                        <Clock className="w-4 h-4 text-terracotta mt-0.5 flex-shrink-0" />
-                        <div className="text-deep-green/70">
-                          <div>{office.hours.weekdays}</div>
-                          <div>{office.hours.weekends}</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+                <div className="bg-sand/10 rounded-lg p-5 border border-sand/20">
+                  <h3 className="font-semibold text-deep-green mb-2">What areas do you service?</h3>
+                  <p className="text-sm text-deep-green/70">
+                    We manage luxury villas across Bali's most sought-after destinations including 
+                    Seminyak, Ubud, Canggu, Uluwatu, and Sanur.
+                  </p>
+                </div>
+                <div className="bg-sand/10 rounded-lg p-5 border border-sand/20">
+                  <h3 className="font-semibold text-deep-green mb-2">How quickly can you respond to inquiries?</h3>
+                  <p className="text-sm text-deep-green/70">
+                    We aim to respond to all inquiries within 24 hours. For urgent matters, 
+                    please contact us via WhatsApp or our emergency hotline.
+                  </p>
+                </div>
+                <div className="bg-sand/10 rounded-lg p-5 border border-sand/20">
+                  <h3 className="font-semibold text-deep-green mb-2">Do you offer property management services?</h3>
+                  <p className="text-sm text-deep-green/70">
+                    Yes! We provide comprehensive property management services including marketing, 
+                    guest services, maintenance, and revenue optimization.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
