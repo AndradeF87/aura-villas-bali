@@ -1,19 +1,29 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { ConditionalNavigation } from "@/components/layout/ConditionalNavigation";
 import { ScrollbarController } from "@/components/layout/ScrollbarController";
+
+// For now, we'll use Google Fonts but with better optimization
+// In production, consider downloading and serving fonts locally
+import { Inter, Playfair_Display } from "next/font/google";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: 'swap',
+  preload: true,
+  adjustFontFallback: true,
+  weight: ['400', '600'],  // Only load necessary weights
 });
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
   display: 'swap',
+  preload: true,
+  adjustFontFallback: true,
+  weight: ['400', '700'],  // Only load necessary weights
 });
 
 export const metadata: Metadata = {
