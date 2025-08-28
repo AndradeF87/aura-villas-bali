@@ -532,9 +532,6 @@ export default function Footer({ dictionary, locale }: FooterProps) {
               <Link href={getLocalePath('/terms')} className="hover:text-terracotta transition-colors">
                 {dictionary?.footer?.legal?.terms || 'Terms of Service'}
               </Link>
-              <Link href={getLocalePath('/cookies')} className="hover:text-terracotta transition-colors">
-                {dictionary?.footer?.legal?.cookies || 'Cookie Policy'}
-              </Link>
             </div>
           </div>
         </div>
