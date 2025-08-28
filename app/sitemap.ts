@@ -8,31 +8,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   const sitemapEntries: MetadataRoute.Sitemap = [];
 
-  // Define all pages (static + dynamic villas)
+  // Define all pages with proper priority hierarchy
   const pages = [
-    { path: '', priority: 1.0, changeFreq: 'daily' as const },
-    { path: '/villas', priority: 0.9, changeFreq: 'weekly' as const },
+    { path: '', priority: 1.0, changeFreq: 'daily' as const },  // Homepage gets highest priority
+    { path: '/villas', priority: 0.8, changeFreq: 'weekly' as const },  // Main sections
     { path: '/pricing', priority: 0.8, changeFreq: 'weekly' as const },
-    { path: '/about', priority: 0.7, changeFreq: 'monthly' as const },
-    { path: '/contact', priority: 0.7, changeFreq: 'monthly' as const },
+    { path: '/about', priority: 0.6, changeFreq: 'monthly' as const },  // Secondary pages
+    { path: '/contact', priority: 0.6, changeFreq: 'monthly' as const },
   ];
 
-  // Add villa pages
+  // Add villa pages with appropriate priority
   villasData.forEach((villa) => {
     pages.push({
       path: `/villas/${villa.slug}`,
-      priority: 0.8,
+      priority: 0.7,  // Individual villas get medium priority
       changeFreq: 'weekly' as const,
     });
   });
 
-  // For each page, create entries for each locale
+  // Create sitemap entries with proper hreflang setup
   pages.forEach((page) => {
-    // Create a single entry per page with all language alternates
-    // Default locale (en)
+    // Build alternates for all locales
     const alternates: Record<string, string> = {};
     
-    // Add all locale versions to alternates
     i18n.locales.forEach((locale) => {
       if (locale === i18n.defaultLocale) {
         alternates[locale] = `${baseUrl}${page.path}`;
@@ -41,37 +39,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
       }
     });
     
-    // Add x-default
+    // Add x-default pointing to English version
     alternates['x-default'] = `${baseUrl}${page.path}`;
 
-    // Add the main URL (default locale)
-    sitemapEntries.push({
-      url: `${baseUrl}${page.path}`,
-      lastModified: currentDate,
-      changeFrequency: page.changeFreq,
-      priority: page.priority,
-      alternates: {
-        languages: alternates,
-      },
-    });
-
-    // Add URLs for other locales
+    // Add entry for each locale to ensure all URLs are indexed
     i18n.locales.forEach((locale) => {
-      if (locale !== i18n.defaultLocale) {
-        sitemapEntries.push({
-          url: `${baseUrl}/${locale}${page.path}`,
-          lastModified: currentDate,
-          changeFrequency: page.changeFreq,
-          priority: page.priority,
-          alternates: {
-            languages: alternates,
-          },
-        });
-      }
+      const url = locale === i18n.defaultLocale 
+        ? `${baseUrl}${page.path}`
+        : `${baseUrl}/${locale}${page.path}`;
+
+      sitemapEntries.push({
+        url,
+        lastModified: currentDate,
+        changeFrequency: page.changeFreq,
+        priority: page.priority,
+        alternates: {
+          languages: alternates,
+        },
+      });
     });
   });
 
-  // Sort by priority and URL
+  // Sort by priority (highest first) then by URL
   return sitemapEntries.sort((a, b) => {
     const priorityDiff = (b.priority || 0) - (a.priority || 0);
     if (priorityDiff !== 0) return priorityDiff;
