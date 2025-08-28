@@ -229,12 +229,11 @@ export function TimelineNavigation() {
       return
     }
     
-    const offset = 80 // Account for fixed header
+    // No offset - scroll directly to the top of the element
     const elementPosition = element.getBoundingClientRect().top + window.scrollY
-    const offsetPosition = elementPosition - offset
 
     window.scrollTo({
-      top: offsetPosition,
+      top: elementPosition,
       behavior: 'smooth'
     })
   }
