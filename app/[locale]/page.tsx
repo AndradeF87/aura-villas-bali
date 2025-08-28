@@ -11,6 +11,7 @@ import { ChallengesSection } from '@/components/homepage/ChallengesSection'
 import { getDictionary } from '@/lib/i18n/dictionaries'
 import { Locale } from '@/lib/i18n/config'
 import { ClientWrapper } from '@/components/homepage/ClientWrapper'
+import { HideScrollbar } from '@/components/homepage/HideScrollbar'
 
 // Schema markup for the homepage
 const homePageSchema = {
@@ -72,25 +73,26 @@ export default async function Home({
   const dictionary = await getDictionary(locale)
   
   return (
-      <div className="homepage relative overflow-x-hidden">
+      <div className="homepage homepage-wrapper relative overflow-x-hidden">
+        <HideScrollbar />
         <ClientWrapper dictionary={dictionary}>
           <GlassmorphismLuxury />
           {/* Spacer for fixed first section */}
           <div className="h-screen" />
-          <div className="relative" style={{ zIndex: 10 }}>
+          <div className="relative bg-white" style={{ zIndex: 1 }}>
             <PropertyManagementHero />
             <SuccessStories />
             <ChallengesSection />
             <HowWeWork />
             <TechnologySection />
             <QualificationForm />
-            
-            
-            <TimelineNavigation />
-            
             <ServiceTiers />
+            {/* Add spacing before footer to prevent overlap */}
+            <div className="h-32" />
             <WhatsAppButton />
           </div>
+          {/* Timeline Navigation rendered last to ensure it's on top */}
+          <TimelineNavigation />
         </ClientWrapper>
       </div>
   )

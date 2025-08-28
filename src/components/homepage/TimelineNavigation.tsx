@@ -22,49 +22,62 @@ export function TimelineNavigation() {
   useEffect(() => {
     // Dynamically detect all major sections
     const detectSections = () => {
+      // Get all sections including the calculator
+      const calculatorSection = document.getElementById('calculator-section')
       const sections = document.querySelectorAll('section, [id], .content-section, [class*="section"]')
       
-      // Filter for actual content sections
-      const validSections = Array.from(sections).filter(section => {
+      // Start with calculator section if it exists
+      const validSections: Element[] = []
+      if (calculatorSection) {
+        validSections.push(calculatorSection)
+      }
+      
+      // Add other content sections
+      Array.from(sections).forEach(section => {
         const htmlSection = section as HTMLElement
-        return htmlSection.offsetHeight > 100 && // Has substantial content
-               htmlSection.offsetParent !== null && // Is visible
-               !htmlSection.classList.contains('hidden') && // Not hidden
-               !htmlSection.classList.contains('fixed') // Not fixed positioned
+        // Skip if it's the calculator (already added) or doesn't meet criteria
+        if (htmlSection.id === 'calculator-section') return
+        
+        if (htmlSection.offsetHeight > 100 && // Has substantial content
+            htmlSection.offsetParent !== null && // Is visible
+            !htmlSection.classList.contains('hidden')) { // Not hidden
+          validSections.push(htmlSection)
+        }
       })
 
       // Generate navigation items dynamically
       const items = validSections.map((section, index) => {
         const htmlSection = section as HTMLElement
         const heading = htmlSection.querySelector('h1, h2, h3')
+        const headingText = heading?.textContent || ''
         const id = htmlSection.id || `section-${index}`
         
-        // Smart label extraction
+        // Specific label mapping based on section content
         let label = ''
-        if (heading) {
-          label = heading.textContent || ''
-        } else if (htmlSection.getAttribute('aria-label')) {
-          label = htmlSection.getAttribute('aria-label') || ''
-        } else if (htmlSection.className.includes('hero')) {
-          label = 'Welcome'
-        } else if (htmlSection.className.includes('calculator')) {
-          label = 'Calculator'
-        } else if (htmlSection.className.includes('service')) {
-          label = 'Services'
-        } else if (htmlSection.className.includes('technology')) {
-          label = 'Technology'
-        } else if (htmlSection.className.includes('qualification')) {
-          label = 'Qualify'
-        } else if (htmlSection.className.includes('partner')) {
-          label = 'Partnership'
-        } else if (htmlSection.className.includes('work')) {
+        if (id === 'calculator-section') {
+          label = 'Earning Calculator'
+        } else if (htmlSection.className.includes('hero') || headingText.toLowerCase().includes('partner')) {
+          label = 'AURA Partnership'
+        } else if (htmlSection.className.includes('success') || headingText.toLowerCase().includes('success')) {
+          label = 'Success Stories'
+        } else if (htmlSection.className.includes('challenge') || headingText.toLowerCase().includes('challenge')) {
+          label = 'Challenges'
+        } else if (htmlSection.className.includes('work') || headingText.toLowerCase().includes('how we work')) {
           label = 'How We Work'
+        } else if (htmlSection.className.includes('technology') || htmlSection.className.includes('smart') || headingText.toLowerCase().includes('technology')) {
+          label = 'Smart Tools'
+        } else if (htmlSection.className.includes('qualification') || htmlSection.className.includes('qualify') || headingText.toLowerCase().includes('qualify')) {
+          label = 'Qualification'
+        } else if (htmlSection.className.includes('service') || htmlSection.className.includes('tier') || headingText.toLowerCase().includes('service')) {
+          label = 'Service Levels'
         } else {
-          label = `Section ${index + 1}`
+          // Fallback based on index for any missed sections
+          const fallbackLabels = ['Earning Calculator', 'AURA Partnership', 'Success Stories', 'Challenges', 'How We Work', 'Smart Tools', 'Qualification', 'Service Levels']
+          label = fallbackLabels[index] || `Section ${index + 1}`
         }
         
-        // Clean up label
-        label = label.trim().replace(/\s+/g, ' ').substring(0, 20)
+        // Don't truncate these specific labels
+        label = label.trim()
         
         return {
           id,
@@ -95,6 +108,19 @@ export function TimelineNavigation() {
     // Set up Intersection Observer for active section tracking
     if (navItems.length === 0) return
 
+    // Check scroll position for calculator section
+    const handleScroll = () => {
+      const scrollY = window.scrollY
+      
+      // If we're at the top of the page (scroll < 100px), activate calculator section
+      if (scrollY < 100 && navItems.length > 0 && navItems[0].id === 'calculator-section') {
+        setActiveSection('calculator-section')
+        return
+      }
+      
+      // Otherwise use intersection observer for other sections
+    }
+
     const observerOptions = {
       root: null,
       rootMargin: '-30% 0px -50% 0px',
@@ -115,10 +141,20 @@ export function TimelineNavigation() {
     const observer = new IntersectionObserver(observerCallback, observerOptions)
 
     navItems.forEach(item => {
-      observer.observe(item.element)
+      // Don't observe the calculator section with IntersectionObserver since it's fixed
+      if (item.id !== 'calculator-section') {
+        observer.observe(item.element)
+      }
     })
 
-    return () => observer.disconnect()
+    // Add scroll listener
+    window.addEventListener('scroll', handleScroll)
+    handleScroll() // Check initial position
+
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('scroll', handleScroll)
+    }
   }, [navItems])
 
   useEffect(() => {
@@ -184,6 +220,15 @@ export function TimelineNavigation() {
   }, [])
 
   const scrollToSection = (element: HTMLElement) => {
+    // Special handling for calculator section - scroll to top
+    if (element.id === 'calculator-section') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
+      return
+    }
+    
     const offset = 80 // Account for fixed header
     const elementPosition = element.getBoundingClientRect().top + window.scrollY
     const offsetPosition = elementPosition - offset
@@ -197,17 +242,17 @@ export function TimelineNavigation() {
   if (navItems.length === 0) return null
 
   // Dynamic colors based on background
-  const lineColor = isOverDarkBg ? 'rgba(255, 255, 255, 0.2)' : '#C96F4A'
+  const lineColor = isOverDarkBg ? 'rgba(255, 255, 255, 0.2)' : 'rgba(201, 111, 74, 0.3)'
   const progressColor = isOverDarkBg ? '#C96F4A' : '#2F4A3C'
-  const dotBorderColor = isOverDarkBg ? 'rgba(255, 255, 255, 0.3)' : '#e5e7eb'
+  const dotBorderColor = isOverDarkBg ? 'rgba(255, 255, 255, 0.3)' : 'rgba(201, 111, 74, 0.4)'
   const activeDotColor = isOverDarkBg ? '#C96F4A' : '#C96F4A'
-  const labelBgColor = isOverDarkBg ? 'rgba(0, 0, 0, 0.7)' : 'white'
+  const labelBgColor = isOverDarkBg ? 'rgba(0, 0, 0, 0.7)' : 'rgba(255, 255, 255, 0.9)'
   const labelTextColor = isOverDarkBg ? '#F8F4F0' : '#2F4A3C'
 
   return (
     <>
       {/* Mobile Progress Bar */}
-      <div className="fixed top-0 left-0 right-0 h-1 bg-gray-200/30 z-[90] md:hidden">
+      <div className="fixed top-0 left-0 right-0 h-1 bg-gray-200/30 md:hidden" style={{ zIndex: 2147483647 }}>
         <motion.div 
           className="h-full bg-gradient-to-r from-[#C96F4A] to-[#2F4A3C]"
           style={{ width: scrollYProgress }}
@@ -216,13 +261,13 @@ export function TimelineNavigation() {
 
       {/* Desktop Timeline Navigation */}
       <div 
-        className="fixed right-12 top-1/2 -translate-y-1/2 z-[90] hidden md:block" 
-        style={{ height: '70vh' }}
+        className="fixed right-12 top-1/2 -translate-y-1/2 hidden md:block" 
+        style={{ height: '70vh', zIndex: 2147483647, backgroundColor: 'transparent' }}
         onMouseEnter={() => setIsTimelineHovered(true)}
         onMouseLeave={() => setIsTimelineHovered(false)}
       >
       {/* Timeline container - now with explicit height */}
-      <div className="relative h-full flex items-center">
+      <div className="relative h-full flex items-center" style={{ backgroundColor: 'transparent' }}>
         {/* Background line */}
         <div 
           className="absolute left-1/2 top-0 h-full w-[2px] -translate-x-1/2 transition-colors duration-300"
@@ -282,7 +327,6 @@ export function TimelineNavigation() {
                   animate={{
                     width: activeSection === item.id ? 18 : 14,
                     height: activeSection === item.id ? 18 : 14,
-                    backgroundColor: activeSection === item.id ? activeDotColor : (isOverDarkBg ? 'rgba(0, 0, 0, 0.5)' : '#ffffff'),
                     borderColor: activeSection === item.id ? activeDotColor : dotBorderColor
                   }}
                   whileHover={{
@@ -290,6 +334,7 @@ export function TimelineNavigation() {
                     borderColor: activeDotColor
                   }}
                   style={{
+                    backgroundColor: activeSection === item.id ? activeDotColor : 'transparent',
                     boxShadow: activeSection === item.id ? `0 4px 12px ${isOverDarkBg ? 'rgba(201, 111, 74, 0.5)' : 'rgba(201, 111, 74, 0.3)'}` : 'none'
                   }}
                 />

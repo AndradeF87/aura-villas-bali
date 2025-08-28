@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { ConditionalNavigation } from "@/components/layout/ConditionalNavigation";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { LanguageSetter } from "@/components/LanguageSetter";
+import Footer from "@/components/layout/Footer";
 import { i18n, type Locale } from '@/lib/i18n/config';
 import { getDictionary } from '@/lib/i18n/dictionaries';
 
@@ -103,6 +104,7 @@ export default async function LocaleLayout({
       <StructuredData locale={locale} type="website" />
       <StructuredData locale={locale} type="organization" />
       {children}
+      <Footer dictionary={dict} locale={locale} />
     </>
   );
 }

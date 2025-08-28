@@ -680,5 +680,55 @@
       "messageSent": "Message Sent!",
       "error": "Sorry, there was an error. Please try again or contact us directly."
     }
+  },
+  "footer": {
+    "tagline": "Villas Bali",
+    "description": "Elevating villa management with innovation and authentic Balinese hospitality",
+    "newsletter": {
+      "title": "Stay Updated",
+      "description": "Get exclusive property management tips and early access to new villas",
+      "placeholder": "Enter your email",
+      "subscribe": "Subscribe",
+      "subscribing": "Subscribing...",
+      "success": "Successfully subscribed!",
+      "error": "Something went wrong. Please try again.",
+      "features": {
+        "noSpam": "No spam",
+        "monthly": "Monthly updates",
+        "unsubscribe": "Unsubscribe anytime"
+      }
+    },
+    "sections": {
+      "quickLinks": "Quick Links",
+      "services": "Services",
+      "resources": "Resources",
+      "contact": "Contact"
+    },
+    "links": {
+      "propertyManagement": "Property Management",
+      "villaOperations": "Villa Operations",
+      "marketingServices": "Marketing Services",
+      "ownerPortal": "Owner Portal",
+      "blog": "Blog",
+      "faq": "FAQ",
+      "villaCareGuide": "Villa Care Guide",
+      "travelTips": "Bali Travel Tips"
+    },
+    "whatsappMessage": "Hi, I need help with villa management",
+    "address": {
+      "line1": "Jl. Raya Uluwatu",
+      "line2": "Pecatu, Badung",
+      "line3": "Bali 80361, Indonesia"
+    },
+    "hours": {
+      "weekdays": "Mon-Fri: 9:00 - 18:00",
+      "weekend": "Sat-Sun: 10:00 - 16:00"
+    },
+    "copyright": "All rights reserved.",
+    "legal": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "cookies": "Cookie Policy"
+    }
   }
 }

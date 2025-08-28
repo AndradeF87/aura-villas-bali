@@ -1246,5 +1246,55 @@
   "whatsappButton": {
     "tooltip": "Chatea con nosotros por WhatsApp",
     "defaultMessage": "Hola equipo de AURA, estoy interesado en sus servicios de alquiler de villas en Bali."
+  },
+  "footer": {
+    "tagline": "Villas Bali",
+    "description": "Elevando la gestión de villas con innovación y auténtica hospitalidad balinesa",
+    "newsletter": {
+      "title": "Mantente Actualizado",
+      "description": "Recibe consejos exclusivos de gestión de propiedades y acceso anticipado a nuevas villas",
+      "placeholder": "Ingresa tu email",
+      "subscribe": "Suscribirse",
+      "subscribing": "Suscribiendo...",
+      "success": "¡Suscripción exitosa!",
+      "error": "Algo salió mal. Por favor, intenta de nuevo.",
+      "features": {
+        "noSpam": "Sin spam",
+        "monthly": "Actualizaciones mensuales",
+        "unsubscribe": "Cancela en cualquier momento"
+      }
+    },
+    "sections": {
+      "quickLinks": "Enlaces Rápidos",
+      "services": "Servicios",
+      "resources": "Recursos",
+      "contact": "Contacto"
+    },
+    "links": {
+      "propertyManagement": "Gestión de Propiedades",
+      "villaOperations": "Operaciones de Villa",
+      "marketingServices": "Servicios de Marketing",
+      "ownerPortal": "Portal del Propietario",
+      "blog": "Blog",
+      "faq": "Preguntas Frecuentes",
+      "villaCareGuide": "Guía de Cuidado de Villa",
+      "travelTips": "Consejos de Viaje a Bali"
+    },
+    "whatsappMessage": "Hola, necesito ayuda con la gestión de villas",
+    "address": {
+      "line1": "Jl. Raya Uluwatu",
+      "line2": "Pecatu, Badung",
+      "line3": "Bali 80361, Indonesia"
+    },
+    "hours": {
+      "weekdays": "Lun-Vie: 9:00 - 18:00",
+      "weekend": "Sáb-Dom: 10:00 - 16:00"
+    },
+    "copyright": "Todos los derechos reservados.",
+    "legal": {
+      "privacy": "Política de Privacidad",
+      "terms": "Términos de Servicio",
+      "cookies": "Política de Cookies"
+    }
   }
 }

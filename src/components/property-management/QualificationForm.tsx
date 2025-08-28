@@ -118,7 +118,7 @@ export function QualificationForm() {
 
   if (submitted) {
     return (
-      <section id="qualification" className="min-h-screen flex items-center justify-center py-20 bg-white relative">
+      <section id="qualification" className="flex items-center justify-center py-20 bg-white relative">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
             <div className="w-20 h-20 bg-terracotta rounded-full flex items-center justify-center mx-auto mb-6">
@@ -140,7 +140,7 @@ export function QualificationForm() {
   }
 
   return (
-    <section id="qualification" className="min-h-screen py-20 bg-white flex items-center relative">
+    <section id="qualification" className="py-20 bg-white relative">
       <div className="container mx-auto px-4">
         <div className="w-full">
           {/* Section Header */}

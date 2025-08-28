@@ -18,10 +18,10 @@ export function PropertyManagementHero() {
   }, [])
 
   return (
-    <section className="relative pt-32 pb-20 bg-deep-green overflow-hidden" style={{ zIndex: 10 }}>
+    <section className="relative bg-deep-green overflow-hidden flex items-center" style={{ zIndex: 10, minHeight: '80vh' }}>
       <div className="absolute inset-0 bg-black/10" />
       
-      <div className="relative container mx-auto px-4">
+      <div className="relative container mx-auto px-4 py-20">
         <div className="flex flex-col lg:flex-row gap-8 items-center">
           {/* Left Content - 3/5 width */}
           <div className="w-full lg:w-3/5">

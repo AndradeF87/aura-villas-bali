@@ -99,7 +99,7 @@ export function GlassmorphismLuxury() {
   }
 
   return (
-    <div className="h-screen w-full fixed top-0 left-0 overflow-hidden flex" style={{ backgroundColor: '#F8F4F0', zIndex: 1 }}>
+    <div id="calculator-section" className="h-screen w-full fixed top-0 left-0 overflow-hidden flex" style={{ backgroundColor: '#F8F4F0', zIndex: 0 }}>
       {/* Style tag for animations */}
       <style jsx>{`
         @keyframes sheen {
