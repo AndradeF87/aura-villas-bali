@@ -248,11 +248,6 @@ export default function Footer({ dictionary, locale }: FooterProps) {
                 </Link>
               </li>
               <li>
-                <Link href={getLocalePath('/pricing#operations')} className="hover:text-terracotta transition-colors">
-                  {dictionary?.footer?.links?.villaOperations || 'Villa Operations'}
-                </Link>
-              </li>
-              <li>
                 <Link href={getLocalePath('/pricing#marketing')} className="hover:text-terracotta transition-colors">
                   {dictionary?.footer?.links?.marketingServices || 'Marketing Services'}
                 </Link>
@@ -281,16 +276,6 @@ export default function Footer({ dictionary, locale }: FooterProps) {
               <li>
                 <Link href={getLocalePath('/faq')} className="hover:text-terracotta transition-colors">
                   {dictionary?.footer?.links?.faq || 'FAQ'}
-                </Link>
-              </li>
-              <li>
-                <Link href={getLocalePath('/villa-care-guide')} className="hover:text-terracotta transition-colors">
-                  {dictionary?.footer?.links?.villaCareGuide || 'Villa Care Guide'}
-                </Link>
-              </li>
-              <li>
-                <Link href={getLocalePath('/bali-travel-tips')} className="hover:text-terracotta transition-colors">
-                  {dictionary?.footer?.links?.travelTips || 'Bali Travel Tips'}
                 </Link>
               </li>
             </ul>
@@ -481,11 +466,6 @@ export default function Footer({ dictionary, locale }: FooterProps) {
                       <li>
                         <Link href={getLocalePath('/pricing#operations')} className="hover:text-terracotta transition-colors">
                           {dictionary?.footer?.links?.propertyManagement || 'Property Management'}
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href={getLocalePath('/pricing#operations')} className="hover:text-terracotta transition-colors">
-                          {dictionary?.footer?.links?.villaOperations || 'Villa Operations'}
                         </Link>
                       </li>
                       <li>
