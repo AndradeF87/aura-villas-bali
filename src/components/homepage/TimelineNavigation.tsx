@@ -1,7 +1,7 @@
 'use client'
 
-import { useEffect, useState, useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 
 interface NavItem {
   id: string
@@ -14,10 +14,6 @@ export function TimelineNavigation() {
   const [activeSection, setActiveSection] = useState<string>('')
   const [isTimelineHovered, setIsTimelineHovered] = useState(false)
   const [isOverDarkBg, setIsOverDarkBg] = useState(false)
-  const { scrollYProgress } = useScroll()
-  
-  // Transform for the progress line
-  const progressHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
 
   useEffect(() => {
     // Dynamically detect all major sections
@@ -105,54 +101,61 @@ export function TimelineNavigation() {
   }, [])
 
   useEffect(() => {
-    // Set up Intersection Observer for active section tracking
+    // Set up active section tracking based on scroll position
     if (navItems.length === 0) return
 
-    // Check scroll position for calculator section
     const handleScroll = () => {
       const scrollY = window.scrollY
       
-      // If we're at the top of the page (scroll < 100px), activate calculator section
-      if (scrollY < 100 && navItems.length > 0 && navItems[0].id === 'calculator-section') {
-        setActiveSection('calculator-section')
-        return
-      }
+      // Find which section is currently at or near the top of the viewport
+      let currentActive = ''
       
-      // Otherwise use intersection observer for other sections
-    }
-
-    const observerOptions = {
-      root: null,
-      rootMargin: '-30% 0px -50% 0px',
-      threshold: 0
-    }
-
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const section = navItems.find(item => item.element === entry.target)
-          if (section) {
-            setActiveSection(section.id)
+      // Check each section to see which one is closest to the top
+      for (let i = 0; i < navItems.length; i++) {
+        const item = navItems[i]
+        const element = item.element
+        const rect = element.getBoundingClientRect()
+        const elementTop = rect.top
+        
+        // Special handling for calculator section (fixed position)
+        if (item.id === 'calculator-section') {
+          if (scrollY < 100) {
+            currentActive = 'calculator-section'
+            break
+          }
+        } else {
+          // Check if this section is at or just passed the top of the viewport
+          // We use a threshold of 100px to account for sections that are just entering
+          if (elementTop <= 100 && elementTop > -rect.height) {
+            currentActive = item.id
           }
         }
-      })
-    }
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions)
-
-    navItems.forEach(item => {
-      // Don't observe the calculator section with IntersectionObserver since it's fixed
-      if (item.id !== 'calculator-section') {
-        observer.observe(item.element)
       }
-    })
+      
+      // If no section found but we're scrolled, use the last visible section
+      if (!currentActive && scrollY > 100) {
+        for (let i = navItems.length - 1; i >= 0; i--) {
+          const item = navItems[i]
+          if (item.id !== 'calculator-section') {
+            const rect = item.element.getBoundingClientRect()
+            if (rect.top < window.innerHeight) {
+              currentActive = item.id
+              break
+            }
+          }
+        }
+      }
+      
+      if (currentActive) {
+        setActiveSection(currentActive)
+      }
+    }
 
     // Add scroll listener
     window.addEventListener('scroll', handleScroll)
     handleScroll() // Check initial position
 
     return () => {
-      observer.disconnect()
       window.removeEventListener('scroll', handleScroll)
     }
   }, [navItems])
@@ -239,110 +242,101 @@ export function TimelineNavigation() {
   }
 
   if (navItems.length === 0) return null
-
+  
   // Dynamic colors based on background
-  const lineColor = isOverDarkBg ? 'rgba(255, 255, 255, 0.2)' : 'rgba(201, 111, 74, 0.3)'
-  const progressColor = isOverDarkBg ? '#C96F4A' : '#2F4A3C'
   const dotBorderColor = isOverDarkBg ? 'rgba(255, 255, 255, 0.3)' : 'rgba(201, 111, 74, 0.4)'
   const activeDotColor = isOverDarkBg ? '#C96F4A' : '#C96F4A'
+  const dotBgColor = isOverDarkBg ? '#1a1a1a' : '#F8F4F0'
   const labelBgColor = isOverDarkBg ? 'rgba(0, 0, 0, 0.7)' : 'rgba(255, 255, 255, 0.9)'
   const labelTextColor = isOverDarkBg ? '#F8F4F0' : '#2F4A3C'
 
   return (
-    <>
-      {/* Mobile Progress Bar */}
-      <div className="fixed top-0 left-0 right-0 h-1 bg-gray-200/30 md:hidden" style={{ zIndex: 2147483647 }}>
-        <motion.div 
-          className="h-full bg-gradient-to-r from-[#C96F4A] to-[#2F4A3C]"
-          style={{ width: scrollYProgress }}
-        />
-      </div>
-
-      {/* Desktop Timeline Navigation */}
+    <div>
+      {/* Timeline Navigation */}
       <div 
         className="fixed right-12 top-1/2 -translate-y-1/2 hidden md:block" 
         style={{ height: '70vh', zIndex: 2147483647, backgroundColor: 'transparent' }}
         onMouseEnter={() => setIsTimelineHovered(true)}
         onMouseLeave={() => setIsTimelineHovered(false)}
       >
-      {/* Timeline container - now with explicit height */}
-      <div className="relative h-full flex items-center" style={{ backgroundColor: 'transparent' }}>
-        {/* Background line */}
+      {/* Timeline container */}
+      <div className="relative h-full flex items-center justify-center" style={{ backgroundColor: 'transparent' }}>
+        {/* Static vertical line */}
         <div 
-          className="absolute left-1/2 top-0 h-full w-[2px] -translate-x-1/2 transition-colors duration-300"
-          style={{ backgroundColor: lineColor }}
-        />
-        
-        {/* Progress line */}
-        <motion.div 
-          className="absolute left-1/2 top-0 w-[2px] -translate-x-1/2 transition-colors duration-300"
+          className="absolute left-1/2 -translate-x-1/2 h-full w-0.5"
           style={{ 
-            height: progressHeight,
-            backgroundColor: progressColor 
+            backgroundColor: isOverDarkBg ? 'rgba(255, 255, 255, 0.1)' : 'rgba(201, 111, 74, 0.2)',
+            top: 0,
+            zIndex: 0
           }}
         />
         
         {/* Navigation dots - spread across the full height */}
-        <div className="relative flex flex-col justify-between h-full py-4">
-          {navItems.map((item, index) => (
-            <div 
-              key={item.id}
-              className="relative flex items-center"
-            >
-              {/* Label - shows for all when timeline is hovered */}
-              <motion.div
-                className="absolute right-8 whitespace-nowrap"
-                initial={{ opacity: 0, x: 10 }}
-                animate={{ 
-                  opacity: isTimelineHovered ? 1 : 0,
-                  x: isTimelineHovered ? 0 : 10
-                }}
-                transition={{ duration: 0.2 }}
+        <div className="relative flex flex-col justify-between h-full py-4 items-center" style={{ zIndex: 1 }}>
+          {navItems.map((item, index) => {
+            // Only highlight the dot if its section is active (at the top of the screen)
+            const isDotActive = activeSection === item.id
+            
+            return (
+              <div 
+                key={item.id}
+                className="relative flex items-center"
               >
-                <div 
-                  className="rounded-lg px-3 py-1.5 shadow-lg transition-colors duration-300"
-                  style={{ 
-                    backgroundColor: labelBgColor,
-                    backdropFilter: isOverDarkBg ? 'blur(10px)' : 'none'
-                  }}
-                >
-                  <span 
-                    className="text-sm font-medium transition-colors duration-300"
-                    style={{ color: labelTextColor }}
-                  >
-                    {item.label}
-                  </span>
-                </div>
-              </motion.div>
-              
-              {/* Dot */}
-              <button
-                className="relative z-10"
-                onClick={() => scrollToSection(item.element)}
-                aria-label={`Navigate to ${item.label}`}
-              >
+                {/* Label - shows for all when timeline is hovered */}
                 <motion.div
-                  className="rounded-full border-2 transition-all duration-300"
-                  animate={{
-                    width: activeSection === item.id ? 18 : 14,
-                    height: activeSection === item.id ? 18 : 14,
-                    borderColor: activeSection === item.id ? activeDotColor : dotBorderColor
+                  className="absolute right-8 whitespace-nowrap"
+                  initial={{ opacity: 0, x: 10 }}
+                  animate={{ 
+                    opacity: isTimelineHovered ? 1 : 0,
+                    x: isTimelineHovered ? 0 : 10
                   }}
-                  whileHover={{
-                    scale: 1.2,
-                    borderColor: activeDotColor
-                  }}
-                  style={{
-                    backgroundColor: activeSection === item.id ? activeDotColor : 'transparent',
-                    boxShadow: activeSection === item.id ? `0 4px 12px ${isOverDarkBg ? 'rgba(201, 111, 74, 0.5)' : 'rgba(201, 111, 74, 0.3)'}` : 'none'
-                  }}
-                />
-              </button>
-            </div>
-          ))}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div 
+                    className="rounded-lg px-3 py-1.5 shadow-lg transition-colors duration-300"
+                    style={{ 
+                      backgroundColor: labelBgColor,
+                      backdropFilter: isOverDarkBg ? 'blur(10px)' : 'none'
+                    }}
+                  >
+                    <span 
+                      className="text-sm font-medium transition-colors duration-300"
+                      style={{ color: labelTextColor }}
+                    >
+                      {item.label}
+                    </span>
+                  </div>
+                </motion.div>
+                
+                {/* Dot with background */}
+                <button
+                  className="relative z-10"
+                  onClick={() => scrollToSection(item.element)}
+                  aria-label={`Navigate to ${item.label}`}
+                >
+                  <motion.div
+                    className="rounded-full border-2 transition-all duration-300"
+                    animate={{
+                      width: activeSection === item.id ? 18 : 14,
+                      height: activeSection === item.id ? 18 : 14,
+                      borderColor: isDotActive ? activeDotColor : dotBorderColor
+                    }}
+                    whileHover={{
+                      scale: 1.2,
+                      borderColor: activeDotColor
+                    }}
+                    style={{
+                      backgroundColor: isDotActive ? activeDotColor : dotBgColor,
+                      boxShadow: activeSection === item.id ? `0 4px 12px ${isOverDarkBg ? 'rgba(201, 111, 74, 0.5)' : 'rgba(201, 111, 74, 0.3)'}` : 'none'
+                    }}
+                  />
+                </button>
+              </div>
+            )
+          })}
         </div>
       </div>
     </div>
-    </>
+    </div>
   )
 }

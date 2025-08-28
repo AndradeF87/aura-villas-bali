@@ -15,17 +15,30 @@ export function LanguageSwitcher({ currentLocale = 'en', color = '#2F4A3C' }: La
   const pathname = usePathname()
   const router = useRouter()
   const dropdownRef = useRef<HTMLDivElement>(null)
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
-  // Close dropdown when clicking outside
+  // Handle mouse enter with delay
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+    }
+    setIsOpen(true)
+  }
+
+  // Handle mouse leave with delay
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setIsOpen(false)
+    }, 200) // Small delay to prevent accidental closing
+  }
+
+  // Cleanup timeout on unmount
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false)
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
       }
     }
-
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
   const handleLanguageChange = (locale: Locale) => {
@@ -55,9 +68,13 @@ export function LanguageSwitcher({ currentLocale = 'en', color = '#2F4A3C' }: La
   const currentLanguage = languages[currentLocale]
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div 
+      className="relative" 
+      ref={dropdownRef}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <button
-        onClick={() => setIsOpen(!isOpen)}
         className="flex items-center justify-center hover:text-terracotta transition-colors duration-300"
         aria-label="Select language"
         aria-expanded={isOpen}
