@@ -2,45 +2,49 @@
 
 import { motion } from 'framer-motion'
 import { BedDouble, AlertCircle, Wrench, TrendingDown } from 'lucide-react'
+import { useTranslation } from '@/contexts/TranslationContext'
 
-const challenges = [
-  {
-    icon: BedDouble,
-    title: "Empty Nights Cost Money",
-    description: "Your beautiful villa sits empty while competitors with inferior properties stay booked",
-    impact: "30% revenue loss"
-  },
-  {
-    icon: TrendingDown,
-    title: "Marketing is Overwhelming",
-    description: "Managing OTAs, social media, and direct bookings while competing with hotels",
-    impact: "60+ hours monthly"
-  },
-  {
-    icon: AlertCircle,
-    title: "Guest Issues Never Stop",
-    description: "Dealing with complaints, damages, and emergencies at all hours",
-    impact: "24/7 stress"
-  },
-  {
-    icon: Wrench,
-    title: "Maintenance Never Ends",
-    description: "Coordinating repairs, cleaning, and upkeep between guest stays",
-    impact: "15% of revenue"
-  }
-]
+// We'll use the dictionary data instead of hardcoded challenges
 
 export function ChallengesSection() {
+  const { dictionary } = useTranslation()
+  
+  const challenges = [
+    {
+      icon: BedDouble,
+      title: dictionary?.challenges?.items?.occupancy?.title || "Empty Nights Cost Money",
+      description: dictionary?.challenges?.items?.occupancy?.description || "Your beautiful villa sits empty while competitors with inferior properties stay booked",
+      impact: dictionary?.challenges?.items?.occupancy?.impact || "30% revenue loss"
+    },
+    {
+      icon: TrendingDown,
+      title: dictionary?.challenges?.items?.marketing?.title || "Marketing is Overwhelming",
+      description: dictionary?.challenges?.items?.marketing?.description || "Managing OTAs, social media, and direct bookings while competing with hotels",
+      impact: dictionary?.challenges?.items?.marketing?.impact || "60+ hours monthly"
+    },
+    {
+      icon: AlertCircle,
+      title: dictionary?.challenges?.items?.guest?.title || "Guest Issues Never Stop",
+      description: dictionary?.challenges?.items?.guest?.description || "Dealing with complaints, damages, and emergencies at all hours",
+      impact: dictionary?.challenges?.items?.guest?.impact || "24/7 stress"
+    },
+    {
+      icon: Wrench,
+      title: dictionary?.challenges?.items?.maintenance?.title || "Maintenance Never Ends",
+      description: dictionary?.challenges?.items?.maintenance?.description || "Coordinating repairs, cleaning, and upkeep between guest stays",
+      impact: dictionary?.challenges?.items?.maintenance?.impact || "15% of revenue"
+    }
+  ]
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="font-serif text-4xl md:text-5xl text-deep-green mb-4">
-            We Know the Challenges You Face
+            {dictionary?.challenges?.title || 'The challenges villa owners face in Bali'}
           </h2>
           <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
-            Managing a luxury villa in Bali should be rewarding, not overwhelming
+            {dictionary?.challenges?.subtitle || 'We understand the complexities of managing luxury properties in paradise'}
           </p>
         </div>
 
@@ -114,11 +118,10 @@ export function ChallengesSection() {
         <div className="mt-16 text-center">
           <div className="inline-block p-8 bg-sand-beige rounded-2xl">
             <h3 className="font-serif text-2xl text-deep-green mb-4">
-              What if You Could Enjoy Passive Income?
+              {dictionary?.challenges?.solution?.title || "What if You Could Enjoy Passive Income?"}
             </h3>
             <p className="text-gray-700 mb-6 max-w-2xl">
-              Let us handle the challenges while you enjoy consistent returns. 
-              That's the AURA promise—professional management without the stress.
+              {dictionary?.challenges?.solution?.description || "Let us handle the challenges while you enjoy consistent returns. That's the AURA promise—professional management without the stress."}
             </p>
             <button 
               onClick={() => {
@@ -129,7 +132,7 @@ export function ChallengesSection() {
               }}
               className="px-8 py-3 bg-deep-green text-white rounded-full font-medium hover:bg-deep-green/90 transition-colors duration-300"
             >
-              Discover the AURA Difference
+              {dictionary?.challenges?.solution?.cta || "Discover the AURA Difference"}
             </button>
           </div>
         </div>

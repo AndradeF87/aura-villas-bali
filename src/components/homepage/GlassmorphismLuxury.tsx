@@ -4,8 +4,10 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import { EarningsDisplay } from './EarningsDisplay'
+import { useTranslation } from '@/contexts/TranslationContext'
 
 export function GlassmorphismLuxury() {
+  const { dictionary } = useTranslation()
   const [step, setStep] = useState(1)
   const [location, setLocation] = useState('')
   const [bedrooms, setBedrooms] = useState('')
@@ -97,7 +99,7 @@ export function GlassmorphismLuxury() {
   }
 
   return (
-    <div className="h-screen w-full relative overflow-hidden flex" style={{ backgroundColor: '#F8F4F0' }}>
+    <div className="h-screen w-full fixed top-0 left-0 overflow-hidden flex" style={{ backgroundColor: '#F8F4F0', zIndex: 1 }}>
       {/* Style tag for animations */}
       <style jsx>{`
         @keyframes sheen {
@@ -151,13 +153,13 @@ export function GlassmorphismLuxury() {
             opacity: animatedOpacity
           }}
         >
-          AURA
+          {dictionary?.calculator?.brand || 'AURA'}
         </motion.h1>
         <motion.p 
           className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#2F4A3C] font-bold"
           style={{ opacity: subtitleOpacity }}
         >
-          Property Management Bali
+          {dictionary?.calculator?.subtitle || 'Property Management Bali'}
         </motion.p>
       </div>
 
@@ -181,8 +183,8 @@ export function GlassmorphismLuxury() {
             className="block md:hidden mb-6"
             style={{ opacity: subtitleOpacity }}
           >
-            <h1 className="text-3xl font-serif text-[#C96F4A] mb-2">AURA</h1>
-            <p className="text-sm text-[#F8F4F0] opacity-80">Property Management Bali</p>
+            <h1 className="text-3xl font-serif text-[#C96F4A] mb-2">{dictionary?.calculator?.brand || 'AURA'}</h1>
+            <p className="text-sm text-[#F8F4F0] opacity-80">{dictionary?.calculator?.subtitle || 'Gestión de Propiedades en Bali'}</p>
             <div className="w-full h-[1px] bg-[#C96F4A] mt-4 mb-6"></div>
           </motion.div>
 
@@ -228,11 +230,11 @@ export function GlassmorphismLuxury() {
                     textShadow: '0 2px 4px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.1)'
                   }}
                 >
-                  Estimate Your Villa's<br/>
-                  <span className="text-[#C96F4A] text-[34px] md:text-[32px]">Earning Potential</span>
+                  {dictionary?.calculator?.title || 'Estimate Your'}<br/>
+                  <span className="text-[#C96F4A] text-[34px] md:text-[32px]">{dictionary?.calculator?.titleHighlight || 'Rental Income'}</span>
                 </h2>
                 <p className="text-sm md:text-[15px] text-[rgba(255,255,255,0.8)] text-center mb-6 md:mb-[35px]">
-                  Start by selecting your villa's location
+                  {dictionary?.calculator?.step1Description || 'Where is your villa located?'}
                 </p>
                 
                 <div className="space-y-3 md:space-y-[15px] overflow-y-auto max-h-[40vh] md:max-h-none">
@@ -260,7 +262,7 @@ export function GlassmorphismLuxury() {
                       }}
                     >
                       <div className="font-serif">{loc}</div>
-                      <small className="block text-[13px] text-[rgba(255,255,255,0.6)] mt-1">Premium Location</small>
+                      <small className="block text-[13px] text-[rgba(255,255,255,0.6)] mt-1">{dictionary?.calculator?.premiumLocation || 'Premium Location'}</small>
                     </button>
                   ))}
                 </div>
@@ -281,11 +283,11 @@ export function GlassmorphismLuxury() {
                     textShadow: '0 2px 4px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.1)'
                   }}
                 >
-                  Villa<br/>
-                  <span className="text-[#C96F4A]">Category</span>
+                  {dictionary?.calculator?.villaCategory || 'Villa'}<br/>
+                  <span className="text-[#C96F4A]">{dictionary?.calculator?.category || 'Category'}</span>
                 </h2>
                 <p className="text-sm md:text-[15px] text-[rgba(255,255,255,0.8)] text-center mb-6 md:mb-[35px]">
-                  Select your villa category
+                  {dictionary?.calculator.selectCategory || 'Select your villa category'}
                 </p>
                 
                 <div className="space-y-3">
@@ -297,8 +299,8 @@ export function GlassmorphismLuxury() {
                       border: '1px solid rgba(100,100,100,0.2)',
                     }}
                   >
-                    <div className="font-serif text-lg">Standard</div>
-                    <small className="block text-[13px] text-[rgba(255,255,255,0.4)] mt-1">Not available for AURA management</small>
+                    <div className="font-serif text-lg">{dictionary?.calculator.categories.standard?.name || 'Standard'}</div>
+                    <small className="block text-[13px] text-[rgba(255,255,255,0.4)] mt-1">{dictionary?.calculator.categories.standard?.description || 'Not available for AURA management'}</small>
                   </div>
 
                   {/* Premium */}
@@ -324,8 +326,8 @@ export function GlassmorphismLuxury() {
                       e.currentTarget.style.transform = 'translateY(0)'
                     }}
                   >
-                    <div className="font-serif text-lg">Premium</div>
-                    <small className="block text-[13px] text-[rgba(255,255,255,0.6)] mt-1">High-quality villas with modern amenities</small>
+                    <div className="font-serif text-lg">{dictionary?.calculator.categories.premium?.name || 'Premium'}</div>
+                    <small className="block text-[13px] text-[rgba(255,255,255,0.6)] mt-1">{dictionary?.calculator.categories.premium?.description || 'High-quality villas with modern amenities'}</small>
                   </button>
 
                   {/* Luxury */}
@@ -351,8 +353,8 @@ export function GlassmorphismLuxury() {
                       e.currentTarget.style.transform = 'translateY(0)'
                     }}
                   >
-                    <div className="font-serif text-lg">Luxury</div>
-                    <small className="block text-[13px] text-[rgba(255,255,255,0.6)] mt-1">Exceptional properties with premium features</small>
+                    <div className="font-serif text-lg">{dictionary?.calculator.categories.luxury?.name || 'Luxury'}</div>
+                    <small className="block text-[13px] text-[rgba(255,255,255,0.6)] mt-1">{dictionary?.calculator.categories.luxury?.description || 'Exceptional properties with premium features'}</small>
                   </button>
 
                   {/* Ultra-Luxury */}
@@ -378,8 +380,8 @@ export function GlassmorphismLuxury() {
                       e.currentTarget.style.transform = 'translateY(0)'
                     }}
                   >
-                    <div className="font-serif text-lg">Ultra-Luxury</div>
-                    <small className="block text-[13px] text-[rgba(255,255,255,0.6)] mt-1">Elite estates with world-class amenities</small>
+                    <div className="font-serif text-lg">{dictionary?.calculator.categories.ultraLuxury?.name || 'Ultra-Luxury'}</div>
+                    <small className="block text-[13px] text-[rgba(255,255,255,0.6)] mt-1">{dictionary?.calculator.categories.ultraLuxury?.description || 'Elite estates with world-class amenities'}</small>
                   </button>
                 </div>
               </motion.div>
@@ -399,16 +401,16 @@ export function GlassmorphismLuxury() {
                     textShadow: '0 2px 4px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.1)'
                   }}
                 >
-                  Property<br/>
-                  <span className="text-[#C96F4A]">Details</span>
+                  {dictionary?.calculator.propertyDetails || 'Property'}<br/>
+                  <span className="text-[#C96F4A]">{dictionary?.calculator.details || 'Details'}</span>
                 </h2>
                 <p className="text-sm md:text-[15px] text-[rgba(255,255,255,0.8)] text-center mb-6 md:mb-[35px]">
-                  Number of bedrooms and amenities
+                  {dictionary?.calculator.bedroomsAmenities || 'Number of bedrooms and amenities'}
                 </p>
                 
                 {/* Bedrooms Selection */}
                 <div className="mb-6">
-                  <p className="text-white text-sm mb-3 opacity-80">Bedrooms:</p>
+                  <p className="text-white text-sm mb-3 opacity-80">{dictionary?.calculator.bedrooms || 'Bedrooms'}:</p>
                   <div className="grid grid-cols-3 gap-2">
                     {bedroomOptions.map((num) => (
                       <button
@@ -449,9 +451,14 @@ export function GlassmorphismLuxury() {
 
                 {/* Amenities */}
                 <div className="mb-6">
-                  <p className="text-white text-sm mb-3 opacity-80">Select amenities:</p>
+                  <p className="text-white text-sm mb-3 opacity-80">{dictionary?.calculator.selectAmenities || 'Select amenities'}:</p>
                   <div className="grid grid-cols-2 gap-2">
-                    {['Private Pool', 'Ocean View', 'Beach Access', 'Chef Service'].map((amenity) => (
+                    {[
+                      dictionary?.calculator.amenities?.privatePool || 'Private Pool',
+                      dictionary?.calculator.amenities?.oceanView || 'Ocean View',
+                      dictionary?.calculator.amenities?.beachAccess || 'Beach Access',
+                      dictionary?.calculator.amenities?.chefService || 'Chef Service'
+                    ].map((amenity) => (
                       <button
                         key={amenity}
                         type="button"
@@ -490,7 +497,7 @@ export function GlassmorphismLuxury() {
                     e.currentTarget.style.boxShadow = '0 4px 10px rgba(201,111,74,0.3)'
                   }}
                 >
-                  Get My Earnings Estimate →
+                  {dictionary?.calculator.getEstimate || 'Get My Earnings Estimate'} →
                 </button>
               </motion.div>
             )}
@@ -509,13 +516,14 @@ export function GlassmorphismLuxury() {
                     textShadow: '0 2px 4px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.1)'
                   }}
                 >
-                  Your Villa's<br/>
-                  <span className="text-[#C96F4A]">Earning Potential</span>
+                  {dictionary?.calculator.results?.yourVilla || "Your Villa's"}<br/>
+                  <span className="text-[#C96F4A]">{dictionary?.calculator.results?.earningPotential || 'Earning Potential'}</span>
                 </h2>
                 
                 <p className="text-sm text-[rgba(255,255,255,0.8)] text-center mb-4">
-                  {villaCategory === 'premium' ? 'Premium' : villaCategory === 'luxury' ? 'Luxury' : 'Ultra-Luxury'} villa 
-                  in {location} with {bedrooms} bedroom{bedrooms !== 1 ? 's' : ''}
+                  {villaCategory === 'premium' ? (dictionary?.calculator.categories?.premium?.name || 'Premium') : 
+                   villaCategory === 'luxury' ? (dictionary?.calculator.categories?.luxury?.name || 'Luxury') : 
+                   (dictionary?.calculator.categories?.ultraLuxury?.name || 'Ultra-Luxury')} {dictionary?.calculator.villaIn || 'villa in'} {location} {dictionary?.calculator.withBedrooms || 'with'} {bedrooms} {bedrooms === 1 ? (dictionary?.calculator.bedroom || 'bedroom') : (dictionary?.calculator.bedroomsPlural || 'bedrooms')}
                 </p>
                 
                 {/* Strategy Selector */}
@@ -549,7 +557,7 @@ export function GlassmorphismLuxury() {
                         }
                       }}
                     >
-                      Occupancy<br/>Focused
+                      {dictionary?.calculator.strategies?.occupancyFocused || 'Occupancy Focused'}
                     </button>
                     <button
                       onClick={() => setStrategy('Balanced')}
@@ -579,7 +587,7 @@ export function GlassmorphismLuxury() {
                         }
                       }}
                     >
-                      Balanced
+                      {dictionary?.calculator.strategies?.balanced || 'Balanced'}
                     </button>
                     <button
                       onClick={() => setStrategy('Revenue Focused')}
@@ -609,7 +617,7 @@ export function GlassmorphismLuxury() {
                         }
                       }}
                     >
-                      Revenue<br/>Focused
+                      {dictionary?.calculator.strategies?.revenueFocused || 'Revenue Focused'}
                     </button>
                   </div>
                 </div>
@@ -620,6 +628,7 @@ export function GlassmorphismLuxury() {
                   villaCategory={villaCategory}
                   bedrooms={bedrooms.toString()}
                   strategy={strategy}
+                  dictionary={dictionary}
                 />
                 
                 {/* Mobile Contact Button - Shows only on mobile at step 4 */}
@@ -639,7 +648,7 @@ export function GlassmorphismLuxury() {
                     e.currentTarget.style.boxShadow = '0 4px 15px rgba(201,111,74,0.3)'
                   }}
                 >
-                  Get Your Personalized Report
+                  {dictionary?.calculator.getPersonalizedReport || 'Get Your Personalized Report'}
                 </button>
               </motion.div>
             )}
@@ -668,18 +677,18 @@ export function GlassmorphismLuxury() {
                 textShadow: '0 2px 4px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.1)'
               }}
             >
-              Get Your<br/>
-              <span className="text-[#C96F4A]">Personalized Report</span>
+              {dictionary?.calculator.getYour || 'Get Your'}<br/>
+              <span className="text-[#C96F4A]">{dictionary?.calculator.personalizedReport || 'Personalized Report'}</span>
             </h2>
             
             <p className="text-sm text-[rgba(255,255,255,0.8)] text-center mb-6">
-              Request a Tailored Rental Revenue Projection for Your Property
+              {dictionary?.calculator.requestTailored || 'Request a Tailored Rental Revenue Projection for Your Property'}
             </p>
             
             <div className="space-y-4">
               <input
                 type="text"
-                placeholder="Your Name *"
+                placeholder={dictionary?.calculator.yourName || "Your Name *"}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="w-full p-4 rounded-xl bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-white placeholder-[rgba(255,255,255,0.4)] focus:outline-none focus:border-[#C96F4A] transition-colors"
@@ -691,7 +700,7 @@ export function GlassmorphismLuxury() {
               
               <input
                 type="email"
-                placeholder="Email Address *"
+                placeholder={dictionary?.calculator.emailAddress || "Email Address *"}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full p-4 rounded-xl bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-white placeholder-[rgba(255,255,255,0.4)] focus:outline-none focus:border-[#C96F4A] transition-colors"
@@ -703,7 +712,7 @@ export function GlassmorphismLuxury() {
               
               <input
                 type="tel"
-                placeholder="Phone Number (Optional)"
+                placeholder={dictionary?.calculator.phoneOptional || "Phone Number (Optional)"}
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 className="w-full p-4 rounded-xl bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-white placeholder-[rgba(255,255,255,0.4)] focus:outline-none focus:border-[#C96F4A] transition-colors"
@@ -717,12 +726,12 @@ export function GlassmorphismLuxury() {
             <button
               onClick={async () => {
                 if (!name || !email) {
-                  alert('Please fill in all required fields')
+                  alert(dictionary?.calculator.fillRequiredFields || 'Please fill in all required fields')
                   return
                 }
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
                 if (!emailRegex.test(email)) {
-                  alert('Please enter a valid email address')
+                  alert(dictionary?.calculator.enterValidEmail || 'Please enter a valid email address')
                   return
                 }
                 
@@ -752,7 +761,9 @@ export function GlassmorphismLuxury() {
                     throw new Error('Failed to send email')
                   }
                   
-                  alert(`Thank you ${name}! We'll send your detailed earnings report to ${email}.`)
+                  alert(dictionary?.calculator.thankYouMessage ? 
+                    dictionary.calculator.thankYouMessage.replace('{name}', name).replace('{email}', email) :
+                    `Thank you ${name}! We'll send your detailed earnings report to ${email}.`)
                   
                   // Reset form
                   setStep(1)
@@ -765,7 +776,7 @@ export function GlassmorphismLuxury() {
                   setPhone('')
                 } catch (error) {
                   console.error('Error sending email:', error)
-                  alert('Sorry, there was an error. Please try again.')
+                  alert(dictionary?.calculator.errorMessage || 'Sorry, there was an error. Please try again.')
                 } finally {
                   setIsSubmitting(false)
                 }
@@ -773,13 +784,13 @@ export function GlassmorphismLuxury() {
               className="mt-8 w-full p-4 rounded-full bg-[#C96F4A] text-white font-semibold transition-all duration-300 hover:bg-[#B05F3A] hover:shadow-[0_4px_15px_rgba(201,111,74,0.3)] disabled:opacity-50 disabled:cursor-not-allowed"
               disabled={!name || !email || isSubmitting}
             >
-              {isSubmitting ? 'Sending...' : 'Get Detailed Report'}
+              {isSubmitting ? (dictionary?.calculator.sending || 'Sending...') : (dictionary?.calculator.getDetailedReport || 'Get Detailed Report')}
             </button>
             
             <div className="mt-6 pt-6 border-t border-[rgba(255,255,255,0.1)]">
               <p className="text-[10px] text-[rgba(255,255,255,0.6)] text-center">
-                <span className="text-white font-semibold">No Obligation</span> • 
-                <span className="text-[#C96F4A] font-bold"> Response within 24h</span>
+                <span className="text-white font-semibold">{dictionary?.calculator.noObligation || 'No Obligation'}</span> • 
+                <span className="text-[#C96F4A] font-bold"> {dictionary?.calculator.response24h || 'Response within 24h'}</span>
               </p>
             </div>
           </motion.div>
@@ -815,32 +826,32 @@ export function GlassmorphismLuxury() {
               </button>
               
               <h2 className="text-2xl font-bold text-white text-center mb-1">
-                Get Your<br/>
-                <span className="text-[#C96F4A]">Personalized Report</span>
+                {dictionary?.calculator.getYour || 'Get Your'}<br/>
+                <span className="text-[#C96F4A]">{dictionary?.calculator.personalizedReport || 'Personalized Report'}</span>
               </h2>
               
               <p className="text-sm text-[rgba(255,255,255,0.8)] text-center mb-6">
-                Request a Tailored Rental Revenue Projection for Your Property
+                {dictionary?.calculator.requestTailored || 'Request a Tailored Rental Revenue Projection for Your Property'}
               </p>
               
               <div className="space-y-4">
                 <input
                   type="text"
-                  placeholder="Your Name *"
+                  placeholder={dictionary?.calculator.yourName || "Your Name *"}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="w-full p-3 rounded-lg bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-white placeholder:text-[rgba(255,255,255,0.4)] focus:outline-none focus:bg-[rgba(255,255,255,0.08)] focus:border-[#C96F4A] transition-all duration-200"
                 />
                 <input
                   type="email"
-                  placeholder="Your Email *"
+                  placeholder={dictionary?.calculator.yourEmail || "Your Email *"}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full p-3 rounded-lg bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-white placeholder:text-[rgba(255,255,255,0.4)] focus:outline-none focus:bg-[rgba(255,255,255,0.08)] focus:border-[#C96F4A] transition-all duration-200"
                 />
                 <input
                   type="tel"
-                  placeholder="Your Phone (optional)"
+                  placeholder={dictionary?.calculator.yourPhoneOptional || "Your Phone (optional)"}
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   className="w-full p-3 rounded-lg bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-white placeholder:text-[rgba(255,255,255,0.4)] focus:outline-none focus:bg-[rgba(255,255,255,0.08)] focus:border-[#C96F4A] transition-all duration-200"
@@ -892,13 +903,13 @@ export function GlassmorphismLuxury() {
                 className="mt-6 w-full p-4 rounded-full bg-[#C96F4A] text-white font-semibold transition-all duration-300 hover:bg-[#B05F3A] hover:shadow-[0_4px_15px_rgba(201,111,74,0.3)] disabled:opacity-50 disabled:cursor-not-allowed"
                 disabled={!name || !email || isSubmitting}
               >
-                {isSubmitting ? 'Sending...' : 'Get Detailed Report'}
+                {isSubmitting ? (dictionary?.calculator.sending || 'Sending...') : (dictionary?.calculator.getDetailedReport || 'Get Detailed Report')}
               </button>
               
               <div className="mt-6 pt-6 border-t border-[rgba(255,255,255,0.1)]">
                 <p className="text-[10px] text-[rgba(255,255,255,0.6)] text-center">
-                  <span className="text-white font-semibold">No Obligation</span> • 
-                  <span className="text-[#C96F4A] font-bold"> Response within 24h</span>
+                  <span className="text-white font-semibold">{dictionary?.calculator.noObligation || 'No Obligation'}</span> • 
+                  <span className="text-[#C96F4A] font-bold"> {dictionary?.calculator.response24h || 'Response within 24h'}</span>
                 </p>
               </div>
             </motion.div>
@@ -930,7 +941,7 @@ export function GlassmorphismLuxury() {
               className="flex flex-col items-center"
               onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
             >
-              <span className="text-white text-xs mb-2 font-medium">Scroll to explore</span>
+              <span className="text-white text-xs mb-2 font-medium">{dictionary?.calculator?.scrollToExplore || 'Scroll to explore'}</span>
               <div className="w-6 h-10 border-2 border-white/60 rounded-full flex justify-center p-1">
                 <motion.div 
                   className="w-1.5 h-3 bg-white rounded-full"

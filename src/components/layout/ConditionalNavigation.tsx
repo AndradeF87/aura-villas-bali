@@ -2,14 +2,20 @@
 
 import { usePathname } from 'next/navigation'
 import { Navigation } from './Navigation'
+import type { Locale } from '@/lib/i18n/config'
 
-export function ConditionalNavigation() {
+interface ConditionalNavigationProps {
+  locale?: Locale
+  dictionary?: any
+}
+
+export function ConditionalNavigation({ locale, dictionary }: ConditionalNavigationProps) {
   const pathname = usePathname()
   
   // Don't show navigation on standalone pages
-  if (pathname?.startsWith('/home-v3')) {
+  if (pathname?.includes('/home-v3')) {
     return null
   }
   
-  return <Navigation />
+  return <Navigation locale={locale} dictionary={dictionary} />
 }

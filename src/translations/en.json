@@ -1,0 +1,684 @@
+{
+  "metadata": {
+    "title": "AURA Villas Bali - Creating Good Memories",
+    "description": "Life is all about creating good memories. Discover our exclusive collection of luxury villas where your story begins.",
+    "keywords": "luxury villas Bali, exclusive Bali villas, Uluwatu villas, Canggu villas, Seminyak villas, beachfront villas Bali, clifftop villas Bali, villa rental Bali, Bali memories",
+    "about": {
+      "title": "About AURA Villas Bali - Luxury Villa Management Since 2020",
+      "description": "Learn about AURA's journey in creating unforgettable villa experiences in Bali. Professional property management with a personal touch.",
+      "keywords": "about AURA villas, Bali property management, luxury villa management, villa rental company Bali"
+    },
+    "contact": {
+      "title": "Contact AURA Villas Bali - Get in Touch",
+      "description": "Contact our team for villa bookings, property management inquiries, or partnership opportunities in Bali.",
+      "keywords": "contact AURA villas, Bali villa contact, property management inquiry, villa booking contact"
+    },
+    "villas": {
+      "title": "Luxury Villas in Bali - AURA Collection",
+      "description": "Browse our curated collection of luxury villas in Uluwatu, Canggu, and Seminyak. Clifftop views, private pools, and authentic Balinese hospitality.",
+      "keywords": "Bali luxury villas, villa collection, Uluwatu villas, Canggu villas, Seminyak villas, clifftop villas"
+    },
+    "pricing": {
+      "title": "Villa Management Pricing - AURA Villas Bali",
+      "description": "Transparent pricing for professional villa management in Bali. Choose from Essential, Premium, or Boutique management packages.",
+      "keywords": "villa management pricing, property management costs Bali, villa rental commission, management fees Bali"
+    }
+  },
+  "villas": {
+    "suyai": {
+      "name": "SUYAI Villa",
+      "title": "SUYAI Villa Uluwatu - Clifftop Luxury Villa in Bali",
+      "description": "Experience breathtaking ocean views from this 3-bedroom clifftop villa in Uluwatu. Private pool, modern amenities, and authentic Balinese hospitality.",
+      "keywords": "SUYAI villa Uluwatu, clifftop villa Bali, luxury villa Uluwatu, ocean view villa Bali, 3 bedroom villa Uluwatu",
+      "story": "Perched on the dramatic cliffs of Uluwatu, SUYAI Villa offers an intimate escape where the Indian Ocean stretches endlessly before you. This architectural masterpiece seamlessly blends contemporary luxury with traditional Balinese elements, creating a sanctuary that celebrates both comfort and culture. Wake up to spectacular sunrises, spend your days by the infinity pool that seems to merge with the ocean, and end your evenings watching the sun paint the sky in brilliant hues.",
+      "storyTeaser": "Where clifftop luxury meets ocean infinity",
+      "highlights": [
+        "Panoramic ocean views from every room",
+        "Private infinity pool overlooking the Indian Ocean",
+        "Walking distance to Uluwatu's famous beaches",
+        "Dedicated villa manager and daily housekeeping"
+      ]
+    },
+    "onaya": {
+      "name": "ONAYA Villa", 
+      "title": "ONAYA Villa Canggu - Modern Luxury Villa with Rice Field Views",
+      "description": "Discover tranquility in this 4-bedroom modern villa surrounded by Canggu's emerald rice fields. Private pool, spacious living areas, perfect for families.",
+      "keywords": "ONAYA villa Canggu, rice field villa Bali, luxury villa Canggu, family villa Bali, 4 bedroom villa Canggu",
+      "story": "ONAYA Villa is a contemporary haven nestled in the heart of Canggu's vibrant landscape. Surrounded by emerald rice paddies that sway gently in the breeze, this spacious retreat offers the perfect balance of rural tranquility and modern convenience. The villa's open-plan design invites the outside in, with floor-to-ceiling windows framing views of traditional Balinese life. Here, mornings begin with yoga overlooking the fields, afternoons are spent lounging by the pool, and evenings bring the magic of Canggu's legendary sunsets.",
+      "storyTeaser": "Modern serenity amidst Canggu's rice fields",
+      "highlights": [
+        "Stunning rice field views from all living areas",
+        "Large private pool with sun deck",
+        "5 minutes to Echo Beach and Canggu's best cafes",
+        "Dedicated workspace for digital nomads"
+      ]
+    }
+  },
+  "villaDetail": {
+    "perNight": "per night",
+    "checkAvailability": "Check Availability",
+    "whatsappInquiry": "WhatsApp Inquiry",
+    "theStory": "The Story",
+    "amenities": "Amenities",
+    "guestStories": "Guest Stories",
+    "bookYourStay": "Book Your Stay",
+    "sendInquiry": "Send Inquiry",
+    "cancel": "Cancel",
+    "fullName": "Full Name",
+    "email": "Email",
+    "whatsappNumber": "WhatsApp Number",
+    "checkIn": "Check In",
+    "checkOut": "Check Out",
+    "numberOfGuests": "Number of Guests",
+    "message": "Message (Optional)",
+    "bedrooms": "bedrooms",
+    "bathrooms": "bathrooms",
+    "guests": "guests",
+    "reviews": "reviews",
+    "villaNotFound": "Villa Not Found",
+    "villaNotFoundDescription": "The villa you're looking for doesn't exist.",
+    "browseAllVillas": "Browse All Villas",
+    "bookingMessage": "Send us your details and we'll get back to you within 2 hours with availability and pricing.",
+    "freeCancel": "Free cancellation • 24/7 support",
+    "responseTime": "Response within 2 hours"
+  },
+  "amenitiesNames": {
+    "privatePool": "Private Pool",
+    "oceanView": "Ocean View",
+    "wifi": "High-Speed WiFi",
+    "airConditioning": "Air Conditioning",
+    "fullyEquippedKitchen": "Fully Equipped Kitchen",
+    "dailyHousekeeping": "Daily Housekeeping",
+    "securitySystem": "24/7 Security",
+    "parking": "Private Parking",
+    "gardenView": "Garden View",
+    "beachAccess": "Beach Access",
+    "bbqArea": "BBQ Area",
+    "outdoorShower": "Outdoor Shower",
+    "riceFieldView": "Rice Field View",
+    "yogaSpace": "Yoga Space",
+    "entertainmentRoom": "Entertainment Room",
+    "workSpace": "Dedicated Workspace",
+    "babyEquipment": "Baby Equipment"
+  },
+  "navigation": {
+    "home": "Home",
+    "villas": "Villas",
+    "pricing": "Pricing",
+    "about": "About Us",
+    "contact": "Contact",
+    "bookNow": "Book Now",
+    "language": "Language",
+    "tagline": "Villas Bali",
+    "buyRent": "Buy & Rent"
+  },
+  "hero": {
+    "title": "Life is all about creating good memories",
+    "subtitle": "Discover our exclusive collection of luxury villas where your story begins",
+    "cta": {
+      "primary": "Explore Villas",
+      "secondary": "View Pricing"
+    },
+    "stats": {
+      "guestSatisfaction": "Guest Satisfaction",
+      "averageOccupancy": "Average Occupancy",
+      "repeatGuests": "Repeat Guests",
+      "managedVillas": "Managed Villas"
+    }
+  },
+  "calculator": {
+    "brand": "AURA",
+    "subtitle": "Villas Bali",
+    "title": "Estimate Your",
+    "titleHighlight": "Rental Income",
+    "step1Description": "Where is your villa located?",
+    "premiumLocation": "Premium Location"
+  },
+  "coreValues": {
+    "title": "What Makes AURA Different",
+    "subtitle": "We combine heartfelt hospitality with modern technology to create something special",
+    "memoriesOverWalls": {
+      "title": "Memories Over Walls",
+      "description": "We design stays that guests remember long after they leave."
+    },
+    "villaStory": {
+      "title": "Your Villa's Own Story",
+      "description": "Unique branding and positioning that makes your property unforgettable."
+    },
+    "humanCare": {
+      "title": "Human Care, Every Day",
+      "description": "Hands-on operations with staff we treat like family."
+    },
+    "aiMarketing": {
+      "title": "AI-Enhanced Marketing",
+      "description": "Smart tools that attract the right guests at the right price."
+    },
+    "ownerPortal": {
+      "title": "Owner Portal",
+      "description": "Clear reports and insights at your fingertips, anytime."
+    },
+    "selectivePartnership": {
+      "title": "Selective Partnership",
+      "description": "We grow slowly and thoughtfully so quality stays exceptional."
+    },
+    "cta": {
+      "text": "Ready to give your villa the care it deserves?",
+      "button": "See If You Qualify"
+    }
+  },
+  "propertyManagement": {
+    "titlePart1": "We Partner with Select Bali Villa Owners",
+    "titlePart2": "To Tell Each Villa's Story",
+    "subtitle": "Not every property is right for AURA, and that's by design. We select few villas to ensure each receives the attention, care and results it deserves.",
+    "ctaPrimary": "See If You Qualify",
+    "ctaSecondary": "View Service Tiers",
+    "features": {
+      "marketing": {
+        "title": "Professional Marketing",
+        "description": "Targeted marketing campaigns that showcase your villa's unique story"
+      },
+      "management": {
+        "title": "Complete Management",
+        "description": "From bookings to maintenance, we handle everything"
+      },
+      "revenue": {
+        "title": "Revenue Optimization",
+        "description": "Dynamic pricing and channel management for maximum returns"
+      },
+      "hospitality": {
+        "title": "Luxury Hospitality",
+        "description": "Exceptional guest service that ensures 5-star reviews"
+      }
+    },
+    "cta": "Partner With Us"
+  },
+  "successStories": {
+    "title": "Success Stories from Villa Owners Like You",
+    "subtitle": "Real results from real property owners who trusted AURA with their investment",
+    "viewCase": "View Case Study",
+    "viewTestimonial": "View testimonial",
+    "beforeAura": "Before AURA",
+    "withAura": "With AURA",
+    "revenueIncrease": "revenue increase",
+    "testimonials": {
+      "yanina": {
+        "name": "Yanina & Fede",
+        "villaName": "SUYAI Villas Bali",
+        "location": "Uluwatu",
+        "quote": "We live abroad and AURA handles everything perfectly. It's like having a trusted partner who cares about our property as much as we do."
+      },
+      "agung": {
+        "name": "Agung Permana",
+        "villaName": "Manager, ONAYA Bali Resort",
+        "location": "Uluwatu",
+        "quote": "At the start our expectations with AURA was that they would help us improve our occupancy and increase our revenue, but they didn't just do that, they come to us with constant ideas on how we can improve our service and provide memorable moments to our Guests. The entire team loves to work with them, it was an amazing addition to us."
+      }
+    }
+  },
+  "challenges": {
+    "title": "We Know the Challenges You Face",
+    "subtitle": "Managing a villa in Bali should be rewarding, not overwhelming",
+    "items": {
+      "occupancy": "Low occupancy during off-seasons",
+      "maintenance": "High maintenance costs and property upkeep",
+      "marketing": "Limited marketing reach and wasted advertising spend",
+      "operations": "Time-consuming operational management",
+      "pricing": "Inefficient pricing strategy",
+      "quality": "Inconsistent service quality"
+    }
+  },
+  "howWeWork": {
+    "title": "How We Work Together",
+    "subtitle": "A simple, transparent process designed to get your villa performing at its best—without the complexity",
+    "steps": {
+      "evaluate": {
+        "title": "We Evaluate",
+        "description": "Comprehensive property assessment to understand its unique potential"
+      },
+      "strategize": {
+        "title": "We Strategize",
+        "description": "Custom marketing strategy based on your villa's character"
+      },
+      "implement": {
+        "title": "We Implement",
+        "description": "Professional launch with multi-channel marketing and operational setup"
+      },
+      "optimize": {
+        "title": "We Optimize",
+        "description": "Continuous improvement based on performance data and guest feedback"
+      }
+    }
+  },
+  "technology": {
+    "title": "Smart Tools, Human Touch",
+    "subtitle": "We use AI and automation to handle the complex stuff, so our team can focus on what matters: creating exceptional experiences for your guests",
+    "features": {
+      "analytics": "Real-time Analytics",
+      "pricing": "Dynamic Pricing",
+      "management": "Channel Management",
+      "service": "24/7 Guest Service"
+    }
+  },
+  "qualification": {
+    "title": "Is Your Villa Right for AURA?",
+    "subtitle": "Tell us about your property and goals. This 2-minute assessment helps us understand if we're the right partner for your villa's success.",
+    "cta": "Take Qualification Quiz",
+    "criteria": {
+      "location": "Prime location",
+      "bedrooms": "Minimum 3 bedrooms",
+      "standards": "Luxury standards",
+      "unique": "Unique features"
+    },
+    "form": {
+      "back": "Back"
+    }
+  },
+  "serviceTiers": {
+    "title": "Choose Your Partnership Level",
+    "subtitle": "Transparent pricing. No hidden fees. Every tier includes our commitment to telling your villa's unique story.",
+    "notSure": "Not sure which tier is right for you? Take our qualification quiz →",
+    "viewPackages": "View Our Marketing Packages",
+    "bestFor": "BEST FOR",
+    "whatsIncluded": "What's Included",
+    "availableHigherTiers": "Available in Higher Tiers",
+    "tiers": {
+      "essential": {
+        "name": "Essential",
+        "description": "For established villas that need a reliable partner",
+        "bestFor": "Villas with existing reputation seeking operational support",
+        "features": [
+          "Daily Housekeeping Supervision",
+          "Guest Check-in & Check-out Assistance",
+          "Guest Support (8 AM – 8 PM)",
+          "Maintenance Coordination (Plumbing, AC, Electrical)",
+          "Pool & Garden Scheduling",
+          "Booking Calendar Management",
+          "Monthly Stock Inventory",
+          "Laundry Coordination",
+          "Monthly Owner Report",
+          "Basic Amenities Restocking",
+          "Digital Guest Guidebook",
+          "Monthly Preventive Maintenance Walkthrough",
+          "Utility Bills Payment Assistance"
+        ],
+        "availableHigherTiers": [
+          "24/7 Guest Support",
+          "Concierge Services (Tours, Spa, Transport)",
+          "Dedicated Operations Manager",
+          "Direct Staffing & Payroll Management",
+          "Tax Reporting & Compliance",
+          "Full Financial Management"
+        ]
+      },
+      "premium": {
+        "name": "Premium",
+        "description": "Full-service management with growth focus",
+        "bestFor": "Villas wanting to maximize revenue and guest satisfaction",
+        "features": [
+          "Everything in Essential, plus:",
+          "24/7 Guest Support",
+          "In-Villa Welcome (with refreshments)",
+          "Concierge Services (Tours, Spa, Transport)",
+          "Weekly Villa Inspections (with photo/video reports)",
+          "Dedicated Operations Manager",
+          "Monthly Deep Cleaning Coordination",
+          "Priority Maintenance Response + Repairs Buffer (Rp 500,000/month included)",
+          "Personalized Guest Gifts",
+          "VIP Amenities (Premium toiletries & gifts – at cost)",
+          "Staff Hiring Assistance (optional)",
+          "Quarterly Performance Review",
+          "Local Authority Liaison (Banjar, licensing)"
+        ]
+      },
+      "boutique": {
+        "name": "Boutique Full",
+        "description": "White-glove service for exceptional properties",
+        "bestFor": "Boutique villas seeking the highest level of service and revenue",
+        "availableByInvitation": "Available by Invitation Only",
+        "features": [
+          "Everything in Premium, plus:",
+          "Direct Staffing Management - We hire, train, and pay villa staff under AURA payroll",
+          "Complete HR Management (leave, replacement, bonus structure)",
+          "Expense & Cash Flow Management - All operational expenses processed directly",
+          "One simple monthly invoice covering all costs",
+          "Monthly Tax Reporting & Compliance - PPH Tax Reports submitted on your behalf",
+          "Full compliance with Indonesian tax laws",
+          "Monthly financial report with complete breakdown",
+          "Annual Profit & Loss Summary",
+          "Quarterly staff evaluations and performance reports",
+          "Annual CAPEX Planning Assistance for villa improvements"
+        ]
+      }
+    }
+  },
+  "contact": {
+    "title": "Let's Start a Conversation",
+    "subtitle": "Reach out to discuss how we can transform your villa into a success story",
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "property": "Property Name/Location",
+      "message": "Tell us about your villa",
+      "submit": "Send Message",
+      "submitting": "Sending..."
+    },
+    "info": {
+      "headquarters": "Headquarters",
+      "email": "Email",
+      "phone": "Phone",
+      "hours": "Office Hours",
+      "hoursValue": "Mon - Fri: 9:00 AM - 6:00 PM WITA"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "serviceAreas": {
+        "question": "What areas do you service?",
+        "answer": "We manage luxury villas across Bali's most sought-after destinations including Seminyak, Ubud, Canggu, Uluwatu, and Sanur."
+      }
+    }
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "rights": "All rights reserved",
+    "tagline": "Creating Good Memories in Paradise"
+  },
+  "pricingPage": {
+    "hero": {
+      "title": "Transparent Pricing, Exceptional Results",
+      "subtitle": "Choose the perfect package for your villa's success"
+    },
+    "tabs": {
+      "operations": "Operations Management",
+      "marketing": "Marketing & Growth"
+    },
+    "operations": {
+      "title": "Villa Operations Management",
+      "subtitle": "End-to-end villa management with transparent commission-based pricing. From daily operations to full financial transparency.",
+      "packages": {
+        "essential": {
+          "name": "Essential Operations",
+          "shortName": "Essential",
+          "description": "Professional day-to-day operations without fixed costs"
+        },
+        "premium": {
+          "name": "Premium Operations",
+          "shortName": "Premium",
+          "description": "Premium guest experiences with performance focus"
+        },
+        "boutique": {
+          "name": "Boutique Full",
+          "shortName": "Boutique",
+          "description": "Fully hands-off, enterprise-grade experience"
+        }
+      },
+      "features": {
+        "dailyHousekeeping": "Daily Housekeeping Supervision",
+        "guestCheckinCheckout": "Guest Check-in & Check-out Assistance",
+        "guestSupport": "Guest Support (8 AM – 8 PM)",
+        "guestSupport247": "24/7",
+        "maintenanceCoordination": "Maintenance Coordination",
+        "poolGardenScheduling": "Pool & Garden Scheduling",
+        "bookingCalendarManagement": "Booking Calendar Management",
+        "monthlyStockInventory": "Monthly Stock Inventory",
+        "laundryCoordination": "Laundry Coordination",
+        "monthlyOwnerReport": "Monthly Owner Report",
+        "basicAmenitiesRestocking": "Basic Amenities Restocking",
+        "digitalGuestGuidebook": "Digital Guest Guidebook",
+        "monthlyPreventiveMaintenance": "Monthly Preventive Maintenance Walkthrough",
+        "utilityBillsAssistance": "Utility Bills Payment Assistance",
+        "inVillaWelcome": "In-Villa Welcome (with refreshments)",
+        "conciergeServices": "Concierge Services (Tours, Spa, Transport)",
+        "weeklyInspections": "Weekly Villa Inspections (with photo/video reports)",
+        "dedicatedOperationsManager": "Dedicated Operations Manager",
+        "monthlyDeepCleaning": "Monthly Deep Cleaning Coordination",
+        "priorityMaintenance": "Priority Maintenance Response + Repairs Buffer (Rp 500,000/month included)",
+        "personalizedGuestGifts": "Personalized Guest Gifts",
+        "vipAmenities": "VIP Amenities (Premium toiletries & gifts – at cost)",
+        "staffHiringAssistance": "Staff Hiring Assistance (optional)",
+        "quarterlyPerformanceReview": "Quarterly Performance Review",
+        "localAuthorityLiaison": "Local Authority Liaison (Banjar, licensing)",
+        "directStaffingManagement": "Direct Staffing Management - We hire, train, and pay villa staff under AURA payroll",
+        "completeHRManagement": "Complete HR Management (leave, replacement, bonus structure)",
+        "expenseCashFlowManagement": "Expense & Cash Flow Management - All operational expenses processed directly with one simple monthly invoice covering all costs",
+        "monthlyTaxReporting": "Monthly Tax Reporting & Compliance - PPH Tax Reports submitted on your behalf",
+        "monthlyFinancialReport": "Monthly financial report with complete breakdown",
+        "annualProfitLoss": "Annual Profit & Loss Summary",
+        "quarterlyStaffEvaluations": "Quarterly staff evaluations and performance reports",
+        "annualCapexPlanning": "Annual CAPEX Planning Assistance for villa improvements"
+      },
+      "commission": "Commission",
+      "afterOTA": "(after OTA Fees)",
+      "whatsIncluded": "What's Included",
+      "getStarted": "Get Started",
+      "requestInvitation": "Request Invitation",
+      "availableHigherTiers": "Available in Higher Tiers",
+      "availableByInvitation": "Available by Invitation Only",
+      "bestFor": "BEST FOR",
+      "mostPopular": "Most Popular"
+    },
+    "marketing": {
+      "title": "Marketing Solutions",
+      "subtitle": "Choose Your Marketing Approach",
+      "billing": {
+        "perMonth": "per month"
+      },
+      "sections": {
+        "strategy": {
+          "name": "Strategic Brand Growth",
+          "description": "Brand strategy foundations"
+        },
+        "website": {
+          "name": "Web Presence Essentials",
+          "description": "Design & build a marketing website with core SEO"
+        },
+        "maintenance": {
+          "name": "Get Found, Get Booked",
+          "description": "Keep site fast, secure & conversion-ready"
+        },
+        "social": {
+          "name": "Social Engagement Suite",
+          "description": "Content creation & community management"
+        }
+      }
+    },
+    "buttons": {
+      "getStarted": "Get Started",
+      "apply": "Apply"
+    },
+    "modal": {
+      "title": "Get Started with",
+      "description": "Leave your details and we'll contact you within 24 hours to discuss your needs.",
+      "fields": {
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone (optional)"
+      },
+      "placeholders": {
+        "name": "Your name",
+        "email": "your@email.com",
+        "phone": "+62 xxx xxxx xxxx"
+      },
+      "submit": "Submit",
+      "sending": "Sending...",
+      "disclaimer": "By submitting, you agree to be contacted by AURA Villas Bali"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Everything you need to know about our pricing and packages",
+      "questions": [
+        {
+          "question": "How does commission-based pricing work?",
+          "answer": "Our commission is calculated as a percentage of your villa's gross monthly revenue after OTA fees. You only pay when you earn, making it risk-free and aligned with your success."
+        },
+        {
+          "question": "Can I combine operations and marketing packages?",
+          "answer": "Absolutely! Many of our clients combine operations management with marketing services for comprehensive villa management. We offer special bundled rates for combined packages."
+        },
+        {
+          "question": "What's included in the commission rates?",
+          "answer": "Our commission covers all management services listed in each package. Additional costs like maintenance materials, staff salaries (in Essential & Premium), and marketing ad spend are billed separately at cost."
+        },
+        {
+          "question": "How quickly can I see results?",
+          "answer": "Most properties see improved occupancy rates within the first 60 days. Our average properties experience a 50% increase in occupancy and 67% increase in revenue within 6 months."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to Maximize Your Villa's Potential?",
+      "subtitle": "Join 100+ villa owners who trust AURA with their properties",
+      "calculateButton": "Calculate Your Earnings",
+      "consultationButton": "Schedule Consultation"
+    }
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "getStarted": "Get Started",
+    "viewAll": "View All",
+    "close": "Close",
+    "next": "Next",
+    "previous": "Previous",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success",
+    "comingSoon": "Coming Soon"
+  },
+  "earlyPartner": {
+    "badge": "LIMITED TIME OPPORTUNITY",
+    "title": "Join as an Early Partner",
+    "subtitle": "We're selecting 8 exceptional villas to grow with us. Get founding member benefits and shape the future of boutique villa management in Bali.",
+    "timelineTitle": "Application Timeline",
+    "requirementsTitle": "Early Partner Requirements",
+    "closingNotice": "Early Partner Program closes March 2025",
+    "benefits": {
+      "reducedCommission": {
+        "title": "Reduced Commission",
+        "description": "Lock in our founding partner rate: 2% lower than standard tiers for the first 2 years.",
+        "highlight": "Save $12,000+ annually"
+      },
+      "priority": {
+        "title": "Priority Everything",
+        "description": "First in line for bookings, support, and new feature rollouts. Your success is our showcase.",
+        "highlight": "VIP treatment always"
+      },
+      "coCreation": {
+        "title": "Co-Creation Partner",
+        "description": "Help shape AURA's services. Your feedback directly influences our product development.",
+        "highlight": "Be heard, make impact"
+      },
+      "foundingMember": {
+        "title": "Founding Member Status",
+        "description": "Permanent recognition as an AURA founding partner. Marketing benefits and credibility boost.",
+        "highlight": "Exclusive badge & benefits"
+      }
+    },
+    "timeline": {
+      "december": {
+        "month": "December 2024",
+        "spots": "2 spots remaining"
+      },
+      "january": {
+        "month": "January 2025",
+        "spots": "3 spots available"
+      },
+      "february": {
+        "month": "February 2025",
+        "spots": "3 spots available"
+      },
+      "march": {
+        "month": "March 2025",
+        "spots": "Program closes"
+      }
+    },
+    "requirements": {
+      "villa": {
+        "title": "Your Villa Must Have:",
+        "bedrooms": "4+ bedrooms or unique boutique features",
+        "location": "Located in Uluwatu, Canggu, or Seminyak",
+        "ready": "Ready for guests within 30 days",
+        "hospitality": "Commitment to exceptional hospitality"
+      },
+      "owner": {
+        "title": "You Must Be:",
+        "partnership": "Open to a 2-year initial partnership",
+        "investment": "Willing to invest in property improvements",
+        "sustainable": "Aligned with sustainable tourism values",
+        "growth": "Ready to grow with us"
+      }
+    },
+    "cta": {
+      "apply": "Apply for Early Partnership",
+      "download": "Download Partner Deck"
+    }
+  },
+  "calculator": {
+    "brand": "AURA",
+    "subtitle": "Property Management Bali",
+    "title": "Estimate Your Villa's",
+    "titleHighlight": "Earning Potential",
+    "step1Description": "Start by selecting your villa's location",
+    "step2Description": "How many bedrooms does your villa have?",
+    "step3Description": "Which category best describes your villa?",
+    "step4Description": "Personalize with amenities",
+    "locations": {
+      "canggu": "Canggu",
+      "seminyak": "Seminyak",
+      "uluwatu": "Uluwatu"
+    },
+    "bedrooms": "bedrooms",
+    "categories": {
+      "premium": {
+        "name": "Premium",
+        "price": "$300-500/night"
+      },
+      "luxury": {
+        "name": "Luxury",
+        "price": "$600-1000/night"
+      },
+      "ultraLuxury": {
+        "name": "Ultra Luxury",
+        "price": "$1200+/night"
+      }
+    },
+    "amenities": {
+      "privatePool": "Private Pool",
+      "oceanView": "Ocean View",
+      "beachfront": "Beachfront",
+      "gym": "Gym & Spa",
+      "cinema": "Home Cinema",
+      "chef": "Private Chef"
+    },
+    "results": {
+      "title": "Your Estimated Earnings",
+      "subtitle": "Based on 20 nights average monthly occupancy",
+      "perNight": "Per Night",
+      "perMonth": "Per Month",
+      "perYear": "Per Year",
+      "disclaimer": "These are estimates. Actual earnings depend on various factors including seasonality, property condition, and service quality.",
+      "cta": "Get Professional Assessment",
+      "scrollPrompt": "Learn how we maximize villa revenue"
+    },
+    "mobile": {
+      "openCalculator": "Open Calculator"
+    },
+    "buttons": {
+      "back": "Back",
+      "next": "Next",
+      "viewResults": "View Results"
+    },
+    "modal": {
+      "applyFor": "Apply for Boutique Full",
+      "getStarted": "Get Started",
+      "description": "Leave your details and we'll contact you within 24 hours with more information.",
+      "sending": "Sending...",
+      "submit": "Submit",
+      "privacy": "By submitting, you agree to be contacted by AURA Villas Bali",
+      "messageSent": "Message Sent!",
+      "error": "Sorry, there was an error. Please try again or contact us directly."
+    }
+  }
+}

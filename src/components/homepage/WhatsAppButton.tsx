@@ -2,11 +2,13 @@
 
 import { MessageCircle } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import { useTranslation } from '@/contexts/TranslationContext'
 
 export function WhatsAppButton() {
+  const { dictionary } = useTranslation()
   const [isVisible, setIsVisible] = useState(false)
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '+628123456789'
-  const defaultMessage = 'Hi AURA team, I\'m interested in your villa rental services in Bali.'
+  const defaultMessage = dictionary?.whatsappButton?.defaultMessage || 'Hi AURA team, I\'m interested in your villa rental services in Bali.'
 
   useEffect(() => {
     // Show button after scrolling down 100px
@@ -34,7 +36,7 @@ export function WhatsAppButton() {
     >
       <MessageCircle className="w-6 h-6" />
       <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-800 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-        Chat with us on WhatsApp
+        {dictionary?.whatsappButton?.tooltip || 'Chat with us on WhatsApp'}
       </span>
     </button>
   )

@@ -2,58 +2,61 @@
 
 import { Bot, Heart, BarChart3, Globe, Shield, Zap } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { useTranslation } from '@/contexts/TranslationContext'
 
-const technologies = [
-  {
-    icon: Bot,
-    title: 'AI-Powered Pricing',
-    description: 'Dynamic pricing that adjusts to market demand, seasonality, and local events—maximizing revenue without manual intervention.',
-    benefit: '+23% average revenue increase'
-  },
-  {
-    icon: Heart,
-    title: 'Human Touch Points',
-    description: 'Technology handles the repetitive tasks. Our team focuses on creating memorable moments and genuine connections with guests.',
-    benefit: '9.5+ guest satisfaction scores'
-  },
-  {
-    icon: BarChart3,
-    title: 'Real-Time Analytics',
-    description: 'Track performance, occupancy, and revenue in real-time. Make data-driven decisions with our intuitive owner dashboard.',
-    benefit: 'Daily insights, not monthly reports'
-  },
-  {
-    icon: Globe,
-    title: 'Multi-Channel Distribution',
-    description: 'Synchronized listings across Booking.com, Airbnb, and direct bookings. One calendar, no double bookings, maximum exposure.',
-    benefit: '40% reach through direct bookings'
-  },
-  {
-    icon: Shield,
-    title: 'Respectful Stays',
-    description: 'Smart booking filters and personalized checks ensure your villa is always treated with care.',
-    benefit: '99%+ incident-free stays'
-  },
-  {
-    icon: Zap,
-    title: 'Instant Response System',
-    description: 'Automated initial responses within 1 minute, personalized follow-ups within 1 hour. Never miss a booking opportunity.',
-    benefit: '3x faster than industry average'
-  }
-]
+// We'll use the dictionary data instead of hardcoded technologies
 
 export function TechnologySection() {
+  const { dictionary } = useTranslation()
+  
+  const technologies = [
+    {
+      icon: Bot,
+      title: dictionary?.technology?.features?.aiPricing?.title || 'AI-Powered Pricing',
+      description: dictionary?.technology?.features?.aiPricing?.description || 'Dynamic pricing that adjusts to market demand, seasonality, and local events—maximizing revenue without manual intervention.',
+      benefit: dictionary?.technology?.features?.aiPricing?.benefit || '+23% average revenue increase'
+    },
+    {
+      icon: Heart,
+      title: dictionary?.technology?.features?.humanTouch?.title || 'Human Touch Points',
+      description: dictionary?.technology?.features?.humanTouch?.description || 'Technology handles the repetitive tasks. Our team focuses on creating memorable moments and genuine connections with guests.',
+      benefit: dictionary?.technology?.features?.humanTouch?.benefit || '9.5+ guest satisfaction scores'
+    },
+    {
+      icon: BarChart3,
+      title: dictionary?.technology?.features?.analytics?.title || 'Real-Time Analytics',
+      description: dictionary?.technology?.features?.analytics?.description || 'Track performance, occupancy, and revenue in real-time. Make data-driven decisions with our intuitive owner dashboard.',
+      benefit: dictionary?.technology?.features?.analytics?.benefit || 'Daily insights, not monthly reports'
+    },
+    {
+      icon: Globe,
+      title: dictionary?.technology?.features?.distribution?.title || 'Multi-Channel Distribution',
+      description: dictionary?.technology?.features?.distribution?.description || 'Synchronized listings across Booking.com, Airbnb, and direct bookings. One calendar, no double bookings, maximum exposure.',
+      benefit: dictionary?.technology?.features?.distribution?.benefit || '40% reach through direct bookings'
+    },
+    {
+      icon: Shield,
+      title: dictionary?.technology?.features?.respectful?.title || 'Respectful Stays',
+      description: dictionary?.technology?.features?.respectful?.description || 'Smart booking filters and personalized checks ensure your villa is always treated with care.',
+      benefit: dictionary?.technology?.features?.respectful?.benefit || '99%+ incident-free stays'
+    },
+    {
+      icon: Zap,
+      title: dictionary?.technology?.features?.instant?.title || 'Instant Response System',
+      description: dictionary?.technology?.features?.instant?.description || 'Automated initial responses within 1 minute, personalized follow-ups within 1 hour. Never miss a booking opportunity.',
+      benefit: dictionary?.technology?.features?.instant?.benefit || '3x faster than industry average'
+    }
+  ]
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="font-serif text-4xl md:text-5xl text-deep-green mb-4">
-            Smart Tools, Human Touch
+            {dictionary?.technology?.title || 'Smart Tools, Human Touch'}
           </h2>
           <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
-            We use AI and automation to handle the complex stuff, so our team can focus 
-            on what matters: creating exceptional experiences for your guests.
+            {dictionary?.technology?.subtitle || 'We use AI and automation to handle the complex stuff, so our team can focus on what matters: creating exceptional experiences for your guests'}
           </p>
         </div>
 
@@ -127,14 +130,13 @@ export function TechnologySection() {
         <div className="mt-16 text-center">
           <div className="inline-block p-8 bg-sand-beige rounded-2xl">
             <h3 className="font-serif text-2xl text-deep-green mb-4">
-              Technology That Works Behind the Scenes
+              {dictionary?.technology?.cta?.title || "Technology That Works Behind the Scenes"}
             </h3>
             <p className="text-gray-700 mb-6 max-w-2xl">
-              While our systems optimize and automate, you'll always have a real person 
-              to talk to. That's the AURA difference—high-tech efficiency with high-touch service.
+              {dictionary?.technology?.cta?.description || "While our systems optimize and automate, you'll always have a real person to talk to. That's the AURA difference—high-tech efficiency with high-touch service."}
             </p>
             <button className="px-8 py-3 bg-deep-green text-white rounded-full font-medium hover:bg-deep-green/90 transition-colors duration-300">
-              See Our Tech in Action
+              {dictionary?.technology?.cta?.button || "See Our Tech in Action"}
             </button>
           </div>
         </div>

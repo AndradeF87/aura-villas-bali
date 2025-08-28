@@ -139,9 +139,10 @@ interface EarningsDisplayProps {
   villaCategory: string
   bedrooms: string
   strategy?: string
+  dictionary?: any
 }
 
-export function EarningsDisplay({ location, villaCategory, bedrooms, strategy = 'Balanced' }: EarningsDisplayProps) {
+export function EarningsDisplay({ location, villaCategory, bedrooms, strategy = 'Balanced', dictionary }: EarningsDisplayProps) {
   const [showInIDR, setShowInIDR] = useState(true)
   const [calculatedData, setCalculatedData] = useState<CalculatorData | null>(null)
 
@@ -204,7 +205,7 @@ export function EarningsDisplay({ location, villaCategory, bedrooms, strategy = 
   if (!calculatedData) {
     return (
       <div className="text-center py-8">
-        <p className="text-gray-600">Loading calculations...</p>
+        <p className="text-gray-600">{dictionary?.calculator?.loadingCalculations || 'Loading calculations...'}</p>
       </div>
     )
   }
@@ -246,7 +247,7 @@ export function EarningsDisplay({ location, villaCategory, bedrooms, strategy = 
           transition={{ delay: 0.1 }}
           className="flex justify-between items-center py-3 border-b border-white/20"
         >
-          <span className="text-white font-medium">Average Occupancy</span>
+          <span className="text-white font-medium">{dictionary?.calculator?.averageOccupancy || 'Average Occupancy'}</span>
           <span className="text-xl font-bold text-white">
             {calculatedData.averageOccupancy}%
           </span>
@@ -259,7 +260,7 @@ export function EarningsDisplay({ location, villaCategory, bedrooms, strategy = 
           transition={{ delay: 0.2 }}
           className="flex justify-between items-center py-3 border-b border-white/20"
         >
-          <span className="text-white font-medium">Average Daily Rate</span>
+          <span className="text-white font-medium">{dictionary?.calculator?.averageDailyRate || 'Average Daily Rate'}</span>
           <span className="text-xl font-bold text-white">
             {formatCurrency(calculatedData.averageDailyRate)}
           </span>
@@ -272,7 +273,7 @@ export function EarningsDisplay({ location, villaCategory, bedrooms, strategy = 
           transition={{ delay: 0.3 }}
           className="flex justify-between items-center py-3 border-b border-white/20"
         >
-          <span className="text-white font-medium">Annual Gross Revenue</span>
+          <span className="text-white font-medium">{dictionary?.calculator?.annualGrossRevenue || 'Annual Gross Revenue'}</span>
           <span className="text-xl font-bold text-[#C96F4A]">
             {formatCurrency(calculatedData.annualGrossRevenue)}
           </span>
@@ -285,7 +286,7 @@ export function EarningsDisplay({ location, villaCategory, bedrooms, strategy = 
           transition={{ delay: 0.4 }}
           className="flex justify-between items-center py-3 border-b border-white/20"
         >
-          <span className="text-white font-medium">Annual Operational Expenses</span>
+          <span className="text-white font-medium">{dictionary?.calculator?.annualOperationalExpenses || 'Annual Operational Expenses'}</span>
           <span className="text-lg font-semibold text-white">
             {formatCurrency(calculatedData.annualOperationalExpenses)}
           </span>
@@ -296,8 +297,7 @@ export function EarningsDisplay({ location, villaCategory, bedrooms, strategy = 
       {/* Disclaimer - Hidden on mobile */}
       <div className="hidden md:block mt-4 p-3 bg-white/10 rounded-lg">
         <p className="text-xs text-white/80 leading-relaxed">
-          <span className="font-semibold text-white">Note:</span> These are estimated figures based on current market data. 
-          Actual results may vary based on property specifics, seasonality, and market conditions.
+          {dictionary?.calculator?.noteEstimatedFigures || 'Note: These are estimated figures based on current market data. Actual results may vary based on property specifics, seasonality, and market conditions.'}
         </p>
       </div>
     </div>

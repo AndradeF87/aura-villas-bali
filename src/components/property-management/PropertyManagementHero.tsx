@@ -2,9 +2,11 @@
 
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import { useTranslation } from '@/contexts/TranslationContext'
 
 export function PropertyManagementHero() {
   const [scrollY, setScrollY] = useState(0)
+  const { dictionary } = useTranslation()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,7 +18,7 @@ export function PropertyManagementHero() {
   }, [])
 
   return (
-    <section className="relative pt-32 pb-20 bg-gradient-to-br from-deep-green to-deep-green/90 overflow-hidden">
+    <section className="relative pt-32 pb-20 bg-deep-green overflow-hidden" style={{ zIndex: 10 }}>
       <div className="absolute inset-0 bg-black/10" />
       
       <div className="relative container mx-auto px-4">
@@ -26,37 +28,34 @@ export function PropertyManagementHero() {
             {/* Selective Badge */}
             <div className="inline-block mb-6">
               <span className="bg-terracotta/20 text-terracotta px-4 py-2 rounded-full text-sm font-medium">
-                Selective Partnership • Limited Availability
+                {dictionary?.common?.selectivePartnership || 'Selective Partnership • Limited Availability'}
               </span>
             </div>
 
             {/* Main Headline */}
             <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-white mb-6">
-              We Partner with Select Bali Villa Owners
-              <span className="block text-terracotta mt-2">
-                To Tell Each Villa's Story
-              </span>
+              {dictionary?.propertyManagement?.titlePart1 || 'We Partner with Select Bali Villa Owners'}<br/>
+              <span className="text-[#C96F4A]">{dictionary?.propertyManagement?.titlePart2 || 'To Tell Each Villa\'s Story'}</span>
             </h1>
 
             {/* Subheadline */}
             <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed">
-              Not every property is right for AURA, and that's by design. 
-              We select few villas to ensure each receives the attention, care and results it deserves.
+              {dictionary?.propertyManagement?.subtitle || 'Not every property is right for AURA, and that\'s by design. We select few villas to ensure each receives the attention, care and results it deserves.'}
             </p>
 
             {/* Trust Points */}
             <div className="flex flex-wrap gap-6 mb-10 text-white/80">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-terracotta rounded-full"></div>
-                <span>Founded 2024</span>
+                <span>{dictionary?.common?.founded || 'Founded'} 2024</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-terracotta rounded-full"></div>
-                <span>3 Properties Under Management</span>
+                <span>3 {dictionary?.common?.propertiesManaged || 'Properties Under Management'}</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-terracotta rounded-full"></div>
-                <span>8 Properties by Jan 2026</span>
+                <span>8 {dictionary?.common?.propertiesByDate || 'Properties by Jan 2026'}</span>
               </div>
             </div>
 
@@ -66,13 +65,13 @@ export function PropertyManagementHero() {
                 href="#qualification"
                 className="px-8 py-4 bg-terracotta text-white rounded-full font-medium hover:bg-terracotta-dark transition-all duration-300 text-center"
               >
-                See If You Qualify
+                {dictionary?.propertyManagement?.ctaPrimary || 'See If You Qualify'}
               </a>
               <a
                 href="#tiers"
                 className="px-8 py-4 bg-white/10 backdrop-blur text-white rounded-full font-medium hover:bg-white/20 transition-all duration-300 border border-white/30 text-center"
               >
-                View Service Tiers
+                {dictionary?.propertyManagement?.ctaSecondary || 'View Service Tiers'}
               </a>
             </div>
           </div>

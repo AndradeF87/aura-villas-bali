@@ -1,42 +1,46 @@
 'use client'
 
 import { Sparkles, Users, TrendingUp, Award, Clock, Gift } from 'lucide-react'
+import { useTranslation } from '@/contexts/TranslationContext'
 
-const benefits = [
-  {
-    icon: Gift,
-    title: 'Reduced Commission',
-    description: 'Lock in our founding partner rate: 2% lower than standard tiers for the first 2 years.',
-    highlight: 'Save $12,000+ annually'
-  },
-  {
-    icon: Sparkles,
-    title: 'Priority Everything',
-    description: 'First in line for bookings, support, and new feature rollouts. Your success is our showcase.',
-    highlight: 'VIP treatment always'
-  },
-  {
-    icon: Users,
-    title: 'Co-Creation Partner',
-    description: "Help shape AURA's services. Your feedback directly influences our product development.",
-    highlight: 'Be heard, make impact'
-  },
-  {
-    icon: Award,
-    title: 'Founding Member Status',
-    description: 'Permanent recognition as an AURA founding partner. Marketing benefits and credibility boost.',
-    highlight: 'Exclusive badge & benefits'
-  }
-]
-
-const timeline = [
-  { month: 'December 2024', status: 'current', spots: '2 spots remaining' },
-  { month: 'January 2025', status: 'upcoming', spots: '3 spots available' },
-  { month: 'February 2025', status: 'upcoming', spots: '3 spots available' },
-  { month: 'March 2025', status: 'final', spots: 'Program closes' }
-]
 
 export function EarlyPartnerProgram() {
+  const { dictionary } = useTranslation()
+  
+  const benefits = [
+    {
+      icon: Gift,
+      title: dictionary?.earlyPartner?.benefits?.reducedCommission?.title || 'Reduced Commission',
+      description: dictionary?.earlyPartner?.benefits?.reducedCommission?.description || 'Lock in our founding partner rate: 2% lower than standard tiers for the first 2 years.',
+      highlight: dictionary?.earlyPartner?.benefits?.reducedCommission?.highlight || 'Save $12,000+ annually'
+    },
+    {
+      icon: Sparkles,
+      title: dictionary?.earlyPartner?.benefits?.priority?.title || 'Priority Everything',
+      description: dictionary?.earlyPartner?.benefits?.priority?.description || 'First in line for bookings, support, and new feature rollouts. Your success is our showcase.',
+      highlight: dictionary?.earlyPartner?.benefits?.priority?.highlight || 'VIP treatment always'
+    },
+    {
+      icon: Users,
+      title: dictionary?.earlyPartner?.benefits?.coCreation?.title || 'Co-Creation Partner',
+      description: dictionary?.earlyPartner?.benefits?.coCreation?.description || "Help shape AURA's services. Your feedback directly influences our product development.",
+      highlight: dictionary?.earlyPartner?.benefits?.coCreation?.highlight || 'Be heard, make impact'
+    },
+    {
+      icon: Award,
+      title: dictionary?.earlyPartner?.benefits?.foundingMember?.title || 'Founding Member Status',
+      description: dictionary?.earlyPartner?.benefits?.foundingMember?.description || 'Permanent recognition as an AURA founding partner. Marketing benefits and credibility boost.',
+      highlight: dictionary?.earlyPartner?.benefits?.foundingMember?.highlight || 'Exclusive badge & benefits'
+    }
+  ]
+
+  const timeline = [
+    { month: dictionary?.earlyPartner?.timeline?.december?.month || 'December 2024', status: 'current', spots: dictionary?.earlyPartner?.timeline?.december?.spots || '2 spots remaining' },
+    { month: dictionary?.earlyPartner?.timeline?.january?.month || 'January 2025', status: 'upcoming', spots: dictionary?.earlyPartner?.timeline?.january?.spots || '3 spots available' },
+    { month: dictionary?.earlyPartner?.timeline?.february?.month || 'February 2025', status: 'upcoming', spots: dictionary?.earlyPartner?.timeline?.february?.spots || '3 spots available' },
+    { month: dictionary?.earlyPartner?.timeline?.march?.month || 'March 2025', status: 'final', spots: dictionary?.earlyPartner?.timeline?.march?.spots || 'Program closes' }
+  ]
+  
   return (
     <section className="py-20 bg-gradient-to-br from-deep-green to-deep-green/90">
       <div className="container mx-auto px-4">
@@ -44,15 +48,14 @@ export function EarlyPartnerProgram() {
         <div className="text-center mb-16">
           <div className="inline-block mb-6">
             <span className="bg-terracotta/20 text-terracotta px-4 py-2 rounded-full text-sm font-medium backdrop-blur">
-              LIMITED TIME OPPORTUNITY
+              {dictionary?.earlyPartner?.badge || 'LIMITED TIME OPPORTUNITY'}
             </span>
           </div>
           <h2 className="font-serif text-4xl md:text-5xl text-white mb-4">
-            Join as an Early Partner
+            {dictionary?.earlyPartner?.title || 'Join as an Early Partner'}
           </h2>
           <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
-            We're selecting 8 exceptional villas to grow with us. Get founding member benefits 
-            and shape the future of boutique villa management in Bali.
+            {dictionary?.earlyPartner?.subtitle || "We're selecting 8 exceptional villas to grow with us. Get founding member benefits and shape the future of boutique villa management in Bali."}
           </p>
         </div>
 
@@ -91,7 +94,7 @@ export function EarlyPartnerProgram() {
         {/* Timeline */}
         <div className="bg-white/10 backdrop-blur rounded-2xl p-8 mb-12">
           <h3 className="font-serif text-2xl text-white mb-6 text-center">
-            Application Timeline
+            {dictionary?.earlyPartner?.timelineTitle || 'Application Timeline'}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {timeline.map((item, index) => (
@@ -118,48 +121,48 @@ export function EarlyPartnerProgram() {
         {/* Requirements */}
         <div className="bg-white rounded-2xl p-8 mb-12">
           <h3 className="font-serif text-2xl text-deep-green mb-6">
-            Early Partner Requirements
+            {dictionary?.earlyPartner?.requirementsTitle || 'Early Partner Requirements'}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <h4 className="font-semibold text-gray-800 mb-3">Your Villa Must Have:</h4>
+              <h4 className="font-semibold text-gray-800 mb-3">{dictionary?.earlyPartner?.requirements?.villa?.title || 'Your Villa Must Have:'}</h4>
               <ul className="space-y-2">
                 <li className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-terracotta rounded-full"></div>
-                  <span className="text-gray-700">4+ bedrooms or unique boutique features</span>
+                  <span className="text-gray-700">{dictionary?.earlyPartner?.requirements?.villa?.bedrooms || '4+ bedrooms or unique boutique features'}</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-terracotta rounded-full"></div>
-                  <span className="text-gray-700">Located in Uluwatu, Canggu, or Seminyak</span>
+                  <span className="text-gray-700">{dictionary?.earlyPartner?.requirements?.villa?.location || 'Located in Uluwatu, Canggu, or Seminyak'}</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-terracotta rounded-full"></div>
-                  <span className="text-gray-700">Ready for guests within 30 days</span>
+                  <span className="text-gray-700">{dictionary?.earlyPartner?.requirements?.villa?.ready || 'Ready for guests within 30 days'}</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-terracotta rounded-full"></div>
-                  <span className="text-gray-700">Commitment to exceptional hospitality</span>
+                  <span className="text-gray-700">{dictionary?.earlyPartner?.requirements?.villa?.hospitality || 'Commitment to exceptional hospitality'}</span>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-800 mb-3">You Must Be:</h4>
+              <h4 className="font-semibold text-gray-800 mb-3">{dictionary?.earlyPartner?.requirements?.owner?.title || 'You Must Be:'}</h4>
               <ul className="space-y-2">
                 <li className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-terracotta rounded-full"></div>
-                  <span className="text-gray-700">Open to a 2-year initial partnership</span>
+                  <span className="text-gray-700">{dictionary?.earlyPartner?.requirements?.owner?.partnership || 'Open to a 2-year initial partnership'}</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-terracotta rounded-full"></div>
-                  <span className="text-gray-700">Willing to invest in property improvements</span>
+                  <span className="text-gray-700">{dictionary?.earlyPartner?.requirements?.owner?.investment || 'Willing to invest in property improvements'}</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-terracotta rounded-full"></div>
-                  <span className="text-gray-700">Aligned with sustainable tourism values</span>
+                  <span className="text-gray-700">{dictionary?.earlyPartner?.requirements?.owner?.sustainable || 'Aligned with sustainable tourism values'}</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-terracotta rounded-full"></div>
-                  <span className="text-gray-700">Ready to grow with us</span>
+                  <span className="text-gray-700">{dictionary?.earlyPartner?.requirements?.owner?.growth || 'Ready to grow with us'}</span>
                 </li>
               </ul>
             </div>
@@ -170,20 +173,20 @@ export function EarlyPartnerProgram() {
         <div className="text-center">
           <div className="inline-flex items-center gap-2 mb-6 text-white/80">
             <Clock className="w-5 h-5" />
-            <span>Early Partner Program closes March 2025</span>
+            <span>{dictionary?.earlyPartner?.closingNotice || 'Early Partner Program closes March 2025'}</span>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="#qualification"
               className="px-8 py-4 bg-terracotta text-white rounded-full font-medium hover:bg-terracotta-dark transition-all duration-300"
             >
-              Apply for Early Partnership
+              {dictionary?.earlyPartner?.cta?.apply || 'Apply for Early Partnership'}
             </a>
             <a
               href="/property-management-deck.pdf"
               className="px-8 py-4 bg-white text-deep-green rounded-full font-medium hover:bg-gray-100 transition-all duration-300"
             >
-              Download Partner Deck
+              {dictionary?.earlyPartner?.cta?.download || 'Download Partner Deck'}
             </a>
           </div>
         </div>

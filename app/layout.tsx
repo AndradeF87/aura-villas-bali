@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { ConditionalNavigation } from "@/components/layout/ConditionalNavigation";
 import { ScrollbarController } from "@/components/layout/ScrollbarController";
 
 // For now, we'll use Google Fonts but with better optimization
@@ -98,12 +97,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+    <html className={`${inter.variable} ${playfair.variable}`}>
       <head>
         <style dangerouslySetInnerHTML={{ __html: criticalCSS }} />
       </head>
       <body className={`${inter.className} antialiased`}>
-        <ConditionalNavigation />
         <ScrollbarController />
         {children}
       </body>

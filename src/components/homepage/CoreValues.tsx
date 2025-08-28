@@ -1,57 +1,60 @@
 'use client'
 
 import { Heart, Sparkles, Users, Brain, ChartBar, Award } from 'lucide-react'
-
-const values = [
-  {
-    icon: Heart,
-    title: 'Memories Over Walls',
-    description: 'We design stays that guests remember long after they leave.',
-    color: 'text-terracotta'
-  },
-  {
-    icon: Sparkles,
-    title: "Your Villa's Own Story",
-    description: 'Unique branding and positioning that makes your property unforgettable.',
-    color: 'text-brand-gold'
-  },
-  {
-    icon: Users,
-    title: 'Human Care, Every Day',
-    description: 'Hands-on operations with staff we treat like family.',
-    color: 'text-deep-green'
-  },
-  {
-    icon: Brain,
-    title: 'AI-Enhanced Marketing',
-    description: 'Smart tools that attract the right guests at the right price.',
-    color: 'text-terracotta'
-  },
-  {
-    icon: ChartBar,
-    title: 'Owner Portal',
-    description: 'Clear reports and insights at your fingertips, anytime.',
-    color: 'text-deep-green'
-  },
-  {
-    icon: Award,
-    title: 'Selective Partnership',
-    description: 'We grow slowly and thoughtfully so quality stays exceptional.',
-    color: 'text-brand-gold'
-  }
-]
+import { useTranslation } from '@/contexts/TranslationContext'
 
 export function CoreValues() {
+  const { dictionary } = useTranslation()
+
+  const values = [
+    {
+      icon: Heart,
+      title: dictionary?.coreValues?.memoriesOverWalls?.title || 'Memories Over Walls',
+      description: dictionary?.coreValues?.memoriesOverWalls?.description || 'We design stays that guests remember long after they leave.',
+      color: 'text-terracotta'
+    },
+    {
+      icon: Sparkles,
+      title: dictionary?.coreValues?.villaStory?.title || "Your Villa's Own Story",
+      description: dictionary?.coreValues?.villaStory?.description || 'Unique branding and positioning that makes your property unforgettable.',
+      color: 'text-brand-gold'
+    },
+    {
+      icon: Users,
+      title: dictionary?.coreValues?.humanCare?.title || 'Human Care, Every Day',
+      description: dictionary?.coreValues?.humanCare?.description || 'Hands-on operations with staff we treat like family.',
+      color: 'text-deep-green'
+    },
+    {
+      icon: Brain,
+      title: dictionary?.coreValues?.aiMarketing?.title || 'AI-Enhanced Marketing',
+      description: dictionary?.coreValues?.aiMarketing?.description || 'Smart tools that attract the right guests at the right price.',
+      color: 'text-terracotta'
+    },
+    {
+      icon: ChartBar,
+      title: dictionary?.coreValues?.ownerPortal?.title || 'Owner Portal',
+      description: dictionary?.coreValues?.ownerPortal?.description || 'Clear reports and insights at your fingertips, anytime.',
+      color: 'text-deep-green'
+    },
+    {
+      icon: Award,
+      title: dictionary?.coreValues?.selectivePartnership?.title || 'Selective Partnership',
+      description: dictionary?.coreValues?.selectivePartnership?.description || 'We grow slowly and thoughtfully so quality stays exceptional.',
+      color: 'text-brand-gold'
+    }
+  ]
+
   return (
     <section className="py-20 bg-warm-ivory">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="font-serif text-4xl md:text-5xl text-deep-green mb-4">
-            What Makes AURA Different
+            {dictionary?.coreValues?.title || 'What Makes AURA Different'}
           </h2>
           <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
-            We combine heartfelt hospitality with modern technology to create something special
+            {dictionary?.coreValues?.subtitle || 'We combine heartfelt hospitality with modern technology to create something special'}
           </p>
         </div>
 
@@ -81,13 +84,13 @@ export function CoreValues() {
         {/* CTA */}
         <div className="text-center mt-12">
           <p className="text-lg text-gray-700 mb-6">
-            Ready to give your villa the care it deserves?
+            {dictionary?.coreValues?.cta?.text || 'Ready to give your villa the care it deserves?'}
           </p>
           <a
             href="/property-management"
             className="inline-block bg-terracotta hover:bg-terracotta-dark text-white font-semibold py-4 px-8 rounded-full transition-colors duration-200"
           >
-            See If You Qualify
+            {dictionary?.coreValues?.cta?.button || 'See If You Qualify'}
           </a>
         </div>
       </div>

@@ -1,52 +1,55 @@
 'use client'
 
 import { Shield, Star, Phone, CreditCard, Award, Heart } from 'lucide-react'
+import { useTranslation } from '@/src/hooks/useTranslation'
 
-const benefits = [
-  {
-    icon: Award,
-    title: 'Handpicked Properties',
-    description: 'Every villa is personally vetted by our team. We only work with properties that meet our strict standards for luxury, comfort, and authentic Balinese hospitality.'
-  },
-  {
-    icon: Phone,
-    title: '24/7 Concierge Service',
-    description: 'From restaurant reservations to arranging surf lessons, our local concierge team is always available to make your stay effortless and memorable.'
-  },
-  {
-    icon: CreditCard,
-    title: 'Best Price Guarantee',
-    description: "Book directly through AURA for the best rates. Found it cheaper elsewhere? We'll match it and add a complimentary spa voucher."
-  },
-  {
-    icon: Heart,
-    title: 'Local Experiences Included',
-    description: 'Each stay includes curated local experiences—from temple tours to cooking classes—helping you discover the real Bali beyond tourist spots.'
-  },
-  {
-    icon: Star,
-    title: 'Verified Guest Reviews',
-    description: 'Read real reviews from real guests. Every review is verified and authentic, helping you make the perfect choice for your Bali escape.'
-  },
-  {
-    icon: Shield,
-    title: 'Secure & Protected',
-    description: 'Your booking is protected with secure payment processing and comprehensive travel protection options. Book with complete peace of mind.'
-  }
-]
 
 export function WhyBookWithAura() {
+  const { t } = useTranslation()
+
+  const benefits = [
+    {
+      icon: Award,
+      title: t('whyBookWithAura.benefits.handpicked.title'),
+      description: t('whyBookWithAura.benefits.handpicked.description')
+    },
+    {
+      icon: Phone,
+      title: t('whyBookWithAura.benefits.concierge.title'),
+      description: t('whyBookWithAura.benefits.concierge.description')
+    },
+    {
+      icon: CreditCard,
+      title: t('whyBookWithAura.benefits.priceGuarantee.title'),
+      description: t('whyBookWithAura.benefits.priceGuarantee.description')
+    },
+    {
+      icon: Heart,
+      title: t('whyBookWithAura.benefits.localExperiences.title'),
+      description: t('whyBookWithAura.benefits.localExperiences.description')
+    },
+    {
+      icon: Star,
+      title: t('whyBookWithAura.benefits.verifiedReviews.title'),
+      description: t('whyBookWithAura.benefits.verifiedReviews.description')
+    },
+    {
+      icon: Shield,
+      title: t('whyBookWithAura.benefits.secureProtected.title'),
+      description: t('whyBookWithAura.benefits.secureProtected.description')
+    }
+  ]
+
   return (
     <section className="py-20 bg-warm-ivory">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="font-serif text-4xl md:text-5xl text-deep-green mb-4">
-            Why Book with AURA
+            {t('whyBookWithAura.title')}
           </h2>
           <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
-            More than just a booking—it's your gateway to authentic Bali experiences 
-            with the comfort of knowing every detail is taken care of
+            {t('whyBookWithAura.subtitle')}
           </p>
         </div>
 
@@ -81,19 +84,19 @@ export function WhyBookWithAura() {
           <div className="inline-flex flex-wrap justify-center gap-8 p-6 bg-white rounded-2xl">
             <div className="text-center">
               <div className="text-3xl font-bold text-terracotta">100%</div>
-              <div className="text-sm text-gray-600">Guest Satisfaction</div>
+              <div className="text-sm text-gray-600">{t('whyBookWithAura.trustBadges.guestSatisfaction')}</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-terracotta">24/7</div>
-              <div className="text-sm text-gray-600">Support Available</div>
+              <div className="text-sm text-gray-600">{t('whyBookWithAura.trustBadges.supportAvailable')}</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-terracotta">2</div>
-              <div className="text-sm text-gray-600">Luxury Properties</div>
+              <div className="text-sm text-gray-600">{t('whyBookWithAura.trustBadges.luxuryProperties')}</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-terracotta">50+</div>
-              <div className="text-sm text-gray-600">5-Star Reviews</div>
+              <div className="text-sm text-gray-600">{t('whyBookWithAura.trustBadges.fiveStarReviews')}</div>
             </div>
           </div>
         </div>
