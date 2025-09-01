@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import { useTranslation } from '@/contexts/TranslationContext'
 
 interface NavItem {
   id: string
@@ -10,6 +11,7 @@ interface NavItem {
 }
 
 export function TimelineNavigation() {
+  const { dictionary } = useTranslation()
   const [navItems, setNavItems] = useState<NavItem[]>([])
   const [activeSection, setActiveSection] = useState<string>('')
   const [isTimelineHovered, setIsTimelineHovered] = useState(false)
@@ -51,24 +53,33 @@ export function TimelineNavigation() {
         // Specific label mapping based on section content
         let label = ''
         if (id === 'calculator-section') {
-          label = 'Earning Calculator'
+          label = dictionary?.navigation?.timeline?.earningCalculator || 'Earning Calculator'
         } else if (htmlSection.className.includes('hero') || headingText.toLowerCase().includes('partner')) {
-          label = 'AURA Partnership'
+          label = dictionary?.navigation?.timeline?.auraPartnership || 'AURA Partnership'
         } else if (htmlSection.className.includes('success') || headingText.toLowerCase().includes('success')) {
-          label = 'Success Stories'
+          label = dictionary?.navigation?.timeline?.successStories || 'Success Stories'
         } else if (htmlSection.className.includes('challenge') || headingText.toLowerCase().includes('challenge')) {
-          label = 'Challenges'
+          label = dictionary?.navigation?.timeline?.challenges || 'Challenges'
         } else if (htmlSection.className.includes('work') || headingText.toLowerCase().includes('how we work')) {
-          label = 'How We Work'
+          label = dictionary?.navigation?.timeline?.howWeWork || 'How We Work'
         } else if (htmlSection.className.includes('technology') || htmlSection.className.includes('smart') || headingText.toLowerCase().includes('technology')) {
-          label = 'Smart Tools'
+          label = dictionary?.navigation?.timeline?.smartTools || 'Smart Tools'
         } else if (htmlSection.className.includes('qualification') || htmlSection.className.includes('qualify') || headingText.toLowerCase().includes('qualify')) {
-          label = 'Qualification'
+          label = dictionary?.navigation?.timeline?.qualification || 'Qualification'
         } else if (htmlSection.className.includes('service') || htmlSection.className.includes('tier') || headingText.toLowerCase().includes('service')) {
-          label = 'Service Levels'
+          label = dictionary?.navigation?.timeline?.serviceLevels || 'Service Levels'
         } else {
           // Fallback based on index for any missed sections
-          const fallbackLabels = ['Earning Calculator', 'AURA Partnership', 'Success Stories', 'Challenges', 'How We Work', 'Smart Tools', 'Qualification', 'Service Levels']
+          const fallbackLabels = [
+            dictionary?.navigation?.timeline?.earningCalculator || 'Earning Calculator',
+            dictionary?.navigation?.timeline?.auraPartnership || 'AURA Partnership', 
+            dictionary?.navigation?.timeline?.successStories || 'Success Stories',
+            dictionary?.navigation?.timeline?.challenges || 'Challenges',
+            dictionary?.navigation?.timeline?.howWeWork || 'How We Work',
+            dictionary?.navigation?.timeline?.smartTools || 'Smart Tools',
+            dictionary?.navigation?.timeline?.qualification || 'Qualification',
+            dictionary?.navigation?.timeline?.serviceLevels || 'Service Levels'
+          ]
           label = fallbackLabels[index] || `Section ${index + 1}`
         }
         

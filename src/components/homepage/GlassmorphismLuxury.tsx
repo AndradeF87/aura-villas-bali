@@ -5,6 +5,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import { EarningsDisplay } from './EarningsDisplay'
 import { useTranslation } from '@/contexts/TranslationContext'
+import Image from 'next/image'
 
 export function GlassmorphismLuxury() {
   const { dictionary } = useTranslation()
@@ -147,14 +148,21 @@ export function GlassmorphismLuxury() {
 
       {/* Left Side - AURA Branding - Hidden on mobile */}
       <div className="hidden md:flex absolute left-0 top-0 h-full w-2/5 flex-col items-center justify-center z-10">
-        <motion.h1 
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-[#C96F4A] mb-3"
+        <motion.div 
+          className="mb-3"
           style={{
             opacity: animatedOpacity
           }}
         >
-          {dictionary?.calculator?.brand || 'AURA'}
-        </motion.h1>
+          <Image
+            src="/images/AURA-logo (400 x 180 px).svg"
+            alt="AURA"
+            width={400}
+            height={180}
+            className="w-auto h-16 sm:h-20 md:h-24 lg:h-28 xl:h-32"
+            priority
+          />
+        </motion.div>
         <motion.p 
           className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#2F4A3C] font-bold"
           style={{ opacity: subtitleOpacity }}
@@ -183,7 +191,16 @@ export function GlassmorphismLuxury() {
             className="block md:hidden mb-6"
             style={{ opacity: subtitleOpacity }}
           >
-            <h1 className="text-3xl font-serif text-[#C96F4A] mb-2">{dictionary?.calculator?.brand || 'AURA'}</h1>
+            <div className="mb-2">
+              <Image
+                src="/images/AURA-logo (400 x 180 px).svg"
+                alt="AURA"
+                width={400}
+                height={180}
+                className="w-auto h-12"
+                priority
+              />
+            </div>
             <p className="text-sm text-[#F8F4F0] opacity-80">{dictionary?.calculator?.subtitle || 'Gestión de Propiedades en Bali'}</p>
             <div className="w-full h-[1px] bg-[#C96F4A] mt-4 mb-6"></div>
           </motion.div>
@@ -482,19 +499,32 @@ export function GlassmorphismLuxury() {
                 </div>
 
                 <button
-                  onClick={() => setStep(4)}
+                  onClick={() => {
+                    if (!bedrooms) {
+                      alert(dictionary?.calculator.selectBedroomsError || 'Please select the number of bedrooms');
+                      return;
+                    }
+                    setStep(4);
+                  }}
                   className="w-full py-4 rounded-xl text-white font-medium transition-all duration-300"
                   style={{
-                    background: 'linear-gradient(135deg, #C96F4A 0%, #D4AF37 100%)',
+                    background: !bedrooms 
+                      ? 'linear-gradient(135deg, #999 0%, #777 100%)' 
+                      : 'linear-gradient(135deg, #C96F4A 0%, #D4AF37 100%)',
                     boxShadow: '0 4px 10px rgba(201,111,74,0.3)',
+                    cursor: !bedrooms ? 'not-allowed' : 'pointer',
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-2px)'
-                    e.currentTarget.style.boxShadow = '0 6px 15px rgba(201,111,74,0.4)'
+                    if (bedrooms) {
+                      e.currentTarget.style.transform = 'translateY(-2px)'
+                      e.currentTarget.style.boxShadow = '0 6px 15px rgba(201,111,74,0.4)'
+                    }
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)'
-                    e.currentTarget.style.boxShadow = '0 4px 10px rgba(201,111,74,0.3)'
+                    if (bedrooms) {
+                      e.currentTarget.style.transform = 'translateY(0)'
+                      e.currentTarget.style.boxShadow = '0 4px 10px rgba(201,111,74,0.3)'
+                    }
                   }}
                 >
                   {dictionary?.calculator.getEstimate || 'Get My Earnings Estimate'} →

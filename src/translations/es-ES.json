@@ -113,7 +113,17 @@
     "buyRent": "Comprar y Alquilar",
     "comingSoon": "¡Próximamente!",
     "bookingSystemMessage": "Nuestro sistema de reservas se está perfeccionando actualmente para brindarte la mejor experiencia. Por favor contáctanos directamente para reservas.",
-    "contactUs": "Contáctanos"
+    "contactUs": "Contáctanos",
+    "timeline": {
+      "earningCalculator": "Calculadora de Ingresos",
+      "auraPartnership": "Asociación AURA",
+      "successStories": "Historias de Éxito",
+      "challenges": "Desafíos",
+      "howWeWork": "Cómo Trabajamos",
+      "smartTools": "Herramientas Inteligentes",
+      "qualification": "Calificación",
+      "serviceLevels": "Niveles de Servicio"
+    }
   },
   "hero": {
     "title": "La vida se trata de crear buenos recuerdos",

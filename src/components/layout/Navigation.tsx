@@ -8,6 +8,7 @@ import { X } from 'lucide-react'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import type { Locale } from '@/lib/i18n/config'
 import { i18n } from '@/lib/i18n/config'
+import Image from 'next/image'
 
 interface NavigationProps {
   locale?: Locale
@@ -184,9 +185,10 @@ export const Navigation = ({ locale = 'en', dictionary }: NavigationProps) => {
   const shouldStartDark = (isAboutPage || isContactPage || isVillasPage || isPricingPage) && !isMenuOverDark
   
   const menuTextColor = isMenuOverDark ? '#F8F4F0' : '#2F4A3C'
-  const logoTextColor = (shouldStartDark || isOverWhiteBg) && !isMenuOverDark ? '#C96F4A' : (isMenuOverDark ? '#F8F4F0' : '#C96F4A')
-  const logoSubtitleColor = (shouldStartDark || isOverWhiteBg) && !isMenuOverDark ? '#2F4A3C' : (isMenuOverDark ? '#F8F4F0' : '#2F4A3C')
   const hamburgerColor = (shouldStartDark || isOverWhiteBg) && !isMenuOverDark ? '#C96F4A' : (isMenuOverDark ? '#F8F4F0' : '#2F4A3C')
+  
+  // Determine which logo to use based on background
+  const useWhiteLogo = isMenuOverDark
   
   return (
     <>
@@ -199,20 +201,14 @@ export const Navigation = ({ locale = 'en', dictionary }: NavigationProps) => {
             style={{ opacity: isMounted ? navOpacity : 1 }}
           >
             <Link href={getLocalePath('/')} className="block">
-              <div>
-                <span 
-                  className="font-serif text-2xl md:text-3xl font-bold tracking-wider transition-colors duration-300"
-                  style={{ color: logoTextColor }}
-                >
-                  AURA
-                </span>
-                <span 
-                  className="text-xs tracking-[0.3em] uppercase mt-1 block transition-colors duration-300"
-                  style={{ color: logoSubtitleColor }}
-                >
-                  {dictionary?.navigation?.tagline || 'Villas Bali'}
-                </span>
-              </div>
+              <Image
+                src={useWhiteLogo ? '/images/logo-white-desktop.svg' : '/images/logo-colored-desktop.svg'}
+                alt="AURA Villas Bali"
+                width={134}
+                height={60}
+                className="h-10 md:h-12 w-auto transition-opacity duration-300"
+                priority
+              />
             </Link>
           </motion.div>
           
@@ -352,20 +348,14 @@ export const Navigation = ({ locale = 'en', dictionary }: NavigationProps) => {
             transition={{ duration: 0.3 }}
           >
             <Link href={getLocalePath('/')} className="block">
-              <div>
-                <span 
-                  className="font-serif text-2xl font-bold tracking-wider"
-                  style={{ color: '#C96F4A' }}
-                >
-                  AURA
-                </span>
-                <span 
-                  className="text-[10px] tracking-[0.2em] uppercase -mt-1 block transition-colors duration-300"
-                  style={{ color: showGreenBar ? '#FFFFFF' : '#2F4A3C' }}
-                >
-                  {dictionary?.navigation?.tagline || 'Villas Bali'}
-                </span>
-              </div>
+              <Image
+                src={showGreenBar ? '/images/logo-white-mobile.svg' : '/images/logo-colored-mobile.svg'}
+                alt="AURA Villas Bali"
+                width={94}
+                height={42}
+                className="h-10 w-auto"
+                priority
+              />
             </Link>
           </motion.div>
           
@@ -402,14 +392,14 @@ export const Navigation = ({ locale = 'en', dictionary }: NavigationProps) => {
               <div className="p-6">
                 <div className="flex justify-between items-start mb-12">
                   <Link href={getLocalePath('/')} className="block">
-                    <div>
-                      <span className="font-serif text-3xl font-bold tracking-wider text-[#C96F4A]">
-                        AURA
-                      </span>
-                      <span className="text-xs tracking-[0.3em] uppercase mt-1 block text-[#2F4A3C]">
-                        {dictionary?.navigation?.tagline || 'Villas Bali'}
-                      </span>
-                    </div>
+                    <Image
+                      src="/images/logo-colored-mobile.svg"
+                      alt="AURA Villas Bali"
+                      width={94}
+                      height={42}
+                      className="h-12 w-auto"
+                      priority
+                    />
                   </Link>
                   
                   <button 
