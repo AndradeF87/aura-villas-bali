@@ -39,7 +39,7 @@ const homePageSchema = {
     longitude: 115.1688
   },
   telephone: '+62-361-123456',
-  email: 'info@auravillasbali.com',
+  email: 'hello@auravillasbali.com',
   hasMap: 'https://maps.google.com/maps?q=AURA+Villas+Bali+Seminyak',
   openingHours: 'Mo-Su 00:00-24:00',
   aggregateRating: {

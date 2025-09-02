@@ -304,8 +304,8 @@ export default function Footer({ dictionary, locale }: FooterProps) {
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-terracotta flex-shrink-0 mt-1" />
                 <div>
-                  <a href="mailto:info@auravillasbali.com" className="hover:text-terracotta transition-colors">
-                    info@auravillasbali.com
+                  <a href="mailto:hello@auravillasbali.com" className="hover:text-terracotta transition-colors">
+                    hello@auravillasbali.com
                   </a>
                 </div>
               </li>
@@ -500,8 +500,8 @@ export default function Footer({ dictionary, locale }: FooterProps) {
 
               <ul className="space-y-3 text-sand/80 text-sm">
                 <li>
-                  <a href="mailto:info@auravillasbali.com" className="hover:text-terracotta transition-colors">
-                    info@auravillasbali.com
+                  <a href="mailto:hello@auravillasbali.com" className="hover:text-terracotta transition-colors">
+                    hello@auravillasbali.com
                   </a>
                 </li>
                 <li>

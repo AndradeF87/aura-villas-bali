@@ -95,7 +95,7 @@ export const pageFAQs = {
   villas: [
     {
       question: 'How do I book a villa with AURA?',
-      answer: 'You can contact us directly through our website contact form, WhatsApp at +62 812 3456 7890, or email info@auravillasbali.com. Our team will help you find the perfect villa and arrange your booking.'
+      answer: 'You can contact us directly through our website contact form, WhatsApp at +62 812 3456 7890, or email hello@auravillasbali.com. Our team will help you find the perfect villa and arrange your booking.'
     },
     {
       question: 'What amenities are included in AURA villas?',

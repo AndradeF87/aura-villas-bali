@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 
 export const contactMetadata: Metadata = {
   title: 'Contact AURA Villas | Get in Touch for Villa Management Services',
-  description: 'Contact AURA Villas Bali for professional villa management services. WhatsApp: +62 812 3456 7890. Email: info@auravillasbali.com. Offices in Seminyak, Ubud, and Canggu.',
+  description: 'Contact AURA Villas Bali for professional villa management services. WhatsApp: +62 812 3456 7890. Email: hello@auravillasbali.com. Offices in Seminyak, Ubud, and Canggu.',
   keywords: 'contact AURA Villas, Bali villa management contact, property management inquiry, villa services contact, Seminyak office, Ubud office',
   alternates: {
     canonical: 'https://auravillasbali.com/contact',
@@ -70,7 +70,7 @@ export const contactSchema = {
       },
       {
         '@type': 'ContactPoint',
-        email: 'info@auravillasbali.com',
+        email: 'hello@auravillasbali.com',
         contactType: 'customer support',
         availableLanguage: ['en', 'id']
       },
