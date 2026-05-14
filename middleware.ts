@@ -46,6 +46,6 @@ export function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     // Skip all internal paths (_next, api)
-    '/((?!api|_next/static|_next/image|favicon.ico|apple-icon.svg|icon.svg|sitemap.xml|robots.txt|images|animations|videos|digital-guide-suyai.html).*)',
+    '/((?!api|_next/static|_next/image|favicon.ico|apple-icon.svg|icon.svg|sitemap.xml|robots.txt|images|animations|videos|digital-guide-suyai-mintu.html).*)',
   ],
 };
