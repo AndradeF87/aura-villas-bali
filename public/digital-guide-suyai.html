@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Villa Suyai — A Digital Guide to Uluwatu</title>
+  <title>Villas Suyai &amp; Mintu — A Digital Guide to Uluwatu</title>
   <meta name="description" content="A curated welcome guide to Uluwatu — maps, recommendations, and direct access to your villa hosts." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -231,10 +231,10 @@
       <!-- Hero text -->
       <div class="absolute inset-0 flex flex-col justify-end p-10 lg:p-14">
         <div class="text-sand-50">
-          <p class="text-[11px] tracking-[0.4em] mb-5 opacity-80">A PRIVATE VILLA · ULUWATU</p>
+          <p class="text-[11px] tracking-[0.4em] mb-5 opacity-80">PRIVATE VILLAS · ULUWATU</p>
           <h1 class="font-display font-light leading-[0.9] text-[88px] xl:text-[112px]" style="font-variation-settings:'SOFT' 100,'opsz' 144;">
-            Villa
-            <span class="block font-display-italic font-normal -mt-2">Suyai</span>
+            Villas
+            <span class="block font-display-italic font-normal -mt-2">Suyai &amp; Mintu</span>
           </h1>
           <p class="mt-8 max-w-md text-[15px] leading-relaxed text-sand-100/90 font-light">
             A curated welcome guide to our favourite corners of Uluwatu —
@@ -262,7 +262,7 @@
         <div class="absolute inset-0 bg-gradient-to-b from-cocoa-900/15 via-cocoa-900/0 to-cocoa-900/30"></div>
         <div class="relative h-full flex flex-col items-center justify-center text-sand-50 text-center px-6">
           <p class="font-display text-[22px] tracking-[0.22em] leading-none">WELCOME TO</p>
-          <h2 class="font-display font-semibold text-[40px] tracking-[0.14em] leading-tight mt-1">VILLA SUYAI</h2>
+          <h2 class="font-display font-semibold text-[40px] tracking-[0.14em] leading-tight mt-1">SUYAI &amp; MINTU</h2>
         </div>
       </div>
 
@@ -364,10 +364,39 @@
           </div>
         </section>
 
-        <!-- Section: Direct Access -->
+        <!-- Section: In the villa -->
         <section class="mt-8 lg:mt-5 rise delay-4">
           <div class="flex items-baseline justify-between mb-1">
             <p class="text-[10px] tracking-[0.35em] text-cocoa-600 font-medium">— 03</p>
+            <p class="font-display-italic text-[13px] text-cocoa-600">stocked &amp; chilled</p>
+          </div>
+          <h4 class="font-display font-light text-[26px] lg:text-[24px] leading-tight text-cocoa-800">
+            In the <span class="font-display-italic">villa.</span>
+          </h4>
+
+          <div class="hairline my-3 lg:my-3"></div>
+
+          <button data-modal="minibar"
+                  class="tile w-full bg-sand-50 rounded-[18px] p-4 lg:px-4 lg:py-3 text-left shadow-tile border border-sand-200/60 flex items-center gap-3 lg:min-h-0">
+            <span class="tile-icon inline-flex items-center justify-center w-10 h-10 lg:w-9 lg:h-9 rounded-full bg-sand-200 text-cocoa-700 flex-shrink-0">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M8 2h8l-1 6a4 4 0 0 1-3 4 4 4 0 0 1-3-4z"/>
+                <path d="M12 12v8"/>
+                <path d="M8 22h8"/>
+              </svg>
+            </span>
+            <div>
+              <p class="text-[9px] tracking-[0.3em] text-cocoa-500 mb-0.5">REFRESHMENTS</p>
+              <h5 class="font-display text-[18px] leading-tight text-cocoa-800">Mini <span class="font-display-italic">bar</span></h5>
+              <p class="text-[11px] text-cocoa-600 mt-0.5">Drinks &amp; wine — added to your bill on departure.</p>
+            </div>
+          </button>
+        </section>
+
+        <!-- Section: Direct Access -->
+        <section class="mt-8 lg:mt-5 rise delay-4">
+          <div class="flex items-baseline justify-between mb-1">
+            <p class="text-[10px] tracking-[0.35em] text-cocoa-600 font-medium">— 04</p>
             <p class="font-display-italic text-[13px] text-cocoa-600">one tap away</p>
           </div>
           <h4 class="font-display font-light text-[26px] lg:text-[24px] leading-tight text-cocoa-800">
@@ -408,7 +437,7 @@
         <!-- Footer -->
         <footer class="mt-auto pt-5 lg:pt-4 border-t border-sand-300/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-[11px] text-cocoa-600 rise delay-5">
           <div class="flex items-center gap-2">
-            <span class="font-display-italic text-[16px] text-cocoa-700">Suyai</span>
+            <span class="font-display-italic text-[16px] text-cocoa-700">Suyai &amp; Mintu</span>
             <span>· © 2026 · All places shared with love.</span>
           </div>
           <a href="#book-again" class="book-link text-cocoa-700 font-medium tracking-wide">Book again — 10% off →</a>
@@ -774,6 +803,66 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </span>
           </a>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Mini bar -->
+  <div id="modal-minibar" class="modal fixed inset-0 z-50 bg-cocoa-900/55 items-end sm:items-center justify-center p-3 sm:p-6 backdrop-blur-sm">
+    <div class="bg-sand-50 w-full max-w-[520px] lg:max-w-[760px] rounded-[24px] shadow-2xl max-h-[90vh] flex flex-col overflow-hidden relative grain">
+      <div class="flex items-start justify-between px-6 pt-6 pb-4">
+        <div>
+          <p class="text-[10px] tracking-[0.3em] text-cocoa-500 mb-1">N° 03 · IN THE VILLA</p>
+          <h3 class="font-display text-[28px] leading-none text-cocoa-800">Mini <span class="font-display-italic">bar</span></h3>
+        </div>
+        <button class="modal-close text-cocoa-700 hover:text-cocoa-900 text-3xl leading-none -mt-1" aria-label="Close">&times;</button>
+      </div>
+      <div class="hairline mx-6"></div>
+      <div class="modal-body overflow-y-auto px-6 py-5 space-y-7 scroll-shadow">
+
+        <p class="text-[12.5px] text-cocoa-600 leading-relaxed">
+          Help yourself — anything you enjoy is added to your bill on departure. Prices in IDR ("k" = thousand).
+        </p>
+
+        <section>
+          <h4 class="font-display-italic text-[18px] text-sage-700 mb-3">Drinks</h4>
+          <ul class="divide-y divide-sand-200/70 border-y border-sand-200/70">
+            <li class="flex items-baseline justify-between gap-4 py-2.5"><span class="text-[14px] text-cocoa-800">Coke</span><span class="text-[13px] text-cocoa-700 font-medium tabular-nums">30k</span></li>
+            <li class="flex items-baseline justify-between gap-4 py-2.5"><span class="text-[14px] text-cocoa-800">Sprite</span><span class="text-[13px] text-cocoa-700 font-medium tabular-nums">30k</span></li>
+            <li class="flex items-baseline justify-between gap-4 py-2.5"><span class="text-[14px] text-cocoa-800">Soda Water</span><span class="text-[13px] text-cocoa-700 font-medium tabular-nums">30k</span></li>
+            <li class="flex items-baseline justify-between gap-4 py-2.5"><span class="text-[14px] text-cocoa-800">Bintang</span><span class="text-[13px] text-cocoa-700 font-medium tabular-nums">40k</span></li>
+            <li class="flex items-baseline justify-between gap-4 py-2.5"><span class="text-[14px] text-cocoa-800">Granola</span><span class="text-[13px] text-cocoa-700 font-medium tabular-nums">130k</span></li>
+            <li class="flex items-baseline justify-between gap-4 py-2.5"><span class="text-[14px] text-cocoa-800">Coffee Capsules <span class="text-cocoa-500">— pack of 10</span></span><span class="text-[13px] text-cocoa-700 font-medium tabular-nums">120k</span></li>
+            <li class="flex items-baseline justify-between gap-4 py-2.5"><span class="text-[14px] text-cocoa-800">Regular Milk <span class="text-cocoa-500">— 1L</span></span><span class="text-[13px] text-cocoa-700 font-medium tabular-nums">70k</span></li>
+            <li class="flex items-baseline justify-between gap-4 py-2.5"><span class="text-[14px] text-cocoa-800">Regular Milk <span class="text-cocoa-500">— 200 ml</span></span><span class="text-[13px] text-cocoa-700 font-medium tabular-nums">15k</span></li>
+            <li class="flex items-baseline justify-between gap-4 py-2.5"><span class="text-[14px] text-cocoa-800">Oat Milk <span class="text-cocoa-500">— 200 ml</span></span><span class="text-[13px] text-cocoa-700 font-medium tabular-nums">18k</span></li>
+            <li class="flex items-baseline justify-between gap-4 py-2.5"><span class="text-[14px] text-cocoa-800">Instant Oats</span><span class="text-[13px] text-cocoa-700 font-medium tabular-nums">70k</span></li>
+          </ul>
+        </section>
+
+        <section>
+          <h4 class="font-display-italic text-[18px] text-sage-700 mb-3">Wine <span class="text-[12px] text-cocoa-500 font-sans not-italic tracking-[0.25em] ml-2">WHITE</span></h4>
+          <ul class="divide-y divide-sand-200/70 border-y border-sand-200/70">
+            <li class="flex items-baseline justify-between gap-4 py-2.5"><span class="text-[14px] text-cocoa-800">Isola Bianco — Dry <span class="text-cocoa-500">750 ml</span></span><span class="text-[13px] text-cocoa-700 font-medium tabular-nums">290k</span></li>
+            <li class="flex items-baseline justify-between gap-4 py-2.5"><span class="text-[14px] text-cocoa-800">Isola Bianco — Dry <span class="text-cocoa-500">187 ml</span></span><span class="text-[13px] text-cocoa-700 font-medium tabular-nums">110k</span></li>
+          </ul>
+        </section>
+
+        <section>
+          <h4 class="font-display-italic text-[18px] text-sage-700 mb-3">Wine <span class="text-[12px] text-cocoa-500 font-sans not-italic tracking-[0.25em] ml-2">ROSÉ</span></h4>
+          <ul class="divide-y divide-sand-200/70 border-y border-sand-200/70">
+            <li class="flex items-baseline justify-between gap-4 py-2.5"><span class="text-[14px] text-cocoa-800">Isola Rosato <span class="text-cocoa-500">— 750 ml</span></span><span class="text-[13px] text-cocoa-700 font-medium tabular-nums">290k</span></li>
+            <li class="flex items-baseline justify-between gap-4 py-2.5"><span class="text-[14px] text-cocoa-800">Isola Rosato <span class="text-cocoa-500">— 187 ml</span></span><span class="text-[13px] text-cocoa-700 font-medium tabular-nums">110k</span></li>
+          </ul>
+        </section>
+
+        <section>
+          <h4 class="font-display-italic text-[18px] text-sage-700 mb-3">Wine <span class="text-[12px] text-cocoa-500 font-sans not-italic tracking-[0.25em] ml-2">RED</span></h4>
+          <ul class="divide-y divide-sand-200/70 border-y border-sand-200/70">
+            <li class="flex items-baseline justify-between gap-4 py-2.5"><span class="text-[14px] text-cocoa-800">Isola Rosso <span class="text-cocoa-500">— 187 ml</span></span><span class="text-[13px] text-cocoa-700 font-medium tabular-nums">110k</span></li>
+          </ul>
         </section>
 
       </div>
